@@ -6,11 +6,16 @@ import ar.edu.utn.frc.tup.piii.services.card.CardImportService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
 @Component
 @Order(0)
+@ConditionalOnProperty(
+        name = "app.cards.seed.enabled",
+        havingValue = "true",
+        matchIfMissing = false
+)
 public class Xy1CardSeeder implements CommandLineRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Xy1CardSeeder.class);

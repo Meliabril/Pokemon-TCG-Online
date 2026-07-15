@@ -9,6 +9,7 @@ import ar.edu.utn.frc.tup.piii.services.card.PokemonTcgCardPayload;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -22,13 +23,19 @@ import java.util.Map;
 @Service
 public class PokemonTcgApiServiceImpl implements PokemonTcgApiService {
 
-    private static final String XY1_URL = "https://api.pokemontcg.io/v2/cards?q=set.id:xy1&pageSize=250";
-
+    private static final String XY1_URL =
+            "https://api.pokemontcg.io/v2/cards?q=set.id:xy1&pageSize=100";
     private final RestClient restClient;
     private final ObjectMapper objectMapper;
 
     public PokemonTcgApiServiceImpl(ObjectMapper objectMapper) {
-        this.restClient = RestClient.create();
+        this.restClient = RestClient.builder()
+                .requestFactory(new SimpleClientHttpRequestFactory() {{
+                    setConnectTimeout(10000);
+                    setReadTimeout(60000);
+                }})
+                .build();
+
         this.objectMapper = objectMapper;
     }
 
