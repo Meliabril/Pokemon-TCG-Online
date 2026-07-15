@@ -56,6 +56,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -122,8 +123,10 @@ class GameServiceImplTest {
         when(gameSnapshotService.findLatestVisibleState(gameId, actorUserId)).thenReturn(Optional.of(currentState));
         when(gameActionExecutor.execute(org.mockito.ArgumentMatchers.any(GameActionContext.class)))
                 .thenReturn(new GameActionExecutionResult(null, List.of(emittedEvent)));
-        when(gameStateQueryService.buildVisibleState(game)).thenReturn(state(gameId, 3, List.of(actorUserId)));
-        when(gameStateQueryService.buildVisibleState(game, actorUserId)).thenReturn(state(gameId, 3, List.of(actorUserId)));
+        GameStateDto runtimeState = state(gameId, 3, List.of(actorUserId));
+        when(gameStateQueryService.buildVisibleState(game)).thenReturn(runtimeState);
+        when(gameStateQueryService.sanitizeVisibleStateForViewer(any(GameStateDto.class), org.mockito.ArgumentMatchers.eq(actorUserId)))
+                .thenReturn(runtimeState);
 
         GameActionResponseDto response = service.executeAction(gameId, actorUserId, request);
 
@@ -170,8 +173,10 @@ class GameServiceImplTest {
         when(gameActionExecutor.execute(org.mockito.ArgumentMatchers.any(GameActionContext.class)))
                 .thenReturn(new GameActionExecutionResult(null, List.of()));
         when(gameStateQueryService.buildVisibleState(game)).thenReturn(runtimeState);
-        when(gameStateQueryService.buildVisibleState(game, actorUserId)).thenReturn(state(gameId, 3, List.of(actorUserId, opponentUserId)));
-        when(gameStateQueryService.buildVisibleState(game, opponentUserId)).thenReturn(state(gameId, 3, List.of(actorUserId, opponentUserId)));
+        when(gameStateQueryService.sanitizeVisibleStateForViewer(any(GameStateDto.class), org.mockito.ArgumentMatchers.eq(actorUserId)))
+                .thenReturn(state(gameId, 3, List.of(actorUserId, opponentUserId)));
+        when(gameStateQueryService.sanitizeVisibleStateForViewer(any(GameStateDto.class), org.mockito.ArgumentMatchers.eq(opponentUserId)))
+                .thenReturn(state(gameId, 3, List.of(actorUserId, opponentUserId)));
 
         service.executeAction(gameId, actorUserId, request);
 
@@ -196,6 +201,69 @@ class GameServiceImplTest {
         inOrder.verify(gameRealtimeEventService).dispatchStateSync(
                 org.mockito.ArgumentMatchers.any(GameStateDto.class),
                 org.mockito.ArgumentMatchers.eq(opponentUserId));
+    }
+
+    @Test
+    void shouldReuseSingleCanonicalStateWhenHandlerReturnsLightweightState() {
+        GameServiceImpl service = newService();
+
+        UUID gameId = UUID.randomUUID();
+        UUID actorUserId = UUID.randomUUID();
+        UUID opponentUserId = UUID.randomUUID();
+        UUID clientActionId = UUID.randomUUID();
+        Game game = new Game();
+        game.setId(gameId);
+        game.setStateVersion(2);
+        GameStateDto currentState = state(gameId, 2, List.of(actorUserId, opponentUserId));
+        GameStateDto lightweightState = currentState.toBuilder()
+                .stateVersion(3)
+                .status(GameStatus.FINISHED)
+                .turn(currentState.turn().toBuilder()
+                        .currentPhase(null)
+                        .build())
+                .actions(currentState.actions().toBuilder()
+                        .availableActions(List.of())
+                        .build())
+                .updatedAt(Instant.parse("2026-05-24T00:00:05Z"))
+                .build();
+        GameStateDto runtimeState = state(gameId, 3, List.of(actorUserId, opponentUserId)).toBuilder()
+                .status(GameStatus.FINISHED)
+                .turn(state(gameId, 3, List.of(actorUserId, opponentUserId)).turn().toBuilder()
+                        .currentPhase(null)
+                        .build())
+                .actions(state(gameId, 3, List.of(actorUserId, opponentUserId)).actions().toBuilder()
+                        .availableActions(List.of())
+                        .build())
+                .build();
+        GameActionRequestDto request = new GameActionRequestDto(
+                gameId,
+                clientActionId,
+                GameActionType.DECLARE_ATTACK,
+                2,
+                Map.of());
+
+        when(gameDataService.getRequiredGameForUpdate(gameId)).thenReturn(game);
+        when(gameSnapshotService.findLatestVisibleState(gameId, actorUserId)).thenReturn(Optional.of(currentState));
+        when(gameActionExecutor.execute(org.mockito.ArgumentMatchers.any(GameActionContext.class)))
+                .thenReturn(new GameActionExecutionResult(lightweightState, List.of()));
+        when(gameStateQueryService.buildVisibleState(game)).thenReturn(runtimeState);
+        when(gameStateQueryService.sanitizeVisibleStateForViewer(any(GameStateDto.class), org.mockito.ArgumentMatchers.eq(actorUserId)))
+                .thenReturn(runtimeState);
+        when(gameStateQueryService.sanitizeVisibleStateForViewer(any(GameStateDto.class), org.mockito.ArgumentMatchers.eq(opponentUserId)))
+                .thenReturn(runtimeState);
+
+        service.executeAction(gameId, actorUserId, request);
+
+        ArgumentCaptor<GameStateDto> stateCaptor = ArgumentCaptor.forClass(GameStateDto.class);
+        verify(gameSnapshotService).saveSnapshot(
+                org.mockito.ArgumentMatchers.eq(gameId),
+                org.mockito.ArgumentMatchers.eq(3),
+                stateCaptor.capture(),
+                org.mockito.ArgumentMatchers.eq(actorUserId));
+        assertThat(stateCaptor.getValue().status()).isEqualTo(GameStatus.FINISHED);
+        assertThat(stateCaptor.getValue().turn().currentPhase()).isNull();
+        assertThat(stateCaptor.getValue().actions().availableActions()).isEmpty();
+        assertThat(stateCaptor.getValue().updatedAt()).isNotNull();
     }
 
     @Test

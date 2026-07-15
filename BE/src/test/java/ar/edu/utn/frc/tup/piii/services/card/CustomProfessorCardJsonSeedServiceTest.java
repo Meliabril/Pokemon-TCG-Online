@@ -56,7 +56,10 @@ class CustomProfessorCardJsonSeedServiceTest {
 
     @BeforeEach
     void setUp() {
-        seedService = new CustomProfessorCardJsonSeedServiceImpl(cardRepository, new ObjectMapper());
+        seedService = new CustomProfessorCardJsonSeedServiceImpl(
+                cardRepository,
+                new ObjectMapper(),
+                org.mockito.Mockito.mock(org.springframework.context.ApplicationEventPublisher.class));
     }
 
     @Test

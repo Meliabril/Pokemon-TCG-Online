@@ -32,4 +32,6 @@ public interface GameCardInstanceStateService {
     int nextZonePosition(UUID gameId, UUID ownerUserId, CardZone zone);
 
     void resequenceZone(UUID gameId, UUID ownerUserId, CardZone zone);
+
+    void reorderAndPersistZone(UUID gameId, UUID ownerUserId, CardZone targetZone, List<GameCardInstance> cards);
 }

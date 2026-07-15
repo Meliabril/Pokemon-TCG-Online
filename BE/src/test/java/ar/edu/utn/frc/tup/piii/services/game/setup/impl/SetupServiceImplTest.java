@@ -378,22 +378,25 @@ class SetupServiceImplTest {
     }
 
     @Test
-    void shouldIgnoreDuplicateMulliganNoticeAcknowledgementWithoutDuplicatingEvent() {
+    void shouldRejectDuplicateMulliganNoticeAcknowledgementWithoutDuplicatingEvent() {
         UUID gameId = UUID.randomUUID();
         UUID playerOneId = UUID.randomUUID();
         UUID playerTwoId = UUID.randomUUID();
         Game game = setupGame(gameId, playerOneId, playerTwoId, false);
         List<GameParticipant> participants = participants(game, playerOneId, playerTwoId, UUID.randomUUID(), UUID.randomUUID());
 
-        configureAckGame(game, participants);
+        when(gameLookupService.getRequiredGame(gameId)).thenReturn(game);
+        when(gameParticipantStateService.findOrderedByGameId(gameId)).thenReturn(participants);
 
-        GameActionExecutionResult result = setupService.ackMulliganNotice(
-                context(gameId, playerOneId, GameActionType.ACK_MULLIGAN_NOTICE, 1, Map.of()));
+        assertThatThrownBy(new ThrowingCallable() {
+            @Override
+            public void call() {
+                setupService.ackMulliganNotice(
+                        context(gameId, playerOneId, GameActionType.ACK_MULLIGAN_NOTICE, 1, Map.of()));
+            }
+        }).isInstanceOf(InvalidGameActionException.class)
+                .hasMessage("Mulligan notice has already been acknowledged by this player");
 
-        assertThat(result.gameState().status()).isEqualTo(GameStatus.SETUP);
-        assertThat(GameStateTestFactory.mulliganNoticePendingByPlayer(result.gameState()))
-                .containsEntry(playerOneId, false)
-                .containsEntry(playerTwoId, false);
         verify(gameEventFactory, never()).publicEvent(
                 eq(gameId),
                 eq(GameEventType.MULLIGAN_NOTICE_ACKNOWLEDGED),

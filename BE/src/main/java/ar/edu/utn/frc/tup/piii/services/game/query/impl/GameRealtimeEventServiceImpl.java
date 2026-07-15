@@ -10,6 +10,7 @@ import ar.edu.utn.frc.tup.piii.services.websocket.GameEventPublisher;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
@@ -19,6 +20,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class GameRealtimeEventServiceImpl implements GameRealtimeEventService {
 
     private final GameEventService gameEventService;
@@ -51,6 +53,11 @@ public class GameRealtimeEventServiceImpl implements GameRealtimeEventService {
     public void dispatchStateSync(GameStateDto state, UUID viewerUserId) {
         Map<String, Object> persistedPayload = Map.of("state", objectMapper.convertValue(state, new TypeReference<Map<String, Object>>() {
         }));
+        log.info(
+                "[REALTIME] Persistiendo STATE_SYNC para viewerUserId={} usando estado ya construido, gameId={}, stateVersion={}",
+                viewerUserId,
+                state.gameId(),
+                state.stateVersion());
         gameEventService.recordPrivateEvent(
                 state.gameId(),
                 GameEventType.STATE_SYNC,
@@ -72,6 +79,11 @@ public class GameRealtimeEventServiceImpl implements GameRealtimeEventService {
             UUID viewerUserId = viewerUserId(event.payload());
             if (event.eventType() == GameEventType.STATE_SYNC) {
                 Object statePayload = event.payload().get("state");
+                log.info(
+                        "[REALTIME] Reenviando STATE_SYNC desde payload persistido para viewerUserId={} sin reconstruir estado desde DB, gameId={}, stateVersion={}",
+                        viewerUserId,
+                        event.gameId(),
+                        event.stateVersion());
                 GameStateDto state = objectMapper.convertValue(statePayload, GameStateDto.class);
                 dispatchStateSync(state, viewerUserId);
                 return;

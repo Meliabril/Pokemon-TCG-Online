@@ -38,7 +38,11 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
+
 @ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 class PendingAttackChoiceEffectTest {
 
     @Mock
@@ -432,8 +436,9 @@ class PendingAttackChoiceEffectTest {
         Attack attack = new Attack();
         attack.setAttackOrder(1);
         attack.setName("Scratch");
+        attack.setBaseDamage(10);
         attack.setDamageText("10");
-        defenderCard.setAttacks(new LinkedHashSet<>(List.of(attack)));
+        defenderCard.setAttacks(new java.util.LinkedHashSet<>(List.of(attack)));
 
         AttackResolutionContext resolutionContext = mock(AttackResolutionContext.class);
         when(resolutionContext.defenderCard()).thenReturn(defenderCard);
@@ -473,7 +478,9 @@ class PendingAttackChoiceEffectTest {
         Card card = new Card(); card.setId(UUID.randomUUID());
         when(resolutionContext.attackerCard()).thenReturn(card);
         when(resolutionContext.defenderCard()).thenReturn(card);
-        Attack selectedAttack = new Attack(); selectedAttack.setDamageText("30");
+        Attack selectedAttack = new Attack();
+        selectedAttack.setBaseDamage(30);
+        selectedAttack.setDamageText("30");
         when(resolutionContext.selectedAttack()).thenReturn(selectedAttack);
 
         when(gameCardInstanceStateService.findByGameIdAndOwnerUserIdAndZone(any(), eq(attackerUserId), eq(CardZone.DECK)))

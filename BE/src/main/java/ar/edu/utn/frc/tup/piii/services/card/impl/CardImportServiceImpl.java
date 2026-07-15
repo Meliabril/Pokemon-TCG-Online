@@ -15,6 +15,8 @@ import ar.edu.utn.frc.tup.piii.services.card.Xy1CardImportValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.context.ApplicationEventPublisher;
+import ar.edu.utn.frc.tup.piii.services.card.CardCatalogModifiedEvent;
 
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,7 @@ public class CardImportServiceImpl implements CardImportService {
     private final PokemonTcgApiService pokemonTcgApiService;
     private final Xy1CardImportValidator validator;
     private final CardRepository cardRepository;
+    private final ApplicationEventPublisher eventPublisher;
 
     @Override
     @Transactional
@@ -36,6 +39,7 @@ public class CardImportServiceImpl implements CardImportService {
         for (PokemonTcgCardPayload payload : payloads) {
             cardRepository.save(toEntity(payload));
         }
+        eventPublisher.publishEvent(new CardCatalogModifiedEvent());
         long importedCards = cardRepository.countBySetCode(Card.XY1_SET_CODE);
         boolean complete = validator.isComplete(importedCards);
         return new CardImportResultDto(

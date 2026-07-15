@@ -44,7 +44,8 @@ class CardImportServiceTest {
         cardImportService = new CardImportServiceImpl(
                 pokemonTcgApiService,
                 new Xy1CardImportValidator(),
-                cardRepository);
+                cardRepository,
+                org.mockito.Mockito.mock(org.springframework.context.ApplicationEventPublisher.class));
     }
 
     @Test

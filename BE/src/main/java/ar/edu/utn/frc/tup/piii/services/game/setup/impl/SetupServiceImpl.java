@@ -35,12 +35,14 @@ import ar.edu.utn.frc.tup.piii.services.game.state.PokemonEvolutionStackStateSer
 import ar.edu.utn.frc.tup.piii.services.game.state.PokemonInPlayStateService;
 import ar.edu.utn.frc.tup.piii.services.game.setup.SetupService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -49,7 +51,10 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class SetupServiceImpl implements SetupService {
+
+    private final java.util.concurrent.ConcurrentHashMap<UUID, Object> gameLocks = new java.util.concurrent.ConcurrentHashMap<>();
 
     private static final int REQUIRED_DECK_SIZE = 60;
     private static final int INITIAL_HAND_SIZE = 7;
@@ -163,23 +168,28 @@ public class SetupServiceImpl implements SetupService {
 
     @Override
     public GameActionExecutionResult ackMulliganNotice(GameActionContext context) {
-        Game game = gameLookupService.getRequiredGame(context.gameId());
-        if (game.getStatus() != GameStatus.SETUP) {
-            throw new InvalidGameActionException("Mulligan notices can only be acknowledged during setup");
-        }
+        UUID gameId = context.gameId();
+        Object lock = gameLocks.computeIfAbsent(gameId, id -> new Object());
+        synchronized (lock) {
+            Game game = gameLookupService.getRequiredGame(gameId);
+            if (game.getStatus() != GameStatus.SETUP) {
+                throw new InvalidGameActionException("Mulligan notices can only be acknowledged during setup");
+            }
 
-        List<GameParticipant> participants = gameParticipantStateService.findOrderedByGameId(game.getId());
-        if (participants.size() != 2) {
-            throw new InvalidGameActionException("Exactly two participants are required during setup");
-        }
+            List<GameParticipant> participants = gameParticipantStateService.findOrderedByGameId(game.getId());
+            if (participants.size() != 2) {
+                throw new InvalidGameActionException("Exactly two participants are required during setup");
+            }
 
-        UUID actorUserId = context.actorUserId();
-        int newStateVersion = nextStateVersion(context, game);
-        Map<String, Object> setupState = mutableSetupState(game.getSetupState());
-        boolean pendingAcknowledgement = hasPendingMulliganAcknowledgement(setupState, actorUserId);
-        List<GameEventDto> events = new ArrayList<>();
+            UUID actorUserId = context.actorUserId();
+            int newStateVersion = nextStateVersion(context, game);
+            Map<String, Object> setupState = mutableSetupState(game.getSetupState());
+            boolean pendingAcknowledgement = hasPendingMulliganAcknowledgement(setupState, actorUserId);
+            if (!pendingAcknowledgement) {
+                throw new InvalidGameActionException("Mulligan notice has already been acknowledged by this player");
+            }
 
-        if (pendingAcknowledgement) {
+            List<GameEventDto> events = new ArrayList<>();
             acknowledgeMulliganNotice(setupState, actorUserId);
             events.add(gameEventFactory.publicEvent(
                     game.getId(),
@@ -196,13 +206,13 @@ public class SetupServiceImpl implements SetupService {
                 runInterleavedMulligan(game, participants, setupState, newStateVersion, events);
             }
             game.setSetupState(Map.copyOf(setupState));
+
+            List<UUID> playerIds = playerIds(participants);
+            GameStateDto state = buildState(game, participants, newStateVersion, Map.of());
+            addPrivateStateSyncEvents(events, game.getId(), newStateVersion, state, playerIds);
+
+            return new GameActionExecutionResult(state, events);
         }
-
-        List<UUID> playerIds = playerIds(participants);
-        GameStateDto state = buildState(game, participants, newStateVersion, Map.of());
-        addPrivateStateSyncEvents(events, game.getId(), newStateVersion, state, playerIds);
-
-        return new GameActionExecutionResult(state, events);
     }
 
     @Override
@@ -467,17 +477,13 @@ public class SetupServiceImpl implements SetupService {
             throw new InvalidGameActionException("Opening hand does not contain enough cards for Mulligan");
         }
 
-        List<GameCardInstance> cardsToShuffle = new ArrayList<>();
-        cardsToShuffle.addAll(handCards);
-        cardsToShuffle.addAll(deckCards);
+        List<GameCardInstance> cardsToShuffle = mergeUniqueCardInstances(deckCards, handCards);
+        logMulliganDeckRebuild(gameId, playerUserId, deckCards, handCards, cardsToShuffle);
         List<GameCardInstance> shuffledCards = gameRandomService.shuffledCopy(cardsToShuffle);
-        int deckPosition = 1;
         for (GameCardInstance cardInstance : shuffledCards) {
-            cardInstance.setZone(CardZone.DECK);
-            cardInstance.setZonePosition(deckPosition++);
             cardInstance.setFaceDown(true);
         }
-        gameCardInstanceStateService.saveAll(shuffledCards);
+        gameCardInstanceStateService.reorderAndPersistZone(gameId, playerUserId, CardZone.DECK, shuffledCards);
 
         events.add(gameEventFactory.publicEvent(
                 gameId,
@@ -507,23 +513,23 @@ public class SetupServiceImpl implements SetupService {
             throw new InvalidGameActionException("Deck does not contain enough cards for Mulligan");
         }
 
-        List<GameCardInstance> changedCards = new ArrayList<>();
+        List<GameCardInstance> handCards = new ArrayList<>();
+        List<GameCardInstance> remainingDeckCards = new ArrayList<>();
         List<Card> newHand = new ArrayList<>();
         for (int index = 0; index < deckCards.size(); index++) {
             GameCardInstance cardInstance = deckCards.get(index);
             if (index < INITIAL_HAND_SIZE) {
-                cardInstance.setZone(CardZone.HAND);
-                cardInstance.setZonePosition(index + 1);
                 cardInstance.setFaceDown(false);
+                handCards.add(cardInstance);
                 newHand.add(cardService.getCardEntityById(cardInstance.getCardId()));
             } else {
-                cardInstance.setZone(CardZone.DECK);
-                cardInstance.setZonePosition(index - INITIAL_HAND_SIZE + 1);
                 cardInstance.setFaceDown(true);
+                remainingDeckCards.add(cardInstance);
             }
-            changedCards.add(cardInstance);
         }
-        gameCardInstanceStateService.saveAll(changedCards);
+
+        gameCardInstanceStateService.reorderAndPersistZone(gameId, playerUserId, CardZone.HAND, handCards);
+        gameCardInstanceStateService.reorderAndPersistZone(gameId, playerUserId, CardZone.DECK, remainingDeckCards);
 
         // PRIVATE to the owner: includes the freshly drawn hand so the client can show the real new hand
         // after each draw (even on intermediate, still-invalid attempts). These are the owner's OWN cards
@@ -1383,6 +1389,63 @@ public class SetupServiceImpl implements SetupService {
         }
 
         return List.copyOf(strings);
+    }
+
+    private List<GameCardInstance> mergeUniqueCardInstances(
+            List<GameCardInstance> firstGroup,
+            List<GameCardInstance> secondGroup) {
+        Map<UUID, GameCardInstance> cardsById = new LinkedHashMap<>();
+        addUniqueCardInstances(cardsById, firstGroup);
+        addUniqueCardInstances(cardsById, secondGroup);
+        return List.copyOf(cardsById.values());
+    }
+
+    private void addUniqueCardInstances(
+            Map<UUID, GameCardInstance> cardsById,
+            List<GameCardInstance> cardInstances) {
+        for (GameCardInstance cardInstance : cardInstances) {
+            UUID cardInstanceId = cardInstance.getId();
+            if (cardInstanceId == null) {
+                throw new IllegalStateException("Game card instance id cannot be null during mulligan deck rebuild");
+            }
+            GameCardInstance previous = cardsById.putIfAbsent(cardInstanceId, cardInstance);
+            if (previous != null && previous != cardInstance) {
+                throw new IllegalStateException("Duplicate game card instance id detected during mulligan deck rebuild");
+            }
+        }
+    }
+
+    private void logMulliganDeckRebuild(
+            UUID gameId,
+            UUID playerUserId,
+            List<GameCardInstance> deckCards,
+            List<GameCardInstance> handCards,
+            List<GameCardInstance> finalDeckCards) {
+        if (!log.isInfoEnabled()) {
+            return;
+        }
+
+        Set<UUID> uniqueIds = new LinkedHashSet<>();
+        boolean duplicateIdsDetected = false;
+        for (GameCardInstance cardInstance : finalDeckCards) {
+            UUID cardInstanceId = cardInstance.getId();
+            if (cardInstanceId == null || !uniqueIds.add(cardInstanceId)) {
+                duplicateIdsDetected = true;
+            }
+        }
+
+        int minFinalPosition = finalDeckCards.isEmpty() ? 0 : 1;
+        int maxFinalPosition = finalDeckCards.size();
+        log.info(
+                "[MULLIGAN] gameId={}, playerUserId={}, currentDeckCards={}, currentHandCards={}, finalDeckCards={}, minFinalPosition={}, maxFinalPosition={}, duplicateIdsDetected={}",
+                gameId,
+                playerUserId,
+                deckCards.size(),
+                handCards.size(),
+                finalDeckCards.size(),
+                minFinalPosition,
+                maxFinalPosition,
+                duplicateIdsDetected);
     }
 
     private List<UUID> playerIds(List<GameParticipant> participants) {

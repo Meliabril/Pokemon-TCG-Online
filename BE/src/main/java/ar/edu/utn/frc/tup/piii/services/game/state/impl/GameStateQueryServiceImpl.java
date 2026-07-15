@@ -62,6 +62,7 @@ import ar.edu.utn.frc.tup.piii.services.game.state.PokemonEvolutionStackStateSer
 import ar.edu.utn.frc.tup.piii.services.game.state.PokemonInPlayStateService;
 import ar.edu.utn.frc.tup.piii.services.game.state.SpecialConditionStateService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -77,6 +78,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class GameStateQueryServiceImpl implements GameStateQueryService {
 
     private static final String MULLIGAN_FLOW_KEY = "mulliganFlow";
@@ -119,7 +121,13 @@ public class GameStateQueryServiceImpl implements GameStateQueryService {
         return gameStateVisibilitySanitizer.sanitizeForViewer(buildCanonicalVisibleState(game), viewerUserId);
     }
 
+    @Override
+    public GameStateDto sanitizeVisibleStateForViewer(GameStateDto state, UUID viewerUserId) {
+        return gameStateVisibilitySanitizer.sanitizeForViewer(state, viewerUserId);
+    }
+
     private GameStateDto buildCanonicalVisibleState(Game game) {
+        long start = System.currentTimeMillis();
         List<GameParticipant> participants = gameParticipantStateService.findOrderedByGameId(game.getId());
         List<UUID> playerIds = new ArrayList<>();
         for (GameParticipant participant : participants) {
@@ -190,7 +198,7 @@ public class GameStateQueryServiceImpl implements GameStateQueryService {
 
         List<GameActionType> availableActions = availableActionsFor(game);
 
-        return GameStateDto.builder()
+        GameStateDto resultState = GameStateDto.builder()
                 .gameId(game.getId())
                 .status(game.getStatus())
                 .stateVersion(game.getStateVersion())
@@ -224,6 +232,9 @@ public class GameStateQueryServiceImpl implements GameStateQueryService {
                 .resolution(resolutionStateView(game.getResolutionState()))
                 .updatedAt(game.getUpdatedAt())
                 .build();
+
+        log.info("[MAPPER_STATE] buildCanonicalVisibleState para gameId={}: {} ms", game.getId(), System.currentTimeMillis() - start);
+        return resultState;
     }
 
     private Map<UUID, BoardPlayerStateDto> boardPlayers(

@@ -14,6 +14,7 @@ import ar.edu.utn.frc.tup.piii.services.game.state.GameSnapshotService;
 import ar.edu.utn.frc.tup.piii.services.game.state.GameStateQueryService;
 import ar.edu.utn.frc.tup.piii.services.game.state.GameStateRestorer;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -28,6 +29,7 @@ import java.util.UUID;
  */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class GameActionResultPublisherImpl implements GameActionResultPublisher {
 
     private final GameStateQueryService gameStateQueryService;
@@ -46,6 +48,9 @@ public class GameActionResultPublisherImpl implements GameActionResultPublisher 
             UUID clientActionId,
             Map<String, Object> payload,
             String actionTypeName) {
+        log.info("[{}] Iniciando publicacion final para gameId={}", actionTypeName, gameId);
+        long start = System.currentTimeMillis();
+
         int newStateVersion = resolveNewStateVersion(currentState, executionResult);
         GameStateDto resultingState;
         if (executionResult.gameState() == null) {
@@ -54,17 +59,25 @@ public class GameActionResultPublisherImpl implements GameActionResultPublisher 
             resultingState = copyStateWithVersion(executionResult.gameState(), newStateVersion, clientActionId);
         }
 
+        long tSaveChanges = System.currentTimeMillis();
         gameStateRestorer.restoreFromSnapshot(game, resultingState);
         game.setStateVersion(newStateVersion);
-        GameStateDto visibleRuntimeState = gameStateQueryService.buildVisibleState(game);
-        resultingState = copyStateWithRuntimeMaps(resultingState, visibleRuntimeState, clientActionId);
+        log.info("[{}] Guardar cambios: {} ms", actionTypeName, System.currentTimeMillis() - tSaveChanges);
 
+        long tBuildState = System.currentTimeMillis();
+        GameStateDto canonicalVisibleState = gameStateQueryService.buildVisibleState(game);
+        resultingState = mergeCanonicalRuntimeState(resultingState, canonicalVisibleState, clientActionId);
+        log.info("[{}] buildCanonicalVisibleState: {} ms", actionTypeName, System.currentTimeMillis() - tBuildState);
+
+        long tSnapshot = System.currentTimeMillis();
         gameSnapshotService.saveSnapshot(gameId, newStateVersion, resultingState, actorUserId);
+        log.info("[{}] Guardar snapshot: {} ms", actionTypeName, System.currentTimeMillis() - tSnapshot);
 
         Map<String, Object> resultData = Map.of(
                 "emittedEventsCount", executionResult.emittedEvents().size(),
                 "stateVersion", newStateVersion);
 
+        long tLog = System.currentTimeMillis();
         gameActionLogger.logAction(
                 gameId,
                 actorUserId,
@@ -73,12 +86,16 @@ public class GameActionResultPublisherImpl implements GameActionResultPublisher 
                 resultData,
                 actionTypeName,
                 newStateVersion);
+        log.info("[{}] Registrar log: {} ms", actionTypeName, System.currentTimeMillis() - tLog);
 
+        long tDispatch = System.currentTimeMillis();
         for (GameEventDto emittedEvent : executionResult.emittedEvents()) {
             gameRealtimeEventService.dispatch(emittedEvent);
         }
-        dispatchStateSyncForPlayersWhenNeeded(game, resultingState, executionResult);
+        dispatchStateSyncForPlayersWhenNeeded(resultingState, executionResult);
+        log.info("[{}] Dispatch websocket: {} ms", actionTypeName, System.currentTimeMillis() - tDispatch);
 
+        log.info("[{}] Total publisher: {} ms", actionTypeName, System.currentTimeMillis() - start);
         return new GameActionResponseDto(
                 true,
                 "Action processed successfully",
@@ -111,7 +128,7 @@ public class GameActionResultPublisherImpl implements GameActionResultPublisher 
                 .build();
     }
 
-    private GameStateDto copyStateWithRuntimeMaps(
+    private GameStateDto mergeCanonicalRuntimeState(
             GameStateDto sourceState,
             GameStateDto runtimeState,
             UUID clientActionId) {
@@ -122,6 +139,7 @@ public class GameActionResultPublisherImpl implements GameActionResultPublisher 
         }
 
         ActionStateDto newActions = sourceState.actions().toBuilder()
+                .availableActions(runtimeState.actions().availableActions())
                 .processedClientActionIds(Set.copyOf(processedClientActionIds))
                 .build();
 
@@ -134,7 +152,6 @@ public class GameActionResultPublisherImpl implements GameActionResultPublisher 
     }
 
     private void dispatchStateSyncForPlayersWhenNeeded(
-            Game game,
             GameStateDto resultingState,
             GameActionExecutionResult executionResult) {
         if (hasStateSyncEvent(executionResult)) {
@@ -142,7 +159,8 @@ public class GameActionResultPublisherImpl implements GameActionResultPublisher 
         }
 
         for (UUID playerId : resultingState.playerIds()) {
-            GameStateDto visibleState = gameStateQueryService.buildVisibleState(game, playerId);
+            GameStateDto visibleState = gameStateQueryService.sanitizeVisibleStateForViewer(resultingState, playerId);
+            log.info("[PUBLISH] STATE_SYNC reutiliza estado canonico para viewerUserId={} sin reconstruir desde DB", playerId);
             gameRealtimeEventService.dispatchStateSync(visibleState, playerId);
         }
     }

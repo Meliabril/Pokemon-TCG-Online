@@ -21,9 +21,7 @@ import ar.edu.utn.frc.tup.piii.services.game.engine.GameLookupService;
 import ar.edu.utn.frc.tup.piii.services.game.engine.impl.AvailableActionsFactoryImpl;
 import ar.edu.utn.frc.tup.piii.services.game.ability.AbilityUsageTracker;
 import ar.edu.utn.frc.tup.piii.services.game.attack.BetweenTurnsResolutionService;
-import ar.edu.utn.frc.tup.piii.services.game.ability.AbilityUsageTracker;
 import ar.edu.utn.frc.tup.piii.services.game.state.GameParticipantStateService;
-import ar.edu.utn.frc.tup.piii.services.game.state.GameStateQueryService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -58,9 +56,6 @@ class TurnServiceImplTest {
 
     @Mock
     private BetweenTurnsResolutionService betweenTurnsResolutionService;
-
-    @Mock
-    private GameStateQueryService gameStateQueryService;
 
     @Mock
     private AbilityUsageTracker abilityUsageTracker;
@@ -289,7 +284,6 @@ class TurnServiceImplTest {
                 gameEventFactory,
                 betweenTurnsResolutionService,
                 new AvailableActionsFactoryImpl(),
-                gameStateQueryService,
                 abilityUsageTracker);
     }
 

@@ -23,7 +23,7 @@ import ar.edu.utn.frc.tup.piii.services.game.engine.GameEventFactory;
 import ar.edu.utn.frc.tup.piii.services.game.engine.GameLookupService;
 import ar.edu.utn.frc.tup.piii.services.game.state.GameParticipantStateService;
 import ar.edu.utn.frc.tup.piii.services.game.attack.BetweenTurnsResolutionService;
-import ar.edu.utn.frc.tup.piii.services.game.state.GameStateQueryService;
+import ar.edu.utn.frc.tup.piii.services.game.state.GameStateTransitions;
 import ar.edu.utn.frc.tup.piii.services.game.turn.TurnService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -45,7 +45,6 @@ public class TurnServiceImpl implements TurnService {
     private final GameEventFactory gameEventFactory;
     private final BetweenTurnsResolutionService betweenTurnsResolutionService;
     private final AvailableActionsFactory availableActionsFactory;
-    private final GameStateQueryService gameStateQueryService;
     private final AbilityUsageTracker abilityUsageTracker;
 
     @Override
@@ -128,11 +127,10 @@ public class TurnServiceImpl implements TurnService {
         events.addAll(betweenTurnsResolution.events());
 
         if (betweenTurnsResolution.gameFinished() || betweenTurnsResolution.promotionPending()) {
-            Game game = gameLookupService.getRequiredGame(context.gameId());
-            GameStateDto resolvedState = gameStateQueryService.buildVisibleState(game).toBuilder()
-                    .stateVersion(newStateVersion)
-                    .updatedAt(Instant.now())
-                    .build();
+            GameStateDto resolvedState = GameStateTransitions.fromCurrentGame(
+                    currentState,
+                    gameLookupService.getRequiredGame(context.gameId()),
+                    newStateVersion);
             return new GameActionExecutionResult(resolvedState, events);
         }
 

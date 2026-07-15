@@ -21,6 +21,9 @@ class CustomProfessorCardsMigrationTest {
     private static final String CUSTOM_IMAGE_BASE_URL =
             "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/";
 
+    private static final String ANGULARQUIN_IMAGE_URL =
+            CUSTOM_IMAGE_BASE_URL + "147-151-angularquinINGLES.png";
+
     private static final List<String> FINAL_IMAGE_URLS = List.of(
             CUSTOM_IMAGE_BASE_URL + "147-151-angularquinINGLES.png",
             CUSTOM_IMAGE_BASE_URL + "148-151-ramavenINGLES.png",

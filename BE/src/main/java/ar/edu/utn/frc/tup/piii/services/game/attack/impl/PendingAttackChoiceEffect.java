@@ -330,7 +330,7 @@ public class PendingAttackChoiceEffect implements AttackEffect {
             target.put("imageLargeUrl", activeCard.getImageLargeUrl());
         }
 
-        return Map.copyOf(target);
+        return Collections.unmodifiableMap(target);
     }
 
     private List<Map<String, Object>> attachedEnergyOptions(PokemonInPlay pokemon) {

@@ -10,4 +10,6 @@ public interface GameStateQueryService {
     GameStateDto buildVisibleState(Game game);
 
     GameStateDto buildVisibleState(Game game, UUID viewerUserId);
+
+    GameStateDto sanitizeVisibleStateForViewer(GameStateDto state, UUID viewerUserId);
 }

@@ -9,7 +9,6 @@ import ar.edu.utn.frc.tup.piii.dtos.game.GameEventDto;
 import ar.edu.utn.frc.tup.piii.dtos.game.GameStateDto;
 import ar.edu.utn.frc.tup.piii.dtos.game.TurnContextDto;
 import ar.edu.utn.frc.tup.piii.entities.Card;
-import ar.edu.utn.frc.tup.piii.entities.Game;
 import ar.edu.utn.frc.tup.piii.entities.GameCardInstance;
 import ar.edu.utn.frc.tup.piii.entities.PokemonAttachedCard;
 import ar.edu.utn.frc.tup.piii.entities.PokemonInPlay;
@@ -27,7 +26,7 @@ import ar.edu.utn.frc.tup.piii.services.game.outcome.CombatResolutionService;
 import ar.edu.utn.frc.tup.piii.services.game.state.GameCardInstanceStateService;
 import ar.edu.utn.frc.tup.piii.services.game.engine.GameEventFactory;
 import ar.edu.utn.frc.tup.piii.services.game.state.GameParticipantStateService;
-import ar.edu.utn.frc.tup.piii.services.game.state.GameStateQueryService;
+import ar.edu.utn.frc.tup.piii.services.game.state.GameStateTransitions;
 import ar.edu.utn.frc.tup.piii.services.game.state.PokemonAttachedCardStateService;
 import ar.edu.utn.frc.tup.piii.services.game.state.PokemonInPlayStateService;
 import lombok.RequiredArgsConstructor;
@@ -61,7 +60,6 @@ public class AttachEnergyServiceImpl implements AttachEnergyService {
     private final CombatResolutionService combatResolutionService;
     private final GameParticipantStateService gameParticipantStateService;
     private final GameLookupService gameLookupService;
-    private final GameStateQueryService gameStateQueryService;
     private final PassiveAbilityService passiveAbilityService;
 
     @Override
@@ -118,7 +116,7 @@ public class AttachEnergyServiceImpl implements AttachEnergyService {
                     newStateVersion);
             events.addAll(combatResult.events());
             if (combatResult.gameFinished() || combatResult.promotionPending()) {
-                return resultFromCurrentGame(gameId, newStateVersion, events);
+                return resultFromCurrentGame(context, newStateVersion, events);
             }
         }
 
@@ -177,12 +175,16 @@ public class AttachEnergyServiceImpl implements AttachEnergyService {
                 events);
     }
 
-    private GameActionExecutionResult resultFromCurrentGame(UUID gameId, int stateVersion, List<GameEventDto> events) {
-        Game game = gameLookupService.getRequiredGame(gameId);
-        GameStateDto state = gameStateQueryService.buildVisibleState(game).toBuilder()
-                .stateVersion(stateVersion)
-                .updatedAt(Instant.now())
+    private GameActionExecutionResult resultFromCurrentGame(
+            GameActionContext context,
+            int stateVersion,
+            List<GameEventDto> events) {
+        GameStateDto state = context.currentState().toBuilder()
                 .build();
+        state = GameStateTransitions.fromCurrentGame(
+                state,
+                gameLookupService.getRequiredGame(context.gameId()),
+                stateVersion);
         return new GameActionExecutionResult(state, List.copyOf(events));
     }
 

@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.context.ApplicationEventPublisher;
+import ar.edu.utn.frc.tup.piii.services.card.CardCatalogModifiedEvent;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +29,7 @@ public class CustomProfessorCardJsonSeedServiceImpl implements CustomProfessorCa
 
     private final CardRepository cardRepository;
     private final ObjectMapper objectMapper;
+    private final ApplicationEventPublisher eventPublisher;
 
     @Override
     @Transactional
@@ -35,6 +38,7 @@ public class CustomProfessorCardJsonSeedServiceImpl implements CustomProfessorCa
         for (CustomProfessorCardPayload cardPayload : payload.cards()) {
             cardRepository.save(toEntity(cardPayload));
         }
+        eventPublisher.publishEvent(new CardCatalogModifiedEvent());
         return payload.cards().size();
     }
 

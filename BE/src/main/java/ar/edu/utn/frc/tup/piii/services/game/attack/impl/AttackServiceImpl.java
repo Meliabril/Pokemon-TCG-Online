@@ -36,11 +36,10 @@ import ar.edu.utn.frc.tup.piii.services.game.engine.GameActionExecutionResult;
 import ar.edu.utn.frc.tup.piii.services.game.engine.GameEventFactory;
 import ar.edu.utn.frc.tup.piii.services.game.engine.GameLookupService;
 import ar.edu.utn.frc.tup.piii.services.game.outcome.CombatResolutionService;
-import ar.edu.utn.frc.tup.piii.services.game.state.GameStateQueryService;
+import ar.edu.utn.frc.tup.piii.services.game.state.GameStateTransitions;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -68,7 +67,6 @@ public class AttackServiceImpl implements AttackService {
     private final PassiveAbilityService passiveAbilityService;
     private final CardService cardService;
     private final GameLookupService gameLookupService;
-    private final GameStateQueryService gameStateQueryService;
     private final GameEventFactory gameEventFactory;
     private final AbilityUsageTracker abilityUsageTracker;
 
@@ -474,11 +472,10 @@ public class AttackServiceImpl implements AttackService {
             GameActionContext context,
             int stateVersion,
             List<GameEventDto> events) {
-        Game game = gameLookupService.getRequiredGame(context.gameId());
-        GameStateDto state = gameStateQueryService.buildVisibleState(game).toBuilder()
-                .stateVersion(stateVersion)
-                .updatedAt(Instant.now())
+        GameStateDto state = context.currentState().toBuilder()
                 .build();
+        Game game = gameLookupService.getRequiredGame(context.gameId());
+        state = GameStateTransitions.fromCurrentGame(state, game, stateVersion);
         return new GameActionExecutionResult(state, List.copyOf(events));
     }
 

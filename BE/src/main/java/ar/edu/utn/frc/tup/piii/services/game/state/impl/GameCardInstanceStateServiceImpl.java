@@ -5,15 +5,19 @@ import ar.edu.utn.frc.tup.piii.entities.GameCardInstance;
 import ar.edu.utn.frc.tup.piii.repositories.GameCardInstanceRepository;
 import ar.edu.utn.frc.tup.piii.services.game.state.GameCardInstanceStateService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class GameCardInstanceStateServiceImpl implements GameCardInstanceStateService {
 
     private static final int FIRST_TEMPORARY_ZONE_POSITION = -1;
@@ -104,6 +108,93 @@ public class GameCardInstanceStateServiceImpl implements GameCardInstanceStateSe
         int position = 1;
         for (GameCardInstance zoneCard : zoneCards) {
             zoneCard.setZonePosition(position++);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void reorderAndPersistZone(UUID gameId, UUID ownerUserId, CardZone targetZone, List<GameCardInstance> cards) {
+        if (cards == null || cards.isEmpty()) {
+            return;
+        }
+
+        long startTime = System.currentTimeMillis();
+        validateUniqueCardIds(gameId, ownerUserId, targetZone, cards);
+
+        if (log.isDebugEnabled()) {
+            StringBuilder sb = new StringBuilder();
+            for (GameCardInstance card : cards) {
+                sb.append(card.getId()).append(":").append(card.getZone()).append("(").append(card.getZonePosition()).append(") ");
+            }
+            log.debug("[REORDER_ZONE] Before positions: {}", sb.toString());
+        }
+
+        int tempPos = -1000;
+        for (GameCardInstance card : cards) {
+            card.setZone(targetZone);
+            card.setZonePosition(tempPos--);
+        }
+        gameCardInstanceRepository.saveAll(cards);
+        gameCardInstanceRepository.flush();
+
+        int finalPos = 1;
+        for (GameCardInstance card : cards) {
+            card.setZonePosition(finalPos++);
+        }
+        validateFinalPositions(gameId, ownerUserId, targetZone, cards);
+        gameCardInstanceRepository.saveAll(cards);
+        gameCardInstanceRepository.flush();
+
+        if (log.isDebugEnabled()) {
+            StringBuilder sb = new StringBuilder();
+            for (GameCardInstance card : cards) {
+                sb.append(card.getId()).append(":").append(card.getZone()).append("(").append(card.getZonePosition()).append(") ");
+            }
+            log.debug("[REORDER_ZONE] After positions: {}", sb.toString());
+        }
+
+        log.info("[REORDER_ZONE] Reordered cards for gameId={}, ownerUserId={}, zone={}, count={} in {} ms",
+                gameId, ownerUserId, targetZone, cards.size(), System.currentTimeMillis() - startTime);
+    }
+
+    private void validateUniqueCardIds(
+            UUID gameId,
+            UUID ownerUserId,
+            CardZone targetZone,
+            List<GameCardInstance> cards) {
+        Set<UUID> uniqueIds = new LinkedHashSet<>();
+        for (GameCardInstance card : cards) {
+            UUID cardId = card.getId();
+            if (cardId == null || !uniqueIds.add(cardId)) {
+                log.error(
+                        "[REORDER_ZONE] Duplicate or null card id before temporary reorder. gameId={}, ownerUserId={}, zone={}, cardId={}",
+                        gameId,
+                        ownerUserId,
+                        targetZone,
+                        cardId);
+                throw new IllegalStateException("Duplicate or null card id detected while reordering zone");
+            }
+        }
+    }
+
+    private void validateFinalPositions(
+            UUID gameId,
+            UUID ownerUserId,
+            CardZone targetZone,
+            List<GameCardInstance> cards) {
+        Set<Integer> usedPositions = new LinkedHashSet<>();
+        for (GameCardInstance card : cards) {
+            Integer zonePosition = card.getZonePosition();
+            if (zonePosition == null || !usedPositions.add(zonePosition)) {
+                log.error(
+                        "[REORDER_ZONE] Duplicate or null final position detected before flush. gameId={}, ownerUserId={}, zone={}, cardId={}, zonePosition={}",
+                        gameId,
+                        ownerUserId,
+                        targetZone,
+                        card.getId(),
+                        zonePosition);
+                throw new IllegalStateException("Duplicate or null final zone position detected while reordering zone");
+            }
         }
     }
 }

@@ -22,9 +22,6 @@ public final class GameStateTransitions {
                         .turnNumber(game.getTurnNumber())
                         .activePlayerId(game.getActivePlayerId())
                         .playerWhoWentFirstId(game.getPlayerWhoWentFirstId())
-                        .energyAttachedThisTurn(false)
-                        .supporterPlayedThisTurn(false)
-                        .retreatedThisTurn(false)
                         .build())
                 .resolution(resolutionState(game.getResolutionState()))
                 .updatedAt(Instant.now())
@@ -41,7 +38,20 @@ public final class GameStateTransitions {
                 .playerToPromoteId(uuidValue(source.get(ResolutionStateDto.PLAYER_TO_PROMOTE_ID_KEY)))
                 .nextActivePlayerId(uuidValue(source.get(ResolutionStateDto.NEXT_ACTIVE_PLAYER_ID_KEY)))
                 .nextTurnNumber(integerValue(source.get(ResolutionStateDto.NEXT_TURN_NUMBER_KEY)))
+                .pendingChoicePlayerId(uuidValue(source.get(ResolutionStateDto.PENDING_CHOICE_PLAYER_ID_KEY)))
+                .pendingChoiceType(stringValue(source.get(ResolutionStateDto.PENDING_CHOICE_TYPE_KEY)))
+                .pendingChoicePayload(nestedMap(source, ResolutionStateDto.PENDING_CHOICE_PAYLOAD_KEY))
+                .turnEndingPlayerId(uuidValue(source.get(ResolutionStateDto.TURN_ENDING_PLAYER_ID_KEY)))
                 .build();
+    }
+
+    @SuppressWarnings("unchecked")
+    private static Map<String, Object> nestedMap(Map<String, Object> source, String key) {
+        Object value = source.get(key);
+        if (value instanceof Map<?, ?> map) {
+            return (Map<String, Object>) map;
+        }
+        return Map.of();
     }
 
     private static String stringValue(Object value) {

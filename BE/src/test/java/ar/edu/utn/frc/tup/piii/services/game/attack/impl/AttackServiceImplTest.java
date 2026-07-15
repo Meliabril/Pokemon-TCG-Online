@@ -34,7 +34,6 @@ import ar.edu.utn.frc.tup.piii.services.game.engine.GameActionExecutionResult;
 import ar.edu.utn.frc.tup.piii.services.game.engine.GameEventFactory;
 import ar.edu.utn.frc.tup.piii.services.game.engine.GameLookupService;
 import ar.edu.utn.frc.tup.piii.services.game.outcome.CombatResolutionService;
-import ar.edu.utn.frc.tup.piii.services.game.state.GameStateQueryService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -104,9 +103,6 @@ class AttackServiceImplTest {
     private GameLookupService gameLookupService;
 
     @Mock
-    private GameStateQueryService gameStateQueryService;
-
-    @Mock
     private GameEventFactory gameEventFactory;
 
     @Mock
@@ -136,7 +132,10 @@ class AttackServiceImplTest {
                 new Attack());
         GameStateDto currentState = state(gameId, attackerUserId, currentTurnNumber, currentStateVersion);
         Game game = new Game();
-        game.setId(gameId);
+        game.setStatus(GameStatus.ACTIVE);
+        game.setCurrentPhase(TurnPhase.MAIN);
+        game.setTurnNumber(currentTurnNumber);
+        game.setActivePlayerId(attackerUserId);
         GameEventDto lockEvent = event(gameId, nextStateVersion, attackerPokemonId);
         GameActionContext context = new GameActionContext(
                 gameId,
@@ -153,8 +152,6 @@ class AttackServiceImplTest {
                 anyMap()))
                 .thenReturn(lockEvent);
         when(gameLookupService.getRequiredGame(gameId)).thenReturn(game);
-        when(gameStateQueryService.buildVisibleState(game)).thenReturn(currentState);
-
         GameActionExecutionResult result = service().declareAttack(context);
 
         assertThat(result.gameState().stateVersion()).isEqualTo(nextStateVersion);
@@ -186,7 +183,6 @@ class AttackServiceImplTest {
                 passiveAbilityService,
                 cardService,
                 gameLookupService,
-                gameStateQueryService,
                 gameEventFactory,
                 abilityUsageTracker);
     }

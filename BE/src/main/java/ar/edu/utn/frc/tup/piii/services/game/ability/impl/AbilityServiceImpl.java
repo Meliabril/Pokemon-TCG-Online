@@ -5,6 +5,7 @@ import ar.edu.utn.frc.tup.piii.dtos.enums.AbilityCode;
 import ar.edu.utn.frc.tup.piii.dtos.enums.GameStatus;
 import ar.edu.utn.frc.tup.piii.dtos.enums.TurnPhase;
 import ar.edu.utn.frc.tup.piii.entities.Card;
+import ar.edu.utn.frc.tup.piii.dtos.game.GameStateDto;
 import ar.edu.utn.frc.tup.piii.entities.Game;
 import ar.edu.utn.frc.tup.piii.entities.PokemonInPlay;
 import ar.edu.utn.frc.tup.piii.exceptions.InvalidGameActionException;
@@ -20,11 +21,10 @@ import ar.edu.utn.frc.tup.piii.services.game.engine.GameActionContext;
 import ar.edu.utn.frc.tup.piii.services.game.engine.GameActionExecutionResult;
 import ar.edu.utn.frc.tup.piii.services.game.engine.GameActionPayloadReader;
 import ar.edu.utn.frc.tup.piii.services.game.engine.GameLookupService;
-import ar.edu.utn.frc.tup.piii.services.game.state.GameStateQueryService;
+import ar.edu.utn.frc.tup.piii.services.game.state.GameStateTransitions;
 import ar.edu.utn.frc.tup.piii.services.game.state.PokemonInPlayStateService;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +40,6 @@ public class AbilityServiceImpl implements AbilityService {
     private final CardService cardService;
     private final AbilityCatalogService abilityCatalogService;
     private final AbilityUsageTracker abilityUsageTracker;
-    private final GameStateQueryService gameStateQueryService;
     private final Map<AbilityCode, AbilityEffectHandler> handlersByCode;
 
     public AbilityServiceImpl(
@@ -50,7 +49,6 @@ public class AbilityServiceImpl implements AbilityService {
             CardService cardService,
             AbilityCatalogService abilityCatalogService,
             AbilityUsageTracker abilityUsageTracker,
-            GameStateQueryService gameStateQueryService,
             List<AbilityEffectHandler> handlers) {
         this.payloadReader = payloadReader;
         this.gameLookupService = gameLookupService;
@@ -58,7 +56,6 @@ public class AbilityServiceImpl implements AbilityService {
         this.cardService = cardService;
         this.abilityCatalogService = abilityCatalogService;
         this.abilityUsageTracker = abilityUsageTracker;
-        this.gameStateQueryService = gameStateQueryService;
         this.handlersByCode = handlersByCode(handlers);
     }
 
@@ -93,12 +90,10 @@ public class AbilityServiceImpl implements AbilityService {
         }
         AbilityResolution resolution = handler.resolve(context, game, context.actorUserId(), sourcePokemon, request, stateVersion);
 
-        return new GameActionExecutionResult(
-                gameStateQueryService.buildVisibleState(game).toBuilder()
-                        .stateVersion(stateVersion)
-                        .updatedAt(Instant.now())
-                        .build(),
-                resolution.events());
+        GameStateDto state = context.currentState().toBuilder()
+                .build();
+        state = GameStateTransitions.fromCurrentGame(state, game, stateVersion);
+        return new GameActionExecutionResult(state, resolution.events());
     }
 
     private void validateGameState(Game game, UUID actorUserId) {
