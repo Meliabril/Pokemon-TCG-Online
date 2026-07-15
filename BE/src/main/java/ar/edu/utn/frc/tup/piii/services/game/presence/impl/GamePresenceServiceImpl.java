@@ -10,6 +10,7 @@ import ar.edu.utn.frc.tup.piii.services.game.presence.GameParticipantConnectedEv
 import ar.edu.utn.frc.tup.piii.services.game.presence.GameParticipantPresenceChangedEvent;
 import ar.edu.utn.frc.tup.piii.services.game.presence.GamePresenceService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class GamePresenceServiceImpl implements GamePresenceService {
@@ -45,18 +46,40 @@ public class GamePresenceServiceImpl implements GamePresenceService {
             applicationEventPublisher.publishEvent(new GameParticipantConnectedEvent(gameId, userId));
         }
     }
-
+    private Optional<GameParticipant> findParticipant(UUID gameId, UUID userId) {
+        return gameParticipantRepository.findByGame_IdAndUserId(gameId, userId);
+    }
     @Override
     @Transactional
     public void markDisconnected(UUID gameId, UUID userId) {
-        GameParticipant participant = loadParticipant(gameId, userId);
+
+        Optional<GameParticipant> optionalParticipant =
+                gameParticipantRepository.findByGame_IdAndUserId(gameId, userId);
+
+        if (optionalParticipant.isEmpty()) {
+            log.warn(
+                    "Ignoring disconnect. Participant not found. game={}, user={}",
+                    gameId,
+                    userId
+            );
+            return;
+        }
+
+        GameParticipant participant = optionalParticipant.get();
+
         if (!Boolean.TRUE.equals(participant.getConnected())) {
             return;
         }
 
         participant.setConnected(Boolean.FALSE);
         gameParticipantRepository.save(participant);
-        publishPresenceUpdate(loadGameForUpdate(gameId), userId, false, participant.getLastSeenAt());
+
+        publishPresenceUpdate(
+                loadGameForUpdate(gameId),
+                userId,
+                false,
+                participant.getLastSeenAt()
+        );
     }
 
     @Override
