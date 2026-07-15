@@ -1,0 +1,54 @@
+@if (isOpen()) {
+  <div
+    class="discard-pile-modal"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="title()"
+    data-testid="discard-pile-modal"
+  >
+    <button
+      type="button"
+      class="discard-pile-modal__backdrop"
+      [attr.aria-label]="t('COMMON.CLOSE')"
+      (click)="close()"
+    ></button>
+
+    <article class="discard-pile-modal__panel">
+      <header class="discard-pile-modal__header">
+        <div>
+          <p class="discard-pile-modal__eyebrow">{{ t('GAME.DISCARD_MODAL.TITLE') }}</p>
+          <h2>{{ title() }}</h2>
+        </div>
+        <button
+          type="button"
+          class="discard-pile-modal__close"
+          [attr.aria-label]="t('COMMON.CLOSE')"
+          (click)="close()"
+        >
+          X
+        </button>
+      </header>
+
+      <section class="discard-pile-modal__body">
+        @if (cards().length === 0) {
+          <p class="discard-pile-modal__empty">{{ t('GAME.DISCARD_MODAL.EMPTY') }}</p>
+        } @else {
+          <div class="discard-pile-modal__grid">
+            @for (card of cards(); track card.cardInstanceId ?? card.id) {
+              <article class="discard-pile-modal__card">
+                <div class="discard-pile-modal__image-frame">
+                  @if (cardImage(card); as imageUrl) {
+                    <img [src]="imageUrl" [alt]="card.altText ?? card.label" />
+                  } @else {
+                    <div class="discard-pile-modal__placeholder" aria-hidden="true"></div>
+                  }
+                </div>
+                <p>{{ card.label }}</p>
+              </article>
+            }
+          </div>
+        }
+      </section>
+    </article>
+  </div>
+}

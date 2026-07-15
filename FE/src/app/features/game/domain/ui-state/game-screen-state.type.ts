@@ -1,0 +1,16 @@
+export type GameScreenState =
+  | 'loading'
+  | 'load-error'
+  | 'waiting-opponent'
+  | 'setup-selecting'
+  | 'setup-waiting-opponent'
+  | 'playing'
+  | 'promotion-selecting'
+  | 'promotion-waiting-opponent'
+  | 'attack-choice-selecting'
+  | 'attack-choice-waiting-opponent'
+  | 'resolution-pending'
+  | 'paused'
+  | 'finished'
+  | 'cancelled'
+  | 'reconnecting';

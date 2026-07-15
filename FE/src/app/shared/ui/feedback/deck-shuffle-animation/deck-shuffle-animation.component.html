@@ -1,0 +1,10 @@
+<div class="deck-shuffle" aria-hidden="true">
+  <div class="deck-shuffle__stack">
+    @for (index of cardIndexes; track index) {
+      <div class="deck-shuffle__card" [style.--shuffle-index]="index"></div>
+    }
+  </div>
+  @if (label()) {
+    <span class="deck-shuffle__label">{{ label() }}</span>
+  }
+</div>

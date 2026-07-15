@@ -1,0 +1,19 @@
+<div class="pointer-events-none fixed inset-x-0 top-4 z-[9999] flex flex-col items-center gap-2 px-4">
+  @for (toast of toasts(); track toast.id) {
+    <div
+      class="pointer-events-auto flex max-w-md items-center gap-3 rounded-lg border px-4 py-2 text-sm shadow-lg backdrop-blur"
+      [class.border-amber-400]="toast.tone === 'warning'"
+      [class.bg-amber-950]="toast.tone === 'warning'"
+      [class.text-amber-100]="toast.tone === 'warning'"
+      [class.border-red-400]="toast.tone === 'error'"
+      [class.bg-red-950]="toast.tone === 'error'"
+      [class.text-red-100]="toast.tone === 'error'"
+      [class.border-slate-400]="toast.tone === 'info'"
+      [class.bg-slate-900]="toast.tone === 'info'"
+      [class.text-slate-100]="toast.tone === 'info'"
+    >
+      <span class="flex-1">{{ toast.message }}</span>
+      <button type="button" class="opacity-70 hover:opacity-100" (click)="dismiss(toast.id)">✕</button>
+    </div>
+  }
+</div>

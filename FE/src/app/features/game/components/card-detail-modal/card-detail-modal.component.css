@@ -1,0 +1,62 @@
+@import '../../../../shared/components/card-detail-modal/card-detail-modal.component.css';
+
+.card-detail-modal__section--rules {
+  gap: 0.45rem;
+}
+
+.card-detail-modal__rule-text {
+  color: #f8e7b0;
+  font-size: 0.58rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.card-detail-modal__move-card,
+.card-detail-modal__ability-card,
+.card-detail-modal__ability-choice,
+.card-detail-modal__ability-actions button,
+.card-detail-modal__close {
+  touch-action: manipulation;
+}
+
+.card-detail-modal__ability-section {
+  min-width: 0;
+}
+
+.card-detail-modal__ability-card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  min-width: 0;
+}
+
+.card-detail-modal__ability-card {
+  min-width: 0;
+}
+
+.card-detail-modal__ability-card-image {
+  max-height: 10rem;
+  object-fit: contain;
+}
+
+.card-detail-modal__ability-actions {
+  background: rgba(42, 8, 5, 0.96);
+  border: 1px solid rgba(250, 204, 21, 0.22);
+  bottom: 0;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  position: sticky;
+  z-index: 4;
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .card-detail-modal__ability-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  }
+
+  .card-detail-modal__ability-card {
+    padding: 0.45rem;
+  }
+
+  .card-detail-modal__ability-card-image {
+    max-height: 120px;
+  }
+}

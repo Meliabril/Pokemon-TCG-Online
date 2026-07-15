@@ -1,0 +1,478 @@
+:host {
+  display: block;
+  pointer-events: none;
+}
+
+.bench {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.bench--inverted .bench__label {
+  order: 2;
+}
+
+.bench--inverted .bench__slots {
+  order: 1;
+}
+
+.bench__label {
+  color: #fff7d6;
+  font-family: var(--app-pixel-font);
+  font-size: clamp(0.48rem, 0.72vw, 0.62rem);
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.75);
+  text-transform: uppercase;
+}
+
+.bench__slots {
+  background: rgba(100, 20, 19, 0.72);
+  border: 1px solid rgba(250, 204, 21, 0.52);
+  border-radius: 0.85rem;
+  display: grid;
+  gap: clamp(0.24rem, 0.46vw, 0.42rem);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: clamp(0.34rem, 0.58vw, 0.52rem);
+}
+
+.bench--compact .bench__slots {
+  gap: var(--board-bench-gap, clamp(0.18rem, 0.36vw, 0.34rem));
+  padding: var(--board-bench-padding, clamp(0.26rem, 0.48vw, 0.44rem));
+}
+
+.bench__slot {
+  align-items: center;
+  aspect-ratio: 5 / 7;
+  background: var(--game-bench-slot-image) center / 100% 100% no-repeat;
+  border: 0;
+  border-radius: 0.34rem;
+  display: flex;
+  isolation: isolate;
+  justify-content: center;
+  min-height: 0;
+  overflow: visible;
+  padding: 0.22rem;
+  position: relative;
+  pointer-events: auto;
+  transform-origin: bottom center;
+  transition:
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bench__slot-hitbox {
+  cursor: inherit;
+  inset: 0;
+  position: absolute;
+  z-index: 7;
+}
+
+.bench__slot-hitbox:focus-visible {
+  outline: 2px solid #fde68a;
+  outline-offset: 3px;
+}
+
+.bench__slot-visual {
+  align-items: center;
+  display: flex;
+  inset: 0.18rem;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.bench__slot--drop-available {
+  border-color: rgba(253, 230, 138, 0.95);
+  box-shadow: inset 0 0 0 2px rgba(250, 204, 21, 0.22);
+}
+
+.bench__slot--drop-active {
+  background: rgba(31, 78, 146, 0.96);
+  box-shadow:
+    inset 0 0 0 2px rgba(253, 230, 138, 0.75),
+    0 0 1rem rgba(250, 204, 21, 0.45);
+}
+
+.bench__slot--inspectable,
+.bench__slot--selectable,
+.bench__slot--draggable {
+  cursor: pointer;
+}
+
+.bench__slot--draggable {
+  box-shadow: inset 0 0 0 2px rgba(34, 197, 94, 0.34);
+}
+
+.bench__slot--selectable:not(.bench__slot--selected) {
+  border-color: rgba(253, 230, 138, 0.95);
+  animation: bench-slot-selectable-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes bench-slot-selectable-pulse {
+  0%, 100% {
+    box-shadow: inset 0 0 0 2px rgba(250, 204, 21, 0.4), 0 0 0.6rem rgba(250, 204, 21, 0.25);
+  }
+
+  50% {
+    box-shadow: inset 0 0 0 2px rgba(250, 204, 21, 0.85), 0 0 1.1rem rgba(250, 204, 21, 0.55);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bench__slot--selectable:not(.bench__slot--selected) {
+    animation: none;
+    box-shadow: inset 0 0 0 2px rgba(250, 204, 21, 0.7);
+  }
+}
+
+.bench__slot--selected {
+  box-shadow: inset 0 0 0 2px rgba(253, 230, 138, 0.75), 0 0 1rem rgba(250, 204, 21, 0.45);
+}
+
+.bench__slot--remote-hovered:not(.bench__slot--drop-active) {
+  box-shadow: 0 0.9rem 1.5rem rgba(0, 0, 0, 0.46), 0 0 1rem rgba(250, 204, 21, 0.22);
+  transform: translateY(-0.42rem) scale(1.04);
+}
+
+/* Harden (damage-prevention shield): visual only. The active state comes from
+   `hasHardenShield(slot)`, which reads the backend-reported effect in the snapshot. */
+.bench__slot--harden:not(.bench__slot--drop-active)::after {
+  --card-glow-shadow-rest:
+    inset 0 0 0 2px rgba(56, 189, 248, 0.42),
+    0 0 0.65rem rgba(56, 189, 248, 0.3);
+  --card-glow-shadow-peak:
+    inset 0 0 0 2px rgba(125, 211, 252, 0.9),
+    0 0 1.2rem rgba(59, 130, 246, 0.68);
+
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid rgba(125, 211, 252, 0.95);
+  border-radius: 0.4rem;
+  pointer-events: none;
+  z-index: 5;
+  animation: card-glow-pulse 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bench__slot--harden:not(.bench__slot--drop-active)::after {
+    animation: none;
+    opacity: 1;
+    box-shadow:
+      inset 0 0 0 2px rgba(125, 211, 252, 0.78),
+      0 0 0.9rem rgba(59, 130, 246, 0.52);
+  }
+}
+
+/* Attack tool (Cinta Fuerte): pulsing red aura. Uses ::before so it coexists with harden's ::after. */
+.bench__slot--tool-attack:not(.bench__slot--drop-active)::before {
+  --card-glow-shadow-rest:
+    inset 0 0 0 2px rgba(239, 68, 68, 0.4),
+    0 0 0.65rem rgba(239, 68, 68, 0.28);
+  --card-glow-shadow-peak:
+    inset 0 0 0 2px rgba(252, 165, 165, 0.9),
+    0 0 1.1rem rgba(239, 68, 68, 0.62);
+
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid rgba(252, 165, 165, 0.88);
+  border-radius: 0.4rem;
+  pointer-events: none;
+  z-index: 4;
+  animation: card-glow-pulse 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bench__slot--tool-attack:not(.bench__slot--drop-active)::before {
+    animation: none;
+    opacity: 0.85;
+    box-shadow:
+      inset 0 0 0 2px rgba(252, 165, 165, 0.78),
+      0 0 0.9rem rgba(239, 68, 68, 0.52);
+  }
+}
+
+.bench--compact .bench__slot {
+  padding: 0.18rem;
+}
+
+.bench__slot span {
+  color: #fde68a;
+  font-family: var(--app-pixel-font);
+  font-size: clamp(0.34rem, 0.52vw, 0.44rem);
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.bench__slot-visual img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.bench__card-mark {
+  background: var(--game-card-back-image) var(--game-card-back-position) / var(--game-card-back-size) no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.22rem;
+  height: 100%;
+  width: 100%;
+}
+
+.bench__slot-visual > span,
+.bench__energy-stacks {
+  pointer-events: none;
+}
+
+.bench__energy-stacks {
+  align-items: end;
+  bottom: 0.12rem;
+  display: flex;
+  gap: 0.08rem;
+  justify-content: center;
+  left: 0.12rem;
+  position: absolute;
+  right: 0.12rem;
+  z-index: 8;
+}
+
+.energy-stack {
+  align-items: center;
+  background: rgba(18, 7, 5, 0.76);
+  border: 1px solid rgba(253, 230, 138, 0.42);
+  border-radius: 999px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+  min-width: 1.05rem;
+  padding: 0.08rem;
+}
+
+.energy-count {
+  color: #fff7d6;
+  font-size: 0.55rem;
+  font-weight: 700;
+  margin-bottom: 0.08rem;
+}
+
+.energy-icon {
+  display: grid;
+  height: 1rem;
+  place-items: center;
+  width: 1rem;
+}
+
+.bench__hp-panel {
+  position: absolute;
+  top: 0.18rem;
+  right: 0.18rem;
+  z-index: 8;
+
+  align-items: center;
+  background: rgba(20, 12, 6, 0.82);
+  border: 1px solid rgba(253, 230, 138, 0.6);
+  border-radius: 0.2rem;
+  box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.42);
+  color: #fde68a;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--app-pixel-font);
+  gap: 0.04rem;
+  justify-content: center;
+  min-width: 1.62rem;
+  padding: 0.08rem 0.16rem;
+  pointer-events: none;
+  text-align: center;
+}
+
+.bench__hp-panel-label {
+  font-size: 0.22rem;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.bench__hp-panel-value {
+  font-size: 0.32rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.bench__hp-popup {
+  position: absolute;
+  top: -0.4rem;
+  left: 50%;
+  z-index: 7;
+  transform: translateX(-50%);
+
+  color: #ff5252;
+  font-family: var(--app-pixel-font);
+  font-size: 0.42rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  -webkit-text-stroke: 0.04rem #1a0500;
+  text-shadow:
+    0 0 0.3rem rgba(255, 82, 82, 0.85),
+    0 0 0.6rem rgba(0, 0, 0, 0.6),
+    0 1px 0 rgba(0, 0, 0, 0.9);
+
+  pointer-events: none;
+  animation: bench-hp-popup-float-fade 1.2s ease-out forwards;
+}
+
+.bench__hp-popup--heal {
+  color: #4ade80;
+  -webkit-text-stroke: 0.04rem #052e16;
+  text-shadow:
+    0 0 0.3rem rgba(74, 222, 128, 0.85),
+    0 0 0.6rem rgba(0, 0, 0, 0.6),
+    0 1px 0 rgba(0, 0, 0, 0.9);
+}
+
+@keyframes bench-hp-popup-float-fade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0.15rem) scale(0.7);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -0.08rem) scale(1.15);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(-50%, -0.25rem) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -1.4rem) scale(1);
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 760px) and (hover: hover) and (pointer: fine) {
+  .bench {
+    gap: 0.08rem;
+  }
+
+  .bench__label {
+    font-size: 0.42rem;
+    letter-spacing: 0.12em;
+    margin: 0;
+  }
+
+  .bench__slots,
+  .bench--compact .bench__slots {
+    border-radius: 0.48rem;
+  }
+
+  .bench__slot,
+  .bench--compact .bench__slot {
+    padding: 0.08rem;
+  }
+
+  .bench__hp-panel {
+    font-size: 0.24rem;
+    min-width: 1.25rem;
+    padding: 0.04rem 0.08rem;
+  }
+
+  .bench__hp-panel-label {
+    font-size: 0.16rem;
+  }
+
+  .bench__hp-panel-value {
+    font-size: 0.24rem;
+  }
+
+  .energy-stack {
+    min-width: 0.78rem;
+    padding: 0.04rem;
+  }
+
+  .energy-icon {
+    height: 0.72rem;
+    width: 0.72rem;
+  }
+}
+
+.bench__slot--face-down {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.bench__slot--face-down .bench__slot-visual {
+  inset: 0;
+}
+
+.bench__slot--face-down .bench__card-mark {
+  border: 0;
+  border-radius: inherit;
+}
+
+@media (orientation: landscape) and (max-width: 950px) and (max-height: 430px) {
+  .bench {
+    gap: 0.08rem;
+  }
+
+  .bench__label {
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  }
+
+  .bench__slots,
+  .bench--compact .bench__slots {
+    background: rgba(100, 20, 19, 0.72);
+    border-color: rgba(250, 204, 21, 0.52);
+    border-radius: 0.4rem;
+    gap: 0.12rem;
+    padding: 0.16rem;
+  }
+
+  .bench__slot,
+  .bench--compact .bench__slot {
+    padding: 0.08rem;
+  }
+
+  .bench__hp-panel {
+    min-width: 1.14rem;
+    padding: 0.04rem 0.08rem;
+  }
+
+  .bench__hp-panel-label {
+    font-size: 0.14rem;
+  }
+
+  .bench__hp-panel-value {
+    font-size: 0.22rem;
+  }
+
+  .energy-stack {
+    min-width: 0.7rem;
+    padding: 0.03rem;
+  }
+
+  .energy-icon {
+    height: 0.65rem;
+    width: 0.65rem;
+  }
+}
+
+.bench__slot--pointer-dragging {
+  pointer-events: none;
+  transform: translate(var(--pointer-drag-x, 0px), var(--pointer-drag-y, 0px)) scale(1.05);
+  transition: none;
+  z-index: 90;
+}
+
+@media (orientation: landscape) and (hover: none) and (pointer: coarse) {
+  .bench__slot--draggable .bench__slot-hitbox {
+    touch-action: none;
+  }
+}

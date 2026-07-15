@@ -1,0 +1,318 @@
+{
+  "cards": [
+    {
+      "externalId": "custom-professors-pr-001",
+      "setCode": "custom-professors",
+      "setName": "Profesores TPI",
+      "source": "CUSTOM_PROFESSORS",
+      "rarity": "Uncommon",
+      "number": "PR-001",
+      "name": "AngularQuin",
+      "supertype": "POKEMON",
+      "category": "BASIC_POKEMON",
+      "subtype": "Basic",
+      "evolvesFrom": null,
+      "hp": 80,
+      "pokemonType": "Lightning",
+      "retreatCost": 1,
+      "imageSmallUrl": "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/147-151-angularquinINGLES.png",
+      "imageLargeUrl": "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/147-151-angularquinINGLES.png",
+      "attacks": [
+        {
+          "name": "RelampagoLM",
+          "damageText": "20",
+          "baseDamage": 20,
+          "effectText": null,
+          "attackOrder": 0,
+          "costs": [
+            {
+              "energyType": "Lightning",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "name": "TypeScriptazo",
+          "damageText": "50",
+          "baseDamage": 50,
+          "effectText": null,
+          "attackOrder": 1,
+          "costs": [
+            {
+              "energyType": "Lightning",
+              "quantity": 1
+            },
+            {
+              "energyType": "Colorless",
+              "quantity": 1
+            }
+          ]
+        }
+      ],
+      "weaknesses": [
+        {
+          "energyType": "Fighting",
+          "value": "x2"
+        }
+      ],
+      "resistances": [
+        {
+          "energyType": "Metal",
+          "value": "-20"
+        }
+      ]
+    },
+    {
+      "externalId": "custom-professors-pr-002",
+      "setCode": "custom-professors",
+      "setName": "Profesores TPI",
+      "source": "CUSTOM_PROFESSORS",
+      "rarity": "Rare",
+      "number": "PR-002",
+      "name": "RaMaven",
+      "supertype": "POKEMON",
+      "category": "BASIC_POKEMON",
+      "subtype": "Basic",
+      "evolvesFrom": null,
+      "hp": 110,
+      "pokemonType": "Metal",
+      "retreatCost": 2,
+      "imageSmallUrl": "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/148-151-ramavenINGLES.png",
+      "imageLargeUrl": "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/148-151-ramavenINGLES.png",
+      "attacks": [
+        {
+          "name": "Scirocco",
+          "damageText": "20",
+          "baseDamage": 20,
+          "effectText": null,
+          "attackOrder": 0,
+          "costs": [
+            {
+              "energyType": "Metal",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Scaffolding Destructor",
+          "damageText": "70",
+          "baseDamage": 70,
+          "effectText": null,
+          "attackOrder": 1,
+          "costs": [
+            {
+              "energyType": "Metal",
+              "quantity": 2
+            },
+            {
+              "energyType": "Colorless",
+              "quantity": 1
+            }
+          ]
+        }
+      ],
+      "weaknesses": [
+        {
+          "energyType": "Fire",
+          "value": "x2"
+        }
+      ],
+      "resistances": [
+        {
+          "energyType": "Psychic",
+          "value": "-20"
+        }
+      ]
+    },
+    {
+      "externalId": "custom-professors-pr-003",
+      "setCode": "custom-professors",
+      "setName": "Profesores TPI",
+      "source": "CUSTOM_PROFESSORS",
+      "rarity": "Rare",
+      "number": "PR-003",
+      "name": "BelgraNode",
+      "supertype": "POKEMON",
+      "category": "BASIC_POKEMON",
+      "subtype": "Basic",
+      "evolvesFrom": null,
+      "hp": 90,
+      "pokemonType": "Darkness",
+      "retreatCost": 1,
+      "imageSmallUrl": "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/149-151-belgranodeINGLES.png",
+      "imageLargeUrl": "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/149-151-belgranodeINGLES.png",
+      "attacks": [
+        {
+          "name": "Roba Tokens",
+          "damageText": "30",
+          "baseDamage": 30,
+          "effectText": null,
+          "attackOrder": 0,
+          "costs": [
+            {
+              "energyType": "Darkness",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Deploy Pirata",
+          "damageText": "80",
+          "baseDamage": 80,
+          "effectText": null,
+          "attackOrder": 1,
+          "costs": [
+            {
+              "energyType": "Darkness",
+              "quantity": 2
+            },
+            {
+              "energyType": "Colorless",
+              "quantity": 1
+            }
+          ]
+        }
+      ],
+      "weaknesses": [
+        {
+          "energyType": "Fighting",
+          "value": "x2"
+        }
+      ],
+      "resistances": [
+        {
+          "energyType": "Psychic",
+          "value": "-20"
+        }
+      ]
+    },
+    {
+      "externalId": "custom-professors-pr-004",
+      "setCode": "custom-professors",
+      "setName": "Profesores TPI",
+      "source": "CUSTOM_PROFESSORS",
+      "rarity": "Rare Holo",
+      "number": "PR-004",
+      "name": "SantorMento",
+      "supertype": "POKEMON",
+      "category": "BASIC_POKEMON",
+      "subtype": "Basic",
+      "evolvesFrom": null,
+      "hp": 130,
+      "pokemonType": "Fire",
+      "retreatCost": 3,
+      "imageSmallUrl": "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/150-151-santormentoINGLES.png",
+      "imageLargeUrl": "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/150-151-santormentoINGLES.png",
+      "attacks": [
+        {
+          "name": "Cuestionario Incendiario",
+          "damageText": "30",
+          "baseDamage": 30,
+          "effectText": null,
+          "attackOrder": 0,
+          "costs": [
+            {
+              "energyType": "Fire",
+              "quantity": 1
+            },
+            {
+              "energyType": "Colorless",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Dos del Toro",
+          "damageText": "90",
+          "baseDamage": 90,
+          "effectText": null,
+          "attackOrder": 1,
+          "costs": [
+            {
+              "energyType": "Fire",
+              "quantity": 2
+            },
+            {
+              "energyType": "Colorless",
+              "quantity": 2
+            }
+          ]
+        }
+      ],
+      "weaknesses": [
+        {
+          "energyType": "Water",
+          "value": "x2"
+        }
+      ],
+      "resistances": [
+        {
+          "energyType": "Metal",
+          "value": "-20"
+        }
+      ]
+    },
+    {
+      "externalId": "custom-professors-pr-005",
+      "setCode": "custom-professors",
+      "setName": "Profesores TPI",
+      "source": "CUSTOM_PROFESSORS",
+      "rarity": "Rare Holo",
+      "number": "PR-005",
+      "name": "HernullPointer",
+      "supertype": "POKEMON",
+      "category": "BASIC_POKEMON",
+      "subtype": "Basic",
+      "evolvesFrom": null,
+      "hp": 120,
+      "pokemonType": "Psychic",
+      "retreatCost": 2,
+      "imageSmallUrl": "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/151-151-hernullpointerINGLES.png",
+      "imageLargeUrl": "https://ldkdohnoqmupfbysrkdz.supabase.co/storage/v1/object/public/pokemon-card-images/custom-proffesors/151-151-hernullpointerINGLES.png",
+      "attacks": [
+        {
+          "name": "Ruleta Denigrante",
+          "damageText": "30",
+          "baseDamage": 30,
+          "effectText": null,
+          "attackOrder": 0,
+          "costs": [
+            {
+              "energyType": "Psychic",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Idempotencia Inmutable",
+          "damageText": "90",
+          "baseDamage": 90,
+          "effectText": null,
+          "attackOrder": 1,
+          "costs": [
+            {
+              "energyType": "Psychic",
+              "quantity": 2
+            },
+            {
+              "energyType": "Colorless",
+              "quantity": 1
+            }
+          ]
+        }
+      ],
+      "weaknesses": [
+        {
+          "energyType": "Darkness",
+          "value": "x2"
+        }
+      ],
+      "resistances": [
+        {
+          "energyType": "Fighting",
+          "value": "-20"
+        }
+      ]
+    }
+  ]
+}

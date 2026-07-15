@@ -1,0 +1,206 @@
+<section
+  class="hand-fan"
+  [class.hand-fan--hoverable]="hoverable()"
+  [class.hand-fan--large]="size() === 'large'"
+  [class.hand-fan--mobile-collapsible]="hoverable()"
+  [attr.data-board-anchor]="animationAnchorId()"
+>
+  <p>{{ label() }}</p>
+
+  <div class="hand-fan__cards" #cardsContainer>
+    @for (card of cards(); track cardReferenceId(card); let index = $index) {
+      <div
+        class="hand-fan__card"
+        [class.hand-fan__card--dragging]="draggingCardId() === cardReferenceId(card)"
+        [class.hand-fan__card--dragging-outside]="isDraggingOutsideHand(card)"
+        [class.hand-fan__card--pointer-dragging]="pointerDraggingCardId() === cardReferenceId(card)"
+        [class.hand-fan__card--inspectable]="isInspectable(card)"
+        [class.hand-fan__card--face-down]="card.faceDown"
+        [class.hand-fan__card--selected]="isSelected(card)"
+        [class.hand-fan__card--selectable]="isSelectable(card)"
+        [class.hand-fan__card--remote-hovered]="isRemoteHovered(card, index)"
+        [class.hand-fan__card--setup-active]="isSetupActive(card)"
+        [class.hand-fan__card--setup-bench]="isSetupBench(card)"
+        [attr.draggable]="isDraggable(card) ? 'true' : null"
+        [attr.data-testid]="'hand-card-' + cardReferenceId(card)"
+        [attr.tabindex]="isInspectable(card) ? '0' : null"
+        [attr.role]="isInspectable(card) ? 'button' : null"
+        [style.--card-offset.px]="cardOffset(card, index)"
+        [style.--card-rotation.deg]="cardRotation(card, index)"
+        [style.--mobile-card-offset.px]="mobileCardOffset(card, index)"
+        [style.--mobile-card-rotation.deg]="mobileCardRotation(card, index)"
+        [style.--card-z-index]="cardStackOrder(card, index)"
+        [style.--pointer-drag-x.px]="pointerDragX()"
+        [style.--pointer-drag-y.px]="pointerDragY()"
+        (click)="selectCard(card)"
+        (mouseenter)="emitCardHover(card, index, true)"
+        (mouseleave)="emitCardHover(card, index, false)"
+        (focus)="emitCardHover(card, index, true)"
+        (blur)="emitCardHover(card, index, false)"
+        (keydown.enter)="selectCard(card)"
+        (keydown.space)="selectCard(card); $event.preventDefault()"
+        (dragstart)="startCardDrag($event, card)"
+        (drag)="trackCardDrag($event, cardsContainer)"
+        (dragend)="finishCardDrag()"
+        (pointerdown)="startPointerDrag($event, card)"
+        (pointermove)="movePointerDrag($event)"
+        (pointerup)="finishPointerDrag($event)"
+        (pointercancel)="cancelPointerDrag($event)"
+      >
+        <div
+          class="hand-fan__card-visual"
+          [class.hand-fan__card-visual--playable]="isPlayableHighlight(card)"
+        >
+          @if (card.faceDown) {
+            <div class="hand-fan__card-back" aria-hidden="true"></div>
+          } @else {
+            @if (card.imageSmallUrl ?? card.imageLargeUrl; as imageUrl) {
+              <img [src]="imageUrl" [alt]="card.altText ?? card.label" />
+            } @else {
+              <div class="hand-fan__card-placeholder" aria-hidden="true"></div>
+            }
+          }
+
+          @if (isSetupActive(card)) {
+            <span class="hand-fan__badge hand-fan__badge--active">{{ t('GAME.ACTIVE') }}</span>
+          } @else if (isSetupBench(card)) {
+            <span class="hand-fan__badge hand-fan__badge--bench">{{ t('GAME.BENCH') }}</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+@if (hoverable()) {
+  <div class="mobile-hand-controls">
+  <button
+    type="button"
+    class="mobile-hand-trigger"
+    data-tour="player-hand-button"
+    data-board-anchor="local-mobile-hand-button"
+    [attr.aria-expanded]="mobileDrawerOpen()"
+    (click)="openMobileDrawer()"
+  >
+    <span>{{ t('GAME.YOUR_HAND') }} · {{ cards().length }}</span>
+    <strong>{{ t('GAME.HAND_OPEN') }}</strong>
+  </button>
+    @if (setupPhase()) {
+      <div class="mobile-setup-actions">
+        @if (mulliganActionPending()) {
+          <button
+            type="button"
+            class="mobile-end-turn"
+            [disabled]="setupBusy()"
+            [title]="t('GAME.MULLIGAN.START_BUTTON_MOBILE')"
+            data-testid="mobile-mulligan-start"
+            (click)="mulliganStartRequested.emit()"
+          >
+            {{ t('GAME.MULLIGAN.START_BUTTON_MOBILE') }}
+          </button>
+        } @else {
+          <button
+            type="button"
+            class="mobile-end-turn"
+            [disabled]="!setupSubmitEnabled() || setupSubmitted()"
+            [title]="setupDisabledReason() ?? t('GAME.INTERACTION.SEND_SETUP')"
+            data-testid="mobile-primary-action"
+            (click)="requestPrimaryAction()"
+          >
+            {{ t(setupSubmitted() ? 'GAME.WAITING_FOR_OPPONENT' : 'GAME.INTERACTION.SEND_SETUP') }}
+          </button>
+          <button
+            type="button"
+            class="mobile-clear-bench"
+            [disabled]="setupBenchCardInstanceIds().length === 0 || setupSubmitted() || setupBusy()"
+            data-testid="mobile-clear-bench"
+            (click)="clearSetupBench()"
+          >
+            {{ t('GAME.CLEAR_BENCH') }}
+          </button>
+        }
+      </div>
+    } @else {
+      <button
+    type="button"
+    class="mobile-end-turn"
+    [disabled]="!endTurnEnabled()"
+    [title]="endTurnEnabled() ? t('GAME.END_TURN') : (endTurnDisabledReason() ?? t('GAME.NO_AVAILABLE'))"
+    data-testid="mobile-primary-action"
+    (click)="requestPrimaryAction()"
+  >
+      {{ t('GAME.END_TURN') }}
+    </button>
+    }
+  </div>
+
+  @if (mobileDrawerOpen()) {
+    <section
+      class="mobile-hand-drawer"
+      [class.mobile-hand-drawer--dragging]="pointerDraggingCardId() !== null"
+      [attr.aria-label]="t('GAME.YOUR_HAND')"
+    >
+      <div class="mobile-hand-drawer__panel">
+        <header class="mobile-hand-drawer__header">
+          <div>
+            <strong>{{ t('GAME.YOUR_HAND') }} · {{ cards().length }}</strong>
+          </div>
+          <button type="button" (click)="closeMobileDrawer()" [attr.aria-label]="t('GAME.HAND_CLOSE')">×</button>
+        </header>
+
+        <div class="mobile-hand-drawer__content">
+          <div class="mobile-hand-drawer__grid">
+            @for (card of cards(); track cardReferenceId(card)) {
+              <div
+                class="hand-fan__card mobile-hand-drawer__card"
+                [class.hand-fan__card--selected]="isSelected(card)"
+                [class.hand-fan__card--selectable]="isSelectable(card)"
+                [class.hand-fan__card--setup-active]="isSetupActive(card)"
+                [class.hand-fan__card--setup-bench]="isSetupBench(card)"
+                [attr.data-testid]="'mobile-hand-card-' + cardReferenceId(card)"
+                [attr.role]="isInspectable(card) ? 'button' : null"
+                [attr.tabindex]="isInspectable(card) ? '0' : null"
+                (click)="selectMobileCard(card)"
+                (keydown.enter)="selectMobileCard(card)"
+                (keydown.space)="selectMobileCard(card); $event.preventDefault()"
+                (pointerdown)="startPointerDrag($event, card)"
+                (pointermove)="movePointerDrag($event)"
+                (pointerup)="finishPointerDrag($event)"
+                (pointercancel)="cancelPointerDrag($event)"
+              >
+                <div
+                  class="hand-fan__card-visual"
+                  [class.hand-fan__card-visual--playable]="isPlayableHighlight(card)"
+                >
+                  @if (card.imageSmallUrl ?? card.imageLargeUrl; as imageUrl) {
+                    <img [src]="imageUrl" [alt]="card.altText ?? card.label" />
+                  } @else {
+                    <div class="hand-fan__card-placeholder" aria-hidden="true"></div>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+
+        </div>
+
+      </div>
+
+      @if (pointerDraggingCard(); as draggingCard) {
+        <div class="mobile-hand-drag-status">
+          {{ t('GAME.YOUR_HAND') }} · {{ cards().length }}
+        </div>
+        <div
+          class="mobile-card-drag-preview"
+          [style.--drag-client-x.px]="pointerClientX()"
+          [style.--drag-client-y.px]="pointerClientY()"
+          aria-hidden="true"
+        >
+          @if (draggingCard.imageSmallUrl ?? draggingCard.imageLargeUrl; as draggingImageUrl) {
+            <img [src]="draggingImageUrl" alt="" />
+          }
+        </div>
+      }
+    </section>
+  }
+}

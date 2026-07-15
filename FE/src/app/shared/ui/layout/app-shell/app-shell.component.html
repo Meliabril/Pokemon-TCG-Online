@@ -1,0 +1,19 @@
+<div [class]="shellClasses()">
+  @if (showDarkHomeVideo()) {
+    <video class="app-shell__background-video" autoplay muted loop playsinline aria-hidden="true">
+      <source [src]="darkHomeBackgroundVideoSrc" type="video/mp4" />
+    </video>
+  }
+
+  <div class="app-shell__overlay min-h-screen">
+    <div class="app-shell__header sticky top-0 z-10 backdrop-blur-sm">
+      <ng-content select="[shell-header]"></ng-content>
+    </div>
+
+    <main
+      class="mx-auto w-[min(1240px,calc(100%-1.5rem))] py-5 sm:w-[min(1240px,calc(100%-2rem))] sm:py-6"
+    >
+      <ng-content></ng-content>
+    </main>
+  </div>
+</div>

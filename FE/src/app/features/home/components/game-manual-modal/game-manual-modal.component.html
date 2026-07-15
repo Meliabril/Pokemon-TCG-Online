@@ -1,0 +1,159 @@
+<div [class]="overlayClasses()" role="presentation">
+  <button
+    type="button"
+    class="absolute inset-0 bg-[#120304]/82 backdrop-blur-sm"
+    [attr.aria-label]="t('HOME.MANUAL.CLOSE')"
+    (click)="close.emit()"
+  ></button>
+
+  <section
+    [class]="panelClasses()"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="game-manual-modal-title"
+    (click)="$event.stopPropagation()"
+  >
+    <!-- Header -->
+    <div [class]="headerClasses()">
+      <div class="space-y-1">
+        <p [class]="eyebrowClasses()">Pokémon TCG</p>
+        <h2 id="game-manual-modal-title" [class]="titleClasses()">
+          {{ t('HOME.MANUAL.TITLE') }}
+        </h2>
+      </div>
+
+      <button
+        type="button"
+        [class]="closeButtonClasses()"
+        [attr.aria-label]="t('HOME.MANUAL.CLOSE')"
+        (click)="close.emit()"
+      >
+        <span aria-hidden="true" class="text-xl leading-none">✕</span>
+      </button>
+    </div>
+
+    <!-- Scrollable content -->
+    <div class="manual-content overflow-y-auto px-5 py-6 sm:px-7">
+
+      <!-- Objetivo -->
+      <section>
+        <h3 [class]="sectionTitleClasses()">{{ t('HOME.MANUAL.SECTIONS.OBJECTIVE.TITLE') }}</h3>
+        <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.OBJECTIVE.BODY') }}</p>
+      </section>
+
+      <hr [class]="dividerClasses()" />
+
+      <!-- Preparación -->
+      <section>
+        <h3 [class]="sectionTitleClasses()">{{ t('HOME.MANUAL.SECTIONS.SETUP.TITLE') }}</h3>
+        <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.SETUP.BODY') }}</p>
+      </section>
+
+      <hr [class]="dividerClasses()" />
+
+      <!-- Turno -->
+      <section>
+        <h3 [class]="sectionTitleClasses()">{{ t('HOME.MANUAL.SECTIONS.TURN.TITLE') }}</h3>
+        <div class="flex flex-col gap-4">
+          <div>
+            <p [class]="labelClasses()">{{ t('HOME.MANUAL.SECTIONS.TURN.DRAW_LABEL') }}</p>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.TURN.DRAW_BODY') }}</p>
+          </div>
+          <div>
+            <p [class]="labelClasses()">{{ t('HOME.MANUAL.SECTIONS.TURN.MAIN_LABEL') }}</p>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.TURN.MAIN_BODY') }}</p>
+          </div>
+          <div>
+            <p [class]="labelClasses()">{{ t('HOME.MANUAL.SECTIONS.TURN.ATTACK_LABEL') }}</p>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.TURN.ATTACK_BODY') }}</p>
+          </div>
+        </div>
+      </section>
+
+      <hr [class]="dividerClasses()" />
+
+      <!-- Entrenadores -->
+      <section>
+        <h3 [class]="sectionTitleClasses()">{{ t('HOME.MANUAL.SECTIONS.TRAINERS.TITLE') }}</h3>
+        <p class="mb-4" [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.TRAINERS.INTRO') }}</p>
+        <div class="flex flex-col gap-4">
+          <div>
+            <span [class]="trainerBadgeClasses('item')">{{ t('HOME.MANUAL.SECTIONS.TRAINERS.ITEM_LABEL') }}</span>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.TRAINERS.ITEM_BODY') }}</p>
+          </div>
+          <div>
+            <span [class]="trainerBadgeClasses('supporter')">{{ t('HOME.MANUAL.SECTIONS.TRAINERS.SUPPORTER_LABEL') }}</span>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.TRAINERS.SUPPORTER_BODY') }}</p>
+          </div>
+          <div>
+            <span [class]="trainerBadgeClasses('stadium')">{{ t('HOME.MANUAL.SECTIONS.TRAINERS.STADIUM_LABEL') }}</span>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.TRAINERS.STADIUM_BODY') }}</p>
+          </div>
+          <div>
+            <span [class]="trainerBadgeClasses('tool')">{{ t('HOME.MANUAL.SECTIONS.TRAINERS.TOOL_LABEL') }}</span>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.TRAINERS.TOOL_BODY') }}</p>
+          </div>
+        </div>
+      </section>
+
+      <hr [class]="dividerClasses()" />
+
+      <!-- Condiciones especiales -->
+      <section>
+        <h3 [class]="sectionTitleClasses()">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.TITLE') }}</h3>
+        <p class="mb-4" [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.INTRO') }}</p>
+        <div class="flex flex-col gap-4">
+          <div>
+            <span [class]="conditionBadgeClasses('asleep')">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.ASLEEP_LABEL') }}</span>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.ASLEEP_BODY') }}</p>
+          </div>
+          <div>
+            <span [class]="conditionBadgeClasses('burned')">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.BURNED_LABEL') }}</span>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.BURNED_BODY') }}</p>
+          </div>
+          <div>
+            <span [class]="conditionBadgeClasses('confused')">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.CONFUSED_LABEL') }}</span>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.CONFUSED_BODY') }}</p>
+          </div>
+          <div>
+            <span [class]="conditionBadgeClasses('paralyzed')">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.PARALYZED_LABEL') }}</span>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.PARALYZED_BODY') }}</p>
+          </div>
+          <div>
+            <span [class]="conditionBadgeClasses('poisoned')">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.POISONED_LABEL') }}</span>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.CONDITIONS.POISONED_BODY') }}</p>
+          </div>
+        </div>
+      </section>
+
+      <hr [class]="dividerClasses()" />
+
+      <!-- Victoria y derrota -->
+      <section>
+        <h3 [class]="sectionTitleClasses()">{{ t('HOME.MANUAL.SECTIONS.VICTORY.TITLE') }}</h3>
+        <div class="flex flex-col gap-4">
+          <div>
+            <p [class]="labelClasses()">{{ t('HOME.MANUAL.SECTIONS.VICTORY.PRIZES_LABEL') }}</p>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.VICTORY.PRIZES_BODY') }}</p>
+          </div>
+          <div>
+            <p [class]="labelClasses()">{{ t('HOME.MANUAL.SECTIONS.VICTORY.KNOCKOUT_LABEL') }}</p>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.VICTORY.KNOCKOUT_BODY') }}</p>
+          </div>
+          <div>
+            <p [class]="labelClasses()">{{ t('HOME.MANUAL.SECTIONS.VICTORY.DECK_LABEL') }}</p>
+            <p [class]="sectionBodyClasses()">{{ t('HOME.MANUAL.SECTIONS.VICTORY.DECK_BODY') }}</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Footer -->
+    <div [class]="footerClasses()">
+      <button type="button" [class]="footerButtonClasses()" (click)="close.emit()">
+        {{ t('COMMON.CLOSE') }}
+      </button>
+    </div>
+  </section>
+</div>

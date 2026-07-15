@@ -1,0 +1,79 @@
+:host {
+  display: contents;
+}
+
+/* Absolutely positioned over the card's nearest positioned ancestor (the slot's visual
+   container). `pointer-events: none` keeps the badge from ever intercepting clicks, taps or
+   drag gestures aimed at the card beneath it, and it never affects layout/box size. */
+.harden-shield-badge {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  z-index: 6;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.harden-shield-badge__icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.75));
+}
+
+.harden-shield-badge__icon-body {
+  fill: #2f6fed;
+  stroke: #eaf4ff;
+  stroke-width: 1.4;
+}
+
+.harden-shield-badge__icon-check {
+  fill: none;
+  stroke: #f8fafc;
+  stroke-width: 1.9;
+}
+
+.harden-shield-badge--with-value {
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.harden-shield-badge__value {
+  font-size: 0.52rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #eaf4ff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.01em;
+}
+
+.harden-shield-badge--bench .harden-shield-badge__icon {
+  width: 0.96rem;
+  height: 0.96rem;
+}
+
+.harden-shield-badge--bench .harden-shield-badge__value {
+  font-size: 0.42rem;
+}
+
+@media (orientation: landscape) and (max-width: 950px) and (max-height: 430px) {
+  .harden-shield-badge {
+    bottom: 2px;
+    left: 2px;
+  }
+
+  .harden-shield-badge__icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .harden-shield-badge--bench .harden-shield-badge__icon {
+    width: 0.78rem;
+    height: 0.78rem;
+  }
+}

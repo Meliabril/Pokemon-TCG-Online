@@ -1,0 +1,33 @@
+@if (hasConditions()) {
+  <div
+    class="status-overlay"
+    [class.status-overlay--active]="variant() === 'active'"
+    [class.status-overlay--bench]="variant() === 'bench'"
+    [class.status-overlay--compact]="isCompact()"
+    [attr.data-variant]="variant()"
+    [attr.data-testid]="'status-overlay-' + (pokemonId() ?? 'unknown')"
+    [attr.aria-label]="ariaSummary()"
+    role="group"
+  >
+    @for (badge of badges(); track trackByCondition($index, badge)) {
+      <span
+        class="status-overlay__badge"
+        [class.status-overlay__badge--active]="variant() === 'active'"
+        [class.status-overlay__badge--bench]="variant() === 'bench'"
+        [class.status-overlay__badge--emphasized]="badge.emphasized"
+        [style.--status-row]="badge.row"
+        [attr.data-condition]="badge.condition"
+        [attr.data-row]="badge.row"
+        [attr.data-emphasized]="badge.emphasized ? 'true' : 'false'"
+        [attr.aria-label]="badge.label"
+      >
+        <span class="status-overlay__sprite" aria-hidden="true"></span>
+        <span
+          class="status-overlay__tooltip"
+          aria-hidden="true"
+          data-testid="status-overlay-tooltip"
+        >{{ badge.label }}</span>
+      </span>
+    }
+  </div>
+}

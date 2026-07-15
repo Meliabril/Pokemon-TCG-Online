@@ -1,0 +1,35 @@
+<app-card data-tour="how-to-play" variant="feature" [tone]="tone()">
+  <h2 [class]="titleClasses()">{{ t('HOME.MANUAL_CARD.TITLE') }}</h2>
+
+  <div class="how-to-play-grid">
+    <app-card data-tour="objective" variant="compact" [tone]="tone()">
+      <p [class]="cardHeadingClasses()">{{ t('HOME.MANUAL_CARD.OBJECTIVE.TITLE') }}</p>
+      <p [class]="cardTextClasses()">
+        {{ t('HOME.MANUAL_CARD.OBJECTIVE.DESCRIPTION') }}
+      </p>
+    </app-card>
+
+    <app-card data-tour="turn" variant="compact" [tone]="tone()">
+      <p [class]="cardHeadingClasses()">{{ t('HOME.MANUAL_CARD.TURN.TITLE') }}</p>
+      <p [class]="cardTextClasses()">
+        {{ t('HOME.MANUAL_CARD.TURN.DESCRIPTION') }}
+      </p>
+    </app-card>
+
+    <app-card data-tour="conditions" variant="compact" [tone]="tone()">
+      <p [class]="cardHeadingClasses()">{{ t('HOME.MANUAL_CARD.CONDITIONS.TITLE') }}</p>
+      <p [class]="cardTextClasses()">
+        {{ t('HOME.MANUAL_CARD.CONDITIONS.DESCRIPTION') }}
+      </p>
+    </app-card>
+  </div>
+
+  <button
+    type="button"
+    data-tour="manual"
+    [class]="buttonClasses()"
+    (click)="manualClick.emit()"
+  >
+    {{ t('HOME.MANUAL_CARD.ACTION') }}
+  </button>
+</app-card>

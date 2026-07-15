@@ -1,0 +1,110 @@
+:host {
+  display: contents;
+}
+
+/* Absolutely positioned over the card's nearest positioned ancestor.
+   Bottom-left keeps both tool badges away from the status overlay (top-left). */
+.pokemon-tool-badge {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  z-index: 6;
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+
+  pointer-events: none;
+  animation: pokemon-tool-badge-appear 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pokemon-tool-badge__icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.75));
+}
+
+/* Attack (sword) — red */
+.pokemon-tool-badge__icon-blade,
+.pokemon-tool-badge__icon-guard {
+  stroke: #ef4444;
+  stroke-width: 2.2;
+}
+
+.pokemon-tool-badge__icon-handle {
+  stroke: #fca5a5;
+  stroke-width: 1.5;
+}
+
+.pokemon-tool-badge__icon-pommel {
+  fill: #fca5a5;
+}
+
+/* Defense (shield) — gold */
+.pokemon-tool-badge--defense .pokemon-tool-badge__icon-body {
+  fill: #d97706;
+  stroke: #fef3c7;
+  stroke-width: 1.4;
+}
+
+.pokemon-tool-badge__value {
+  font-size: 0.52rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #ef4444;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.01em;
+}
+
+.pokemon-tool-badge--defense .pokemon-tool-badge__value {
+  color: #fef3c7;
+}
+
+.pokemon-tool-badge--bench .pokemon-tool-badge__icon {
+  width: 0.96rem;
+  height: 0.96rem;
+}
+
+.pokemon-tool-badge--bench .pokemon-tool-badge__value {
+  font-size: 0.42rem;
+}
+
+@keyframes pokemon-tool-badge-appear {
+  0% {
+    transform: scale(0) rotate(-15deg);
+    opacity: 0;
+  }
+
+  55% {
+    transform: scale(1.4) rotate(6deg);
+    opacity: 1;
+  }
+
+  78% {
+    transform: scale(0.86) rotate(-3deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 950px) and (max-height: 430px) {
+  .pokemon-tool-badge {
+    bottom: 2px;
+    left: 2px;
+  }
+
+  .pokemon-tool-badge__icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .pokemon-tool-badge--bench .pokemon-tool-badge__icon {
+    width: 0.78rem;
+    height: 0.78rem;
+  }
+}

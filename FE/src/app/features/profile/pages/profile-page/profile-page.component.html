@@ -1,0 +1,161 @@
+<section data-tour="profile-page" class="grid gap-5">
+  <nav class="flex justify-center gap-8 py-2 sm:gap-12" [attr.aria-label]="t('PROFILE.TRAINER_DATA')">
+    <button
+      data-tour="profile-trainer-tab"
+      type="button"
+      [class]="trainerTabClasses()"
+      [attr.aria-current]="activeSection() === 'trainer' ? 'page' : null"
+      (click)="setActiveSection('trainer')"
+    >
+      {{ t('PROFILE.TRAINER_DATA') }}
+    </button>
+
+    <button
+      data-tour="profile-history-tab"
+      type="button"
+      [class]="historyTabClasses()"
+      [attr.aria-current]="activeSection() === 'history' ? 'page' : null"
+      (click)="setActiveSection('history')"
+    >
+      {{ t('PROFILE.MATCH_HISTORY') }}
+    </button>
+  </nav>
+
+  @if (isLoadingUser()) {
+    <p
+      class="justify-self-center rounded-full border px-4 py-2 text-sm"
+      [class.border-[#B8792E]/30]="!isLightTheme()"
+      [class.bg-[#D9A441]/10]="!isLightTheme()"
+      [class.text-[#D9A441]]="!isLightTheme()"
+      [class.border-[#8a4b20]/30]="isLightTheme()"
+      [class.bg-[#fff4d6]/75]="isLightTheme()"
+      [class.text-[#6B3A22]]="isLightTheme()"
+      aria-live="polite"
+    >
+      {{ t('PROFILE.SYNCING') }}
+    </p>
+  }
+
+  @if (activeSection() === 'trainer') {
+    @if (profile(); as profileData) {
+      <app-profile-summary-card
+        [profile]="profileData"
+        [usernameControl]="usernameControl()"
+        [selectedAvatarId]="selectedAvatarId()"
+        [isEditingUsername]="isEditingUsername()"
+        [submitted]="submitted()"
+        [isSaving]="isSaving()"
+        [successMessage]="successMessage()"
+        [errorMessage]="errorMessage()"
+        [isLightTheme]="isLightTheme()"
+        (avatarChanged)="updateAvatar($event)"
+        (startUsernameEdit)="startUsernameEdit()"
+        (saveUsername)="saveUsername()"
+        (cancelUsernameEdit)="cancelUsernameEdit()"
+        (startPasswordChange)="openPasswordChangeModal()"
+      />
+    } @else {
+      <article class="rounded-[24px] border border-dashed p-6 text-center shadow-[0_18px_44px_rgba(0,0,0,0.24)]" [class.border-[#8a4b20]/80]="true" [class.bg-[#3b0905]/76]="!isLightTheme()" [class.bg-[#fff4d6]/84]="isLightTheme()">
+        <h2 class="font-pixel text-xl" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4A2416]]="isLightTheme()">{{ t('PROFILE.UNAVAILABLE') }}</h2>
+        <p class="mt-2 text-sm leading-6" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">
+          {{ t('PROFILE.LOGIN_TO_LOAD') }}
+        </p>
+      </article>
+    }
+  } @else {
+    <app-profile-history-placeholder [isLightTheme]="isLightTheme()" />
+  }
+
+  @if (isPasswordModalOpen()) {
+    <div
+      data-tour="profile-password-overlay"
+      class="profile-password-overlay fixed inset-0 z-40 grid place-items-center px-4 py-6 backdrop-blur-sm"
+      [class.bg-[#120304]/78]="!isLightTheme()"
+      [class.bg-[#120304]/60]="isLightTheme()"
+      role="presentation"
+    >
+      <article
+        data-tour="profile-password-panel"
+        class="profile-password-panel relative w-full max-w-md rounded-[26px] border border-[#8a4b20]/70 p-5 shadow-[0_24px_60px_rgba(0,0,0,0.42)] sm:p-6"
+        [class.bg-[#3b0905]/95]="!isLightTheme()"
+        [class.text-[#fff7d6]]="!isLightTheme()"
+        [class.bg-[#fff4d6]/95]="isLightTheme()"
+        [class.text-[#4a2a17]]="isLightTheme()"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="password-change-title"
+      >
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="font-pixel text-[0.66rem] tracking-[0.22em]" [class.text-[#D9A441]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">{{ t('PROFILE.SECURITY') }}</p>
+            <h2 id="password-change-title" class="mt-2 font-pixel text-xl" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4A2416]]="isLightTheme()">
+              {{ t('PROFILE.CHANGE_PASSWORD') }}
+            </h2>
+          </div>
+
+          <button
+            data-tour="profile-close-password"
+            type="button"
+            [class]="isLightTheme() ? 'grid h-10 w-10 place-items-center rounded-full border border-[#7A3E18]/70 bg-[#fff8e3]/82 font-pixel text-lg text-[#4A2416] transition hover:bg-[rgba(122,62,24,0.10)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B8792E]/80 disabled:cursor-not-allowed disabled:opacity-60' : 'grid h-10 w-10 place-items-center rounded-full border border-[#8a4b20]/70 bg-[#2a0805]/78 font-pixel text-lg text-[#fff7d6] transition hover:bg-[#3b0905] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B8792E]/80 disabled:cursor-not-allowed disabled:opacity-60'"
+            [attr.aria-label]="t('PROFILE.CLOSE_PASSWORD_CHANGE')"
+            [disabled]="isRequestingPasswordCode() || isVerifyingPasswordCode() || isChangingPassword()"
+            (click)="closePasswordChangeModal()"
+          >
+            X
+          </button>
+        </div>
+
+        <div class="mt-5" aria-live="polite">
+          @if (passwordFlowMessage()) {
+            <p class="rounded-2xl border border-[#22c55e]/40 bg-[#052e16]/70 px-4 py-3 text-sm text-[#bbf7d0]">
+              {{ passwordFlowMessage() }}
+            </p>
+          }
+
+          @if (passwordFlowError()) {
+            <p class="mt-3 rounded-2xl border border-[#dc2626]/45 bg-[#450a0a]/72 px-4 py-3 text-sm text-[#fecaca]">
+              {{ passwordFlowError() }}
+            </p>
+          }
+        </div>
+
+        <div class="profile-password-content mt-5">
+          @if (passwordChangeStep() === 'code') {
+            <app-password-code-form
+              variant="profile"
+              [form]="passwordCodeForm"
+              [submitted]="passwordCodeSubmitted()"
+              [isSubmitting]="isRequestingPasswordCode() || isVerifyingPasswordCode()"
+              [isResending]="isResendingPasswordCode()"
+              [submitDisabled]="isPasswordCodeSubmitDisabled()"
+              [resendDisabled]="isPasswordResendDisabled()"
+              [showTimer]="true"
+              [formattedExpiration]="formattedPasswordExpiration()"
+              [resendCooldownSeconds]="resendCooldownSeconds()"
+              [externalError]="passwordCodeFieldError()"
+              [description]="t('PROFILE.PASSWORD_CODE_DESCRIPTION')"
+              [cancelLabel]="t('COMMON.CANCEL')"
+              [submittingLabel]="t('AUTH.VERIFYING')"
+              [theme]="isLightTheme() ? 'LIGHT' : 'DARK'"
+              (formSubmitted)="submitPasswordChangeCode()"
+              (resendRequested)="resendPasswordChangeCode()"
+              (cancelled)="closePasswordChangeModal()"
+            />
+          } @else {
+            <app-new-password-form
+              variant="profile"
+              [form]="passwordChangeForm"
+              [submitted]="passwordSubmitted()"
+              [isSubmitting]="isChangingPassword()"
+              [submitDisabled]="isPasswordSubmitDisabled()"
+              [newPasswordExternalError]="newPasswordFieldError()"
+              [description]="t('AUTH.RESET_PASSWORD_DESCRIPTION')"
+              [theme]="isLightTheme() ? 'LIGHT' : 'DARK'"
+              (formSubmitted)="submitPasswordChange()"
+            />
+          }
+        </div>
+      </article>
+    </div>
+  }
+</section>

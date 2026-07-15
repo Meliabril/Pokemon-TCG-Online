@@ -1,0 +1,562 @@
+<section class="game-board-shell" data-testid="game-board-shell">
+    <button
+      type="button"
+      class="mobile-log-toggle"
+      [attr.aria-expanded]="mobileLogsOpen()"
+      aria-controls="mobile-log-panel"
+      data-testid="mobile-log-toggle"
+      (click)="toggleMobileLogs()"
+    >
+      {{ t('GAME.LOGS') }}
+    </button>
+
+    @if (mobileLogsOpen()) {
+      <aside
+        id="mobile-log-panel"
+        class="mobile-log-panel"
+        [attr.aria-label]="t('GAME.LOGS')"
+        data-testid="mobile-log-panel"
+      >
+        <header class="mobile-log-panel__header">
+          <strong>{{ t('GAME.LOGS') }}</strong>
+          <button type="button" [attr.aria-label]="t('GAME.CLOSE_LOGS')" (click)="closeMobileLogs()">&times;</button>
+        </header>
+        <div class="mobile-log-panel__content">
+          <app-game-log-feed
+            [eventFeed]="eventFeed()"
+            [historySummary]="historySummary()"
+            [latestActionLabel]="latestActionLabel()"
+            [emptyLabel]="t('GAME.NO_EVENTS')"
+          />
+        </div>
+      </aside>
+    }
+
+    @if (setupPhase() && !setupAlreadySubmitted()) {
+      <p class="mobile-setup-help" data-testid="mobile-setup-help">
+        {{ t('GAME.SETUP_MOBILE_HELP') }}
+      </p>
+    }
+    @if (setupPhase()) {
+      <div class="desktop-setup-actions" data-testid="desktop-setup-actions">
+        <button
+          type="button"
+          class="desktop-setup-actions__submit"
+          [disabled]="!canSubmitSetup() || setupAlreadySubmitted()"
+          [title]="setupDisabledReason() ?? t('GAME.INTERACTION.SEND_SETUP')"
+          data-testid="desktop-submit-setup"
+          (click)="setupSubmitted.emit()"
+        >
+          {{ t(setupAlreadySubmitted() ? 'GAME.WAITING_FOR_OPPONENT' : 'GAME.INTERACTION.SEND_SETUP') }}
+        </button>
+        <button
+          type="button"
+          class="desktop-setup-actions__clear"
+          [disabled]="setupBenchCardInstanceIds().length === 0 || setupAlreadySubmitted() || setupBusy()"
+          data-testid="desktop-clear-bench"
+          (click)="clearSetupBench()"
+        >
+          {{ t('GAME.CLEAR_BENCH') }}
+        </button>
+      </div>
+    }
+    <div
+      #boardSurface
+      class="game-board-surface"
+      [attr.data-drop-zone]="generalTrainerDropZoneEnabled() ? 'trainer-play-area' : null"
+      data-testid="game-board-surface"
+      (dragover)="handleTrainerPlayAreaDragOver($event)"
+      (dragleave)="handleTrainerPlayAreaDragLeave($event)"
+      (drop)="handleTrainerPlayAreaDrop($event)"
+    >
+      <button
+        type="button"
+        class="opponent-hand-indicator mobile-opponent-hand-button"
+        data-tour="opponent-hand-button"
+        data-board-anchor="opponent-mobile-hand-button"
+        tabindex="-1"
+        aria-disabled="true"
+      >
+        <span>{{ t('GAME.OPPONENT_HAND') }} &middot; {{ rivalPlayer().handCards.length }}</span>
+      </button>
+      @if (setupPhase()) {
+        <div class="opponent-hand-indicator opponent-hand-indicator--setup">
+          <span>{{ t('GAME.OPPONENT_HAND') }} &middot; {{ rivalPlayer().handCards.length }}</span>
+        </div>
+        <div class="mobile-mulligan-counter mobile-mulligan-counter--rival" data-testid="mobile-mulligan-rival">
+          {{ t('GAME.MULLIGAN.COUNTER_RIVAL', { count: stagedMulliganCounts().opponent }) }}
+        </div>
+        <div class="mobile-mulligan-counter mobile-mulligan-counter--own" data-testid="mobile-mulligan-own">
+          {{ t('GAME.MULLIGAN.COUNTER_OWN', { count: stagedMulliganCounts().own }) }}
+        </div>
+      }
+      <button
+        type="button"
+        class="game-board__leave-btn"
+        data-testid="leave-table-button"
+        (click)="leaveTable.emit()"
+      >
+        &larr; {{ t('GAME.LEAVE') }}
+      </button>
+
+
+    <div
+      #statusOverlay
+      class="board-overlay board-overlay--status"
+      [class.board-overlay--setup]="setupPhase()"
+      [style.left.px]="setupPhase() ? null : statusPanelPosition()?.left"
+      [style.top.px]="setupPhase() ? null : statusPanelPosition()?.top"
+    >
+      <app-turn-hud
+        [statusLabel]="statusLabel()"
+        [statusSummary]="statusSummary()"
+        [turnNumber]="turnNumber()"
+        [phaseLabel]="phaseLabel()"
+        [activePlayerLabel]="activePlayerLabel()"
+        [stadium]="board().stadium"
+        [turnStartedAt]="turnStartedAt()"
+        [stateVersion]="stateVersion()"
+        [eventFeed]="eventFeed()"
+        [historySummary]="historySummary()"
+        [latestActionLabel]="latestActionLabel()"
+        [endTurnEnabled]="canEndTurn()"
+        [endTurnDisabledReason]="endTurnDisabledReason()"
+        [setupMode]="setupPhase()"
+        [setupAlreadySubmitted]="setupAlreadySubmitted()"
+        [setupSubmitEnabled]="canSubmitSetup()"
+        [setupBusy]="setupBusy()"
+        (leaveTable)="leaveTable.emit()"
+        (endTurn)="endTurnRequested.emit()"
+        (setupSubmitted)="setupSubmitted.emit()"
+        (setupCancelled)="setupCancelled.emit()"
+      />
+    </div>
+
+    @if (setupPhase()) {
+      <div class="board-overlay board-overlay--mulligan" data-testid="desktop-mulligan-overlay">
+        <app-mulligan-setup-panel
+          [noticePending]="board().mulliganNoticePending"
+          [ackPending]="mulliganAckPending()"
+          [mulliganFlowActive]="board().mulliganFlowActive"
+          [localMustMulligan]="board().mulliganCurrentPlayer"
+          [ownMulliganCount]="stagedMulliganCounts().own"
+          [opponentMulliganCount]="stagedMulliganCounts().opponent"
+          (noticeAcknowledged)="mulliganNoticeAcknowledgedRequested.emit()"
+        />
+      </div>
+    }
+
+    <div class="player-card player-card--opponent" data-testid="player-card-opponent">
+      <app-player-status-card
+        [player]="rivalPlayer()"
+        [fieldLabel]="t('GAME.RIVAL_FIELD')"
+        [showTurnBadge]="!setupPhase()"
+        [showChat]="true"
+        side="opponent"
+        (openChat)="chatOpen.set(true)"
+      />
+      <div class="player-card__chat-panel" data-testid="board-chat-drawer">
+        <app-game-chat-drawer
+          [messages]="chatMessages()"
+          [currentUserId]="chatCurrentUserId()"
+          [connected]="chatConnected()"
+          [open]="chatOpen()"
+          (openChange)="chatOpen.set($event)"
+          (sendMessage)="chatMessageSubmitted.emit($event)"
+        />
+      </div>
+      @if (!setupPhase() && rivalPlayer().isActiveTurn && turnRemainingLabel()) {
+        <span
+          class="mobile-turn-timer mobile-turn-timer--opponent"
+          [class.mobile-turn-timer--urgent]="turnTimerUrgent()"
+          [attr.data-testid]="'player-turn-timer-' + rivalPlayer().id"
+        >
+          {{ turnRemainingLabel() }}
+        </span>
+      }
+    </div>
+
+    <div class="player-card player-card--current" data-testid="player-card-current">
+      <app-player-status-card
+        [player]="localPlayer()"
+        [fieldLabel]="t('GAME.YOUR_FIELD')"
+        [showTurnBadge]="!setupPhase()"
+        side="current"
+      />
+      @if (!setupPhase() && localPlayer().isActiveTurn && turnRemainingLabel()) {
+        <span
+          class="mobile-turn-timer mobile-turn-timer--current"
+          [class.mobile-turn-timer--urgent]="turnTimerUrgent()"
+          [attr.data-testid]="'player-turn-timer-' + localPlayer().id"
+        >
+          {{ turnRemainingLabel() }}
+        </span>
+      }
+    </div>
+
+    <div class="field-label field-label--opponent">
+      <span>{{ t('GAME.RIVAL_FIELD') }}</span>
+      <strong>{{ rivalPlayer().label }}</strong>
+    </div>
+
+    <div class="field-label field-label--current">
+      <span>{{ t('GAME.YOUR_FIELD') }}</span>
+      <strong>{{ localPlayer().label }}</strong>
+    </div>
+
+    <div class="board-zone board-zone--opponent-hand" data-testid="board-zone-opponent-hand">
+      <app-hand-fan
+        [label]="t('GAME.OPPONENT_HAND')"
+        [cards]="opponentHandCards()"
+        size="large"
+        visualOwner="OPPONENT"
+        [remoteHoveredCardKey]="remoteHoveredCardKey()"
+        animationAnchorId="opponent-hand"
+        (cardHoverChanged)="cardHoverChanged.emit($event)"
+        (cardInspected)="openHandCardModal($event, 'rival')"
+      />
+    </div>
+
+    @if (opponentPromotionBannerVisible()) {
+      <div class="board-zone board-zone--opponent-promotion-banner promotion-banner promotion-banner--waiting" data-testid="opponent-promotion-banner">
+        <span class="promotion-banner__icon" aria-hidden="true">⏳</span>
+        <div class="promotion-banner__copy">
+          <p class="promotion-banner__title">{{ t('GAME.OVERLAY.PROMOTION_WAIT_TITLE') }}</p>
+          <p class="promotion-banner__hint">{{ t('GAME.OVERLAY.PROMOTION_WAIT_MESSAGE') }}</p>
+        </div>
+      </div>
+    }
+
+    @if (opponentAttackChoiceBannerVisible()) {
+      <div class="board-zone board-zone--opponent-promotion-banner promotion-banner promotion-banner--waiting" data-testid="opponent-attack-choice-banner">
+        <span class="promotion-banner__icon" aria-hidden="true">⏳</span>
+        <div class="promotion-banner__copy">
+          <p class="promotion-banner__title">{{ opponentAttackChoiceTitle() }}</p>
+          <p class="promotion-banner__hint">{{ opponentAttackChoiceMessage() }}</p>
+        </div>
+      </div>
+    }
+
+    <div #opponentBenchZone class="board-zone board-zone--opponent-bench" data-testid="board-zone-opponent-bench">
+      <app-bench-row
+        [label]="t('GAME.OPPONENT_BENCH')"
+        [slots]="rivalPlayer().benchSlots"
+        orientation="inverted"
+        size="compact"
+        visualOwner="OPPONENT"
+        [remoteHoveredCardKey]="remoteHoveredCardKey()"
+        animationAnchorPrefix="opponent-bench"
+        [selectedPokemonInPlayId]="selectedPokemonInPlayId()"
+        [selectablePokemonInPlayIds]="selectablePokemonInPlayIds()"
+        (pokemonSelected)="selectPokemon($event)"
+        (cardHoverChanged)="cardHoverChanged.emit($event)"
+        (cardInspected)="openBenchCardModal($event, 'rival')"
+      />
+    </div>
+
+    <div class="board-zone board-zone--opponent-active" data-testid="board-zone-opponent-active">
+      <app-active-pokemon-slot
+        [slot]="rivalPlayer().activePokemon"
+        visualOwner="OPPONENT"
+        [remoteHoveredCardKey]="remoteHoveredCardKey()"
+        animationAnchorId="opponent-active"
+        [selectedPokemonInPlayId]="selectedPokemonInPlayId()"
+        [selectablePokemonInPlayIds]="selectablePokemonInPlayIds()"
+        (pokemonSelected)="selectPokemon($event)"
+        (cardHoverChanged)="cardHoverChanged.emit($event)"
+        (cardInspected)="openActiveCardModal($event, 'rival')"
+      />
+    </div>
+
+    @if (stadiumCard(); as activeStadiumCard) {
+      <div class="board-zone board-zone--stadium" data-testid="board-zone-stadium">
+        @if (activeStadiumCard.imageSmallUrl ?? activeStadiumCard.imageLargeUrl; as stadiumImageUrl) {
+          <button
+            class="stadium-card"
+            [class.stadium-card--drop-available]="stadiumDropZoneVisible()"
+            [class.stadium-card--drop-active]="trainerDropAreaActive() && stadiumDropZoneVisible()"
+            [attr.data-drop-zone]="stadiumDropZoneVisible() ? 'stadium-area' : null"
+            data-testid="stadium-pill"
+            type="button"
+            (click)="openStadiumCardModal(activeStadiumCard)"
+            (dragover)="handleStadiumAreaDragOver($event)"
+            (dragleave)="handleStadiumAreaDragLeave()"
+            (drop)="handleStadiumAreaDrop($event)"
+          >
+            <img
+              class="stadium-card__image"
+              [src]="stadiumImageUrl"
+              [alt]="activeStadiumCard.altText ?? activeStadiumCard.label"
+            />
+          </button>
+        }
+      </div>
+    } @else if (stadiumDropZoneVisible()) {
+      <div class="board-zone board-zone--stadium" data-testid="board-zone-stadium">
+        <div
+          class="stadium-card stadium-card--empty stadium-card--drop-available"
+          [class.stadium-card--drop-active]="trainerDropAreaActive()"
+          data-drop-zone="stadium-area"
+          aria-label="Zona de Estadio"
+          (dragover)="handleStadiumAreaDragOver($event)"
+          (dragleave)="handleStadiumAreaDragLeave()"
+          (drop)="handleStadiumAreaDrop($event)"
+        >
+        </div>
+      </div>
+    }
+
+    <div class="board-zone board-zone--current-active" data-testid="board-zone-current-active">
+      <app-active-pokemon-slot
+        [slot]="localPlayer().activePokemon"
+        orientation="inverted"
+        visualOwner="SELF"
+        [remoteHoveredCardKey]="remoteHoveredCardKey()"
+        animationAnchorId="local-active"
+        [dropEnabled]="activeSlotDropEnabled()"
+        [dropZone]="activePokemonToolDropEnabled() ? 'pokemon-tool-target' : 'active'"
+        [validDropCardIds]="activeDropCardIds()"
+        [selectedPokemonInPlayId]="selectedPokemonInPlayId()"
+        [selectablePokemonInPlayIds]="selectablePokemonInPlayIds()"
+        (cardDropped)="handleDropOnActive($event)"
+        (pokemonSelected)="selectPokemon($event)"
+        (cardHoverChanged)="cardHoverChanged.emit($event)"
+        (cardInspected)="openActiveCardModal($event, 'local')"
+      />
+    </div>
+
+    @if (promotionBannerVisible()) {
+      <div class="board-zone board-zone--promotion-banner promotion-banner" data-testid="promotion-banner">
+        <span class="promotion-banner__icon" aria-hidden="true">⚠</span>
+        <div class="promotion-banner__copy">
+          <p class="promotion-banner__title">{{ t('GAME.STATUS.PROMOTION_REQUIRED') }}</p>
+          <p class="promotion-banner__hint">{{ t('GAME.STATUS.PROMOTION_REQUIRED_HINT') }}</p>
+        </div>
+      </div>
+    }
+
+    <div class="board-zone board-zone--current-bench" data-testid="board-zone-current-bench">
+      <app-bench-row
+        [label]="t('GAME.YOUR_BENCH')"
+        [slots]="localPlayer().benchSlots"
+        size="compact"
+        visualOwner="SELF"
+        [remoteHoveredCardKey]="remoteHoveredCardKey()"
+        animationAnchorPrefix="local-bench"
+        [dropEnabled]="benchDropEnabled()"
+        [validDropSlotIds]="benchDropSlotIds()"
+        [pokemonToolDropSlotIds]="pokemonToolBenchDropSlotIds()"
+        [selectedPokemonInPlayId]="selectedPokemonInPlayId()"
+        [selectablePokemonInPlayIds]="selectablePokemonInPlayIds()"
+        [draggablePokemonInPlayIds]="benchToActivePokemonIds()"
+        (cardDropped)="moveHandCardToBench($event)"
+        (benchPokemonDragStarted)="startBenchPokemonDrag($event)"
+        (benchPokemonDragEnded)="finishBenchPokemonDrag()"
+        (benchPokemonPointerDropped)="handleDropOnActive($event)"
+        (pokemonSelected)="selectPokemon($event)"
+        (cardHoverChanged)="cardHoverChanged.emit($event)"
+        (cardInspected)="openBenchCardModal($event, 'local')"
+      />
+    </div>
+
+    <div class="board-zone board-zone--current-hand" data-testid="board-zone-current-hand">
+      <app-hand-fan
+        [label]="t('GAME.YOUR_HAND')"
+        [cards]="localHandCards()"
+        [hoverable]="true"
+        size="large"
+        visualOwner="SELF"
+        [remoteHoveredCardKey]="remoteHoveredCardKey()"
+        [draggableCards]="canDragHandCards()"
+        [selectedCardInstanceId]="selectedCardInstanceId()"
+        [setupActiveCardInstanceId]="setupActiveCardInstanceId()"
+        [setupBenchCardInstanceIds]="setupBenchCardInstanceIds()"
+        [selectableCardInstanceIds]="selectableCardInstanceIds()"
+        [playableCardIds]="handPlayableCardIds()"
+        [endTurnEnabled]="canEndTurn()"
+        [endTurnDisabledReason]="endTurnDisabledReason()"
+        [setupPhase]="setupPhase()"
+        [setupSubmitted]="setupAlreadySubmitted()"
+        [setupSubmitEnabled]="canSubmitSetup()"
+        [setupDisabledReason]="setupDisabledReason()"
+        [setupBusy]="setupBusy()"
+        [mulliganActionPending]="board().mulliganNoticePending"
+        animationAnchorId="local-hand"
+        (cardDragStarted)="startHandCardDrag($event.card)"
+        (cardDragEnded)="finishHandCardDrag()"
+        (cardPointerDropped)="handlePointerCardDrop($event)"
+        (cardSelected)="selectHandCard($event)"
+        (cardHoverChanged)="cardHoverChanged.emit($event)"
+        (cardInspected)="openHandCardModal($event, 'local')"
+        (endTurnRequested)="endTurnRequested.emit()"
+        (setupSubmitRequested)="setupSubmitted.emit()"
+        (setupBenchClearRequested)="clearSetupBench()"
+        (mulliganStartRequested)="onMobileMulliganStart()"
+      />
+    </div>
+
+    <app-mulligan-modal
+      [open]="mulliganModalVisible()"
+      [ownRevealedCards]="modalOwnRevealedCards()"
+      [rivalRevealedCards]="modalRivalRevealedCards()"
+      [ownMulliganCount]="stagedMulliganCounts().own"
+      [opponentMulliganCount]="stagedMulliganCounts().opponent"
+    />
+
+    <div class="board-zone board-zone--opponent-resources board-resources" data-testid="board-zone-opponent-resources">
+      <app-card-zone-stack
+        [label]="t('GAME.PRIZES')"
+        [count]="rivalPrizeCountStaged()"
+        [cards]="rivalPlayer().prizeCards"
+        variant="prize"
+        visualOwner="OPPONENT"
+        [remoteHoveredCardKey]="remoteHoveredCardKey()"
+        (cardHoverChanged)="cardHoverChanged.emit($event)"
+      />
+      <div class="board-resources__stacks">
+        <app-card-zone-stack
+          [label]="t('GAME.DISCARD')"
+          [count]="rivalPlayer().discardCount"
+          [cards]="rivalPlayer().discardCards"
+          variant="discard"
+          visualOwner="OPPONENT"
+          [remoteHoveredCardKey]="remoteHoveredCardKey()"
+          animationAnchorId="opponent-discard"
+          (cardHoverChanged)="cardHoverChanged.emit($event)"
+          (cardInspected)="openDiscardCardModal($event, 'rival')"
+        />
+        <app-card-zone-stack
+          [label]="t('GAME.DECK')"
+          [count]="rivalDeckCountStaged()"
+          [cards]="rivalPlayer().deckCards"
+          variant="deck"
+          visualOwner="OPPONENT"
+          [remoteHoveredCardKey]="remoteHoveredCardKey()"
+          animationAnchorId="opponent-deck"
+          (cardHoverChanged)="cardHoverChanged.emit($event)"
+        />
+      </div>
+    </div>
+
+    <div #currentResourcesZone class="board-zone board-zone--current-resources board-resources" data-testid="board-zone-current-resources">
+      <app-card-zone-stack
+        [label]="t('GAME.PRIZES')"
+        [count]="localPrizeCountStaged()"
+        [cards]="localPlayer().prizeCards"
+        variant="prize"
+        visualOwner="SELF"
+        [remoteHoveredCardKey]="remoteHoveredCardKey()"
+        (cardHoverChanged)="cardHoverChanged.emit($event)"
+      />
+      <div class="board-resources__stacks">
+        <app-card-zone-stack
+          [label]="t('GAME.DISCARD')"
+          [count]="localPlayer().discardCount"
+          [cards]="localPlayer().discardCards"
+          variant="discard"
+          visualOwner="SELF"
+          [remoteHoveredCardKey]="remoteHoveredCardKey()"
+          animationAnchorId="local-discard"
+          (cardHoverChanged)="cardHoverChanged.emit($event)"
+          (cardInspected)="openDiscardCardModal($event, 'local')"
+        />
+        <app-card-zone-stack
+          [label]="t('GAME.INTERACTION.DRAW_LABEL')"
+          [count]="localDeckCountStaged()"
+          [cards]="localPlayer().deckCards"
+          variant="deck"
+          visualOwner="SELF"
+          [remoteHoveredCardKey]="remoteHoveredCardKey()"
+          animationAnchorId="local-deck"
+          [showDrawAction]="true"
+          [drawEnabled]="canDrawCard()"
+          [drawDisabledReason]="drawCardDisabledReason()"
+          (cardHoverChanged)="cardHoverChanged.emit($event)"
+          (drawRequested)="drawCardRequested.emit()"
+        />
+      </div>
+    </div>
+
+    <app-board-animation-layer />
+
+  </div>
+
+  <app-card-detail-modal
+    [card]="selectedCardForModal()"
+    [detail]="selectedCardDetailForModal()"
+    [isOpen]="!!selectedCardForModal()"
+    [isLoadingDetail]="isCardDetailLoading()"
+    [detailError]="cardDetailError()"
+    [context]="selectedCardContext()"
+    [actionPending]="actionPending()"
+    [canDeclareAttack]="canDeclareAttackFromModal()"
+    [canUseAbility]="canUseAbilityFromModal()"
+    [attackAvailabilityByIndex]="attackAvailabilityByIndex()"
+    [abilityAvailabilityByIndex]="abilityAvailabilityByIndex()"
+    [abilitySelectionByIndex]="abilitySelectionByIndex()"
+    [ownPokemonOptions]="ownPokemonOptions()"
+    [opponentPokemonOptions]="opponentPokemonOptions()"
+    (closed)="closeCardModal()"
+    (attackDeclared)="declareAttackFromModal($event)"
+    (abilityDeclared)="declareAbilityFromCardModal($event)"
+  />
+
+  <app-trainer-selection-modal
+    [isOpen]="!!pendingTrainerCard()"
+    [card]="pendingTrainerCard()"
+    [actionPending]="actionPending()"
+    [trainerToolTargetOptions]="trainerToolTargetOptions()"
+    [trainerBenchTargetOptions]="trainerPokemonPickerOptions()"
+    [trainerDiscardPokemonOptions]="maxReviveDiscardPokemonOptions()"
+    [trainerDeckPokemonOptions]="greatBallDeckPokemonOptions()"
+    [greatBallCardsLookedAt]="greatBallCardsLookedAt()"
+    [greatBallPreviewLoading]="greatBallPreviewLoading()"
+    [greatBallPreviewReady]="greatBallPreviewReady()"
+    [greatBallPreviewError]="greatBallPreviewError()"
+    [evosodaEvolutionOptions]="evosodaEvolutionOptions()"
+    [evosodaPreviewLoading]="evosodaPreviewLoading()"
+    [evosodaPreviewError]="evosodaPreviewError()"
+    [professorLetterEnergyOptions]="professorLetterEnergyOptions()"
+    [professorLetterMaxSelectable]="professorLetterMaxSelectable()"
+    [professorLetterPreviewLoading]="professorLetterPreviewLoading()"
+    [professorLetterPreviewError]="professorLetterPreviewError()"
+    (confirmed)="confirmTrainerDrop($event)"
+    (cancelled)="cancelTrainerDrop()"
+  />
+
+  <app-ability-energy-transfer-modal
+    [isOpen]="pendingFairyTransferAbility() !== null"
+    [actionPending]="actionPending()"
+    [localPlayer]="localPlayer()"
+    [abilityOwnerPokemonId]="pendingFairyTransferAbility()?.sourcePokemonId ?? null"
+    [abilityCode]="pendingFairyTransferAbility()?.ability?.id ?? null"
+    (closed)="closeFairyTransferModal()"
+    (confirmed)="useAbilityFromModal($event)"
+  />
+
+  <app-discard-pile-modal
+    [isOpen]="discardModalCards().length > 0 || discardModalLabel() !== null"
+    [label]="discardModalLabel()"
+    [cards]="discardModalCards()"
+    (closed)="closeDiscardModal()"
+  />
+
+  <app-attack-choice-modal
+    [isOpen]="attackChoiceModalVisible()"
+    [pendingChoiceType]="board().resolution?.pendingChoiceType ?? null"
+    [pendingChoicePayload]="board().resolution?.pendingChoicePayload ?? null"
+    [card]="revealedAttackChoiceCard()"
+    [isLoading]="isRevealedAttackChoiceCardLoading()"
+    [error]="revealedAttackChoiceCardError()"
+    [actionPending]="actionPending()"
+    (resolved)="resolveAttackChoiceFromModal($event)"
+  />
+</section>
+
+<div class="portrait-lock" role="status" aria-live="polite" data-testid="portrait-lock">
+  <div class="portrait-lock__panel">
+    <span class="portrait-lock__icon" aria-hidden="true">↻</span>
+    <p class="portrait-lock__title">{{ t('GAME.PORTRAIT_LOCK_TITLE') }}</p>
+    <p class="portrait-lock__message">{{ t('GAME.PORTRAIT_LOCK_MESSAGE') }}</p>
+  </div>
+</div>

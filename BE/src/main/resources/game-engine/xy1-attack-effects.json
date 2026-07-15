@@ -1,0 +1,3030 @@
+{
+  "effects": [
+    {
+      "cardExternalId": "xy1-1",
+      "attackName": "Poison Powder",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "POISONED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-1",
+      "attackName": "Jungle Hammer",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "HEAL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-2",
+      "attackName": "Crisis Vine",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "PARALYZED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        },
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "POISONED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-3",
+      "attackName": "Leaf Munch",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "CONDITIONAL_OPPONENT_ACTIVE_TYPE_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "pokemonType": "Grass"
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-4",
+      "attackOrder": 0,
+      "attackName": "Harden",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "PREVENT_DAMAGE_IF_LEQ",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 60,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-5",
+      "attackName": "Poison Jab",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "POISONED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-5",
+      "attackName": "Flash Needle",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_MULTI_DAMAGE_ALL_HEADS_PROTECTION",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 40,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 3,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-7",
+      "attackOrder": 1,
+      "attackName": "Mach Punch",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "BENCH_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "OPPONENT_BENCH",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-8",
+      "attackName": "Luring Glow",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "OPPONENT_FORCED_BENCH_SWAP",
+          "phase": "AFTER_DAMAGE",
+          "target": "OPPONENT_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-8",
+      "attackName": "Signal Beam",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "CONFUSED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-9",
+      "attackName": "Pheromotion",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SEARCH_POKEMON_FROM_DECK_BY_TYPE_TO_HAND",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "pokemonType": "Grass"
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-9",
+      "attackName": "Quick Attack",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_DAMAGE_MODIFIER",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-10",
+      "attackName": "Leech Seed",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "HEAL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-11",
+      "attackOrder": 0,
+      "attackName": "Torment",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SELECT_OPPONENT_ATTACK",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-12",
+      "attackName": "Pin Missile",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_MULTI_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 4
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-13",
+      "attackName": "Scrunch",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "PREVENT_DAMAGE_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-13",
+      "attackName": "Wood Hammer",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "RECOIL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-14",
+      "attackName": "Touchdown",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "HEAL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-16",
+      "attackName": "Stun Spore",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "PARALYZED",
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-17",
+      "attackName": "Conversion Powder",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "CHOOSE_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "conditionTypes": [
+            "ASLEEP",
+            "POISONED"
+          ]
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-17",
+      "attackName": "Colorful Wind",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISTINCT_BASIC_ENERGY_TYPE_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-18",
+      "attackName": "Lead",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SEARCH_SUPPORTER_FROM_DECK",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-19",
+      "attackName": "Charge Dash",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "OPTIONAL_BONUS_RECOIL_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-20",
+      "attackName": "Flamethrower",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-21",
+      "attackOrder": 0,
+      "attackName": "Magma Mantle",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "YES_NO",
+          "phase": "BEFORE_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 50,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "energyType": "Fire"
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-22",
+      "attackName": "Fireworks",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-23",
+      "attackName": "Yawn",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "ASLEEP",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-23",
+      "attackOrder": 1,
+      "attackName": "Flamethrower",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "energyType": "Fire"
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-25",
+      "attackOrder": 0,
+      "attackName": "Clairvoyant Eye",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "REORDER_TOP_DECK",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-25",
+      "attackOrder": 1,
+      "attackName": "Fire Tail Slap",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "energyType": "Fire"
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-26",
+      "attackName": "Blaze Ball",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DYNAMIC_ENERGY_COUNT_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "energyType": "Fire"
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-27",
+      "attackOrder": 0,
+      "attackName": "Flame Charge",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SELECT_DECK_CARD_AND_ATTACH_TO_SELF",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "energyType": "Fire"
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-28",
+      "attackOrder": 0,
+      "attackName": "Devastating Wind",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SHUFFLE_OPPONENT_HAND_INTO_DECK_DRAW",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 4,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-28",
+      "attackOrder": 1,
+      "attackName": "Flare Blitz",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 999,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "energyType": "Fire"
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-29",
+      "attackName": "Rapid Spin",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SELF_SWITCH_WITH_BENCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "OWN_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        },
+        {
+          "type": "OPPONENT_FORCED_BENCH_SWAP",
+          "phase": "AFTER_DAMAGE",
+          "target": "OPPONENT_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-29",
+      "attackName": "Splash Bomb",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "RECOIL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "TAILS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-30",
+      "attackName": "Hydro Bombardment",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "RANDOM_BENCH_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "OPPONENT_BENCH",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 2,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-32",
+      "attackName": "Clamp Crush",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "PARALYZED",
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": "clamp-crush"
+        },
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": "clamp-crush"
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-32",
+      "attackName": "Spike Cannon",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_MULTI_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 5
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-33",
+      "attackName": "Reckless Charge",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "RECOIL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-34",
+      "attackName": "Recover",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        },
+        {
+          "type": "HEAL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 999,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-35",
+      "attackName": "Seafaring",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "ATTACH_ENERGY_FROM_DISCARD_TO_BENCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 3,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": "Water"
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-35",
+      "attackName": "Hydro Pump",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DYNAMIC_ENERGY_COUNT_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "energyType": "Water"
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-36",
+      "attackName": "Refresh",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "HEAL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        },
+        {
+          "type": "CURE_SPECIAL_CONDITIONS",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-36",
+      "attackName": "Spiny Rush",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_FLIP_UNTIL_TAILS_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-37",
+      "attackName": "Water Splash",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_DAMAGE_MODIFIER",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-38",
+      "attackOrder": 0,
+      "attackName": "Recycle",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SELECT_CARD_FROM_DISCARD",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-39",
+      "attackName": "Bounce",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SELF_SWITCH_WITH_BENCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "OWN_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-40",
+      "attackName": "Lick",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "PARALYZED",
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-41",
+      "attackName": "Mist Slash",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "IGNORE_DEFENDER_EFFECTS",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-42",
+      "attackName": "Nuzzle",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "PARALYZED",
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-42",
+      "attackName": "Quick Attack",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_DAMAGE_MODIFIER",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-43",
+      "attackOrder": 0,
+      "attackName": "Circle Circuit",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DYNAMIC_OWN_BENCH_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-43",
+      "attackOrder": 1,
+      "attackName": "Thunderbolt",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 999,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-45",
+      "attackName": "Eerie Impulse",
+      "allowsBenchTarget": true,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-46",
+      "attackName": "Energy Glide",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SEARCH_ENERGY_FROM_DECK_ATTACH_AND_SWITCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "OWN_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "energyType": "Lightning"
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-46",
+      "attackName": "Electron Crush",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "OPTIONAL_DISCARD_ENERGY_BONUS_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-48",
+      "attackOrder": 0,
+      "attackName": "Gastro Acid",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISABLE_ABILITIES",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-48",
+      "attackName": "Poison Jab",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "POISONED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-50",
+      "attackOrder": 0,
+      "attackName": "Tricky Steps",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "MOVE_OPPONENT_ACTIVE_ENERGY_TO_BENCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-50",
+      "attackName": "Psybeam",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "CONFUSED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-51",
+      "attackName": "Poison Sting",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "POISONED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-52",
+      "attackName": "Continuous Tumble",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_FLIP_UNTIL_TAILS_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-53",
+      "attackName": "Random Peck",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_MULTI_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 2
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-53",
+      "attackName": "Poison Ring",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "POISONED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        },
+        {
+          "type": "PREVENT_OPPONENT_RETREAT_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-54",
+      "attackName": "Astonish",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "RANDOM_OPPONENT_HAND_CARD_REVEAL_SHUFFLE",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-56",
+      "attackName": "Confuse Ray",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "CONFUSED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-57",
+      "attackOrder": 0,
+      "attackName": "Eerie Voice",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DAMAGE_COUNTERS",
+          "phase": "AFTER_DAMAGE",
+          "target": "ALL_OPPONENT",
+          "amount": 2,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-57",
+      "attackOrder": 1,
+      "attackName": "Spirit Scream",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DAMAGE_COUNTERS_UNTIL_REMAINING_HP",
+          "phase": "AFTER_DAMAGE",
+          "target": "BOTH_ACTIVE",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-58",
+      "attackName": "Mine",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "LOOK_OPPONENT_DECK_TOP_CARD_OPTIONAL_SHUFFLE",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-59",
+      "attackOrder": 0,
+      "attackName": "Earthquake",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "ALL_BENCH_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "OWN_BENCH",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-59",
+      "attackOrder": 1,
+      "attackName": "Rock Tumble",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "IGNORE_RESISTANCE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-60",
+      "attackName": "Dig Out",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_TOP_DECK_CONDITIONAL_ENERGY_ATTACH",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-61",
+      "attackName": "Mad Mountain",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_ALL_HEADS_OPPONENT_DECK_DISCARD",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 2,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-62",
+      "attackName": "Rock Black",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DYNAMIC_COIN_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 50,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": "ATTACKER_ATTACHED_ENERGY_TYPE",
+          "energyType": "Fighting"
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-62",
+      "attackName": "Rock Wrecker",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "IGNORE_WEAKNESS_RESISTANCE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        },
+        {
+          "type": "PREVENT_SELF_ATTACK_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-63",
+      "attackName": "Double Draw",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DRAW_CARDS",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 2,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-63",
+      "attackName": "Moonblast",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "REDUCE_DEFENDING_POKEMON_DAMAGE_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-64",
+      "attackName": "Cosmic Spin",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "CONDITIONAL_OWN_BENCH_CARD_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "cardName": "Lunatone"
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-65",
+      "attackName": "Pummel",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_DAMAGE_MODIFIER",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-66",
+      "attackName": "Pummel",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_DAMAGE_MODIFIER",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-66",
+      "attackOrder": 1,
+      "attackName": "Hammer Arm",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_TOP_DECK",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-67",
+      "attackName": "Wake-Up Slap",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "CONDITIONAL_DEFENDER_SPECIAL_CONDITION_DAMAGE_AND_CURE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 60,
+          "conditionType": "ASLEEP",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-67",
+      "attackName": "Dynamic Punch",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_DAMAGE_MODIFIER",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 40,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": "dynamic-punch"
+        },
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "CONFUSED",
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": "dynamic-punch"
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-68",
+      "attackName": "Filch",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DRAW_CARDS",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-68",
+      "attackName": "Rip Claw",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-70",
+      "attackName": "Crunch",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-71",
+      "attackName": "Bother",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "PREVENT_OPPONENT_SUPPORTER_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-71",
+      "attackName": "Knock Back",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "OPPONENT_FORCED_BENCH_SWAP",
+          "phase": "AFTER_DAMAGE",
+          "target": "OPPONENT_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-72",
+      "attackName": "Nasty Plot",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SEARCH_ANY_CARD_FROM_DECK",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-73",
+      "attackName": "Corner",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "PREVENT_OPPONENT_RETREAT_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-73",
+      "attackName": "Night Claw",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 2,
+          "conditionType": null,
+          "coinRequirement": "TAILS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-74",
+      "attackName": "Confusion Wave",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": "CONFUSED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        },
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "CONFUSED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-75",
+      "attackName": "Puncture",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "IGNORE_RESISTANCE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-76",
+      "attackName": "Mental Trash",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "OPPONENT_COIN_TAILS_HAND_DISCARD",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 4,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-76",
+      "attackName": "Distortion Beam",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "ASLEEP",
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": "distortion-beam"
+        },
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "CONFUSED",
+          "coinRequirement": "TAILS",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": "distortion-beam"
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-77",
+      "attackName": "Mental Panic",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "MENTAL_PANIC",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-77",
+      "attackOrder": 1,
+      "attackName": "Puncture",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "IGNORE_RESISTANCE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-78",
+      "attackName": "Oblivion Wing",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "ATTACH_ENERGY_FROM_DISCARD_TO_BENCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": "Darkness"
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-78",
+      "attackName": "Darkness Blade",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "PREVENT_SELF_ATTACK_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "TAILS",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-79",
+      "attackName": "Evil Ball",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DYNAMIC_DUAL_ENERGY_COUNT_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-79",
+      "attackName": "Y Cyclone",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "MOVE_ENERGY_TO_BENCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "OWN_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-80",
+      "attackName": "Joust",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_OPPONENT_TOOLS_BEFORE_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-80",
+      "attackName": "Tailspin Piledriver",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "CONDITIONAL_DEFENDER_ALREADY_DAMAGED",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 40,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-81",
+      "attackName": "Cut Down",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-82",
+      "attackName": "Metal Sound",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "CONFUSED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-82",
+      "attackOrder": 1,
+      "attackName": "Metal Wallop",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "NEXT_ATTACK_DAMAGE_BONUS",
+          "phase": "BEFORE_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 40,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        },
+        {
+          "type": "NEXT_ATTACK_DAMAGE_BONUS",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 40,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-84",
+      "attackName": "Dual Blades",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_MULTI_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 2
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-85",
+      "attackName": "Buster Swing",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "IGNORE_RESISTANCE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-86",
+      "attackName": "King's Shield",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "PREVENT_DAMAGE_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        },
+        {
+          "type": "PREVENT_SELF_ATTACK_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-87",
+      "attackName": "Heartfelt Song",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": "Darkness"
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-88",
+      "attackName": "Body Slam",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "PARALYZED",
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-89",
+      "attackOrder": 0,
+      "attackName": "Gather Energy",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SELECT_DECK_ENERGY_AND_ATTACH_TO_OWN_POKEMON",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-89",
+      "attackOrder": 1,
+      "attackName": "Hocus Pinkus",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "CANNOT_ATTACK_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-90",
+      "attackName": "Double-Edge",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "RECOIL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-91",
+      "attackName": "Massage",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "HEAL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "OWN_BENCH",
+          "amount": 60,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-91",
+      "attackName": "Slap Down",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_MULTI_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 2
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-92",
+      "attackName": "Sweet Scent",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "HEAL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "OWN_ANY",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-95",
+      "attackName": "Draining Kiss",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "HEAL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-96",
+      "attackName": "Geomancy",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SEARCH_ENERGY_FROM_DECK_TO_BENCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 2,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "energyType": "Fairy"
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-96",
+      "attackName": "Rainbow Spear",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-97",
+      "attackName": "Break Through",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "BENCH_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "OPPONENT_BENCH",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-97",
+      "attackName": "X Blast",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "PREVENT_SELF_ATTACK_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-98",
+      "attackName": "Double Hit",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_MULTI_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 2
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-99",
+      "attackName": "Rage",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SELF_DAMAGE_COUNTERS_BONUS",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-99",
+      "attackName": "Endeavor",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_MULTI_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 2
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-100",
+      "attackName": "Take Down",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "RECOIL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-100",
+      "attackName": "Seething Anger",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DYNAMIC_COIN_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": "ATTACKER_DAMAGE_COUNTERS",
+          "energyType": null
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-101",
+      "attackName": "Glare",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "PARALYZED",
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-101",
+      "attackName": "Second Bite",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "CONDITIONAL_DEFENDER_DAMAGE_BY_COUNTERS",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-102",
+      "attackName": "Aerial Ace",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_DAMAGE_MODIFIER",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-104",
+      "attackName": "Heal Bell",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "HEAL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ALL_OWN",
+          "amount": 10,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-105",
+      "attackOrder": 0,
+      "attackName": "Energy Salon",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SELECT_DISTINCT_BASIC_ENERGIES_TO_HAND",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-105",
+      "attackName": "Fake Out",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "PARALYZED",
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-106",
+      "attackName": "Hyper Fang",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_DAMAGE_MODIFIER",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": true,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-107",
+      "attackName": "Double Headbutt",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_MULTI_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 2
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-107",
+      "attackName": "Hypno Headbutt",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "OPTIONAL_BONUS_DAMAGE_SELF_CONDITION",
+          "phase": "BEFORE_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 30,
+          "conditionType": "ASLEEP",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-109",
+      "attackName": "Jump On",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "COIN_DAMAGE_MODIFIER",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-110",
+      "attackName": "Bite Off",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "CONDITIONAL_DEFENDER_CATEGORY_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 60,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "cardCategory": "POKEMON_EX"
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-110",
+      "attackName": "Wild Barking",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "BENCH_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "OPPONENT_BENCH",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-111",
+      "attackName": "Dig",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "PREVENT_DAMAGE_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-112",
+      "attackName": "Pickup",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SELECT_DISCARD_ITEMS_TO_HAND",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 2,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-112",
+      "attackName": "Dig",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "PREVENT_DAMAGE_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-113",
+      "attackName": "Me First",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DRAW_CARDS",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ]
+    },
+    {
+      "cardExternalId": "xy1-114",
+      "attackName": "Energy Cutoff",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_ENERGY",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 1,
+          "conditionType": null,
+          "coinRequirement": "HEADS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-141",
+      "attackName": "Poison Powder",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "APPLY_SPECIAL_CONDITION",
+          "phase": "AFTER_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": "POISONED",
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-141",
+      "attackName": "Jungle Hammer",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "HEAL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-142",
+      "attackName": "Rapid Spin",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SELF_SWITCH_WITH_BENCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "OWN_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null,
+          "dynamicCoinCountSource": null,
+          "energyType": null
+        },
+        {
+          "type": "OPPONENT_FORCED_BENCH_SWAP",
+          "phase": "AFTER_DAMAGE",
+          "target": "OPPONENT_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "coinGroupKey": null
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-142",
+      "attackName": "Splash Bomb",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "RECOIL_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "TAILS",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-143",
+      "attackName": "Energy Glide",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "SEARCH_ENERGY_FROM_DECK_ATTACH_AND_SWITCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "OWN_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0,
+          "energyType": "Lightning"
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-143",
+      "attackName": "Electron Crush",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "OPTIONAL_DISCARD_ENERGY_BONUS_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-144",
+      "attackName": "Evil Ball",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DYNAMIC_DUAL_ENERGY_COUNT_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 20,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-144",
+      "attackName": "Y Cyclone",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "MOVE_ENERGY_TO_BENCH",
+          "phase": "AFTER_DAMAGE",
+          "target": "OWN_BENCH",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-145",
+      "attackName": "Joust",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "DISCARD_OPPONENT_TOOLS_BEFORE_DAMAGE",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-145",
+      "attackName": "Tailspin Piledriver",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "CONDITIONAL_DEFENDER_ALREADY_DAMAGED",
+          "phase": "BEFORE_DAMAGE",
+          "target": "DEFENDER",
+          "amount": 40,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    },
+    {
+      "cardExternalId": "xy1-146",
+      "attackName": "Break Through",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "BENCH_DAMAGE",
+          "phase": "AFTER_DAMAGE",
+          "target": "OPPONENT_BENCH",
+          "amount": 30,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 0
+    },
+    {
+      "cardExternalId": "xy1-146",
+      "attackName": "X Blast",
+      "allowsBenchTarget": false,
+      "operations": [
+        {
+          "type": "PREVENT_SELF_ATTACK_NEXT_TURN",
+          "phase": "AFTER_DAMAGE",
+          "target": "ATTACKER",
+          "amount": 0,
+          "conditionType": null,
+          "coinRequirement": "NONE",
+          "cancelOnTails": false,
+          "coinCount": 0
+        }
+      ],
+      "attackOrder": 1
+    }
+  ]
+}

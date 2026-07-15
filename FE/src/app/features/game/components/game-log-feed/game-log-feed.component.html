@@ -1,0 +1,15 @@
+<p class="game-log-feed__title">{{ historySummary() }}</p>
+@if (latestActionLabel()) {
+  <p class="game-log-feed__latest">{{ latestActionLabel() }}</p>
+}
+
+<div class="game-log-feed__events" data-testid="game-event-feed">
+  @for (event of visibleEventFeed(); track event.id) {
+    <article class="game-log-feed__event" [attr.data-testid]="'event-feed-item-' + event.id">
+      <i aria-hidden="true"></i>
+      <span>{{ event.label }}</span>
+    </article>
+  } @empty {
+    <p class="game-log-feed__empty">{{ emptyLabel() }}</p>
+  }
+</div>

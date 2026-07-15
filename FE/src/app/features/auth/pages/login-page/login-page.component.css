@@ -1,0 +1,10 @@
+.pokemon-success-text,
+.pokemon-loading-text {
+  color: #ffcb00;
+  font-family: var(--app-pixel-font);
+  -webkit-text-stroke: 2px #2f6bb4;
+  text-shadow:
+    2px 2px 0 #1b3f73,
+    4px 4px 0 rgba(0, 0, 0, 0.18);
+  text-stroke: 2px #2f6bb4;
+}

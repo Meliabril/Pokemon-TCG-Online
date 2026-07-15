@@ -1,0 +1,59 @@
+@if (open()) {
+  <div class="mulligan-modal" data-testid="mulligan-modal" role="dialog" aria-modal="true">
+    <div class="mulligan-modal__backdrop" aria-hidden="true"></div>
+
+    <section class="mulligan-modal__panel" [attr.aria-label]="t('GAME.MULLIGAN.TITLE')">
+      @if (hasRivalReveal()) {
+        <div class="mulligan-modal__hand">
+          <header class="mulligan-modal__hand-header">
+            <span class="mulligan-modal__hand-title">{{ t('GAME.OPPONENT_HAND') }}</span>
+            <span class="mulligan-modal__counter" data-testid="mulligan-modal-counter-rival">
+              {{ t('GAME.MULLIGAN.COUNTER_RIVAL', { count: opponentMulliganCount() }) }}
+            </span>
+          </header>
+          <div class="mulligan-modal__cards">
+            @for (card of rivalCards(); track card.cardId + '-' + $index) {
+              <div class="mulligan-modal__card" [title]="card.name ?? ''">
+                @if (card.imageSmallUrl || card.imageLargeUrl) {
+                  <img
+                    class="mulligan-modal__card-img"
+                    [src]="card.imageSmallUrl ?? card.imageLargeUrl"
+                    [alt]="card.name ?? ''"
+                  />
+                } @else {
+                  <span class="mulligan-modal__card-label">{{ card.name }}</span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      @if (hasOwnReveal()) {
+        <div class="mulligan-modal__hand">
+          <header class="mulligan-modal__hand-header">
+            <span class="mulligan-modal__hand-title">{{ t('GAME.YOUR_HAND') }}</span>
+            <span class="mulligan-modal__counter" data-testid="mulligan-modal-counter-own">
+              {{ t('GAME.MULLIGAN.COUNTER_OWN', { count: ownMulliganCount() }) }}
+            </span>
+          </header>
+          <div class="mulligan-modal__cards">
+            @for (card of ownCards(); track card.cardId + '-' + $index) {
+              <div class="mulligan-modal__card" [title]="card.name ?? ''">
+                @if (card.imageSmallUrl || card.imageLargeUrl) {
+                  <img
+                    class="mulligan-modal__card-img"
+                    [src]="card.imageSmallUrl ?? card.imageLargeUrl"
+                    [alt]="card.name ?? ''"
+                  />
+                } @else {
+                  <span class="mulligan-modal__card-label">{{ card.name }}</span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </section>
+  </div>
+}

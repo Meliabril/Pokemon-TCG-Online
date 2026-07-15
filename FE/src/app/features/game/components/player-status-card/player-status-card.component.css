@@ -1,0 +1,222 @@
+:host {
+  display: block;
+}
+
+.player-card {
+  align-items: center;
+  background: linear-gradient(90deg, rgba(59, 9, 5, 0.86), rgba(86, 18, 9, 0.52));
+  border: 1px solid rgba(250, 204, 21, 0.52);
+  border-radius: 0.75rem;
+  display: flex;
+  gap: 0.55rem;
+  min-width: 18rem;
+  padding: 0.35rem 0.5rem;
+}
+
+.player-card--opponent {
+  flex-direction: row-reverse;
+}
+
+.player-card__avatar {
+  border: 2px solid rgba(250, 204, 21, 0.62);
+  border-radius: 999px;
+  height: 2.45rem;
+  object-fit: cover;
+  width: 2.45rem;
+}
+
+.player-card__copy {
+  display: grid;
+  min-width: 0;
+}
+
+.player-card--opponent .player-card__copy {
+  text-align: right;
+}
+
+.player-card__copy span {
+  color: #fde68a;
+  font-family: var(--app-pixel-font);
+  font-size: 0.46rem;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.player-card__copy strong {
+  color: #fff7d6;
+  font-family: var(--app-pixel-font);
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.player-card__status {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: flex-end;
+  margin-left: auto;
+  min-width: 0;
+}
+
+.player-card--opponent .player-card__status {
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.player-card__badge {
+  border: 1px solid rgba(250, 204, 21, 0.38);
+  border-radius: 999px;
+  color: #fff7d6;
+  font-family: var(--app-pixel-font);
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  padding: 0.34rem 0.62rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.player-card__badge--turn {
+  background: rgba(139, 7, 12, 0.78);
+  color: #fde68a;
+}
+
+.player-card__badge--resource {
+  background: rgba(23, 59, 116, 0.52);
+  border-color: rgba(147, 197, 253, 0.4);
+  color: #dbeafe;
+}
+
+.player-card__badge--connected {
+  background: rgba(34, 197, 94, 0.18);
+  color: #bbf7d0;
+}
+
+.player-card__badge--disconnected {
+  background: rgba(220, 38, 38, 0.18);
+  color: #fecaca;
+}
+
+.chat-button {
+  align-items: center;
+  background: rgba(59, 9, 5, 0.82);
+  border: 1px solid rgba(250, 204, 21, 0.45);
+  border-radius: 999px;
+  color: #fff7d6;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--app-pixel-font);
+  height: 2rem;
+  justify-content: center;
+  min-width: 3.8rem;
+  padding: 0 0.72rem;
+  transition: background-color 150ms ease, border-color 150ms ease;
+  white-space: nowrap;
+}
+
+.chat-button span {
+  font-size: 0.54rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.chat-button:hover,
+.chat-button:focus-visible {
+  background: rgba(139, 7, 12, 0.92);
+  border-color: rgba(253, 230, 138, 0.82);
+  outline: none;
+}
+
+@media (max-width: 1100px) {
+  .player-card {
+    min-width: 15rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 760px) and (hover: hover) and (pointer: fine) {
+  .player-card {
+    border-radius: 0.55rem;
+    gap: 0.32rem;
+    min-width: 12.5rem;
+    padding: 0.18rem 0.3rem;
+  }
+
+  .player-card__avatar {
+    border-width: 1px;
+    height: 1.65rem;
+    width: 1.65rem;
+  }
+
+  .player-card__copy span,
+  .player-card__badge {
+    font-size: 0.34rem;
+  }
+
+  .player-card__copy strong {
+    font-size: 0.62rem;
+  }
+
+  .player-card__status {
+    gap: 0.18rem;
+  }
+
+  .player-card__badge {
+    padding: 0.18rem 0.3rem;
+  }
+
+  .chat-button {
+    height: 1.45rem;
+    min-width: 2.95rem;
+    padding: 0 0.48rem;
+  }
+
+  .chat-button span {
+    font-size: 0.36rem;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 950px) and (max-height: 430px) {
+  .player-card {
+    gap: 0.25rem;
+    min-width: clamp(10.5rem, 18vw, 12rem);
+    padding: 0.16rem 0.24rem;
+  }
+
+  .player-card__avatar {
+    border-width: 1px;
+    height: 1.35rem;
+    width: 1.35rem;
+  }
+
+  .player-card__copy span,
+  .player-card__badge {
+    font-size: 0.28rem;
+  }
+
+  .player-card__copy strong {
+    font-size: 0.48rem;
+  }
+
+  .player-card__status {
+    gap: 0.15rem;
+  }
+
+  .player-card__badge {
+    padding: 0.16rem 0.24rem;
+  }
+
+  .chat-button {
+    height: 1.25rem;
+    min-width: 2.65rem;
+    padding: 0 0.38rem;
+  }
+
+  .chat-button span {
+    font-size: 0.3rem;
+  }
+}

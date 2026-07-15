@@ -1,0 +1,85 @@
+<div class="home-actions">
+  <app-card
+       data-tour="active-deck-status"
+       variant="compact"
+       [tone]="tone()"
+       class="home-active-deck"
+       [class.home-active-deck--ready]="!hasNoDecks()"
+       [class.home-active-deck--empty]="hasNoDecks()">
+      <div class="flex items-center justify-between gap-3">
+        <p [class]="deckLabelClasses()">{{ t('HOME.ACTIVE_DECK') }}</p>
+        <span [class]="deckStatusClasses()">
+          <span class="h-2.5 w-2.5 rounded-full shadow-[0_0_8px_rgba(0,0,0,0.8)]" [class.bg-[#22c55e]]="activeDeck()?.valid" [class.bg-[#dc2626]]="!activeDeck()?.valid" [class.shadow-[#22c55e]]="activeDeck()?.valid" [class.shadow-[#dc2626]]="!activeDeck()?.valid"></span>
+          {{ activeDeck()?.valid ? t('COMMON.VALID') : t('COMMON.INVALID') }}
+        </span>
+      </div>
+
+      @if (activeDeck(); as deck) {
+        <div class="mt-4 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div class="space-y-1.5 w-full">
+            <p [class]="deckNameClasses()">
+              {{ deck.name }}
+            </p>
+          </div>
+          <button
+            type="button"
+            data-tour="choose-deck"
+            [class]="deckButtonClasses()"
+            [disabled]="isDeckChangeLocked()"
+            [attr.title]="isDeckChangeLocked() ? t('HOME.ACTIVE_GAME_DECK_LOCK') : null"
+            (click)="openDeckSelection.emit()"
+          >
+            {{ t('COMMON.EDIT') }}
+            <svg class="h-3 w-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        @if (isDeckChangeLocked()) {
+          <p [class]="deckLockMessageClasses()">{{ t('HOME.ACTIVE_GAME_DECK_LOCK_DETAIL') }}</p>
+        }
+      } @else {
+        <div class="mt-4 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p [class]="noDeckTextClasses()">{{ t('HOME.NO_DECKS') }}</p>
+          <button
+            type="button"
+            data-tour="choose-deck"
+            [class]="selectDeckButtonClasses()"
+            [disabled]="isDeckChangeLocked()"
+            [attr.title]="isDeckChangeLocked() ? t('HOME.ACTIVE_GAME_DECK_LOCK') : null"
+            (click)="openDeckSelection.emit()"
+          >
+            {{ t('HOME.SELECT_DECK') }}
+          </button>
+        </div>
+      }
+    </app-card>
+
+  <div class="home-action-buttons">
+    <button
+      type="button"
+      data-tour="search-match"
+      [class]="primaryButtonClasses()"
+      [disabled]="isPrimaryDisabled()"
+      (click)="primaryClick.emit()"
+    >
+      <div [class]="primaryButtonInnerClasses()">
+        <span [class]="primaryIconClasses()">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+        </span>
+        <span [class]="primaryLabelClasses()">{{ primaryLabel() }}</span>
+      </div>
+    </button>
+
+    <button
+      type="button"
+      data-tour="custom-match"
+      [class]="secondaryButtonClasses()"
+      [disabled]="isPrimaryDisabled()"
+      (click)="openConfig.emit()"
+    >
+      <span [class]="secondaryIconClasses()">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      </span>
+      <span [class]="secondaryLabelClasses()">{{ t('HOME.CUSTOM_MATCH') }}</span>
+    </button>
+  </div>
+</div>

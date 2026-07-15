@@ -1,0 +1,97 @@
+<app-game-board
+  [board]="board()"
+  [actionPending]="actionPending()"
+  [interaction]="interaction()"
+  [statusLabel]="board().statusLabel"
+  [turnNumber]="board().turnNumber"
+  [phaseLabel]="board().phaseLabel"
+  [activePlayerLabel]="board().activePlayerLabel"
+  [stateVersion]="board().stateVersion"
+  [eventFeed]="board().eventFeed"
+  [historySummary]="board().historySummary"
+  [latestActionLabel]="board().latestActionLabel"
+  [availableActionLabels]="board().availableActionLabels"
+  [statusSummary]="board().statusSummary"
+  [remoteHoveredCardKey]="remoteHoveredCardKey()"
+  [localHandHidden]="localHandHidden()"
+  [opponentHandHidden]="opponentHandHidden()"
+  [chatMessages]="chatMessages()"
+  [chatCurrentUserId]="chatCurrentUserId()"
+  [chatConnected]="chatConnected()"
+  (leaveTable)="leaveTable.emit()"
+  (endTurnRequested)="endTurnRequested.emit()"
+  (setupSubmitted)="setupSubmitted.emit()"
+  (setupCancelled)="setupCancelled.emit()"
+  (mulliganNoticeAcknowledgedRequested)="mulliganNoticeAcknowledgedRequested.emit()"
+  (playBasicPokemon)="playBasicPokemon.emit($event)"
+  (setupActiveCardDropped)="setupActiveCardDropped.emit($event)"
+  (setupBenchCardDropped)="setupBenchCardDropped.emit($event)"
+  (setupBenchCardReturned)="setupBenchCardReturned.emit($event)"
+  (benchPokemonPromoted)="benchPokemonPromoted.emit($event)"
+  (attackChoiceResolved)="attackChoiceResolved.emit($event)"
+  (activePokemonRetreated)="activePokemonRetreated.emit($event)"
+  (drawCardRequested)="drawCardRequested.emit()"
+  (energyDropped)="energyDropped.emit($event)"
+  (evolutionDropped)="evolutionDropped.emit($event)"
+  (handCardSelected)="handCardSelected.emit($event)"
+  (pokemonSelected)="pokemonSelected.emit($event)"
+  (attackDeclared)="attackDeclared.emit($event)"
+  (abilityUsed)="abilityUsed.emit($event)"
+  (trainerPlayed)="trainerPlayed.emit($event)"
+  (chatMessageSubmitted)="chatMessageSubmitted.emit($event)"
+  (cardHoverChanged)="cardHoverChanged.emit($event)"
+/>
+
+@if (blockingOverlay(); as overlay) {
+  @if (overlay.variant === 'result') {
+    <div class="result-screen" data-testid="game-blocking-overlay" [attr.data-tone]="overlay.tone">
+      <div class="result-screen__backdrop"></div>
+      <div class="result-screen__panel" [attr.data-tone]="overlay.tone">
+        <img class="result-screen__pokeball" src="/assets/icons/Pokeball.png" alt="" aria-hidden="true" />
+        <p class="result-screen__eyebrow">{{ overlay.eyebrow }}</p>
+        <h2 class="result-screen__title" data-testid="game-blocking-overlay-title">{{ overlay.title }}</h2>
+        <p class="result-screen__message" data-testid="game-blocking-overlay-message">{{ overlay.message }}</p>
+
+        @if (overlay.showLeaveAction) {
+          <button
+            type="button"
+            class="result-screen__button"
+            data-testid="game-blocking-overlay-leave"
+            (click)="leaveTable.emit()"
+          >
+            {{ overlay.leaveActionLabel }}
+          </button>
+        }
+      </div>
+    </div>
+  } @else {
+    <div
+      class="pointer-events-auto fixed inset-0 z-[80] bg-[#120705]/58 backdrop-blur-[2px]"
+      data-testid="game-blocking-overlay"
+      [attr.data-tone]="overlay.tone"
+    >
+      <div class="absolute inset-x-4 top-24 mx-auto grid max-w-md gap-3 rounded-[24px] border p-5 text-center shadow-[0_20px_45px_rgba(0,0,0,0.48)]"
+        [class.border-[#facc15]/30]="overlay.tone === 'amber'"
+        [class.bg-[#451a03]/92]="overlay.tone === 'amber'"
+        [class.border-[#dc2626]/35]="overlay.tone === 'red'"
+        [class.bg-[#450a0a]/92]="overlay.tone === 'red'"
+        [class.border-[#16a34a]/35]="overlay.tone === 'green'"
+        [class.bg-[#052e16]/92]="overlay.tone === 'green'"
+      >
+        <p class="font-pixel text-[0.72rem] uppercase tracking-[0.18em] text-[#fde68a]" data-testid="game-blocking-overlay-title">{{ overlay.title }}</p>
+        <p class="text-sm leading-6 text-[#fff7d6]" data-testid="game-blocking-overlay-message">{{ overlay.message }}</p>
+
+        @if (overlay.showLeaveAction) {
+          <button
+            type="button"
+            class="font-pixel mx-auto min-h-11 rounded-2xl border border-[#facc15]/30 bg-[#8b070c] px-5 py-2 text-[0.72rem] tracking-[0.12em] text-[#fff7d6]"
+            data-testid="game-blocking-overlay-leave"
+            (click)="leaveTable.emit()"
+          >
+            {{ overlay.leaveActionLabel }}
+          </button>
+        }
+      </div>
+    </div>
+  }
+}

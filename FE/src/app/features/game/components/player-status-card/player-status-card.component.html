@@ -1,0 +1,27 @@
+<section class="player-card" [class.player-card--opponent]="side() === 'opponent'" [attr.aria-label]="fieldLabel()" [attr.data-testid]="'player-status-' + player().id">
+  <img class="player-card__avatar" [src]="player().avatarUrl" [alt]="player().label" />
+
+  <div class="player-card__copy">
+    <span>{{ fieldLabel() }}</span>
+    <strong>{{ player().label }}</strong>
+  </div>
+
+  <div class="player-card__status" [attr.aria-label]="t('GAME.PLAYER_STATUS', { player: player().label })" [attr.data-testid]="'player-status-badges-' + player().id">
+    @if (showTurnBadge() && player().isActiveTurn) {
+      <span class="player-card__badge player-card__badge--turn" [attr.data-testid]="'player-turn-badge-' + player().id">{{ t('GAME.TURN') }}</span>
+    }
+    <span
+      class="player-card__badge"
+      [class.player-card__badge--connected]="player().connected"
+      [class.player-card__badge--disconnected]="!player().connected"
+    >
+      {{ player().connected ? t('GAME.CONNECTED') : t('GAME.DISCONNECTED') }}
+    </span>
+  </div>
+
+  @if (showChat()) {
+    <button class="chat-button" type="button" [attr.aria-label]="t('GAME.OPEN_OPPONENT_CHAT')" (click)="openChat.emit()">
+      <span>{{ t('GAME.CHAT.TAB') }}</span>
+    </button>
+  }
+</section>

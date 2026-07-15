@@ -1,0 +1,38 @@
+:host,
+app-card[data-tour='how-to-play'] {
+  display: block;
+}
+
+app-card[data-tour='how-to-play'] {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.how-to-play-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 1024px) and (max-height: 820px) and (hover: hover) and (pointer: fine) {
+  app-card[data-tour='how-to-play'] {
+    gap: 0.75rem;
+  }
+
+  .how-to-play-grid {
+    gap: 0.6rem;
+  }
+}
+
+@media (max-width: 932px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+  app-card[data-tour='how-to-play'] {
+    gap: 0.55rem;
+    min-height: 0;
+  }
+
+  .how-to-play-grid {
+    gap: 0.5rem;
+    min-height: 0;
+    overflow-y: auto;
+  }
+}

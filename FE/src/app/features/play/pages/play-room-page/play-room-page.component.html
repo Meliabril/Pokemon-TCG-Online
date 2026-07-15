@@ -1,0 +1,226 @@
+<section class="play-room-shell mx-auto flex h-[calc(100dvh-5.5rem-2.5rem)] w-full items-center justify-center overflow-hidden px-3 py-2 sm:h-[calc(100dvh-5.5rem-3rem)] sm:px-4 sm:py-2">
+  <article
+    class="play-room-card relative flex h-full w-full max-w-[88rem] flex-col justify-center overflow-hidden rounded-[28px] border-2 p-4 text-center sm:p-5"
+    [class.border-[#8a4b20]/80]="!isLightTheme()"
+    [class.bg-[#2a0805]/90]="!isLightTheme()"
+    [class.shadow-[12px_12px_0_rgba(20,4,3,0.72)]]="!isLightTheme()"
+    [class.border-[#d6903f]/85]="isLightTheme()"
+    [class.bg-[#fff8e3]/85]="isLightTheme()"
+    [class.shadow-[10px_10px_0_rgba(96,50,18,0.22)]]="isLightTheme()"
+  >
+    @if (!isLightTheme()) {
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(250,204,21,0.08),transparent)]"></div>
+      <div class="pointer-events-none absolute left-1/2 top-10 h-72 w-72 -translate-x-1/2 rounded-full border-[18px] border-[#fff7d6]/8"></div>
+    }
+
+    <div class="play-room-content relative mx-auto flex w-full max-w-4xl flex-col items-center gap-4">
+      <span
+        class="rounded-full border px-4 py-1 font-pixel text-[0.64rem] tracking-[0.2em]"
+        [class.border-[#facc15]/30]="!isLightTheme()"
+        [class.bg-[#facc15]/10]="!isLightTheme()"
+        [class.text-[#fde68a]]="!isLightTheme()"
+        [class.border-[#c8832c]/40]="isLightTheme()"
+        [class.bg-[#fde68a]/20]="isLightTheme()"
+        [class.text-[#7a3d0a]]="isLightTheme()"
+      >
+        {{ t('PLAY.MATCHMAKING') }}
+      </span>
+
+      <div class="space-y-2">
+        <h1
+          class="font-pixel text-3xl uppercase tracking-[0.14em] sm:text-5xl"
+          [class.text-[#fff7d6]]="!isLightTheme()"
+          [class.text-[#3e1f12]]="isLightTheme()"
+        >
+          @if (isMatchTransitioning()) {
+            {{ t('PLAY.MATCH_FOUND') }}
+          } @else if (state().matchFound) {
+            {{ t('PLAY.RIVAL_FOUND') }}
+          } @else {
+            {{ t('PLAY.SEARCHING_MATCH') }}
+          }
+        </h1>
+        <p
+          class="mx-auto max-w-2xl text-sm leading-6 sm:text-base"
+          [class.text-[#f8e7b0]/84]="!isLightTheme()"
+          [class.text-[#7a4b10]]="isLightTheme()"
+        >
+          @if (isMatchTransitioning()) {
+            {{ t('PLAY.TRANSITION_DESCRIPTION') }}
+          } @else if (state().matchFound) {
+            {{ t('PLAY.FOUND_DESCRIPTION') }}
+          } @else {
+            {{ t('PLAY.SEARCH_DESCRIPTION') }}
+          }
+        </p>
+      </div>
+
+      <div
+        class="play-room-loader relative flex h-48 w-48 items-center justify-center rounded-full border-2 sm:h-56 sm:w-56"
+        [class.border-[#8a4b20]/70]="!isLightTheme()"
+        [class.bg-[#170706]/72]="!isLightTheme()"
+        [class.border-[#c8832c]/60]="isLightTheme()"
+        [class.bg-[#fff1d9]/80]="isLightTheme()"
+      >
+        <div
+          class="absolute inset-4 rounded-full border-[8px]"
+          [class.border-[#fff7d6]/15]="!isLightTheme()"
+          [class.border-[#c8832c]/20]="isLightTheme()"
+        ></div>
+        <div
+          class="absolute inset-8 rounded-full border-4 border-dashed"
+          [class.border-[#fde68a]/25]="!isLightTheme()"
+          [class.border-[#c8832c]/30]="isLightTheme()"
+          [class.animate-spin]="!isMatchTransitioning()"
+        ></div>
+        <div
+          class="relative h-28 w-28 overflow-hidden rounded-full border-[6px] text-center sm:h-32 sm:w-32"
+          [class.border-[#22c55e]/70]="isMatchTransitioning()"
+          [class.bg-[#166534]/88]="isMatchTransitioning()"
+          [class.border-[#fff7d6]]="!isMatchTransitioning() && !isLightTheme()"
+          [class.bg-[#fff7d6]]="!isMatchTransitioning() && !isLightTheme()"
+          [class.border-[#d6903f]]="!isMatchTransitioning() && isLightTheme()"
+          [class.bg-[#fde68a]/30]="!isMatchTransitioning() && isLightTheme()"
+          [class.shadow-[0_0_40px_rgba(250,204,21,0.16)]]="!isLightTheme()"
+        >
+          @if (isMatchTransitioning()) {
+            <div class="grid h-full w-full place-items-center">
+              <span class="font-pixel text-[0.66rem] uppercase tracking-[0.14em] text-[#fff7d6]">{{ t('PLAY.MATCH_OK') }}</span>
+            </div>
+          } @else {
+            <img
+              src="https://cdn.dribbble.com/users/621155/screenshots/2835314/simple_pokeball.gif"
+              [alt]="t('PLAY.POKEBALL_ALT')"
+              class="h-full w-full object-cover"
+            />
+          }
+        </div>
+      </div>
+
+      <div class="play-room-stats grid w-full gap-3 sm:grid-cols-3">
+        <div
+          class="rounded-[20px] border px-4 py-3"
+          [class.border-[#8a4b20]/65]="!isLightTheme()"
+          [class.bg-[#170706]/72]="!isLightTheme()"
+          [class.border-[#c8832c]/50]="isLightTheme()"
+          [class.bg-[#fff1d9]/80]="isLightTheme()"
+        >
+          <p
+            class="font-pixel text-[0.58rem] uppercase tracking-[0.18em]"
+            [class.text-[#d8b982]]="!isLightTheme()"
+            [class.text-[#7a4b10]]="isLightTheme()"
+          >{{ t('PLAY.TIME') }}</p>
+          <p
+            class="mt-2 font-pixel text-lg sm:text-xl"
+            [class.text-[#fff7d6]]="!isLightTheme()"
+            [class.text-[#3e1f12]]="isLightTheme()"
+          >{{ elapsedLabel() }}</p>
+        </div>
+        <div
+          class="rounded-[20px] border px-4 py-3"
+          [class.border-[#8a4b20]/65]="!isLightTheme()"
+          [class.bg-[#170706]/72]="!isLightTheme()"
+          [class.border-[#c8832c]/50]="isLightTheme()"
+          [class.bg-[#fff1d9]/80]="isLightTheme()"
+        >
+          <p
+            class="font-pixel text-[0.58rem] uppercase tracking-[0.18em]"
+            [class.text-[#d8b982]]="!isLightTheme()"
+            [class.text-[#7a4b10]]="isLightTheme()"
+          >{{ t('PLAY.ACTIVE_DECK') }}</p>
+          <p
+            class="mt-2 text-sm"
+            [class.text-[#fff7d6]]="!isLightTheme()"
+            [class.text-[#3e1f12]]="isLightTheme()"
+          >{{ activeDeckName() }}</p>
+        </div>
+        <div
+          class="rounded-[20px] border px-4 py-3"
+          [class.border-[#8a4b20]/65]="!isLightTheme()"
+          [class.bg-[#170706]/72]="!isLightTheme()"
+          [class.border-[#c8832c]/50]="isLightTheme()"
+          [class.bg-[#fff1d9]/80]="isLightTheme()"
+        >
+          <p
+            class="font-pixel text-[0.58rem] uppercase tracking-[0.18em]"
+            [class.text-[#d8b982]]="!isLightTheme()"
+            [class.text-[#7a4b10]]="isLightTheme()"
+          >{{ t('PLAY.PLAYERS') }}</p>
+          <p
+            class="mt-2 text-sm"
+            [class.text-[#fff7d6]]="!isLightTheme()"
+            [class.text-[#3e1f12]]="isLightTheme()"
+          >{{ queueSizeLabel() }}</p>
+        </div>
+      </div>
+
+      @if (state().matchFound || isMatchTransitioning()) {
+        <div
+          class="w-full rounded-[20px] border px-4 py-3 text-center"
+          [class.border-[#8a4b20]/65]="!isLightTheme()"
+          [class.bg-[#170706]/72]="!isLightTheme()"
+          [class.border-[#c8832c]/50]="isLightTheme()"
+          [class.bg-[#fff1d9]/80]="isLightTheme()"
+        >
+          <p
+            class="font-pixel text-[0.58rem] uppercase tracking-[0.18em]"
+            [class.text-[#d8b982]]="!isLightTheme()"
+            [class.text-[#7a4b10]]="isLightTheme()"
+          >{{ t('PLAY.STATUS') }}</p>
+          <p
+            class="mt-2 text-sm"
+            [class.text-[#fff7d6]]="!isLightTheme()"
+            [class.text-[#3e1f12]]="isLightTheme()"
+          >
+            {{ isMatchTransitioning() ? t('PLAY.ENTERING_BOARD') : t('PLAY.RIVAL_ASSIGNED') }}
+          </p>
+        </div>
+      }
+
+      @if (state().errorMessage) {
+        <div class="w-full rounded-2xl border border-[#dc2626]/45 bg-[#450a0a]/75 px-4 py-3 text-sm text-[#fecaca]">
+          {{ state().errorMessage }}
+        </div>
+      }
+
+      <button
+        type="button"
+        class="play-room-cancel-button font-pixel inline-flex min-h-14 items-center justify-center rounded-2xl border border-[#f87171]/28 bg-[#b91c1c] px-8 py-3 text-[0.78rem] uppercase tracking-[0.16em] text-[#fff7d6] shadow-[0_18px_34px_rgba(127,29,29,0.34)] transition hover:bg-[#ef4444] disabled:cursor-not-allowed disabled:opacity-65"
+        [disabled]="state().status === 'leaving' || isMatchTransitioning()"
+        (click)="cancelSearch()"
+      >
+        {{ state().status === 'leaving' ? t('PLAY.CANCELLING') : t('PLAY.CANCEL_SEARCH') }}
+      </button>
+    </div>
+  </article>
+</section>
+
+@if (isMatchTransitioning()) {
+  <style>
+    @keyframes overlayFadeIn {
+      from { opacity: 0; backdrop-filter: blur(0px); }
+      to { opacity: 1; backdrop-filter: blur(4px); }
+    }
+    @keyframes modalPopIn {
+      0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+      50% { transform: scale(1.05) translateY(-5px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .animate-overlay-fade {
+      animation: overlayFadeIn 0.5s ease-out forwards;
+    }
+    .animate-modal-pop {
+      animation: modalPopIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+  </style>
+  <div class="animate-overlay-fade fixed inset-0 z-50 grid place-items-center bg-[#120304]/82 backdrop-blur-sm">
+    <div class="animate-modal-pop rounded-[24px] border-2 border-[#22c55e]/45 bg-[#14532d]/92 px-8 py-10 text-center shadow-[10px_10px_0_rgba(20,4,3,0.72)]">
+      <p class="animate-pulse font-pixel text-[0.68rem] uppercase tracking-[0.24em] text-[#bbf7d0]">{{ t('PLAY.MATCH_FOUND') }}</p>
+      <h2 class="mt-4 font-pixel text-3xl uppercase tracking-[0.14em] text-[#fff7d6] drop-shadow-[0_0_8px_rgba(255,247,214,0.6)]">{{ t('PLAY.MATCH_FOUND_TITLE') }}</h2>
+      <div class="mt-5 flex justify-center">
+        <app-deck-shuffle-animation />
+      </div>
+      <p class="mt-3 animate-pulse text-sm text-[#dcfce7]">{{ t('PLAY.MATCH_FOUND_BODY') }}</p>
+    </div>
+  </div>
+}

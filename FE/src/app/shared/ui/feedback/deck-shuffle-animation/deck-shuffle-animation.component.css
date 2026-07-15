@@ -1,0 +1,74 @@
+.deck-shuffle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.deck-shuffle__stack {
+  position: relative;
+  width: 88px;
+  height: 124px;
+  perspective: 560px;
+}
+
+.deck-shuffle__card {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: var(--game-card-back-image) var(--game-card-back-position) / var(--game-card-back-size) no-repeat;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
+  animation: deck-shuffle-cut 1280ms ease-in-out infinite;
+  animation-delay: calc(var(--shuffle-index) * 95ms);
+  transform-style: preserve-3d;
+}
+
+.deck-shuffle__card:nth-child(even) {
+  animation-name: deck-shuffle-cut-reverse;
+}
+
+.deck-shuffle__label {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fde68a;
+  text-align: center;
+}
+
+@keyframes deck-shuffle-cut {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0deg);
+  }
+
+  25% {
+    transform: translate3d(-18px, -6px, 12px) rotateY(-14deg);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0) rotateY(0deg);
+  }
+
+  75% {
+    transform: translate3d(18px, -6px, 12px) rotateY(14deg);
+  }
+}
+
+@keyframes deck-shuffle-cut-reverse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0deg);
+  }
+
+  25% {
+    transform: translate3d(18px, -6px, 12px) rotateY(14deg);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0) rotateY(0deg);
+  }
+
+  75% {
+    transform: translate3d(-18px, -6px, 12px) rotateY(-14deg);
+  }
+}

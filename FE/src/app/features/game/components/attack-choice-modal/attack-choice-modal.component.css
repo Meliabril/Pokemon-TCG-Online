@@ -1,0 +1,336 @@
+:host {
+  display: contents;
+}
+
+.attack-choice-modal {
+  font-family: var(--app-pixel-font);
+  inset: 0;
+  position: fixed;
+  z-index: 130;
+}
+
+.attack-choice-modal__backdrop {
+  background: rgba(18, 7, 5, 0.78);
+  inset: 0;
+  position: absolute;
+}
+
+.attack-choice-modal__panel {
+  background: linear-gradient(135deg, rgba(63, 27, 12, 0.94), rgba(28, 25, 23, 0.98));
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  border-radius: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  left: 50%;
+  max-height: min(88dvh, 42rem);
+  max-width: min(94vw, 44rem);
+  padding: 1.25rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(94vw, 44rem);
+}
+
+.attack-choice-modal__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.attack-choice-modal__eyebrow {
+  color: #facc15;
+  font-size: 0.55rem;
+}
+
+.attack-choice-modal__header h2,
+.attack-choice-modal__columns h3 {
+  color: #fff7d6;
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.attack-choice-modal__header p,
+.attack-choice-modal__choice-note {
+  color: #d8b982;
+  font-size: 0.6rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.attack-choice-modal__body {
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.2rem;
+}
+
+.attack-choice-modal__showcase {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 12rem;
+}
+
+.attack-choice-modal__image {
+  border-radius: 0.75rem;
+  max-height: 13rem;
+  max-width: 100%;
+}
+
+.attack-choice-modal__placeholder {
+  align-items: center;
+  border: 1px dashed rgba(250, 204, 21, 0.3);
+  border-radius: 0.75rem;
+  color: #d8b982;
+  display: flex;
+  font-size: 0.6rem;
+  justify-content: center;
+  min-height: 8rem;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+.attack-choice-modal__grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+}
+
+.attack-choice-modal__grid--energy,
+.attack-choice-modal__grid--target {
+  align-items: start;
+}
+
+/* The destination column can hold the active Pokémon plus up to 5 bench slots, while the
+   energy column is usually just one or two cards (especially after deduplication). Using
+   `auto-fill` instead of the inherited `auto-fit` keeps every card the same size and stops
+   a lone trailing card from stretching to fill the row, which is what produced the "weird
+   split" look on desktop. Mobile is untouched: the breakpoint below still collapses both
+   columns to a single one, where this grid already looked correct. */
+.attack-choice-modal__grid--target {
+  grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
+  justify-content: start;
+}
+
+.attack-choice-modal__columns {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+}
+
+.attack-choice-modal__columns section {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.attack-choice-modal__list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.attack-choice-modal__option,
+.attack-choice-modal__list-button,
+.attack-choice-modal__reorder-card {
+  background: rgba(58, 29, 12, 0.72);
+  border: 1px solid rgba(250, 204, 21, 0.2);
+  border-radius: 0.75rem;
+  color: #fff7d6;
+}
+
+.attack-choice-modal__option,
+.attack-choice-modal__list-button {
+  cursor: pointer;
+  font-family: var(--app-pixel-font);
+}
+
+.attack-choice-modal__option {
+  align-items: center;
+  display: grid;
+  gap: 0.45rem;
+  min-height: 7.5rem;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.attack-choice-modal__option img {
+  border-radius: 0.45rem;
+  justify-self: center;
+  max-height: 5rem;
+  max-width: 4rem;
+}
+
+.attack-choice-modal__option span,
+.attack-choice-modal__list-button span,
+.attack-choice-modal__mini-card span {
+  font-size: 0.58rem;
+  line-height: 1.45;
+}
+
+.attack-choice-modal__list-button {
+  min-height: 2.75rem;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.attack-choice-modal__option--selected {
+  background: rgba(139, 7, 12, 0.82);
+  border-color: rgba(250, 204, 21, 0.8);
+}
+
+.attack-choice-modal__option:disabled,
+.attack-choice-modal__list-button:disabled,
+.attack-choice-modal__reorder-actions button:disabled,
+.attack-choice-modal__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.attack-choice-modal__reorder-card {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  padding: 0.65rem;
+}
+
+.attack-choice-modal__reorder-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+
+.attack-choice-modal__reorder-card--visual {
+  align-items: stretch;
+  cursor: grab;
+  display: grid;
+  justify-items: center;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.attack-choice-modal__reorder-card--dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.attack-choice-modal__reorder-image {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 10rem;
+  width: 100%;
+}
+
+.attack-choice-modal__reorder-image img {
+  border-radius: 0.6rem;
+  max-height: 10rem;
+  object-fit: contain;
+}
+
+.attack-choice-modal__order-badge {
+  align-items: center;
+  background: rgba(139, 7, 12, 0.92);
+  border: 1px solid rgba(250, 204, 21, 0.45);
+  border-radius: 999px;
+  color: #fff7d6;
+  display: inline-flex;
+  font-size: 0.56rem;
+  height: 1.55rem;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+  width: 1.55rem;
+}
+
+.attack-choice-modal__mini-card {
+  align-items: center;
+  display: flex;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.attack-choice-modal__mini-card img {
+  max-height: 4rem;
+  width: 2.75rem;
+}
+
+.attack-choice-modal__reorder-actions {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.attack-choice-modal__reorder-actions button {
+  background: #3a1d0c;
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  color: #fff7d6;
+  font-family: var(--app-pixel-font);
+  font-size: 0.5rem;
+  min-height: 2rem;
+  padding: 0.35rem 0.55rem;
+}
+
+.attack-choice-modal__option--energy img,
+.attack-choice-modal__option--target img {
+  max-height: 7rem;
+  max-width: 5rem;
+  object-fit: contain;
+}
+
+.attack-choice-modal__option--target {
+  min-height: 11rem;
+}
+
+.attack-choice-modal__option--target-filled {
+  border-color: rgba(56, 189, 248, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.42);
+}
+
+.attack-choice-modal__option small {
+  color: #d8b982;
+  font-size: 0.5rem;
+}
+
+.attack-choice-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.attack-choice-modal__button {
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-family: var(--app-pixel-font);
+  font-size: 0.58rem;
+  min-height: 2.5rem;
+  padding: 0.65rem 1rem;
+}
+
+.attack-choice-modal__button--primary {
+  background: #8b070c;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  color: #fff7d6;
+}
+
+.attack-choice-modal__button--secondary {
+  background: #3a1d0c;
+  border: 1px solid rgba(250, 204, 21, 0.2);
+  color: #fff7d6;
+}
+
+@media (max-width: 768px), (max-height: 520px) {
+  .attack-choice-modal__panel {
+    gap: 0.75rem;
+    max-height: calc(100dvh - 1rem);
+    padding: 0.85rem;
+    width: min(96vw, 38rem);
+  }
+
+  .attack-choice-modal__columns {
+    grid-template-columns: 1fr;
+  }
+}

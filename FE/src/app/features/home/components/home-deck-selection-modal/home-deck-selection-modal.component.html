@@ -1,0 +1,72 @@
+<div class="fixed inset-0 z-40 flex items-center justify-center px-4 py-6" role="presentation">
+  <button
+    type="button"
+    class="absolute inset-0 bg-[#120304]/82 backdrop-blur-sm"
+    [attr.aria-label]="t('HOME.CLOSE_DECK_SELECTION')"
+    (click)="close.emit()"
+  ></button>
+
+  <section
+    [class]="panelClasses()"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="home-deck-selection-modal-title"
+    (click)="$event.stopPropagation()"
+  >
+    <div [class]="headerClasses()">
+      <div class="space-y-1">
+        <p [class]="eyebrowClasses()">
+          {{ t('HOME.CHANGE_DECK') }}
+        </p>
+        <h2 id="home-deck-selection-modal-title" [class]="titleClasses()">
+          {{ t('HOME.CHOOSE_ACTIVE_DECK') }}
+        </h2>
+      </div>
+
+      <button
+        type="button"
+        [class]="closeButtonClasses()"
+        [attr.aria-label]="t('HOME.CLOSE_DECK_SELECTION')"
+        (click)="close.emit()"
+      >
+        <span aria-hidden="true" class="text-xl leading-none">x</span>
+      </button>
+    </div>
+
+    <div class="max-h-[78vh] overflow-y-auto p-5 sm:p-6">
+      @if (state().feedbackMessage) {
+        <div [class]="feedbackClasses()">
+          {{ state().feedbackMessage }}
+        </div>
+      }
+
+      @if (state().errorMessage) {
+        <div [class]="errorClasses()">
+          {{ state().errorMessage }}
+        </div>
+      }
+
+      @if (isDeckChangeLocked()) {
+        <div [class]="lockNoticeClasses()">
+          <strong class="block">{{ t('HOME.ACTIVE_GAME_DECK_LOCK') }}</strong>
+          <span>{{ t('HOME.ACTIVE_GAME_DECK_LOCK_DETAIL') }}</span>
+        </div>
+      }
+
+      <app-deck-selection-panel
+        [decks]="state().availableDecks"
+        [status]="state().status"
+        [errorMessage]="state().errorMessage"
+        [deckActionKind]="deckActionKind()"
+        [deckActionDeckId]="deckActionDeckId()"
+        [isDeckChangeLocked]="isDeckChangeLocked()"
+        [showDeckEditorLink]="false"
+        [showCreateDeckButton]="true"
+        [isLightTheme]="isLightTheme()"
+        (activateDeck)="activateDeck.emit($event)"
+        (randomizeDeck)="randomizeDeck.emit($event)"
+        (createDeck)="createDeck.emit()"
+      />
+    </div>
+  </section>
+</div>

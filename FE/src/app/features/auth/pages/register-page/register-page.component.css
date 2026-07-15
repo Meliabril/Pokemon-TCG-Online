@@ -1,0 +1,96 @@
+@media (min-width: 1024px) and (max-height: 820px) and (hover: hover) and (pointer: fine) {
+  .auth-form--register {
+    align-items: end;
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 0.55rem;
+  }
+
+  .auth-form--register > div,
+  .auth-form--register app-avatar-picker {
+    margin: 0;
+  }
+
+  .auth-form--register app-avatar-picker {
+    align-self: center;
+    display: block;
+  }
+
+  :host ::ng-deep .auth-form--register app-avatar-picker button[aria-haspopup='dialog'] {
+    height: 46px;
+    width: 46px;
+  }
+
+  :host ::ng-deep .auth-form--register app-avatar-picker > div {
+    gap: 0.25rem;
+    justify-items: start;
+  }
+
+  .auth-form--register > button[type='submit'] {
+    height: 40px;
+    margin-top: 0.35rem;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1023px) and (max-height: 828px) and (hover: none) and (pointer: coarse) {
+  .auth-form--register {
+    align-items: end;
+    column-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 10px;
+  }
+
+  .auth-form--register > div,
+  .auth-form--register app-avatar-picker {
+    margin: 0;
+  }
+
+  .auth-form--register app-avatar-picker {
+    align-self: center;
+    display: block;
+  }
+
+  :host ::ng-deep .auth-form--register app-avatar-picker button[aria-haspopup='dialog'] {
+    height: 58px;
+    width: 58px;
+  }
+
+  :host ::ng-deep .auth-form--register app-avatar-picker > div {
+    gap: 0.25rem;
+    justify-items: start;
+  }
+
+  .auth-form--register > button[type='submit'] {
+    height: 46px;
+    margin-top: 12px;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1023px) and (max-height: 650px) and (hover: none) and (pointer: coarse) {
+  :host ::ng-deep .auth-form--register app-avatar-picker button[aria-haspopup='dialog'] {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1023px) and (max-height: 900px) and (hover: none) and (pointer: coarse) {
+  .auth-form--register {
+    column-gap: clamp(36px, 5vw, 72px);
+    row-gap: clamp(16px, 2.5vh, 30px);
+  }
+
+  .auth-form--register app-avatar-picker {
+    align-self: center;
+  }
+
+  :host ::ng-deep .auth-form--register app-avatar-picker > div {
+    gap: 0.5rem;
+  }
+
+  .auth-form--register > button[type='submit'] {
+    align-self: center;
+    height: auto;
+  }
+}

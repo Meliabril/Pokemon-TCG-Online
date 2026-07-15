@@ -1,0 +1,92 @@
+<article class="active-slot" [class.active-slot--inverted]="orientation() === 'inverted'">
+  <p>{{ t('GAME.ACTIVE_POKEMON') }}</p>
+
+  <div
+    class="active-slot__card"
+    [class.active-slot__card--empty]="!slot().occupied"
+    [class.active-slot__card--face-down]="slot().card?.faceDown"
+    [class.active-slot__card--drop-available]="isDropAvailable()"
+    [class.active-slot__card--drop-active]="dragOverActive()"
+    [class.active-slot__card--inspectable]="isCardInspectable()"
+    [class.active-slot__card--selectable]="isSelectable()"
+    [class.active-slot__card--selected]="isSelected()"
+    [class.active-slot__card--remote-hovered]="isRemoteHovered()"
+    [class.active-slot__card--harden]="shieldActive()"
+    [class.active-slot__card--tool-attack]="attachedToolBadge()?.type === 'attack'"
+    [attr.data-testid]="slot().pokemon?.id ? 'pokemon-slot-' + slot().pokemon?.id : slot().id"
+    [attr.data-drop-zone]="isDropAvailable() ? dropZone() : null"
+    [attr.data-pokemon-in-play-id]="isDropAvailable() && dropZone() === 'pokemon-tool-target' ? pokemonInPlayId() : null"
+    [attr.role]="isCardInspectable() ? 'button' : null"
+    [attr.tabindex]="isCardInspectable() ? '0' : null"
+    (click)="selectPokemon()"
+    (mouseenter)="emitCardHover(true)"
+    (mouseleave)="emitCardHover(false)"
+    (focus)="emitCardHover(true)"
+    (blur)="emitCardHover(false)"
+    (keydown.enter)="selectPokemon()"
+    (keydown.space)="selectPokemon(); $event.preventDefault()"
+    (dragover)="handleDragOver($event)"
+    (dragleave)="handleDragLeave()"
+    (drop)="handleDrop($event)"
+      >
+        <div class="active-slot__card-visual" [attr.data-board-anchor]="animationAnchorId()">
+        @if (slot().card; as card) {
+          @if (card.faceDown) {
+            <div class="active-slot__card-mark" aria-hidden="true"></div>
+          } @else {
+            @if (card.imageSmallUrl ?? card.imageLargeUrl; as imageUrl) {
+              <img [src]="imageUrl" [alt]="card.altText ?? card.label" />
+            }
+          }
+        }
+        <app-status-overlay
+          [pokemonId]="slot().pokemon?.id ?? null"
+          [conditions]="slot().pokemon?.specialConditions ?? []"
+          variant="active"
+        />
+        <app-harden-shield-badge [active]="shieldActive()" [value]="shieldValue()" variant="active" />
+        @if (attachedToolBadge(); as tool) {
+          <app-pokemon-tool-badge [type]="tool.type" [value]="tool.value" variant="active" />
+        }
+        </div>
+        @if (attachedEnergyCards().length > 0) {
+        <div class="active-slot__energy-pile" [attr.aria-label]="t('GAME.ATTACHED_ENERGIES')">
+          @for (energy of attachedEnergyCards(); track $index) {
+            <span class="energy-pile__card" [style.--stack-index]="$index">
+              @if (energy.imageSmallUrl ?? energy.imageLargeUrl; as energyImageUrl) {
+                <img [src]="energyImageUrl" [alt]="energy.label" />
+              } @else {
+                <span class="energy-pile__fallback">{{ energy.label.charAt(0) }}</span>
+              }
+            </span>
+          }
+        </div>
+        <div class="active-slot__energy-summary" [attr.aria-label]="t('GAME.ATTACHED_ENERGIES')">
+          @for (energy of attachedEnergySummary(); track energy.key) {
+            <span class="active-slot__energy-chip" [attr.title]="energy.label + ' x' + energy.count">
+              @if (energy.imageUrl; as energyImageUrl) {
+                <img [src]="energyImageUrl" alt="" aria-hidden="true" />
+              } @else {
+                <span class="active-slot__energy-chip-fallback" aria-hidden="true">{{ energy.label.charAt(0) }}</span>
+              }
+              <span aria-hidden="true">x{{ energy.count }}</span>
+              <span class="sr-only">{{ energy.label }}: {{ energy.count }}</span>
+            </span>
+          }
+        </div>
+        }
+        @if (remainingHp() !== null) {
+        <div class="active-slot__hp-panel" [attr.aria-label]="t('GAME.REMAINING_HP')">
+          <span class="active-slot__hp-panel-label">HP</span>
+          <span class="active-slot__hp-panel-value">{{ remainingHp() }} / {{ slot().card?.hp }}</span>
+          @for (popup of damagePopups(); track popup.id) {
+            <span
+              class="active-slot__hp-popup"
+              [class.active-slot__hp-popup--heal]="popup.kind === 'heal'"
+              aria-hidden="true"
+            >{{ popup.kind === 'heal' ? '+' : '-' }}{{ popup.amount }}</span>
+          }
+        </div>
+        }
+  </div>
+</article>

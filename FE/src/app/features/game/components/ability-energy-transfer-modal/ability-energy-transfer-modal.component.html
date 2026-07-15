@@ -1,0 +1,89 @@
+@if (isOpen()) {
+  <div
+    class="ability-transfer-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Transferencia Hada"
+    data-testid="fairy-transfer-modal"
+  >
+    <button
+      type="button"
+      class="ability-transfer-modal__backdrop"
+      aria-label="Cerrar"
+      (click)="close()"
+    ></button>
+
+    <article class="ability-transfer-modal__panel">
+      <header class="ability-transfer-modal__header">
+        <span>Habilidad</span>
+        <h2>Transferencia Hada</h2>
+      </header>
+
+      <section class="ability-transfer-modal__columns">
+        <div class="ability-transfer-modal__column">
+          <h3>Cartas con energia de hada</h3>
+          <div class="ability-transfer-modal__options">
+            @for (option of sourceOptions(); track option.pokemonInPlayId) {
+              <button
+                type="button"
+                class="ability-transfer-modal__pokemon"
+                [class.ability-transfer-modal__pokemon--selected]="selectedFromPokemonId() === option.pokemonInPlayId"
+                [disabled]="actionPending()"
+                (click)="selectFromPokemon(option.pokemonInPlayId)"
+              >
+                @if (optionImage(option); as image) {
+                  <img [src]="image" [alt]="option.label" />
+                }
+                <span>{{ option.label }}</span>
+                <small>{{ option.fairyEnergyCards.length }} energia(s)</small>
+              </button>
+            }
+            @if (!sourceOptions().length) {
+              <p class="ability-transfer-modal__empty">No hay Pokemon propios con Energia Hada.</p>
+            }
+          </div>
+        </div>
+
+        <div class="ability-transfer-modal__column">
+          <h3>Cartas para pasarle la energia</h3>
+          <div class="ability-transfer-modal__options">
+            @for (option of targetOptions(); track option.pokemonInPlayId) {
+              <button
+                type="button"
+                class="ability-transfer-modal__pokemon"
+                [class.ability-transfer-modal__pokemon--selected]="selectedToPokemonId() === option.pokemonInPlayId"
+                [class.ability-transfer-modal__pokemon--disabled]="isTargetDisabled(option.pokemonInPlayId)"
+                [disabled]="actionPending() || isTargetDisabled(option.pokemonInPlayId)"
+                (click)="selectToPokemon(option.pokemonInPlayId)"
+              >
+                @if (optionImage(option); as image) {
+                  <img [src]="image" [alt]="option.label" />
+                }
+                <span>{{ option.label }}</span>
+              </button>
+            }
+          </div>
+        </div>
+      </section>
+
+      <footer class="ability-transfer-modal__actions">
+        <button
+          type="button"
+          class="ability-transfer-modal__button ability-transfer-modal__button--secondary"
+          [disabled]="actionPending()"
+          (click)="close()"
+        >
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="ability-transfer-modal__button ability-transfer-modal__button--primary"
+          [disabled]="!canConfirm()"
+          (click)="confirm()"
+        >
+          Confirmar
+        </button>
+      </footer>
+    </article>
+  </div>
+}

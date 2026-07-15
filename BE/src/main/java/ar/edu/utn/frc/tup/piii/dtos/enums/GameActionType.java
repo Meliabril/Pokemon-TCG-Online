@@ -1,0 +1,26 @@
+package ar.edu.utn.frc.tup.piii.dtos.enums;
+
+public enum GameActionType {
+    CREATE_GAME,
+    JOIN_GAME,
+    START_GAME,
+    ACK_MULLIGAN_NOTICE,
+    CHOOSE_INITIAL_POKEMON,
+    PAUSE_GAME,
+    RESUME_GAME,
+    DRAW_CARD,
+    PLAY_BASIC_POKEMON,
+    EVOLVE_POKEMON,
+    ATTACH_ENERGY,
+    PLAY_TRAINER,
+    USE_ABILITY,
+    RETREAT,
+    DECLARE_ATTACK,
+    SELECT_TARGET,
+    END_TURN,
+    PROMOTE_BENCH_POKEMON,
+    RESOLVE_ATTACK_CHOICE,
+    TAKE_PRIZE_CARD,
+    CONCEDE
+}
+

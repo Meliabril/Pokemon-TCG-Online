@@ -1,0 +1,202 @@
+<app-game-toast />
+<app-mulligan-banner />
+@switch (gameFacade.screenState()) {
+  @case ('loading') {
+    <section class="grid min-h-dvh place-items-center bg-[#120705] px-4 text-[#fff7d6]">
+      <div class="grid gap-3 text-center">
+        <p class="font-pixel text-sm tracking-[0.18em] text-[#fde68a]">{{ t('GAME.LOADING_TITLE') }}</p>
+        <p class="text-sm text-[#d8b982]">{{ t('GAME.LOADING_SNAPSHOT') }}</p>
+      </div>
+    </section>
+  }
+
+  @case ('load-error') {
+    <section class="grid min-h-dvh place-items-center bg-[#120705] px-4 text-[#fff7d6]">
+      <div class="grid max-w-md gap-4 rounded-[24px] border border-[#dc2626]/45 bg-[#450a0a]/75 p-5 text-center">
+        <p class="font-pixel text-sm tracking-[0.18em] text-[#fecaca]">{{ t('GAME.LOAD_FAILED') }}</p>
+        <p class="text-sm leading-7 text-[#fee2e2]">{{ gameFacade.errorMessage() }}</p>
+        <button
+          type="button"
+          class="font-pixel min-h-11 rounded-2xl border border-[#facc15]/30 bg-[#8b070c] px-4 py-2 text-[0.72rem] tracking-[0.12em] text-[#fff7d6]"
+          (click)="leaveTable()"
+        >
+          {{ t('COMMON.BACK') }}
+        </button>
+      </div>
+    </section>
+  }
+
+  @case ('reconnecting') {
+    @if (gameFacade.board(); as board) {
+          <div class="fixed left-1/2 top-3 z-50 -translate-x-1/2 rounded-full border border-[#facc15]/30 bg-[#451a03]/90 px-4 py-2 text-xs text-[#fde68a]" data-testid="game-screen-banner" data-screen-state="reconnecting">
+            {{ t('GAME.CONNECTION_LOST') }}
+          </div>
+
+      <app-game-shell
+        [board]="board"
+        [actionPending]="gameFacade.isActionPending()"
+        [interaction]="interaction()"
+        [remoteHoveredCardKey]="gameFacade.remoteHoveredCardKey()"
+        [blockingOverlay]="blockingOverlay()"
+        [localHandHidden]="localHandHidden()"
+        [opponentHandHidden]="opponentHandHidden()"
+        [chatMessages]="gameFacade.chatMessages()"
+        [chatCurrentUserId]="gameFacade.currentUserId()"
+        [chatConnected]="gameFacade.connectionStatus() === 'connected'"
+        (leaveTable)="leaveTable()"
+        (endTurnRequested)="endTurn()"
+        (setupSubmitted)="submitSetup()"
+        (setupCancelled)="cancelAction()"
+        (mulliganNoticeAcknowledgedRequested)="acknowledgeMulliganNotice()"
+        (playBasicPokemon)="playBasicPokemon($event)"
+        (setupActiveCardDropped)="selectInitialActivePokemon($event)"
+        (setupBenchCardDropped)="selectInitialBenchPokemon($event)"
+        (setupBenchCardReturned)="removeInitialBenchPokemon($event)"
+        (benchPokemonPromoted)="promoteBenchPokemonFromBoard($event)"
+        (attackChoiceResolved)="resolveAttackChoiceFromBoard($event)"
+        (activePokemonRetreated)="retreatActivePokemonFromBoard($event)"
+        (drawCardRequested)="drawCardFromDeck()"
+        (energyDropped)="attachEnergyToPokemon($event.energyCardInstanceId, $event.targetPokemonInPlayId)"
+        (evolutionDropped)="evolvePokemonFromBoard($event.evolutionCardInstanceId, $event.targetPokemonInPlayId)"
+        (actionSelected)="selectAction($event)"
+        (confirmAction)="confirmAction()"
+        (cancelAction)="cancelAction()"
+        (handCardSelected)="selectHandCard($event)"
+        (pokemonSelected)="selectPokemon($event)"
+        (attackSelected)="selectAttack($event)"
+        (attackDeclared)="declareAttackFromModal($event)"
+        (abilityUsed)="useAbilityFromModal($event)"
+        (trainerPlayed)="playTrainerFromModal($event)"
+        (chatMessageSubmitted)="sendChatMessage($event)"
+        (cardHoverChanged)="handleCardHoverChanged($event)"
+        (setupBenchToggleRequested)="toggleSelectedCardAsSetupBench()"
+      />
+    } @else {
+      <section class="grid min-h-dvh place-items-center bg-[#120705] px-4 text-[#fff7d6]">
+        <div class="grid gap-3 text-center">
+          <p class="font-pixel text-sm tracking-[0.18em] text-[#fde68a]">{{ t('GAME.RECONNECTING') }}</p>
+          <p class="text-sm text-[#d8b982]">{{ t('GAME.RECONNECTING_MESSAGE') }}</p>
+        </div>
+      </section>
+    }
+  }
+
+  @default {
+    @if (gameFacade.board(); as board) {
+      @switch (gameFacade.screenState()) {
+        @case ('waiting-opponent') {
+          <div class="fixed left-1/2 top-3 z-50 -translate-x-1/2 rounded-full border border-[#facc15]/30 bg-[#451a03]/90 px-4 py-2 text-xs text-[#fde68a]" data-testid="game-screen-banner" data-screen-state="waiting-opponent">
+            {{ t('GAME.WAITING_OPPONENT') }}
+          </div>
+        }
+
+        @case ('setup-selecting') {
+          <div class="setup-screen-banner fixed left-1/2 top-3 z-50 -translate-x-1/2 rounded-full border border-[#facc15]/30 bg-[#451a03]/90 px-4 py-2 text-xs text-[#fde68a]" data-testid="game-screen-banner" data-screen-state="setup-selecting">
+            {{ t('GAME.PREPARING_MATCH') }}
+          </div>
+        }
+
+        @case ('setup-waiting-opponent') {
+          <div class="setup-screen-banner fixed left-1/2 top-3 z-50 -translate-x-1/2 rounded-full border border-[#facc15]/30 bg-[#451a03]/90 px-4 py-2 text-xs text-[#fde68a]" data-testid="game-screen-banner" data-screen-state="setup-waiting-opponent">
+            {{ t('GAME.WAITING_RIVAL_SETUP') }}
+          </div>
+        }
+
+        @case ('playing') {}
+
+        @case ('resolution-pending') {
+          <div class="fixed left-1/2 top-3 z-50 -translate-x-1/2 rounded-full border border-[#facc15]/30 bg-[#451a03]/90 px-4 py-2 text-xs text-[#fde68a]" data-testid="game-screen-banner" data-screen-state="resolution-pending">
+            {{ board.resolution?.label ?? t('GAME.PENDING_RESOLUTION') }}
+          </div>
+        }
+
+        @case ('paused') {
+          <div class="fixed left-1/2 top-3 z-50 -translate-x-1/2 rounded-full border border-[#facc15]/30 bg-[#451a03]/90 px-4 py-2 text-xs text-[#fde68a]" data-testid="game-screen-banner" data-screen-state="paused">
+            {{ t('GAME.PAUSED') }}
+          </div>
+        }
+
+        @case ('finished') {
+          <div [class]="finalBannerClasses()" data-testid="game-screen-banner" data-screen-state="finished" [attr.data-final-outcome]="gameFacade.finalOutcome()">
+            {{ finalStatusLabel() }}
+          </div>
+        }
+
+        @case ('cancelled') {
+          <div class="fixed left-1/2 top-3 z-50 -translate-x-1/2 rounded-full border border-[#dc2626]/45 bg-[#450a0a]/90 px-4 py-2 text-xs text-[#fecaca]" data-testid="game-screen-banner" data-screen-state="cancelled">
+            {{ t('GAME.CANCELLED') }}
+          </div>
+        }
+      }
+
+      @if (gameFacade.uiError(); as uiError) {
+        <div
+          class="fixed left-1/2 top-14 z-50 grid max-w-[min(34rem,calc(100vw-2rem))] -translate-x-1/2 gap-1 rounded-[22px] border px-4 py-3 shadow-[0_16px_40px_rgba(0,0,0,0.38)]"
+          data-testid="game-error-banner"
+          [attr.data-error-kind]="uiError.kind"
+          [class.border-[#f59e0b]/45]="uiError.kind === 'action-not-supported'"
+          [class.bg-[#451a03]/94]="uiError.kind === 'action-not-supported'"
+          [class.text-[#fde68a]]="uiError.kind === 'action-not-supported'"
+          [class.border-[#dc2626]/45]="uiError.kind !== 'action-not-supported'"
+          [class.bg-[#450a0a]/90]="uiError.kind !== 'action-not-supported'"
+          [class.text-[#fecaca]]="uiError.kind !== 'action-not-supported'"
+        >
+          <p class="font-pixel text-[0.62rem] uppercase tracking-[0.18em]" data-testid="game-error-title">
+            {{ uiError.title ?? t('GAME.ERROR_TITLE') }}
+          </p>
+          <p class="text-sm leading-6" data-testid="game-error-message">{{ uiError.message }}</p>
+
+          @if (uiError.detail && uiError.detail !== uiError.message) {
+            <p class="text-xs leading-5 opacity-90" data-testid="game-error-detail">
+              {{ t('GAME.ENGINE_DETAIL', { detail: uiError.detail }) }}
+            </p>
+          }
+        </div>
+      }
+
+      <app-game-shell
+        [board]="board"
+        [actionPending]="gameFacade.isActionPending()"
+        [interaction]="interaction()"
+        [remoteHoveredCardKey]="gameFacade.remoteHoveredCardKey()"
+        [blockingOverlay]="blockingOverlay()"
+        [localHandHidden]="localHandHidden()"
+        [opponentHandHidden]="opponentHandHidden()"
+        [chatMessages]="gameFacade.chatMessages()"
+        [chatCurrentUserId]="gameFacade.currentUserId()"
+        [chatConnected]="gameFacade.connectionStatus() === 'connected'"
+        (leaveTable)="leaveTable()"
+        (endTurnRequested)="endTurn()"
+        (setupSubmitted)="submitSetup()"
+        (setupCancelled)="cancelAction()"
+        (mulliganNoticeAcknowledgedRequested)="acknowledgeMulliganNotice()"
+        (playBasicPokemon)="playBasicPokemon($event)"
+        (setupActiveCardDropped)="selectInitialActivePokemon($event)"
+        (setupBenchCardDropped)="selectInitialBenchPokemon($event)"
+        (setupBenchCardReturned)="removeInitialBenchPokemon($event)"
+        (benchPokemonPromoted)="promoteBenchPokemonFromBoard($event)"
+        (attackChoiceResolved)="resolveAttackChoiceFromBoard($event)"
+        (activePokemonRetreated)="retreatActivePokemonFromBoard($event)"
+        (drawCardRequested)="drawCardFromDeck()"
+        (energyDropped)="attachEnergyToPokemon($event.energyCardInstanceId, $event.targetPokemonInPlayId)"
+        (evolutionDropped)="evolvePokemonFromBoard($event.evolutionCardInstanceId, $event.targetPokemonInPlayId)"
+        (actionSelected)="selectAction($event)"
+        (confirmAction)="confirmAction()"
+        (cancelAction)="cancelAction()"
+        (handCardSelected)="selectHandCard($event)"
+        (pokemonSelected)="selectPokemon($event)"
+        (attackSelected)="selectAttack($event)"
+        (attackDeclared)="declareAttackFromModal($event)"
+        (abilityUsed)="useAbilityFromModal($event)"
+        (trainerPlayed)="playTrainerFromModal($event)"
+        (chatMessageSubmitted)="sendChatMessage($event)"
+        (cardHoverChanged)="handleCardHoverChanged($event)"
+        (setupBenchToggleRequested)="toggleSelectedCardAsSetupBench()"
+      />
+    } @else {
+      <section class="grid min-h-dvh place-items-center bg-[#120705] px-4 text-[#fff7d6]">
+        <p class="text-sm text-[#d8b982]">{{ t('GAME.WAITING_STATE') }}</p>
+      </section>
+    }
+  }
+}

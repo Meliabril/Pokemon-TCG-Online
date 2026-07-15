@@ -1,0 +1,100 @@
+:host {
+  border-style: solid;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+:host(.app-card--fill) {
+  height: 100%;
+}
+
+:host(.app-card--default),
+:host(.app-card--feature) {
+  border-radius: 18px;
+  border-width: 2px;
+  padding: 1.25rem;
+}
+
+:host(.app-card--home) {
+  border-radius: 22px;
+  border-width: 2px;
+  padding: 1.25rem;
+  position: relative;
+  text-align: center;
+}
+
+:host(.app-card--compact) {
+  border-radius: 14px;
+  border-width: 2px;
+  padding: 1rem;
+}
+
+:host(.app-card--dark) {
+  background: rgba(42, 8, 5, 0.88);
+  border-color: rgba(138, 75, 32, 0.85);
+  box-shadow: 10px 10px 0 rgba(20, 4, 3, 0.72);
+  color: #fff7d6;
+}
+
+:host(.app-card--light) {
+  background: rgba(255, 248, 227, 0.78);
+  border-color: rgba(214, 144, 63, 0.85);
+  box-shadow: 10px 10px 0 rgba(96, 50, 18, 0.22);
+  color: #3e1f12;
+}
+
+:host(.app-card--feature.app-card--dark) {
+  box-shadow: 8px 8px 0 rgba(20, 4, 3, 0.7);
+}
+
+:host(.app-card--feature.app-card--light) {
+  box-shadow: 8px 8px 0 rgba(96, 50, 18, 0.2);
+}
+
+:host(.app-card--compact.app-card--dark) {
+  background: rgba(23, 7, 6, 0.72);
+  border-color: rgba(138, 75, 32, 0.7);
+  box-shadow: none;
+}
+
+:host(.app-card--compact.app-card--light) {
+  background: rgba(255, 241, 207, 0.72);
+  border-color: rgba(231, 183, 111, 0.85);
+  box-shadow: none;
+}
+
+@media (min-width: 640px) {
+  :host(.app-card--home) {
+    padding: 2rem;
+  }
+
+  :host(.app-card--feature) {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 820px) and (hover: hover) and (pointer: fine) {
+  :host(.app-card--home),
+  :host(.app-card--feature) {
+    border-radius: 18px;
+    padding: 1rem;
+  }
+
+  :host(.app-card--compact) {
+    border-radius: 12px;
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 932px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+  :host(.app-card--home),
+  :host(.app-card--feature) {
+    border-radius: 16px;
+    padding: 0.85rem;
+  }
+
+  :host(.app-card--compact) {
+    padding: 0.65rem;
+  }
+}

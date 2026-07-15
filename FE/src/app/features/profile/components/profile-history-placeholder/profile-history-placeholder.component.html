@@ -1,0 +1,183 @@
+<div class="flex h-[70vh] min-h-0 w-full items-center justify-center overflow-hidden px-2">
+<article data-tour="profile-history-card" class="mx-auto flex h-[70vh] min-h-0 w-full max-w-6xl flex-col overflow-hidden rounded-[26px] border border-[#8a4b20]/70 p-4 shadow-[0_24px_60px_rgba(0,0,0,0.34)] backdrop-blur-md sm:p-5" [class.bg-[#3b0905]/88]="!isLightTheme()" [class.bg-[#fff4d6]/88]="isLightTheme()">
+  <div class="flex min-h-0 flex-1 flex-col gap-1.5">
+    <div>
+      <p class="font-pixel text-[0.68rem] tracking-[0.28em]" [class.text-[#D9A441]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">{{ t('PROFILE.HISTORY.EYEBROW') }}</p>
+      <h1 class="font-pixel mt-1 text-3xl leading-[1.1] sm:text-4xl" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4A2416]]="isLightTheme()">
+        {{ t('PROFILE.HISTORY.TITLE') }}
+      </h1>
+      <p class="mt-2 max-w-3xl text-sm leading-5" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">
+        {{ t('PROFILE.HISTORY.SUBTITLE') }}
+      </p>
+    </div>
+
+    <div class="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-5">
+      <span data-tour="profile-total-games" class="rounded-2xl border border-[#8a4b20]/55 px-3 py-1.5 text-center" [class.bg-[#2a0805]/72]="!isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+        <strong class="font-pixel block text-2xl text-[#D9A441]">{{ displayedStats().totalMatches }}</strong>
+        <small class="text-xs" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">{{ t('PROFILE.HISTORY.MATCHES_PLAYED') }}</small>
+      </span>
+      <span data-tour="profile-wins" class="rounded-2xl border border-[#8a4b20]/55 px-3 py-1.5 text-center" [class.bg-[#2a0805]/72]="!isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+        <strong class="font-pixel block text-2xl text-[#D9A441]">{{ displayedStats().wins }}</strong>
+        <small class="text-xs" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">{{ t('PROFILE.HISTORY.WINS') }}</small>
+      </span>
+      <span data-tour="profile-losses" class="rounded-2xl border border-[#8a4b20]/55 px-3 py-1.5 text-center" [class.bg-[#2a0805]/72]="!isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+        <strong class="font-pixel block text-2xl text-[#D9A441]">{{ displayedStats().losses }}</strong>
+        <small class="text-xs" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">{{ t('PROFILE.HISTORY.LOSSES') }}</small>
+      </span>
+      <span data-tour="profile-win-rate" class="rounded-2xl border border-[#8a4b20]/55 px-3 py-1.5 text-center" [class.bg-[#2a0805]/72]="!isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+        <strong class="font-pixel block text-2xl text-[#D9A441]">{{ winRateLabel() }}</strong>
+        <small class="text-xs" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">{{ t('PROFILE.HISTORY.WIN_RATE') }}</small>
+      </span>
+      <span data-tour="profile-current-streak" class="rounded-2xl border border-[#8a4b20]/55 px-3 py-1.5 text-center" [class.bg-[#2a0805]/72]="!isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+        <strong class="font-pixel block text-2xl text-[#D9A441]">{{ displayedStats().currentStreak }}</strong>
+        <small class="text-xs" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">{{ t('PROFILE.HISTORY.CURRENT_STREAK') }}</small>
+      </span>
+    </div>
+
+    @if (isStatsLoading()) {
+      <p class="rounded-2xl border border-[#B8792E]/35 px-4 py-3 text-sm" [class.bg-[#2a0805]/62]="!isLightTheme()" [class.text-[#d8b982]]="!isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()" aria-live="polite">
+        {{ t('PROFILE.HISTORY.LOADING_STATS') }}
+      </p>
+    }
+
+    @if (statsErrorMessage()) {
+      <p class="rounded-2xl border border-[#dc2626]/45 bg-[#450a0a]/72 px-4 py-3 text-sm text-[#fecaca]" role="alert">
+        {{ statsErrorMessage() }}
+      </p>
+    }
+
+    <nav data-tour="profile-history-filters" class="flex flex-wrap gap-1" [attr.aria-label]="t('PROFILE.HISTORY.FILTERS_ARIA')">
+      @for (filter of filters(); track filter.value) {
+        <button
+          type="button"
+          class="font-pixel rounded-full border px-3 py-1 text-sm tracking-[0.08em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B8792E]/70"
+          [class]="filterClasses(filter.value)"
+          [attr.aria-pressed]="activeFilter() === filter.value"
+          (click)="selectFilter(filter.value)"
+        >
+          {{ filter.label }}
+        </button>
+      }
+    </nav>
+
+    <section data-tour="profile-match-list" class="flex min-h-0 flex-1 flex-col gap-1 overflow-hidden rounded-[24px] border border-[#8a4b20]/75 p-2" [class.bg-[#2a0805]/64]="!isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+      @if (isInitialHistoryLoading()) {
+        <div class="p-6 text-center" aria-live="polite">
+          <div class="mx-auto grid h-20 w-20 place-items-center rounded-2xl border border-[#B8792E]/35 bg-[#D9A441]/12">
+            <span class="font-pixel text-3xl text-[#D9A441]" aria-hidden="true">TCG</span>
+          </div>
+          <p class="font-pixel mt-5 text-lg" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4A2416]]="isLightTheme()">
+            {{ t('PROFILE.HISTORY.LOADING_HISTORY') }}
+          </p>
+        </div>
+      } @else if (historyErrorMessage()) {
+        <div class="p-6 text-center" role="alert">
+          <h2 class="font-pixel text-xl leading-[1.35]" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4A2416]]="isLightTheme()">
+            {{ t('PROFILE.HISTORY.ERROR_TITLE') }}
+          </h2>
+          <p class="mx-auto mt-3 max-w-xl text-sm leading-7" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">
+            {{ historyErrorMessage() }}
+          </p>
+          <button
+            type="button"
+            class="font-pixel mt-5 rounded-full border border-[#B8792E]/50 bg-[#D9A441]/14 px-5 py-2 text-[0.68rem] tracking-[0.14em] text-[#D9A441] transition hover:bg-[#D9A441]/22 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B8792E]/70"
+            (click)="retryHistory()"
+          >
+            {{ t('PROFILE.HISTORY.RETRY') }}
+          </button>
+        </div>
+      } @else if (matches().length === 0) {
+        <div class="p-6 text-center">
+          <div class="mx-auto grid h-20 w-20 place-items-center rounded-2xl border border-[#B8792E]/35 bg-[#D9A441]/12">
+            <span class="font-pixel text-3xl text-[#D9A441]" aria-hidden="true">TCG</span>
+          </div>
+          <h2 class="font-pixel mt-5 text-xl leading-[1.35]" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4A2416]]="isLightTheme()">
+            {{ t('PROFILE.HISTORY.EMPTY_TITLE') }}
+          </h2>
+          <p class="mx-auto mt-3 max-w-xl text-sm leading-7" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">
+            {{ t('PROFILE.HISTORY.EMPTY_DESCRIPTION') }}
+          </p>
+        </div>
+      } @else {
+        <div class="flex-1 overflow-y-auto min-h-0 pr-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-amber-900/80 dark:[&::-webkit-scrollbar-thumb]:bg-red-950 [&::-webkit-scrollbar-thumb]:rounded">
+        @for (match of matches(); track match.matchId) {
+          <article class="group mb-2 flex items-center gap-3 rounded-2xl border border-transparent px-4 py-1.5 text-left shadow-sm transition-all duration-300" [class]="matchCardClasses(match)">
+            @if (match.result === 'VICTORIA') {
+              <!-- ICONO DE VICTORIA (Medalla Dorada con Corona) -->
+              <div class="flex flex-shrink-0 items-center justify-center">
+                <svg viewBox="0 0 100 100" class="h-12 w-12 drop-shadow-md transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-[0_0_20px_rgba(250,204,21,1)]" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path class="animate-pulse" d="M20,40 Q10,50 15,65" fill="none" stroke="#FDBA74" stroke-width="2" stroke-linecap="round"/>
+                  <path class="animate-pulse" d="M12,45 Q5,55 10,70" fill="none" stroke="#FDE047" stroke-width="2" stroke-linecap="round"/>
+                  <path class="animate-pulse" d="M80,40 Q90,50 85,65" fill="none" stroke="#FDBA74" stroke-width="2" stroke-linecap="round"/>
+                  <path class="animate-pulse" d="M88,45 Q95,55 90,70" fill="none" stroke="#FDE047" stroke-width="2" stroke-linecap="round"/>
+                  <line class="animate-pulse" x1="25" y1="25" x2="18" y2="15" stroke="#FDBA74" stroke-width="2" stroke-linecap="round"/>
+                  <line class="animate-pulse" x1="75" y1="25" x2="82" y2="15" stroke="#FDBA74" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M25,60 L22,25 L38,40 L50,15 L62,40 L78,25 L75,60 Z" fill="#FACC15" stroke="#CA8A04" stroke-width="3" stroke-linejoin="round"/>
+                  <circle cx="38" cy="35" r="2" fill="#CA8A04"/>
+                  <circle cx="50" cy="25" r="2" fill="#CA8A04"/>
+                  <circle cx="62" cy="35" r="2" fill="#CA8A04"/>
+                  <circle cx="50" cy="65" r="25" fill="#FEF08A" stroke="#CA8A04" stroke-width="3"/>
+                  <line x1="25" y1="65" x2="75" y2="65" stroke="#CA8A04" stroke-width="3"/>
+                  <circle cx="50" cy="65" r="8" fill="#FEF08A" stroke="#CA8A04" stroke-width="3"/>
+                  <circle cx="50" cy="65" r="3" fill="#CA8A04"/>
+                </svg>
+              </div>
+            } @else {
+              <!-- ICONO DE DERROTA (Pokebola Rota y Gris) -->
+              <div class="flex flex-shrink-0 items-center justify-center opacity-90">
+                <svg viewBox="0 0 100 100" class="h-12 w-12 drop-shadow-sm transition-all duration-300 group-hover:scale-125 group-hover:drop-shadow-[0_0_20px_rgba(239,68,68,1)]" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path class="animate-pulse" d="M45,30 Q35,20 45,10" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"/>
+                  <path class="animate-pulse" d="M55,35 Q65,25 55,15" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round"/>
+                  <path class="animate-pulse" d="M50,25 Q45,15 50,5" fill="none" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M42,25 A25,25 0 0,0 42,75 L35,65 L44,55 L35,45 L44,35 Z" fill="#E5E7EB" stroke="#6B7280" stroke-width="3" stroke-linejoin="round"/>
+                  <line x1="17" y1="50" x2="38" y2="50" stroke="#6B7280" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M38,42 A8,8 0 0,0 38,58" fill="none" stroke="#6B7280" stroke-width="3"/>
+                  <path d="M58,25 A25,25 0 0,1 58,75 L65,65 L56,55 L65,45 L56,35 Z" fill="#D1D5DB" stroke="#4B5563" stroke-width="3" stroke-linejoin="round"/>
+                  <line x1="83" y1="50" x2="62" y2="50" stroke="#4B5563" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M62,42 A8,8 0 0,1 62,58" fill="none" stroke="#4B5563" stroke-width="3"/>
+                </svg>
+              </div>
+            }
+
+            <div class="min-w-0 flex-1">
+              <div class="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2">
+                <span [class]="'font-pixel rounded-full border px-2 py-0.5 text-[0.58rem] tracking-[0.12em] ' + resultBadgeClasses(match.result)">
+                  {{ resultLabel(match.result) }}
+                </span>
+                <time class="justify-self-end text-right text-[11px] leading-tight" [attr.datetime]="match.date" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">
+                  {{ formattedDate(match.date) }}
+                </time>
+              </div>
+
+              <h2 class="mt-1 truncate font-pixel text-sm leading-[1.25] sm:text-base" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4A2416]]="isLightTheme()">
+                {{ t('PROFILE.HISTORY.OPPONENT', { name: match.opponentName }) }}
+              </h2>
+              <p class="mt-1 text-[11px]" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()">
+                {{ t('PROFILE.HISTORY.TURNS_PLAYED', { turns: match.turnsPlayed }) }}
+              </p>
+            </div>
+          </article>
+        }
+
+        @if (canLoadMore()) {
+          <button
+            type="button"
+            class="font-pixel justify-self-center rounded-full border border-[#B8792E]/50 bg-[#D9A441]/14 px-5 py-2 text-[0.68rem] tracking-[0.14em] text-[#D9A441] transition hover:bg-[#D9A441]/22 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B8792E]/70 disabled:cursor-not-allowed disabled:opacity-60"
+            [disabled]="isLoadingMore()"
+            (click)="loadMore()"
+          >
+            {{ t('PROFILE.HISTORY.LOAD_MORE') }}
+          </button>
+        }
+
+        @if (isLoadingMore()) {
+          <p class="justify-self-center text-sm" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6B3A22]]="isLightTheme()" aria-live="polite">
+            {{ t('PROFILE.HISTORY.LOADING_MORE') }}
+          </p>
+        }
+        </div>
+      }
+    </section>
+  </div>
+</article>
+</div>

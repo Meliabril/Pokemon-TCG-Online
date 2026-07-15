@@ -1,0 +1,1503 @@
+{
+  "COMMON": {
+    "APP_NAME": "Pokémon TCG",
+    "POKEMON_TCG_ONLINE": "Pokémon TCG Online",
+    "TCG_ONLINE": "TCG ONLINE",
+    "POKEMON_LEAGUE": "Pokémon League",
+    "LOADING": "Loading...",
+    "LOADING_UPPER": "LOADING...",
+    "SAVE": "Save",
+    "SAVING": "Saving...",
+    "CANCEL": "Cancel",
+    "CLOSE": "Close",
+    "BACK": "Back",
+    "RETRY": "Retry",
+    "CONFIRM": "Confirm",
+    "CONFIRMING": "Confirming...",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "ACTIVE": "Active",
+    "VALID": "Valid",
+    "INVALID": "Invalid",
+    "EMPTY": "Empty",
+    "NO_DATA": "No data",
+    "NO_SUBTYPE": "No subtype",
+    "NOT_APPLICABLE": "Not applicable",
+    "CARDS": "Cards",
+    "CARD": "Card",
+    "DECK": "Deck",
+    "DECKS": "Decks",
+    "POKEMON": "Pokémon",
+    "ENERGY": "Energy",
+    "TRAINER": "Trainer",
+    "SEARCH": "Search",
+    "OK": "OK",
+    "ERROR": "Error",
+    "DETAIL": "Detail",
+    "HP": "HP",
+    "PAGE_ABBR": "Page",
+    "COPYRIGHT": "© 2026 Pokémon TCG Online Clone",
+    "LANGUAGE_SPANISH": "Spanish",
+    "LANGUAGE_ENGLISH": "English"
+  },
+  "NAV": {
+    "HOME": "Home",
+    "DECK": "Deck",
+    "POKEDEX": "Pokedex",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "LANGUAGE": "Language",
+    "LANGUAGE_CURRENT": "Current language: {{language}}. Change language",
+    "USER_MENU_OPEN": "Open user menu",
+    "USER_MENU": "User menu",
+    "GO_TO_PROFILE": "Go to profile",
+    "LOGOUT": "Log out",
+    "LOGGING_OUT": "Logging out...",
+    "READY_TO_PLAY": "Ready to play",
+    "ACCOUNT_PENDING": "Account pending verification",
+    "LOGIN_TO_PLAY": "Sign in to play",
+    "AVATAR_ALT": "{{username}} avatar",
+    "LOGO_ALT": "Pokémon TCG logo"
+  },
+  "AUTH": {
+    "LOGIN_TITLE": "Sign in",
+    "REGISTER_TITLE": "Register",
+    "CREATE_ACCOUNT": "Create account",
+    "FORGOT_PASSWORD_TITLE": "Recover password",
+    "VERIFY_CODE_TITLE": "Verify code",
+    "CHANGE_PASSWORD_TITLE": "Change password",
+    "VERIFY_ACCOUNT_TITLE": "Verify your account",
+    "VERIFY_ACCOUNT_SUBMIT": "Verify account",
+    "VERIFY_SUCCESS_TEXT": "Pokedex entry created! You are now part of the Pokémon League.",
+    "ACCOUNT_VERIFIED": "Account verified",
+    "BACK_TO_REGISTER": "Back to registration",
+    "VERIFY_DESCRIPTION": "Enter the 6-digit code we sent to",
+    "YOUR_EMAIL": "your email",
+    "IDENTIFIER": "Email or username",
+    "EMAIL": "Email",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "NEW_PASSWORD": "New password",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "LOGIN_SUBMIT": "Sign in",
+    "LOGIN_SUBMITTING": "Signing in...",
+    "LOGIN_SUCCESS": "Signed in",
+    "NO_ACCOUNT": "Don't have an account?",
+    "HAS_ACCOUNT": "Already have an account?",
+    "LOGIN_LINK": "Sign in",
+    "REGISTER_SUBMITTING": "Creating account...",
+    "REGISTER_SUCCESS": "Account created",
+    "FORGOT_DESCRIPTION": "Enter your email to recover your password.",
+    "FORGOT_HINT": "Tip: the email may arrive in your spam folder.",
+    "BACK_TO_LOGIN": "Back to sign in",
+    "RECOVERY_CODE_DESCRIPTION": "Enter the code we sent to your email to continue.",
+    "RESET_PASSWORD_DESCRIPTION": "Choose a new password for your account.",
+    "SHOW_PASSWORD": "Show password",
+    "HIDE_PASSWORD": "Hide password",
+    "SHOW_CONFIRM_PASSWORD": "Show password confirmation",
+    "HIDE_CONFIRM_PASSWORD": "Hide password confirmation",
+    "SHOW_NEW_PASSWORD": "Show new password",
+    "HIDE_NEW_PASSWORD": "Hide new password",
+    "SKIP_FORM": "Skip to form",
+    "CHANGE_LANGUAGE": "Change language",
+    "LIGHT_THEME": "Switch to light mode",
+    "DARK_THEME": "Switch to dark mode",
+    "SUCCESS_TEXT": "Pokedex synced! Your Pokémon League adventure continues.",
+    "CODE_EXPIRES_IN": "Code expires in",
+    "VERIFICATION_CODE": "Verification code",
+    "CODE_PLACEHOLDER": "Example: 839214",
+    "VERIFYING": "Verifying...",
+    "RESEND_IN": "You can resend the code in {{seconds}}s",
+    "RESEND_READY": "You can request a new code now.",
+    "RESENDING": "Resending...",
+    "RESEND_CODE": "Resend code",
+    "UPDATING": "Updating...",
+    "VALIDATION": {
+      "IDENTIFIER_REQUIRED": "Enter your email or username.",
+      "PASSWORD_REQUIRED": "Enter your password.",
+      "IDENTIFIER_MIN": "Must be at least 3 characters.",
+      "PASSWORD_MIN": "Password must be at least 8 characters.",
+      "EMAIL_REQUIRED": "Email is required.",
+      "EMAIL_FORMAT": "Email format is invalid.",
+      "CODE_REQUIRED": "Enter the verification code.",
+      "RECOVERY_CODE_REQUIRED": "Enter the recovery code.",
+      "CODE_NUMERIC": "The code must be numeric.",
+      "CODE_PATTERN": "The code must be exactly 6 digits.",
+      "CODE_VALID": "Enter a valid 6-digit code.",
+      "NEW_PASSWORD_REQUIRED": "New password is required.",
+      "CONFIRM_PASSWORD_REQUIRED": "Password confirmation is required.",
+      "CONFIRM_PASSWORD_REQUIRED_ALT": "Password confirmation is required.",
+      "PASSWORD_STRONG": "Password must include an uppercase letter, a number, and a special character.",
+      "PASSWORD_STRONG_FULL": "Password must be at least 8 characters and include an uppercase letter, a number, and a special character.",
+      "PASSWORD_MISMATCH": "Passwords do not match.",
+      "USERNAME_REQUIRED": "Username is required."
+    },
+    "MESSAGES": {
+      "RECOVERY_SENT": "If the email belongs to an active account, we sent you a recovery code.",
+      "CODE_EXPIRED": "The code expired. Request a new one to continue.",
+      "EMAIL_REQUIRED_FOR_CODE": "Enter your email to request a new code.",
+      "RECOVERY_CODE_REQUIRED": "Enter the recovery code to continue.",
+      "CODE_VERIFIED": "Code verified. You can now enter a new password.",
+      "PASSWORD_UPDATED_LOGIN": "Password updated successfully. Sign in with your new password.",
+      "VERIFY_EMAIL_SENT": "We sent a verification code to your email.",
+      "VERIFICATION_CODE_RESENT": "We sent you a new verification code."
+    },
+    "ERRORS": {
+      "LOGIN_DEFAULT": "We couldn't sign you in. Try again.",
+      "CONNECTION": "Could not connect to the server. Check that the backend is running.",
+      "CHECK_DATA": "Check the entered data.",
+      "BAD_CREDENTIALS": "Email, username, or password is incorrect.",
+      "BLOCKED": "Your account is blocked. Contact an administrator.",
+      "INACTIVE": "Your account is not active. Contact support.",
+      "SERVER": "An unexpected server error occurred. Try again later.",
+      "REQUEST_DEFAULT": "We couldn't process the request. Try again.",
+      "EMAIL_FORMAT": "Check that the email has a valid format.",
+      "WAIT_CODE": "Wait a few seconds before requesting another code.",
+      "VERIFY_DEFAULT": "We couldn't verify the code. Try again.",
+      "CODE_INVALID": "The code is invalid.",
+      "ACCOUNT_INACTIVE": "The account is not active. Contact support.",
+      "RESET_DEFAULT": "We couldn't update the password. Try again.",
+      "PASSWORD_REUSE": "The new password must be different from your current password.",
+      "CHECK_CODE_PASSWORD": "Check the code and the new password.",
+      "REGISTER_DEFAULT": "We couldn't create the account. Try again.",
+      "REGISTER_CONNECTION": "Could not connect to the server.",
+      "USERNAME_TAKEN": "That username is already in use.",
+      "EMAIL_TAKEN": "That email is already registered.",
+      "CHECK_MARKED": "Check the marked fields to continue.",
+      "SERVER_SHORT": "Unexpected server error.",
+      "VERIFY_EMAIL_MISSING": "We couldn't find an email pending verification. Register again.",
+      "VERIFY_ACCOUNT_DEFAULT": "We couldn't verify the account. Try again.",
+      "CODE_INCORRECT": "The code is incorrect.",
+      "VERIFY_ACCOUNT_FORBIDDEN": "This account could not be verified.",
+      "ACCOUNT_NOT_FOUND": "We couldn't find an account associated with this email.",
+      "ACCOUNT_ALREADY_VERIFIED": "This account has already been verified.",
+      "TOO_MANY_ATTEMPTS": "Too many attempts. Wait a few minutes before trying again."
+    }
+  },
+  "PROFILE": {
+    "TRAINER_DATA": "Trainer Data",
+    "MATCH_HISTORY": "Match history",
+    "SYNCING": "Syncing trainer card...",
+    "UNAVAILABLE": "Profile unavailable",
+    "LOGIN_TO_LOAD": "Sign in to load your trainer card.",
+    "SECURITY": "SECURITY",
+    "CHANGE_PASSWORD": "Change password",
+    "CLOSE_PASSWORD_CHANGE": "Close password change",
+    "PASSWORD_CODE_DESCRIPTION": "Enter the code sent to your email.",
+    "NO_SESSION": "We couldn't find an active session to update the profile.",
+    "USERNAME_UPDATED": "Trainer name updated.",
+    "AVATAR_UPDATED": "Avatar updated in the Pokedex.",
+    "PASSWORD_CODE_SENT": "Code sent to the account email.",
+    "PASSWORD_UPDATED": "Password updated successfully.",
+    "ERRORS": {
+      "SAVE_PROFILE": "The Pokedex couldn't save the profile. Try again.",
+      "POKECENTER_CONNECTION": "We couldn't connect to the Pokémon Center.",
+      "USERNAME_TAKEN": "That trainer name is already in use.",
+      "CHECK_USERNAME": "Check the trainer name before saving.",
+      "PROFILE_FORBIDDEN": "Your account can't edit the profile right now.",
+      "PASSWORD_DEFAULT": "We couldn't update the password. Try again.",
+      "PASSWORD_FORBIDDEN": "Your account can't change the password right now."
+    },
+    "SUMMARY": {
+      "TRAINER_CARD": "Trainer card",
+      "EMAIL": "Email",
+      "STATUS": "Status",
+      "VERIFIED": "Verified",
+      "PENDING": "Pending",
+      "EDIT_USERNAME": "Edit name",
+      "SAVE_USERNAME": "Save name",
+      "CANCEL_EDIT": "Cancel edit",
+      "CHANGE_AVATAR": "Change avatar",
+      "AVATAR": "Avatar",
+      "CHANGE": "Change",
+      "CHOOSE_AVATAR": "Choose your avatar",
+      "SELECT_AVATAR": "Select an icon for your profile.",
+      "CLOSE_AVATAR_SELECTOR": "Close avatar selector",
+      "SELECTED_AVATAR_ALT": "Selected avatar: {{name}}",
+      "PASSWORD": "Password"
+    },
+    "HISTORY": {
+      "TITLE": "Match history",
+      "DESCRIPTION": "History will appear when the backend exposes finished matches.",
+      "EYEBROW": "HISTORY",
+      "SUBTITLE": "Review your recent battles, results, and performance as a trainer.",
+      "MATCHES_PLAYED": "Matches played",
+      "WINS": "Wins",
+      "LOSSES": "Losses",
+      "WIN_RATE": "Win rate",
+      "CURRENT_STREAK": "Current streak",
+      "FILTERS_ARIA": "History filters",
+      "EMPTY_TITLE": "No matches recorded yet",
+      "EMPTY_DESCRIPTION": "Your results and statistics will appear here after your first matches.",
+      "LOADING_STATS": "Syncing stats...",
+      "LOADING_HISTORY": "Loading history...",
+      "LOADING_MORE": "Loading more matches...",
+      "LOAD_MORE": "Load more",
+      "LOAD_ERROR": "We could not load the match history.",
+      "CONNECTION_ERROR": "We could not reach the server to load match history.",
+      "ERROR_TITLE": "History unavailable",
+      "RETRY": "Retry",
+      "OPPONENT": "Opponent: {{name}}",
+      "TURNS_PLAYED": "{{turns}} turns played",
+      "RESULTS": {
+        "VICTORY": "Victory",
+        "DEFEAT": "Defeat"
+      },
+      "FILTERS": {
+        "ALL": "All",
+        "WINS": "Wins",
+        "LOSSES": "Losses",
+        "LAST_7": "Last 7 days",
+        "LAST_30": "Last 30 days"
+      }
+    }
+  },
+  "HOME": {
+    "HEADLINE": "ENTER THE TABLE",
+    "HEADLINE_USER": "ENTER THE TABLE {{username}}",
+    "PRIMARY_CHECKING": "Syncing",
+    "PRIMARY_JOINING": "Searching rival",
+    "PRIMARY_RESUME": "Resume match",
+    "PRIMARY_LOBBY": "Back to lobby",
+    "PRIMARY_SEARCH": "Find match",
+    "CONFIG": "Configure match",
+    "SELECT_DECK": "Choose deck",
+    "NO_DECKS": "You need a deck to play.",
+    "HOW_TO_PLAY": "How to play",
+    "MANUAL": "Manual",
+    "CUSTOM_MATCH": "Custom match",
+    "ROOM_CODE": "Room code",
+    "DECK_SELECTION": "Deck selection",
+    "CREATE_DECK": "Create deck",
+    "ACTIVATE": "Activate",
+    "ACTIVATING": "Activating...",
+    "USE_THIS_DECK": "Use this deck",
+    "RANDOM": "Random",
+    "RANDOMIZING": "Random...",
+    "ACTIVE_DECK": "Active deck",
+    "ACTIVE_GAME_DECK_LOCK": "You cannot change decks while you have an active match.",
+    "ACTIVE_GAME_DECK_LOCK_DETAIL": "Finish or leave the current match before changing decks.",
+    "CHANGE_DECK": "Change deck",
+    "CHOOSE_ACTIVE_DECK": "Choose your active deck",
+    "CLOSE_DECK_SELECTION": "Close deck selection",
+    "CHOOSE_DECK": "CHOOSE YOUR DECK",
+    "CHOOSE_DECK_DESCRIPTION": "You can have up to 3 decks. When you choose one here, we activate it explicitly so the queue uses that id and the rest of the system stays consistent.",
+    "DECK_COUNT": "{{count}} / {{max}} decks",
+    "NO_DECKS_QUEUE": "You do not have decks ready for queue yet. Go to the Deck section to create or complete one.",
+    "REQUIRES_ADJUSTMENTS": "Requires adjustments",
+    "EDIT_IN_DECK": "Edit in Deck",
+    "CREATE_NEW_DECK": "Create new deck",
+    "MAIN_MENU": "Main menu",
+    "HOW_TO_PLAY_OBJECTIVE": "Objective",
+    "HOW_TO_PLAY_OBJECTIVE_DESCRIPTION": "Win by taking all your prize cards or leaving your rival without Pokémon in play.",
+    "HOW_TO_PLAY_TURN": "Turn",
+    "HOW_TO_PLAY_TURN_DESCRIPTION": "Draw a card, play your main phase, and attack with your active Pokémon.",
+    "HOW_TO_PLAY_CONDITIONS": "Conditions",
+    "HOW_TO_PLAY_CONDITIONS_DESCRIPTION": "Review Asleep, Paralyzed, Confused, Poisoned, and Burned.",
+    "MANUAL_CARD": {
+      "TITLE": "How to play",
+      "ACTION": "Manual",
+      "OBJECTIVE": {
+        "TITLE": "Objective",
+        "DESCRIPTION": "Win by taking all your prize cards or leaving your opponent without Pokémon in play."
+      },
+      "TURN": {
+        "TITLE": "Turn",
+        "DESCRIPTION": "Draw a card, play your main phase, and attack with your active Pokémon."
+      },
+      "CONDITIONS": {
+        "TITLE": "Conditions",
+        "DESCRIPTION": "Review Asleep, Paralyzed, Confused, Poisoned, and Burned."
+      }
+    },
+    "MANUAL": {
+      "TITLE": "Game Manual",
+      "CLOSE": "Close manual",
+      "SECTIONS": {
+        "OBJECTIVE": {
+          "TITLE": "Objective",
+          "BODY": "Win the game by taking all your Prize cards or leaving your opponent with no Pokémon in play. Each player starts with 6 Prize cards face-down; every time you knock out an opponent's Pokémon, you take 1 (or 2 for Pokémon-EX). The first player to take all their Prize cards wins."
+        },
+        "SETUP": {
+          "TITLE": "Setup",
+          "BODY": "Each player shuffles their 60-card deck and draws 7. If you have no Basic Pokémon in hand, reveal your hand, shuffle it back, and draw 7 new cards (mulligan): your opponent draws 1 extra card for each mulligan you take. Then place 1 Basic Pokémon as your Active and up to 5 more on the Bench, all face-down. Set aside 6 Prize cards and flip a coin to decide who goes first."
+        },
+        "TURN": {
+          "TITLE": "Turn Structure",
+          "DRAW_LABEL": "Draw",
+          "DRAW_BODY": "Draw 1 card from your deck. If your deck is empty when you try to draw, you lose.",
+          "MAIN_LABEL": "Main Phase",
+          "MAIN_BODY": "You may take these actions in any order as many times as valid: place Basic Pokémon on your Bench, evolve Pokémon (not the same turn you played them), attach 1 Energy card to any of your Pokémon, play Trainer cards, retreat once per turn, and use Abilities.",
+          "ATTACK_LABEL": "Attack",
+          "ATTACK_BODY": "You may attack once with your Active Pokémon. Attacking is optional but ends your turn immediately. The player who goes first cannot attack on their first turn."
+        },
+        "TRAINERS": {
+          "TITLE": "Trainer Cards",
+          "INTRO": "Trainer cards come in four types, each played differently:",
+          "ITEM_LABEL": "Item",
+          "ITEM_BODY": "No limit per turn. Immediate effect; the card is discarded after use.",
+          "SUPPORTER_LABEL": "Supporter",
+          "SUPPORTER_BODY": "Only 1 per turn. Immediate effect; the card is discarded after use.",
+          "STADIUM_LABEL": "Stadium",
+          "STADIUM_BODY": "Stays in play in the shared zone. Only 1 Stadium can be active at a time; playing a new one discards the previous one.",
+          "TOOL_LABEL": "Pokémon Tool",
+          "TOOL_BODY": "Attaches to one of your Pokémon. Maximum 1 Tool per Pokémon. It stays attached until the Pokémon leaves play, at which point it is discarded along with the Pokémon."
+        },
+        "CONDITIONS": {
+          "TITLE": "Special Conditions",
+          "INTRO": "Only the Active Pokémon can have conditions. They are removed when it retreats, evolves, or is replaced.",
+          "ASLEEP_LABEL": "Asleep",
+          "ASLEEP_BODY": "Cannot attack or retreat. Between turns: flip a coin. Heads = wakes up; Tails = stays asleep.",
+          "BURNED_LABEL": "Burned",
+          "BURNED_BODY": "Between turns: flip a coin. Tails = takes 20 damage; Heads = no damage.",
+          "CONFUSED_LABEL": "Confused",
+          "CONFUSED_BODY": "When trying to attack: flip a coin. Tails = the attack fails and the Pokémon deals 30 damage to itself.",
+          "PARALYZED_LABEL": "Paralyzed",
+          "PARALYZED_BODY": "Cannot attack or retreat. Automatically healed at the end of the player's next full turn.",
+          "POISONED_LABEL": "Poisoned",
+          "POISONED_BODY": "Automatically takes 10 damage between turns. No coin flip required."
+        },
+        "VICTORY": {
+          "TITLE": "Winning and Losing",
+          "PRIZES_LABEL": "Victory by Prize Cards",
+          "PRIZES_BODY": "The first player to take their last Prize card wins.",
+          "KNOCKOUT_LABEL": "Victory by Full KO",
+          "KNOCKOUT_BODY": "If you knock out the opponent's Active Pokémon and they have no Pokémon on the Bench to replace it, you win.",
+          "DECK_LABEL": "Loss by Empty Deck",
+          "DECK_BODY": "If you try to draw at the start of your turn and your deck is empty, you lose."
+        }
+      }
+    },
+    "CUSTOM": {
+      "CLOSE": "Close custom match",
+      "TITLE": "Custom match",
+      "CHOOSE_MODE": "Choose your game mode",
+      "PRIVATE_ROOM": "Private room",
+      "BOT": "Bot",
+      "PRIVATE_DESCRIPTION": "Create a private room and share the code with your friends, or enter a code to join an existing room.",
+      "CREATE_ROOM": "Create room",
+      "ACCESS_CODE": "Your access code",
+      "COPY_CODE": "Copy code",
+      "CODE_COPIED": "Code copied!",
+      "CREATE_AND_JOIN": "Create and join",
+      "JOIN_ROOM": "Join room",
+      "ENTER_CODE": "Enter the code",
+      "CODE_PLACEHOLDER": "XXXX-XXXX",
+      "CONNECTING": "Connecting...",
+      "JOIN": "Join room",
+      "BOT_DESCRIPTION": "Play practice matches against bots. Choose the difficulty and test your decks.",
+      "EASY": "Easy",
+      "EASY_DESCRIPTION": "Basic decisions and a relaxed pace.",
+      "MEDIUM": "Medium",
+      "MEDIUM_DESCRIPTION": "A balance between defense and attack.",
+      "HARD": "Hard",
+      "HARD_DESCRIPTION": "More aggressive and optimized responses.",
+      "PLAY_BOT": "Play against bot"
+    }
+  },
+  "OAK_TUTORIAL": {
+    "START": "Oak tutorial",
+    "HELP_BUTTON": {
+      "LABEL": "Start the tutorial for the current page",
+      "TITLE": "Tutorial"
+    },
+    "ACCESSIBILITY": {
+      "PROFESSOR_ALT": "Professor Oak explaining the tutorial"
+    },
+    "BUTTONS": {
+      "CONTINUE": "Continue",
+      "PREVIOUS": "Previous",
+      "FINISH": "Done",
+      "CLOSE": "Close"
+    },
+    "STEPS": {
+      "WELCOME": {
+        "TITLE": "Professor Oak",
+        "DESCRIPTION": "Welcome! I'm Professor Oak, and I'll guide you through this page step by step."
+      },
+      "NAVBAR": {
+        "TITLE": "Main navigation",
+        "DESCRIPTION": "This is the main navigation bar. From here, you can move between Home, Deck, and Pokédex."
+      },
+      "HOME": {
+        "TITLE": "Home",
+        "DESCRIPTION": "You are on the Home page. This is where you check your status and prepare before starting a match."
+      },
+      "DECK_NAV": {
+        "TITLE": "Deck",
+        "DESCRIPTION": "The Deck section lets you create, review, or choose a valid deck. You need one before playing."
+      },
+      "POKEDEX": {
+        "TITLE": "Pokédex",
+        "DESCRIPTION": "The Pokédex lets you browse cards, types, and attacks before building your strategy."
+      },
+      "LANGUAGE": {
+        "TITLE": "Language",
+        "DESCRIPTION": "Use this button to switch the interface between Spanish and English. The tutorial follows your current language."
+      },
+      "USER_STATUS": {
+        "TITLE": "User status",
+        "DESCRIPTION": "Here you can see your user and account status. You still need a valid deck before playing."
+      },
+      "MAIN_PANEL": {
+        "TITLE": "Main panel",
+        "DESCRIPTION": "This is your main control area. Choose a deck here and start a match when everything is ready."
+      },
+      "INVALID_DECK": {
+        "TITLE": "Active deck",
+        "DESCRIPTION": "This status shows whether your active deck is ready. If it is invalid, choose or prepare a valid one first."
+      },
+      "CHOOSE_DECK": {
+        "TITLE": "Choose or create a deck",
+        "DESCRIPTION": "Choose an existing deck with this button, or select Deck in the navigation bar to create and edit one."
+      },
+      "SEARCH_MATCH": {
+        "TITLE": "Find a match",
+        "DESCRIPTION": "Once your deck is valid, use this button to search for an opponent and start a match."
+      },
+      "CUSTOM_MATCH": {
+        "TITLE": "Custom match",
+        "DESCRIPTION": "Custom match lets you choose a more specific setup for playing with friends or practicing."
+      },
+      "HOW_TO_PLAY": {
+        "TITLE": "How to play",
+        "DESCRIPTION": "This panel gives you a quick summary of the most important rules."
+      },
+      "OBJECTIVE": {
+        "TITLE": "Objective",
+        "DESCRIPTION": "Win by taking all your Prize cards or leaving your opponent without Pokémon in play."
+      },
+      "TURN": {
+        "TITLE": "Turn",
+        "DESCRIPTION": "Draw a card, take your main actions, and then attack with your Active Pokémon."
+      },
+      "CONDITIONS": {
+        "TITLE": "Special conditions",
+        "DESCRIPTION": "Asleep, Paralyzed, Confused, Poisoned, and Burned can change your strategy during a match."
+      },
+      "MANUAL": {
+        "TITLE": "Manual",
+        "DESCRIPTION": "Use the Manual button to review the rules in more detail before playing."
+      },
+      "FINISH": {
+        "TITLE": "Ready to play",
+        "DESCRIPTION": "Choose or create a valid deck first, then find a match and start playing."
+      }
+    },
+    "DECK": {
+      "EMPTY": {
+        "WELCOME": {
+          "TITLE": "Decks",
+          "DESCRIPTION": "Welcome to the deck section. Here you can prepare the deck you will use to play matches."
+        },
+        "SLOTS": {
+          "TITLE": "Deck slots",
+          "DESCRIPTION": "You can save up to 3 decks. Each slot is an available space to create or manage a deck."
+        },
+        "CREATE_FROM_EMPTY": {
+          "TITLE": "Create deck",
+          "DESCRIPTION": "This slot is empty. Click anywhere inside the card or the plus button to start creating a new deck."
+        }
+      },
+      "BUILDER": {
+        "NAME": {
+          "TITLE": "Deck name",
+          "DESCRIPTION": "First, choose a name for your deck. This name will appear later in your saved deck list."
+        },
+        "RANDOM": {
+          "TITLE": "Randomize",
+          "DESCRIPTION": "If this is your first time or you want to build something quickly, use Random. The system will automatically create a valid deck."
+        },
+        "CLEAR": {
+          "TITLE": "Clear",
+          "DESCRIPTION": "Clear removes all selected cards from the current deck. It is useful when you want to start over without leaving this screen."
+        },
+        "SAVE": {
+          "TITLE": "Save",
+          "DESCRIPTION": "When your deck has 60 cards and follows the rules, you can save it from this button."
+        },
+        "CARDS": {
+          "TITLE": "Available cards",
+          "DESCRIPTION": "Here you can see all available cards to build your deck. You can choose Pokémon, Energy and Trainer cards."
+        },
+        "SEARCH": {
+          "TITLE": "Search cards",
+          "DESCRIPTION": "Use the search input to find a card by name. It is useful when you already know which card you want to add."
+        },
+        "FILTERS": {
+          "TITLE": "Filters",
+          "DESCRIPTION": "These filters let you see all cards or separate them by Pokémon, Energy and Trainer."
+        },
+        "ADD_CARD": {
+          "TITLE": "Add cards",
+          "DESCRIPTION": "Click a card to add it to your deck. You can also manage the quantity from the list on the right."
+        },
+        "DECK_PANEL": {
+          "TITLE": "Deck panel",
+          "DESCRIPTION": "On the right you can see the deck you are building, including selected cards and the total amount."
+        },
+        "COUNTER": {
+          "TITLE": "Card count",
+          "DESCRIPTION": "This counter shows how many cards you have added. To save, your deck must reach 60 out of 60 cards."
+        },
+        "RULES": {
+          "TITLE": "Deck rules",
+          "DESCRIPTION": "These rules tell you whether your deck is valid. You need to meet them before saving."
+        },
+        "SELECTED_CARDS": {
+          "TITLE": "Selected cards",
+          "DESCRIPTION": "This list shows the cards that are already part of the deck. Each row shows the card, its name and how many copies you added."
+        },
+        "QUANTITY_BUTTONS": {
+          "TITLE": "Add or remove copies",
+          "DESCRIPTION": "Use + to add one more copy and - to remove one. The indicator in the middle shows how many copies you currently have."
+        },
+        "TYPE_HIGHLIGHT": {
+          "TITLE": "Card types",
+          "DESCRIPTION": "Cards have a visual highlight to help you identify whether they are Pokémon, Energy or Trainer cards."
+        },
+        "BACK": {
+          "TITLE": "Back",
+          "DESCRIPTION": "Use Back to return to your deck slots. If you already saved your deck, you will see it in its slot."
+        }
+      },
+      "WITH_DECKS": {
+        "ACTIVE_DECK": {
+          "TITLE": "Active deck",
+          "DESCRIPTION": "This banner shows which deck is currently active. That is the deck used when you start a match."
+        },
+        "DECK_CARD": {
+          "TITLE": "Saved deck",
+          "DESCRIPTION": "This is one of your saved decks. Here you can see its name and a summary of Pokémon, Energy and Trainer cards."
+        },
+        "EDIT": {
+          "TITLE": "Edit",
+          "DESCRIPTION": "Edit takes you to a screen where all the cards from this deck are loaded so you can modify it."
+        },
+        "ACTIVATE": {
+          "TITLE": "Activate",
+          "DESCRIPTION": "Activate marks this deck as your main deck. The active deck is the one you will use to play."
+        },
+        "ACTIVATE_ACTIVE": {
+          "DESCRIPTION": "This deck is already active. When a deck is active, it is the one you will use to play matches."
+        },
+        "DELETE": {
+          "TITLE": "Delete",
+          "DESCRIPTION": "Delete removes this saved deck. Use it only if you are sure, because you will lose that setup."
+        },
+        "DECK_CARDS": {
+          "TITLE": "Deck cards",
+          "DESCRIPTION": "Below you can see the cards from the active deck with the exact number of copies for each one."
+        },
+        "POKEDEX": {
+          "TITLE": "View in Pokédex",
+          "DESCRIPTION": "If you click a card from the deck, you will be redirected to the Pokédex to see more details."
+        },
+        "OPEN_EDIT": {
+          "TITLE": "Open edit screen",
+          "DESCRIPTION": "Now click Edit to open the edit screen and continue the tutorial from there."
+        }
+      },
+      "EDIT": {
+        "WELCOME": {
+          "TITLE": "Edit deck",
+          "DESCRIPTION": "This is the edit screen. The current cards from your deck are loaded here so you can modify them."
+        },
+        "LOADED_CARDS": {
+          "TITLE": "Loaded cards",
+          "DESCRIPTION": "On the right you can already see the cards that belong to the deck. You can add or remove copies using the + and - buttons."
+        },
+        "MODIFY_QUANTITY": {
+          "TITLE": "Modify quantities",
+          "DESCRIPTION": "Use + to add copies and - to remove them. The counter in the middle shows the current amount for that card."
+        },
+        "SAVE_CHANGES": {
+          "TITLE": "Save changes",
+          "DESCRIPTION": "When you finish editing and the deck still follows the rules, save your changes from this button."
+        }
+      }
+    },
+    "DECK_GUIDE": {
+      "EMPTY": {
+        "WELCOME": {
+          "TITLE": "Deck area",
+          "DESCRIPTION": "Welcome to the deck area. This is where you prepare your deck before jumping into a match."
+        },
+        "SLOTS": {
+          "TITLE": "Empty deck slots",
+          "DESCRIPTION": "These empty slots are your deck spaces. You can have up to 3 decks. Click any empty slot to create a new one."
+        }
+      },
+      "EXISTING": {
+        "ACTIVE_DECK": {
+          "TITLE": "Active deck",
+          "DESCRIPTION": "This banner shows your active deck. That is the deck used when you start a match."
+        },
+        "DECK_CARD": {
+          "TITLE": "Deck card",
+          "DESCRIPTION": "This deck card shows the deck name and a summary of its Pokemon, Energy, and Trainer cards."
+        },
+        "STATS": {
+          "TITLE": "Card summary",
+          "DESCRIPTION": "These numbers show how many Pokemon, Energy, and Trainer cards are in the deck."
+        },
+        "EDIT": {
+          "TITLE": "Edit",
+          "DESCRIPTION": "You have two options: click Edit to continue the tutorial in the deck editor, or press Continue to stay here and review the active deck cards."
+        },
+        "ACTIVATE": {
+          "TITLE": "Activate",
+          "DESCRIPTION": "Activate sets this as your main deck. If you have multiple decks, this chooses the one used for matches."
+        },
+        "ACTIVATE_ACTIVE": {
+          "DESCRIPTION": "This deck is already active, so it is the one that will be used in matches."
+        },
+        "DELETE": {
+          "TITLE": "Delete",
+          "DESCRIPTION": "Delete removes the deck. Use it carefully."
+        },
+        "ACTIVE_CARDS": {
+          "TITLE": "Active deck cards",
+          "DESCRIPTION": "Here you can see the exact cards in the active deck, including the number of copies of each one."
+        },
+        "POKEDEX": {
+          "TITLE": "Open in Pokedex",
+          "DESCRIPTION": "Click a card in the lower panel to open its details in the Pokedex."
+        },
+        "FINISH": {
+          "TITLE": "Done",
+          "DESCRIPTION": "Done. You now know how to create, edit, activate, delete, and review decks. Time to play."
+        }
+      },
+      "EDITOR": {
+        "WELCOME": {
+          "TITLE": "Deck editor",
+          "DESCRIPTION": "You are now in the editor. Your current deck cards are loaded here so you can modify the deck without starting from scratch."
+        }
+      },
+      "BUILDER": {
+        "NAME": {
+          "TITLE": "Deck name",
+          "DESCRIPTION": "First, choose a deck name. This name will identify the deck when you activate it and use it in a match."
+        },
+        "RANDOM": {
+          "TITLE": "Random button",
+          "DESCRIPTION": "If this is your first time, use Random to automatically generate a deck and start faster."
+        },
+        "CLEAR": {
+          "TITLE": "Clear button",
+          "DESCRIPTION": "Clear removes all selected cards from the current deck, letting you start over."
+        },
+        "SAVE": {
+          "TITLE": "Save button",
+          "DESCRIPTION": "Save confirms the deck, but only when it follows the rules: 60 cards, at least one Basic Pokemon, and the copy limits."
+        },
+        "ADD_CARD": {
+          "TITLE": "Add a card",
+          "DESCRIPTION": "Tap the highlighted card to add it to the deck before continuing.",
+          "REQUIRED": "First select a card to add to the deck.",
+          "NO_CARDS": "There are no cards available to add. Try clearing the filters to find a card."
+        },
+        "CARD_LIBRARY": {
+          "TITLE": "Card library",
+          "DESCRIPTION": "Here you can see all available cards. Choose cards from this library to add them to your deck."
+        },
+        "SEARCH": {
+          "TITLE": "Search bar",
+          "DESCRIPTION": "Use the search bar to find cards by name."
+        },
+        "FILTERS": {
+          "TITLE": "Type filters",
+          "DESCRIPTION": "These filters let you switch between all cards, Pokemon, Energy, and Trainer cards."
+        },
+        "SELECTED_LIST": {
+          "TITLE": "Selected cards",
+          "DESCRIPTION": "On the right, you can see every card currently added to your deck and manage its quantity."
+        },
+        "RULES": {
+          "TITLE": "Deck rules",
+          "DESCRIPTION": "These indicators show whether your deck follows the rules: 60 cards, copy limits, and at least one Basic Pokemon."
+        },
+        "COUNT": {
+          "TITLE": "Card count",
+          "DESCRIPTION": "This indicator helps you track how many cards are currently in the deck."
+        },
+        "QUANTITY": {
+          "TITLE": "Plus and minus",
+          "DESCRIPTION": "Use plus and minus to add or remove copies of a card while respecting the deck limits."
+        },
+        "TYPE_HIGHLIGHT": {
+          "TITLE": "Type highlight",
+          "DESCRIPTION": "Cards have visual highlights based on their type, helping you recognize Pokemon, Energy, and Trainer cards faster."
+        },
+        "MOBILE": {
+          "ADD_CARD": {
+            "TITLE": "Add a card",
+            "DESCRIPTION": "Tap a card to add it to the deck. On mobile there is no fixed list on the side: quantity is managed from a separate panel."
+          },
+          "OPEN_PANEL": {
+            "TITLE": "Open the deck panel",
+            "DESCRIPTION": "Tap this button to open the panel where you manage the quantity of the card you just added."
+          },
+          "QUANTITY": {
+            "TITLE": "Add or remove copies",
+            "DESCRIPTION": "Inside the panel, use plus to add copies (this confirms the addition) and minus to remove them."
+          },
+          "CURRENT_DECK": {
+            "TITLE": "Cards added",
+            "DESCRIPTION": "This same panel shows every card already added to the deck. You can check it anytime by tapping the button below."
+          }
+        }
+      }
+    },
+    "POKEDEX_GUIDE": {
+      "INTRO": {
+        "TITLE": "Pokedex",
+        "DESCRIPTION": "This is the Pokedex. Here you can browse every available card and understand what it does before building or editing a deck."
+      },
+      "CARD_IMAGE": {
+        "TITLE": "Card image",
+        "DESCRIPTION": "This area shows the currently selected card so you can quickly recognize it and inspect its visual details."
+      },
+      "CARD_INFO": {
+        "TITLE": "Card details",
+        "DESCRIPTION": "This panel shows category, subtype, evolution data, type, retreat cost, weaknesses, resistances, attacks, and abilities when they apply."
+      },
+      "EMPTY_DATA": {
+        "TITLE": "Missing information",
+        "DESCRIPTION": "Some cards do not have every field. When a value does not apply or is unavailable, the page shows Not applicable or No data."
+      },
+      "ATTACKS": {
+        "TITLE": "Attacks and abilities",
+        "DESCRIPTION": "This area shows attack costs, names, damage, effects, and any abilities available in the card information. The page clearly indicates when none are available."
+      },
+      "SEARCH": {
+        "TITLE": "Search",
+        "DESCRIPTION": "Use this input to search cards by name. You can try typing now or continue the tutorial."
+      },
+      "FILTERS": {
+        "TITLE": "Filters",
+        "DESCRIPTION": "Use these filters to show all cards, only Pokemon, only Energy cards, or only Trainer cards. You can try them now."
+      },
+      "CARD_LIST": {
+        "TITLE": "Card list",
+        "DESCRIPTION": "This list contains every card matching the current search and filter. You can browse it without leaving the tutorial."
+      },
+      "SELECT_CARD": {
+        "TITLE": "Select a card",
+        "DESCRIPTION": "Click any card in the list to update the main image and details. You can try it now and then continue the tutorial."
+      },
+      "FINISH": {
+        "TITLE": "Done",
+        "DESCRIPTION": "You can now search, filter, select cards, and review their full information in the Pokedex."
+      },
+      "MOBILE": {
+        "CARD_GRID": {
+          "TITLE": "Card grid",
+          "DESCRIPTION": "Below you have the grid with every card matching the search and filter. On mobile there is no fixed detail panel: tap a card to open it."
+        },
+        "OPEN_CARD": {
+          "TITLE": "Open a card",
+          "DESCRIPTION": "Tap a card in the grid to see its full information."
+        },
+        "CARD_MODAL": {
+          "TITLE": "Card detail",
+          "DESCRIPTION": "On mobile, the full information is shown in this panel: category, type, attacks, and more."
+        },
+        "CLOSE_MODAL": {
+          "TITLE": "Close the detail",
+          "DESCRIPTION": "Tap the X or the dark backdrop to close this panel and go back to the card grid."
+        }
+      }
+    },
+    "PROFILE_GUIDE": {
+      "WELCOME": { "TITLE": "Trainer profile", "DESCRIPTION": "This is your profile page: account details, password settings, and match history in one place." },
+      "TRAINER_DATA": { "TITLE": "Trainer details", "DESCRIPTION": "This section shows your username, verified email, and the option to change your password." },
+      "AVATAR": { "TITLE": "Trainer avatar", "DESCRIPTION": "You can change your avatar by clicking it. This is optional: try it now or press Continue to keep going." },
+      "USERNAME": { "TITLE": "Username", "DESCRIPTION": "Here you can see the trainer name other players will recognize when you play." },
+      "EDIT_USERNAME": { "TITLE": "Edit username", "DESCRIPTION": "Click the pencil button to enter edit mode. The tutorial continues when the save and cancel controls appear." },
+      "SAVE_CANCEL_USERNAME": { "TITLE": "Save or cancel", "DESCRIPTION": "While editing, the check button saves the new username and the X button cancels the change." },
+      "EMAIL_VERIFIED": { "TITLE": "Verified email", "DESCRIPTION": "This area shows your email address and the badge confirming that your account is verified." },
+      "CHANGE_PASSWORD": { "TITLE": "Change password", "DESCRIPTION": "This button starts the password change flow, but the tutorial only explains it. No panel is opened and no verification code is sent." },
+      "PASSWORD_CODE": { "TITLE": "Verification code", "DESCRIPTION": "The email code is valid for 5 minutes and can be resent after 60 seconds. A valid code is required before choosing a new password." },
+      "OPEN_HISTORY": { "TITLE": "Open match history", "DESCRIPTION": "Click Match history to continue. The tutorial waits for the real tab interaction before changing sections." },
+      "HISTORY_OVERVIEW": { "TITLE": "Match history", "DESCRIPTION": "This section summarizes played matches, wins, losses, win rate, and your current streak." },
+      "TOTAL_GAMES": { "TITLE": "Played matches", "DESCRIPTION": "This number shows how many matches you have played in total." },
+      "WINS_LOSSES": { "TITLE": "Wins and losses", "DESCRIPTION": "Here you can see how many matches you won and how many you lost." },
+      "WINS": { "TITLE": "Wins", "DESCRIPTION": "Here you can see how many matches you have won." },
+      "LOSSES": { "TITLE": "Losses", "DESCRIPTION": "Here you can see your losses. Losing also helps you understand what to improve." },
+      "WIN_RATE": { "TITLE": "Win rate", "DESCRIPTION": "The win rate compares your wins against your total played matches." },
+      "CURRENT_STREAK": { "TITLE": "Current streak", "DESCRIPTION": "The current streak shows how many matches in a row you have won." },
+      "HISTORY_FILTERS": { "TITLE": "History filters", "DESCRIPTION": "Use these filters to show all matches, wins, losses, the last 7 days, or the last 30 days." },
+      "MATCH_LIST": { "TITLE": "Match list", "DESCRIPTION": "This area shows each played match and its result. If you have not played yet, it displays the existing empty state." },
+      "FINISH": { "TITLE": "Profile ready", "DESCRIPTION": "You now know where to manage your account security and review your match history." }
+    }
+  },
+  "PLAY": {
+    "MATCHMAKING": "MATCHMAKING",
+    "MATCH_FOUND": "MATCH FOUND",
+    "RIVAL_FOUND": "RIVAL LOCATED",
+    "SEARCHING_MATCH": "SEARCHING MATCH",
+    "MATCH_OK": "MATCH OK",
+    "MATCH_FOUND_TITLE": "Match Found",
+    "MATCH_FOUND_BODY": "Loading board and preparing the table...",
+    "TRANSITION_DESCRIPTION": "Preparing the board and finishing the final backend handoff.",
+    "FOUND_DESCRIPTION": "The backend assigned a rival. We are waiting for the final gameId to enter the table.",
+    "SEARCH_DESCRIPTION": "We are checking matchmaking in real time while the queue finds a compatible rival.",
+    "TIME": "Time",
+    "ACTIVE_DECK": "Active deck",
+    "PLAYERS": "Players",
+    "STATUS": "Status",
+    "ENTERING_BOARD": "Entering board",
+    "RIVAL_ASSIGNED": "Rival assigned",
+    "CANCEL_SEARCH": "Cancel search",
+    "CANCELLING": "Cancelling...",
+    "NO_ACTIVE_DECK": "No active deck",
+    "NO_TIMESTAMP": "No timestamp",
+    "POKEBALL_ALT": "Pokeball searching for rival",
+    "CHECKLIST_VALIDATION_GAP": "Could not interpret the server validation details. Check your deck or try again.",
+    "MATCHMAKING_GAP": "An error occurred while checking matchmaking status. Try again in a few seconds.",
+    "MATCH_FOUND_PENDING": "A rival was found, but automatic match opening is still pending.",
+    "ROOM_HANDOFF_GRACE": "Matchmaking is still completing the handoff. We will keep your room for a few more seconds before marking it as lost.",
+    "AUTOMATIC_OPEN_PENDING": "Automatic match opening is still pending. Meanwhile, you can continue or cancel the search.",
+    "INVALID_DECK": "You must select a valid deck before searching for a match."
+  },
+  "POKEDEX": {
+    "EYEBROW": "POKEDEX / Catalog",
+    "TITLE": "Card explorer",
+    "DETAILS": "DETAIL",
+    "LIST": "LIST",
+    "CARDS": "Cards",
+    "CATEGORY": "Category",
+    "SUBTYPE": "Subtype",
+    "EVOLVES_FROM": "Evolves from",
+    "POKEMON_TYPE": "Pokémon type",
+    "RETREAT_COST": "Retreat cost",
+    "WEAKNESSES": "Weaknesses",
+    "RESISTANCES": "Resistances",
+    "ATTACKS": "Attacks",
+    "RULES": "Rules",
+    "ABILITIES": "Abilities",
+    "NO_ATTACKS": "No attacks loaded.",
+    "NO_RULES": "No rules loaded.",
+    "NO_CARDS_FOUND": "No cards found for this search.",
+    "LOADING_CARDS": "Loading card catalog...",
+    "LOAD_ERROR": "We couldn't load the card catalog.",
+    "SEARCH_PLACEHOLDER": "Search by name...",
+    "SELECT_CARD": "Select a card from the list to view its details.",
+    "CARD_IMAGE": "card image",
+    "NO_COST": "No cost",
+    "FILTER_ARIA": "Filter cards by type",
+    "FILTERS": {
+      "ALL": "All",
+      "POKEMON": "Pokémon",
+      "ENERGY": "Energy",
+      "TRAINER": "Trainer"
+    },
+    "CATEGORIES": {
+      "BASIC_POKEMON": "Basic Pokémon",
+      "STAGE_1_POKEMON": "Stage 1 Pokémon",
+      "STAGE_2_POKEMON": "Stage 2 Pokémon",
+      "POKEMON_EX": "Pokémon-EX",
+      "MEGA_POKEMON": "Mega Pokémon",
+      "BASIC_ENERGY": "Basic Energy",
+      "SPECIAL_ENERGY": "Special Energy",
+      "ITEM_TRAINER": "Item",
+      "ACE_SPEC_TRAINER": "ACE SPEC",
+      "SUPPORTER_TRAINER": "Supporter",
+      "STADIUM_TRAINER": "Stadium",
+      "POKEMON_TOOL_TRAINER": "Pokémon Tool"
+    }
+  },
+  "DECK": {
+    "TITLE": "Decks",
+    "DECKS_COUNT": "{{count}}/{{max}} Decks",
+    "DECKS_LIMIT": "{{count}}/{{max}} decks - you can have up to {{max}} decks",
+    "ACTIVE_DECK": "Active deck",
+    "ACTIVE_PREFIX": "Active: {{name}}",
+    "EDITOR_ARIA": "Deck editor",
+    "BACK_TO_LIST": "Back to deck list",
+    "DECK_NAME": "Deck name",
+    "DECK_NAME_PLACEHOLDER": "Deck name",
+    "RANDOM_BACKEND": "Generate random deck with backend",
+    "CLEAR_DECK": "Clear cards from edited deck",
+    "CLEAR": "Clear",
+    "SAVE_DECK": "Save deck",
+    "CARDS_TITLE": "Cards",
+    "SEARCH_CARDS": "Search cards",
+    "SEARCH_PLACEHOLDER": "Search cards...",
+    "LOADING_DECKS": "Loading decks...",
+    "LOADING_AVAILABLE": "Loading available cards...",
+    "NO_FILTER_CARDS": "No cards for that filter.",
+    "NO_DRAFT_CARDS": "You haven't added cards yet.",
+    "RULES_ARIA": "Deck rules",
+    "SUMMARY_ARIA": "Deck summary",
+    "PREVIEW_ARIA": "Card preview",
+    "ADD_CARD": "Add {{name}} to deck",
+    "ADD_COPY": "Add one copy",
+    "REMOVE_COPY": "Remove one copy",
+    "MAX_4_POKEMON": "Max 4 copies",
+    "MAX_4_POKEMON_ARIA": "{{name}} already has the maximum of 4 copies",
+    "MAX_4_COPIES": "Max 4 copies",
+    "MAX_4_COPIES_ARIA": "You can't add more than 4 copies of {{name}}",
+    "DECK_LABEL": "Deck",
+    "EDIT_DECK": "Edit deck {{name}}",
+    "ACTIVATE_DECK": "Activate deck {{name}}",
+    "DELETE_DECK": "Delete deck {{name}}",
+    "EMPTY_SPACE": "Empty space",
+    "CREATE_DECK_N": "Create deck {{number}}",
+    "CREATE_DECK_SPACE": "Create deck in slot {{number}}",
+    "CARDS_OF": "Cards in: {{name}}",
+    "PREV_PAGE": "Previous page",
+    "NEXT_PAGE": "Next page",
+    "PAGE_LABEL": "Page {{current}} / {{total}}",
+    "VIEW_IN_POKEDEX": "View {{name}} in the Pokedex",
+    "VALIDATION_TOTAL": "{{total}} / {{required}} cards",
+    "VALIDATION_MAX_COPIES": "Maximum 4 copies per card name",
+    "VALIDATION_REDUCE": "Reduce copies of: {{names}}",
+    "VALIDATION_BASIC": "At least 1 basic Pokémon",
+    "ERROR_NO_EDITING_SAVE": "There is no deck being edited to save.",
+    "ERROR_NO_EDITING_RANDOM": "There is no deck being edited to randomize.",
+    "ERROR_NAME_REQUIRED": "Enter a name to save the deck.",
+    "ERROR_SAVE_INVALID": "The deck cannot be saved: {{reasons}}.",
+    "ERROR_MAX_COPIES_CARD": "You can't add more than 4 copies of {{name}}.",
+    "ERROR_MAX_DECKS": "You already reached the maximum of {{max}} decks. Edit or delete one to create another.",
+    "FILTERS": {
+      "ALL": "All",
+      "POKEMON": "Pokémon",
+      "ENERGY": "Energy",
+      "TRAINER": "Trainer"
+    },
+    "ERRORS": {
+      "DEFAULT": "We couldn't process the deck operation.",
+      "CONNECTION": "Could not connect to the server.",
+      "UNAUTHORIZED": "Your session expired. Sign in again.",
+      "BAD_REQUEST": "Check the deck data.",
+      "NOT_FOUND": "We couldn't find the requested deck.",
+      "CONFLICT": "The deck does not meet the required rules.",
+      "SERVER": "An unexpected error occurred while processing the deck."
+    }
+  },
+  "GAME": {
+    "LOADING_TITLE": "LOADING MATCH",
+    "LOADING_SNAPSHOT": "Syncing initial snapshot...",
+    "LOAD_FAILED": "COULD NOT LOAD",
+    "RECONNECTING": "RECONNECTING",
+    "RECONNECTING_MESSAGE": "Syncing match...",
+    "TOAST": {
+      "ATTACK_LOCKED": "This Pokémon cannot attack this turn.",
+      "PICKUP_NO_VALID_CARDS": "There are no Item cards in your discard pile to recover."
+    },
+    "CONNECTION_LOST": "Connection to the match was lost. Trying to reconnect...",
+    "WAITING_OPPONENT": "Waiting for rival...",
+    "PREPARING_MATCH": "Preparing match",
+    "WAITING_RIVAL_SETUP": "Waiting for rival setup",
+    "OPPONENT_TURN": "Rival's turn",
+    "PENDING_RESOLUTION": "Resolution pending.",
+    "PAUSED": "Match paused.",
+    "FINISHED": "Match finished.",
+    "CANCELLED": "Match cancelled.",
+    "WAITING_STATE": "Waiting for match state...",
+    "ERROR_TITLE": "Match error",
+    "ENGINE_DETAIL": "Engine detail: {{detail}}",
+    "RIVAL_FIELD": "Rival",
+    "YOUR_FIELD": "You",
+    "TURN": "Turn",
+    "LEAVE": "Leave",
+    "ACTIVE_PLAYER_SYNCED": "{{player}} active",
+    "ACTIVE_PLAYER_PENDING_SYNCED": "Active player pending",
+    "CONNECTED": "Connected",
+    "DISCONNECTED": "Disconnected",
+    "PLAYER_STATUS": "{{player}} status",
+    "OPEN_OPPONENT_CHAT": "Open chat with rival",
+    "HISTORY": "History",
+    "YOUR_TURN": "Your turn",
+    "PLAYER_TURN": "{{player}}'s turn",
+    "INITIAL_SETUP": "Initial setup",
+    "SETUP_STEP_ACTIVE": "Drag a basic Pokémon to the active slot.",
+    "SETUP_STEP_BENCH": "You can also drag basic Pokémon to your bench.",
+    "SETUP_STEP_CONFIRM": "Then confirm the setup.",
+    "SETUP_SENT": "Setup sent",
+    "WAITING_FOR_OPPONENT": "Waiting for opponent",
+    "SETUP_MOBILE_HELP": "Prepare your field: choose 1 Basic Pokémon as your Active Pokémon. You can also place Basic Pokémon on your Bench before sending setup.",
+    "CHOOSE_ACTIVE_POKEMON": "Choose your Active Pokémon",
+    "OPTIONAL_BENCH": "Optional Bench",
+    "SETUP_ACTIVE_REQUIRED": "First choose a Basic Pokémon as your Active Pokémon.",
+    "CLEAR_BENCH": "Clear Bench",
+    "END_TURN": "End turn",
+    "END_TURN_UNAVAILABLE": "End turn is not available.",
+    "NO_AVAILABLE": "Not available",
+    "NO_EVENTS": "No match activity yet.",
+    "LOGS": "History",
+    "CLOSE_LOGS": "Close history",
+    "PORTRAIT_LOCK_TITLE": "Rotate your screen",
+    "PORTRAIT_LOCK_MESSAGE": "This board is optimized for landscape play.",
+    "ACTION": "Action",
+    "ATTACKS": "Attacks",
+    "CANCEL_ACTION": "Cancel",
+    "ACTIVE_POKEMON": "Active Pokémon",
+    "NO_ACTIVE": "No active Pokémon",
+    "ATTACHED_ENERGIES": "Attached energies",
+    "REMAINING_HP": "Remaining HP",
+    "ACTIVE": "Active",
+    "BENCH": "Bench",
+    "OPPONENT_BENCH": "Rival bench",
+    "YOUR_BENCH": "Your bench",
+    "DISCARD": "Discard",
+    "DECK": "Deck",
+    "PRIZES": "Prize cards",
+    "HAND": "Hand",
+    "YOUR_HAND": "Your hand",
+    "HAND_OPEN": "View hand",
+    "HAND_CLOSE": "Close hand",
+    "HAND_PAGE": "Page {{current}} / {{total}}",
+    "HAND_PREVIOUS": "Previous",
+    "HAND_NEXT": "Next",
+    "HAND_DETAIL": "Details",
+    "OPPONENT_HAND": "Rival hand",
+    "OPPONENT_DECK": "Rival deck",
+    "STADIUM": "Stadium",
+    "STADIUM_NONE": "None",
+    "STADIUM_IN_PLAY": "In play",
+    "STADIUM_IN_PLAY_WITH_CARD": "In play: {{card}}",
+    "PLAYED_BY": "Played by {{player}}",
+    "MESSAGE": "MESSAGE",
+    "CARD_DETAIL_ARIA": "{{name}} details",
+    "CATEGORY": "Category",
+    "SUBTYPE": "Subtype",
+    "EVOLVES_FROM": "Evolves from",
+    "POKEMON_TYPE": "Pokémon type",
+    "RETREAT_COST": "Retreat cost",
+    "WEAKNESSES": "Weaknesses",
+    "RESISTANCES": "Resistances",
+    "ABILITIES": "Abilities",
+    "RULES": "Rules",
+    "LOADING_DETAIL": "Loading detail...",
+    "NO_ATTACKS": "No attacks loaded.",
+    "NO_RULES": "No rules loaded.",
+    "NO_COST": "No cost",
+    "CARD_FALLBACK": "Card",
+    "HIDDEN_CARD": "Hidden card",
+    "HIDDEN_POKEMON": "Hidden Pokémon",
+    "POKEMON_FALLBACK": "Pokémon",
+    "SLOT": "Slot {{number}}",
+    "ATTACK_FALLBACK": "Attack {{number}}",
+    "ABILITY_FALLBACK": "Ability",
+    "USE_ABILITY": "Use ability",
+    "TRAINER": {
+      "SECTION_TITLE": "Play Trainer Card",
+      "PLAY": "Play",
+      "EQUIP": "Equip",
+      "CANCEL": "Cancel",
+      "CHOOSE_TOOL_TARGET": "Choose a Pokémon to attach the tool",
+      "NO_TOOL_TARGETS": "No Pokémon available for this tool",
+      "CHOOSE_BENCH_TARGET": "Choose a benched Pokémon",
+      "NO_BENCH_TARGETS": "No benched Pokémon available",
+      "CHOOSE_CASSIUS_TARGET": "Choose a benched Pokémon to shuffle into your deck",
+      "CHOOSE_HEAL_TARGET": "Choose a Pokémon to heal",
+      "NO_HEAL_TARGETS": "No Pokémon in play to heal",
+      "CHOOSE_EVOLVE_TARGET": "Choose a Pokémon to evolve",
+      "ACTIVE_EVOLUTION_TARGET": "Active: {{name}}",
+      "BENCH_EVOLUTION_TARGET": "Bench {{position}}: {{name}}",
+      "NO_EVOLVE_TARGETS": "No Pokémon in play to evolve",
+      "CHOOSE_EVOLUTION": "Choose an Evolution from your deck",
+      "LOADING_EVOLUTIONS": "Looking for valid Evolutions...",
+      "NO_EVOLUTIONS": "There are no valid Evolutions in your deck",
+      "AVAILABLE_COUNT": "Available: {{count}}",
+      "EVOLUTION_PREVIEW_ERROR": "The Evolutions could not be loaded. Close the dialog and try again.",
+      "CHOOSE_REVIVE_POKEMON": "Choose a Pokémon from discard to put on top of the deck",
+      "NO_REVIVE_POKEMON": "No Pokémon in discard pile",
+      "CHOOSE_DECK_POKEMON": "Choose a Pokémon from the top 7 cards of your deck",
+      "NO_DECK_POKEMON": "No Pokémon in the top cards of your deck",
+      "LOADING_DECK_POKEMON": "Looking at the top cards of the deck...",
+      "CARDS_LOOKED_AT": "Looked at {{count}} cards from the top of the deck.",
+      "DECK_POKEMON_PREVIEW_ERROR": "The top cards of the deck could not be loaded. Close the dialog and try again.",
+      "CHOOSE_BASIC_ENERGIES": "Choose up to {{max}} Basic Energy cards from your deck",
+      "LOADING_BASIC_ENERGIES": "Looking for Basic Energy cards in your deck...",
+      "NO_BASIC_ENERGIES": "No Basic Energy cards in your deck",
+      "BASIC_ENERGY_SELECTION_COUNT": "Selected: {{count}} / {{max}}",
+      "BASIC_ENERGY_PREVIEW_ERROR": "The Basic Energy cards could not be loaded. Close the dialog and try again.",
+      "INCREASE_ENERGY": "Increase quantity",
+      "DECREASE_ENERGY": "Decrease quantity",
+      "CHOOSE_REVIVE_ENERGY": "Choose a Basic Energy from discard to attach",
+      "NO_REVIVE_ENERGY": "No Basic Energy in discard pile",
+      "TYPE": {
+        "ITEM": "Item",
+        "ACE_SPEC": "Ace Spec",
+        "SUPPORTER": "Supporter",
+        "STADIUM": "Stadium",
+        "TOOL": "Pokémon Tool"
+      }
+    },
+    "BACKEND_PENDING": "Pending backend support",
+    "ABILITY": {
+      "PASSIVE_AUTOMATIC": "Automatic passive ability"
+    },
+    "NO_DATA_LEGACY": "The snapshot does not include boardPlayers; using the legacy contract with safe placeholders.",
+    "NO_POKEMON_DATA": "The snapshot does not include Pokémon in active or bench zones.",
+    "NO_DISCARD_DATA": "The snapshot does not include visible discard cards.",
+    "NO_STADIUM_DATA": "The snapshot does not include an active stadium.",
+    "NO_ABILITIES_DATA": "The backend does not expose real abilities yet; USE_ABILITY remains visually disabled.",
+    "STATUS": {
+      "WAITING": "Waiting for rival",
+      "SETUP": "Setup",
+      "ACTIVE": "In game",
+      "PAUSED": "Paused",
+      "FINISHED": "Finished",
+      "CANCELLED": "Cancelled",
+      "VICTORY": "Victory!",
+      "DEFEAT": "Defeat",
+      "PROMOTION_REQUIRED": "Choose your next active Pokémon!",
+      "PROMOTION_REQUIRED_HINT": "Your active Pokémon fainted. Tap a benched Pokémon to send it out."
+    },
+    "PHASE": {
+      "DRAW": "Required draw",
+      "MAIN": "Available actions",
+      "ATTACK": "Resolving action",
+      "BETWEEN_TURNS": "Turn change",
+      "WAITING_TABLE": "Waiting table"
+    },
+    "ACTIONS": {
+      "CREATE_GAME": "Create match",
+      "JOIN_GAME": "Join match",
+      "START_GAME": "Start match",
+      "ACK_MULLIGAN_NOTICE": "Continue Mulligan",
+      "CHOOSE_INITIAL_POKEMON": "Choose initial Pokémon",
+      "PAUSE_GAME": "Pause match",
+      "RESUME_GAME": "Resume match",
+      "DRAW_CARD": "Draw card",
+      "PLAY_BASIC_POKEMON": "Play basic Pokémon",
+      "EVOLVE_POKEMON": "Evolve Pokémon",
+      "ATTACH_ENERGY": "Attach energy",
+      "PLAY_TRAINER": "Play trainer",
+      "RETREAT": "Retreat active",
+      "DECLARE_ATTACK": "Declare action",
+      "DECLARE_ATTACK_WITH_BONUS_DAMAGE": "Attack with bonus damage (+20 / 20 self)",
+      "SELECT_TARGET": "Select target",
+      "END_TURN": "End turn",
+      "PROMOTE_BENCH_POKEMON": "Promote from bench",
+      "RESOLVE_ATTACK_CHOICE": "Resolve attack choice",
+      "TAKE_PRIZE_CARD": "Take prize",
+      "CONCEDE": "Concede match",
+      "USE_ABILITY": "Declare ability"
+    },
+    "DISABLED": {
+      "NO_BASIC": "No visible basic Pokémon ready to play.",
+      "NO_EVOLUTIONS": "No visible evolutions available this turn.",
+      "NO_ENERGY_TARGETS": "No valid targets to attach energy.",
+      "ENERGY_NOT_YET": "You cannot attach energy this turn yet.",
+      "NO_TRAINERS": "No visible trainers ready to play.",
+      "NO_RETREAT_TARGETS": "No valid Pokémon to retreat to.",
+      "RETREAT_NOT_YET": "You cannot retreat the active Pokémon yet.",
+      "PROMOTION_REQUIRED": "You must manually choose a replacement from the bench.",
+      "NO_PROMOTE_TARGETS": "No bench Pokémon ready to promote.",
+      "NO_PROMOTION_NOW": "No promotion is available right now.",
+      "NO_ATTACKS_ENABLED": "No visible attack is enabled.",
+      "CONCEDE_PHASE_2": "Disabled for phase 2.",
+      "DRAW_REQUIRED": "Draw a card to start your turn.",
+      "NOT_YOUR_TURN": "It is not your turn.",
+      "ACTION_PENDING": "An action is in progress.",
+      "WAITING_SYNC": "Waiting for board synchronization.",
+      "DRAW_UNAVAILABLE": "Draw is not available.",
+      "ATTACK_UNAVAILABLE": "Attack is not available.",
+      "INSUFFICIENT_ENERGY_OR_ACTION": "Insufficient energy or action not available.",
+      "ATTACK_CHOICE_REQUIRED": "There is a pending attack choice."
+    },
+    "EVENTS": {
+      "NONE": "No match activity yet.",
+      "SUMMARY_EMPTY": "Match activity",
+      "SUMMARY": "Match activity",
+      "TURN_STARTED": "{{subject}}started their turn.",
+      "CARD_DRAWN": "{{subject}}drew a card.",
+      "CARD_PLAYED": "{{subject}}played {{card}}.",
+      "TRAINER_PLAYED": "{{subject}}played {{card}}.",
+      "BASIC_ENERGIES_REVEALED": "{{subject}}searched and revealed: {{cards}}.",
+      "ENERGY_ATTACHED": "{{subject}}attached an energy.",
+      "POKEMON_EVOLVED": "{{subject}}evolved a Pokémon.",
+      "RETREAT_DONE": "{{subject}}retreated their active Pokémon.",
+      "ATTACK_DECLARED": "{{subject}}declared an attack.",
+      "ATTACK_CHOICE_RESOLVED": "{{subject}}resolved an attack choice.",
+      "DAMAGE_APPLIED": "{{subject}}took {{damage}} damage.",
+      "STATUS_APPLIED": "{{subject}}became {{condition}}.",
+      "STATUS_RESOLVED": "{{subject}}is no longer {{condition}}.",
+      "POKEMON_PROMOTED": "{{subject}}promoted a Pokémon.",
+      "PRIZE_TAKEN": "{{subject}}took a prize card.",
+      "GAME_FINISHED": "{{subject}}finished the match.",
+      "GAME_ACTION": "{{subject}}resolved a game effect.",
+      "INVALID_ACTION": "{{subject}}could not complete that action.",
+      "OPENING_HANDS_DEALT": "Decks were shuffled and opening hands were dealt.",
+      "MULLIGAN_REQUIRED": "{{subject}}must take Mulligan #{{number}}.",
+      "MULLIGAN_HAND_REVEALED": "{{subject}}made Mulligan #{{number}}. They revealed a hand with no Basic Pokémon. You will receive +{{extraCards}} extra card.",
+      "MULLIGAN_HAND_RETURNED": "{{subject}}returned Mulligan #{{number}} hand to the deck.",
+      "MULLIGAN_DECK_SHUFFLED": "{{subject}}shuffled the deck for Mulligan #{{number}}.",
+      "MULLIGAN_NEW_HAND_DRAWN": "{{subject}}drew a new hand of {{count}} cards.",
+      "MULLIGAN_HAND_VALIDATED_READY": "{{subject}}now has an opening hand with a Basic Pokémon.",
+      "MULLIGAN_HAND_VALIDATED_REPEAT": "{{subject}}revealed another hand with no Basic Pokémon. Mulligan #{{number}} continues.",
+      "MULLIGAN_SEQUENCE_COMPLETED": "{{subject}}made Mulligan x{{count}}. Your rival will receive +{{extraCards}} extra card(s).",
+      "MULLIGAN_EXTRA_CARDS_GRANTED": "{{subject}}received +{{count}} extra card(s) from Mulligan.",
+      "MULLIGAN_FLOW_COMPLETED": "The Mulligan sequence finished on round {{round}}.",
+      "MULLIGAN_NOTICE_ACKNOWLEDGED": "{{subject}}acknowledged the Mulligan notice.",
+      "PASSIVE_ABILITY_TRIGGERED": "{{subject}}{{ability}}: {{damageCounters}} counters.",
+      "PASSIVE_ABILITY_TRIGGERED_WITH_COIN": "{{subject}}{{ability}}: {{result}}, {{damageCounters}} counters.",
+      "COIN_FLIP_RESULT_SINGLE": "{{subject}}flipped a coin: {{result}}.",
+      "COIN_FLIP_RESULT_MULTIPLE": "{{subject}}flipped {{count}} coins: {{results}} ({{headsCount}} heads)."
+    },
+    "CONDITION": {
+      "ASLEEP": "asleep",
+      "BURNED": "burned",
+      "CONFUSED": "confused",
+      "PARALYZED": "paralyzed",
+      "POISONED": "poisoned",
+      "UNKNOWN": "affected by a special condition"
+    },
+    "MULLIGAN": {
+      "TITLE": "Mulligan",
+      "SUBTITLE": "Hands revealed during initial setup.",
+      "EVENT_TITLE": "{{player}} made Mulligan #{{number}}",
+      "EXTRA_CARDS": "You will receive +{{count}} extra card(s) after Mulligans finish.",
+      "REVEALED_CARDS": "Cards revealed by Mulligan",
+      "PLACEHOLDER_CARD": "Card",
+      "OWN_EVENT_TITLE": "You made Mulligan x{{count}}",
+      "OWN_EXTRA_CARDS": "{{opponent}} will receive +{{count}} extra card(s) after Mulligans finish.",
+      "AUTOMATIC": "Automatic Mulligan",
+      "ACK_REQUIRED": "Acknowledge this notice before sending your initial setup.",
+      "ACK_CONFIRMED": "Mulligan notice acknowledged. You can continue setup.",
+      "ACK_BUTTON": "Got it",
+      "CONTINUE_BUTTON": "Continue Mulligan",
+      "OWNER_NO_BASIC": "Your opening hand has no Basic Pokémon.",
+      "OWNER_MUST_MULLIGAN": "You must take a Mulligan.",
+      "OWNER_WILL_REVEAL": "Your hand will be revealed to your rival and you will draw 7 new cards.",
+      "OWNER_START_BUTTON": "Start Mulligan",
+      "RIVAL_NO_BASIC": "Your rival has no Basic Pokémon.",
+      "RIVAL_MUST_MULLIGAN": "Your rival must take a Mulligan.",
+      "RIVAL_ABOUT_TO_REVEAL": "They are about to reveal their hand to take a Mulligan.",
+      "RIVAL_REVEALING_SOON": "Your rival is about to reveal their hand…",
+      "WATCHER_CONTINUE_BUTTON": "Got it. Continue",
+      "WATCHER_CONFIRM_HINT": "Confirm to start your rival's Mulligan in sync.",
+      "WAITING_FOR_RIVAL": "Waiting for your rival…",
+      "ROUND": "Round {{round}}",
+      "ACK_LOADING": "Confirming...",
+      "COUNTER_RIVAL": "Opponent mulligan: {{count}}",
+      "COUNTER_OWN": "Your mulligan: {{count}}",
+      "START_BUTTON_MOBILE": "Start mulligan",
+      "DEAL_AGAIN": "Deal again",
+      "BANNER": {
+        "MULLIGAN": "MULLIGAN #{{n}}!",
+        "RETURNING": "Cards return to the deck",
+        "SHUFFLING": "Shuffling deck",
+        "NEW_HAND": "Drawing new hand",
+        "VALID_HAND": "Valid hand!",
+        "EXTRA_CARDS": "+{{count}} cards from rival Mulligan"
+      }
+    },
+    "COIN": {
+      "HEADS": "heads",
+      "TAILS": "tails",
+      "RESULT_HEADS": "It's heads!",
+      "RESULT_TAILS": "It's tails!"
+    },
+    "RESOLUTION": {
+      "PROMOTE_PLAYER": "{{player}} must promote a Pokémon.",
+      "PROMOTION_REQUIRED": "Promotion required",
+      "SUDDEN_DEATH": "Sudden death required",
+      "ATTACK_CHOICE_REQUIRED": "Pending attack choice"
+    },
+    "ATTACK_CHOICE": {
+      "EYEBROW": "Mine",
+      "MINE_TITLE": "Look at the top card of the opponent's deck",
+      "MINE_DESCRIPTION": "You can leave it where it is, or have your opponent shuffle their deck.",
+      "KEEP_TOP_CARD": "Leave it as is",
+      "SHUFFLE_DECK": "Shuffle opponent's deck",
+      "TITLE": "Resolve attack choice",
+      "CONFIRM": "Confirm",
+      "CANCEL": "Cancel",
+      "YES": "Yes",
+      "NO": "No",
+      "WAITING_OPPONENT": "Waiting for opponent decision",
+      "SELECT_TARGET": "Choose target",
+      "SELECT_TARGET_HINT": "Choose one Pokemon from your opponent's Bench.",
+      "SELECT_ATTACK": "Choose attack",
+      "SELECT_ATTACK_HINT": "Choose the opponent attack to block. The attack order is sent, not the name.",
+      "YES_NO_HINT": "Choose whether to apply the optional effect.",
+      "REORDER_CARDS": "Reorder cards",
+      "REORDER_CARDS_HINT": "Reorder the visible cards. The same cards will be sent in the new order.",
+      "SELECT_CARD": "Choose card",
+      "SELECT_DISCARD_HINT": "Choose one card from your discard pile.",
+      "SELECT_DISCARD_ITEMS_HINT": "Choose the Item cards from your discard pile that you want to recover to your hand.",
+      "SELECT_HAND_DISCARD_HINT": "Choose the cards from your hand that you want to discard.",
+      "MENTAL_TRASH_TITLE": "Mental Trash",
+      "MENTAL_TRASH_HINT": "Mental Trash: discard {{count}} card(s) from your hand.",
+      "MENTAL_TRASH_WAIT_TITLE": "Waiting for opponent discard",
+      "MENTAL_TRASH_WAIT_MESSAGE": "Waiting for the opponent to discard cards for Mental Trash.",
+      "SELECT_DECK_CARD_HINT": "Choose a valid card from your deck.",
+      "SKIP_EFFECT": "Do not apply effect",
+      "SELECT_ENERGY": "Choose energy",
+      "SELECT_DESTINATION": "Choose destination",
+      "MOVE_ENERGY_HINT": "Choose an Energy from the opponent's Active Pokemon and one of their Benched Pokemon.",
+      "SELECT_ENERGY_DESTINATION_HINT": "Choose an Energy from your deck and the Pokemon that will receive it.",
+      "SELECT_UP_TO_THREE_ENERGIES": "Choose up to 3 Energy",
+      "SELECT_UP_TO_THREE_ENERGIES_HINT": "Choose up to 3 Basic Energy cards of different types.",
+      "SELECT_SPECIAL_CONDITION": "Choose special condition",
+      "SELECT_SPECIAL_CONDITION_HINT": "Choose which special condition to apply to the opponent's Pokemon.",
+      "SELECTED_COUNT": "{{count}}/{{max}} selected",
+      "MOVE_UP": "Up",
+      "MOVE_DOWN": "Down",
+      "CARD_FALLBACK": "Card {{number}}",
+      "BENCH_SLOT": "Bench {{number}}",
+      "ATTACK_FALLBACK": "Attack {{number}}",
+      "ENERGY_FALLBACK": "Energy {{number}}",
+      "UNSUPPORTED": "This decision does not have an interface yet.",
+      "WAIT_TITLE": "Waiting for the opponent",
+      "WAIT_MESSAGE": "The opponent is deciding the effect of their attack."
+    },
+    "DISCARD_MODAL": {
+      "TITLE": "Discard pile",
+      "EMPTY": "There are no cards in the discard pile."
+    },
+    "STATUS_SUMMARY": {
+      "DRAW": "Draw a card from your deck to start your turn.",
+      "ACTIVE": "Turn {{turn}} - {{phase}} - current turn for {{player}}.",
+      "SETUP": "The table is still in setup before the first real turn."
+    },
+    "INTERACTION": {
+      "SETUP_PROMPT": "Drag a basic card from your hand to the active Pokémon slot to choose your initial Pokémon. You can also toggle cards into the bench before sending setup.",
+      "PLAY_BASIC_SELECTED": "Confirm to play the selected card to the bench.",
+      "PLAY_BASIC": "Select a visible basic Pokémon from your hand.",
+      "ATTACH_SELECTED": "Now choose the Pokémon that will receive the energy.",
+      "ATTACH": "Select a visible energy from your hand.",
+      "EVOLVE_SELECTED": "Now choose the Pokémon that will evolve.",
+      "EVOLVE": "Select a visible evolution from your hand.",
+      "TRAINER_SELECTED": "If the card needs a target, choose the corresponding Pokémon.",
+      "TRAINER": "Select a visible trainer from your hand.",
+      "RETREAT": "Select the benched Pokémon that will become active.",
+      "PROMOTE": "Select the replacement from your bench to resolve the promotion.",
+      "ATTACK_SELECTED": "If the attack requires a target, select the destination Pokémon and confirm.",
+      "ATTACK": "Select one of the visible attacks from the active Pokémon.",
+      "CHOOSE_HEAL_TARGET": "Choose which Pokémon to heal:",
+      "NO_HEAL_TARGETS": "No eligible Pokémon to heal right now.",
+      "CHOOSE_OPPONENT_TARGET": "Choose the rival's Pokémon to target:",
+      "NO_OPPONENT_TARGETS": "No eligible rival Pokémon right now.",
+      "DRAW": "Confirm to request the corresponding draw.",
+      "END_TURN": "Confirm to end your current turn.",
+      "SEND_SETUP": "Send setup",
+      "DRAW_LABEL": "Draw",
+      "DECLARE_ATTACK": "Declare action",
+      "PROMOTE_LABEL": "Promote",
+      "INITIAL_ACTIVE": "Initial active: {{name}}",
+      "INITIAL_BENCH": "Initial bench: {{count}}",
+      "CARD_SELECTED": "Card: {{name}}"
+    },
+    "OVERLAY": {
+      "PAUSED_TITLE": "Match paused",
+      "PAUSED_MESSAGE": "The board is read-only until the match resumes.",
+      "FINISHED_TITLE": "Match finished",
+      "FINISHED_MESSAGE": "The match is over. Only the final state remains available.",
+      "VICTORY_MESSAGE": "You won the match! You took all the rival's prizes or left them without Pokémon in play.",
+      "DEFEAT_MESSAGE": "You lost the match. The rival took all their prizes or left you without Pokémon in play.",
+      "CANCELLED_TITLE": "Match cancelled",
+      "CANCELLED_MESSAGE": "The match was cancelled. No new actions are accepted.",
+      "RESOLUTION_TITLE": "Resolution pending",
+      "BACK_TO_MENU": "Back to main menu",
+      "RESULT_EYEBROW": "Match finished",
+      "PROMOTION_WAIT_TITLE": "Waiting for the rival",
+      "PROMOTION_WAIT_MESSAGE": "The rival has no active Pokémon. They must choose a replacement from their bench before continuing."
+    },
+    "ERRORS": {
+      "INVALID_SNAPSHOT": "Could not load match state.",
+      "MISSING_USER": "Could not identify the local user to load the match.",
+      "MISSING_PARTICIPANT": "Could not identify your local player in this match.",
+      "SNAPSHOT_NOT_READY": "Could not load a complete initial snapshot.",
+      "BACKEND_UNSUPPORTED_TITLE": "Action not supported by the backend",
+      "BACKEND_UNSUPPORTED_MESSAGE": "The engine rejected the action because that effect is not implemented yet.",
+      "ACTION_REJECTED": "Action rejected",
+      "NO_ACTIVE_GAME": "There is no active match to perform actions.",
+      "NO_CHAT_GAME": "There is no active match to send messages.",
+      "UPDATE_PRESENCE": "Could not update match presence.",
+      "VERSION_SYNCED": "The match was updated. The board was synchronized.",
+      "ACTION_FAILED": "Could not perform the action.",
+      "USE_ABILITY_UNSUPPORTED": "USE_ABILITY is not supported yet.",
+      "BOARD_PERSPECTIVE": "Could not resolve the visible board perspective.",
+      "BOARD_VIEW_MISSING": "The snapshot does not include board.view with visible players.",
+      "LATEST_SNAPSHOT": "We couldn't retrieve the latest visible match snapshot.",
+      "GAME_FORBIDDEN": "Your user does not have access to this match.",
+      "GAME_NOT_FOUND": "The match no longer exists or is not available from the backend yet.",
+      "BOOTSTRAP_FAILED": "We couldn't initialize the match from the backend."
+    },
+    "SELF": "You",
+    "RIVAL_NUMBER": "Rival {{number}}",
+    "CARD_NUMBER": "Card {{number}}",
+    "EVOLUTION_FALLBACK": "Evolution",
+    "ATTACHED_ENERGY_FALLBACK": "Attached energy",
+    "ATTACHED_TOOL_FALLBACK": "Attached tool",
+    "UNKNOWN_EVENT": "{{subject}}{{event}}.",
+    "CHAT": {
+      "TAB": "Chat",
+      "TITLE": "LIVE CHAT",
+      "SUBTITLE": "Live conversation between both players.",
+      "CONNECTED": "Realtime active",
+      "RECONNECTING": "Reconnecting",
+      "EMPTY": "Chat will become available when the first message arrives between both players.",
+      "YOUR_MESSAGE": "YOUR MESSAGE",
+      "LABEL": "MESSAGE",
+      "PLACEHOLDER": "Message...",
+      "SENDING": "Sending...",
+      "SEND": "Send message"
+    },
+    "ANIMATION": {
+      "DRAWN_CARD": "Drawn card",
+      "DRAWN_CARD_NUMBER": "Drawn card {{number}}",
+      "DISCARDED_OPPONENT_POKEMON": "Discarded rival Pokémon",
+      "DISCARDED_POKEMON": "Discarded Pokémon",
+      "OPPONENT_CARD": "Rival card",
+      "DISCARDED_ENERGY": "Discarded energy",
+      "DISCARDED_ENERGY_NUMBER": "Discarded energy {{number}}",
+      "MULLIGAN_REVEAL": "Revealed hand",
+      "REVEALED_HAND_CARD": "Revealed card",
+      "COIN_FLIP_SELF": "You flip a coin",
+      "COIN_FLIP_OPPONENT": "The rival flips a coin",
+      "COIN_FLIP_SUMMARY": "Heads"
+    },
+    "STATUS_EFFECT": {
+      "ASLEEP": "Asleep",
+      "BURNED": "Burned",
+      "CONFUSED": "Confused",
+      "PARALYZED": "Paralyzed",
+      "POISONED": "Poisoned",
+      "SUMMARY_SINGLE": "Status: {{name}}",
+      "SUMMARY_MULTIPLE": "Status: {{list}}"
+    },
+    "EFFECTS": {
+      "HARDEN_SHIELD_TOOLTIP": "Harden: damage from the rival's next attack is reduced by 60"
+    },
+    "TOOLS": {
+      "MUSCLE_BAND_TOOLTIP": "Muscle Band: +20 damage when attacking",
+      "HARD_CHARM_TOOLTIP": "Hard Charm: reduces incoming damage by 20"
+    }
+  },
+  "ERRORS": {
+    "MATCHMAKING_INVALID_DECK": "You need to select a valid deck before searching for a match.",
+    "WEBSOCKET_BROKER": "The STOMP broker returned an error."
+  },
+  "A11Y": {
+    "BACKGROUND_MUSIC_VOLUME": "Background music volume",
+    "BACKGROUND_MUSIC_CONTROL": "Background music volume control",
+    "PRIMARY_NAVIGATION": "Primary navigation"
+  },
+  "WEBSOCKET": {
+    "NO_TOKEN": "No access token is available to open the WebSocket.",
+    "SESSION_TOKEN_MISSING": "The session no longer has a valid WebSocket access token.",
+    "CLOSED_BEFORE_CONNECT": "The WebSocket closed before the connection completed.",
+    "CHANNEL_FAILED": "Could not open the realtime channel with the server.",
+    "BROKER_ERROR": "The STOMP broker returned an error.",
+    "INVALID_MESSAGE": "An invalid realtime message was received."
+  },
+  "MATCHMAKING_PLACEHOLDER": {
+    "TITLE": "Matchmaking",
+    "SUBTITLE": "Placeholder screen for the matchmaking queue and status.",
+    "EMPTY_TITLE": "Queue pending",
+    "DESCRIPTION": "The route and base service are ready to connect join, leave, and status queries."
+  }
+}
+

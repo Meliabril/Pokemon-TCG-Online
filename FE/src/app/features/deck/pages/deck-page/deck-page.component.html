@@ -1,0 +1,159 @@
+<div
+  class="relative isolate flex min-h-[calc(100dvh-9.5rem)] flex-col overflow-visible font-['Silkscreen',system-ui,sans-serif] lg:h-[calc(100dvh-9.5rem)] lg:min-h-0 lg:overflow-hidden"
+  [class.text-[#fff4c7]]="!isLightTheme()"
+  [class.text-[#4a2a17]]="isLightTheme()"
+>
+  <div
+    class="pointer-events-none fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat [image-rendering:pixelated]"
+    [style.background-image]="isLightTheme() ? 'url(/assets/backgrounds/fondo-deck-dia.png)' : 'url(/assets/images/deck-room.png)'"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none fixed inset-0 -z-10"
+    [class.bg-black/35]="!isLightTheme()"
+    aria-hidden="true"
+  ></div>
+
+  <main
+    data-tour="deck-page"
+    class="mx-auto flex w-[min(105rem,100%)] flex-1 flex-col gap-3 pb-10 lg:min-h-0 lg:overflow-hidden lg:pb-0"
+    [attr.aria-labelledby]="isEditing() ? null : 'deck-title'"
+    [attr.aria-label]="isEditing() ? t('DECK.EDITOR_ARIA') : null"
+    [attr.aria-busy]="isLoading() || isSaving() || isRandomizing()"
+    [attr.data-tour-mode]="isEditing() ? (editingDeckId() === 'new' ? 'create' : 'edit') : (decks().length === 0 ? 'empty' : 'with-decks')"
+  >
+    @if (!isEditing()) {
+      <div class="grid shrink-0 gap-4 lg:flex lg:items-start lg:justify-between">
+        <div class="grid gap-2">
+          <div class="flex flex-wrap items-start gap-3">
+            <h1
+              id="deck-title"
+              data-tour="deck-title"
+              class="text-[clamp(2rem,5vw,3.5rem)] leading-none"
+              [class.text-white]="isLightTheme()"
+              [style.text-shadow]="isLightTheme() ? '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, -2px 0 0 #000, 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000' : ''"
+            >
+              {{ t('DECK.TITLE') }}
+            </h1>
+            <span
+              class="mt-6 whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold uppercase"
+              [class.bg-[#3a1a00]]="!isLightTheme()"
+              [class.text-[#D9A441]]="!isLightTheme()"
+              [class.bg-[#7a3f12]]="isLightTheme()"
+              [class.text-white]="isLightTheme()"
+              [style.text-shadow]="isLightTheme() ? '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, -2px 0 0 #000, 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000' : ''"
+            >
+              {{ t('DECK.DECKS_COUNT', { count: decks().length, max: maxDecks }) }}
+            </span>
+          </div>
+          <p
+            [class.text-[#f9f0d0]/70]="!isLightTheme()"
+            [class.text-white]="isLightTheme()"
+            [style.text-shadow]="isLightTheme() ? '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, -2px 0 0 #000, 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000' : ''"
+          >
+            {{ t('DECK.DECKS_LIMIT', { count: decks().length, max: maxDecks }) }}
+          </p>
+        </div>
+
+        @if (activeDeck(); as deck) {
+          <div
+            data-tour="deck-active-banner"
+            class="inline-flex items-center gap-2 rounded-2xl border-2 px-4 py-3 font-bold text-white"
+            [style.border-color]="isLightTheme() ? '#b8752a' : 'rgba(139,74,24,0.9)'"
+            style="background-color: #b8752a"
+            [style.text-shadow]="'-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, -2px 0 0 #000, 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000'"
+            [attr.aria-label]="t('DECK.ACTIVE_DECK')"
+          >
+            <span aria-hidden="true">&#9733;</span>
+            {{ t('DECK.ACTIVE_PREFIX', { name: deck.name }) }}
+          </div>
+        }
+      </div>
+    }
+
+    @if (errorMessage()) {
+      <div
+        class="fixed right-4 top-20 z-50 inline-flex items-center gap-3 rounded-2xl border-2 px-4 py-3 font-bold"
+        [class.border-[rgba(139,74,24,0.9)]]="!isLightTheme()"
+        [class.bg-red-900/95]="!isLightTheme()"
+        [class.border-[#b45309]/55]="isLightTheme()"
+        [class.bg-[#fff1e8]/96]="isLightTheme()"
+        [class.text-[#7f1d1d]]="isLightTheme()"
+        role="alert"
+        aria-live="assertive"
+      >
+        <p>{{ errorMessage() }}</p>
+        <button
+          type="button"
+          class="min-h-9 rounded-lg bg-[#8b070c] px-3 font-bold text-white hover:bg-[#6f0509] disabled:cursor-not-allowed disabled:opacity-55"
+          [attr.aria-label]="t('COMMON.CLOSE')"
+          (click)="dismissError()"
+        >
+          {{ t('COMMON.CLOSE') }}
+        </button>
+      </div>
+    }
+
+    @if (isLoading()) {
+      <div
+        class="grid min-h-32 flex-1 place-items-center rounded-2xl border-2 text-center"
+        [class.border-[rgba(139,74,24,0.9)]]="!isLightTheme()"
+        [class.bg-[rgba(43,18,6,0.92)]]="!isLightTheme()"
+        [class.border-[#8a4b20]/70]="isLightTheme()"
+        [class.bg-[rgba(255,244,214,0.88)]]="isLightTheme()"
+        role="status"
+      >
+        {{ t('DECK.LOADING_DECKS') }}
+      </div>
+    } @else if (isEditing()) {
+      <app-deck-editor
+        class="block min-h-0 flex-1 overflow-visible lg:overflow-hidden"
+        [draftName]="draftName()"
+        [draftTotal]="draftTotal()"
+        [requiredDeckSize]="requiredDeckSize"
+        [typeFilters]="typeFilters()"
+        [typeFilter]="typeFilter()"
+        [searchTerm]="searchTerm()"
+        [filteredCards]="filteredCards()"
+        [availableCards]="availableCards()"
+        [draftDeckItems]="draftDeckItems()"
+        [draftValidationHints]="draftValidationHints()"
+        [isSaving]="isSaving()"
+        [isRandomizing]="isRandomizing()"
+        [isLoadingCards]="isLoadingCards()"
+        [cardsErrorMessage]="cardsErrorMessage()"
+        [canSaveDraft]="canSaveDraft()"
+        [canRandomize]="canRandomize()"
+        [cardQuantity]="cardQuantity"
+        [isCopyLimitReached]="isCopyLimitReached"
+        [canAddCardToDraft]="canAddCardToDraft"
+        [isLightTheme]="isLightTheme()"
+        (closeEditor)="closeEditor()"
+        (updateDraftName)="updateDraftName($event)"
+        (updateSearchTerm)="updateSearchTerm($event)"
+        (changeTypeFilter)="changeTypeFilter($event)"
+        (randomizeEditingDeck)="randomizeEditingDeck()"
+        (clearDraft)="clearDraft()"
+        (saveDraft)="saveDraft()"
+        (loadAvailableCards)="loadAvailableCards()"
+        (addCardToDraft)="addCardToDraft($event)"
+        (removeCardFromDraft)="removeCardFromDraft($event)"
+      />
+    } @else {
+      <app-deck-overview
+        class="block min-h-0 flex-1 overflow-y-auto custom-scrollbar lg:pr-2"
+        [decks]="decks()"
+        [maxDecks]="maxDecks"
+        [miniPreviewSlots]="miniPreviewSlots"
+        [emptySlotIndexes]="emptySlotIndexes()"
+        [isSaving]="isSaving()"
+        [isLightTheme]="isLightTheme()"
+        (startEditing)="startEditing($event)"
+        (activateDeck)="activateDeck($event)"
+        (deleteDeck)="deleteDeck($event)"
+        (startCreating)="startCreating()"
+      />
+    }
+  </main>
+
+</div>

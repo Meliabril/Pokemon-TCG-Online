@@ -1,0 +1,90 @@
+@if (floatingCard(); as card) {
+  <div class="board-animation-layer" aria-hidden="true">
+    <div
+      class="board-animation-card"
+      [class.board-animation-card--back]="card.isBack"
+      [class.board-animation-card--image]="!card.isBack && card.animation.cardImageUrl"
+      [class.board-animation-card--lift]="card.phase === 'lift'"
+      [class.board-animation-card--travel]="card.phase === 'travel'"
+      [class.board-animation-card--drop]="card.phase === 'drop'"
+      [style.width.px]="card.width"
+      [style.height.px]="card.height"
+      [style.transform]="card.transform"
+      [style.opacity]="card.opacity"
+      [style.transition]="card.transition"
+    >
+      @if (!card.isBack && card.animation.cardImageUrl) {
+        <img [src]="card.animation.cardImageUrl" [alt]="card.animation.cardLabel ?? t('GAME.ANIMATION.OPPONENT_CARD')" />
+      } @else if (card.isBack) {
+        <div class="board-animation-card__back" aria-hidden="true"></div>
+      } @else {
+        <div class="board-animation-card__placeholder" aria-hidden="true"></div>
+      }
+
+      @if (!card.isBack && !card.animation.cardImageUrl && !card.animation.hideLabel && card.animation.cardLabel) {
+        <span>{{ card.animation.cardLabel }}</span>
+      }
+    </div>
+  </div>
+}
+
+@if (deckShuffle(); as shuffle) {
+  <div
+    class="board-deck-shuffle-overlay"
+    aria-hidden="true"
+    [style.left.px]="shuffle.x"
+    [style.top.px]="shuffle.y"
+    [style.width.px]="shuffle.width"
+    [style.height.px]="shuffle.height"
+  >
+    @for (index of shuffle.cardIndexes; track index) {
+      <div class="board-deck-shuffle-card" [style.--shuffle-index]="index"></div>
+    }
+  </div>
+}
+
+@if (coinFlip(); as coin) {
+  <div class="board-coin-flip-overlay fixed inset-0 z-[80] flex flex-col items-center justify-center gap-4" aria-hidden="true">
+    @if (coin.label) {
+      <div class="rounded-full bg-black/70 px-4 py-1.5 text-sm font-semibold text-amber-100 shadow-lg">
+        {{ coin.label }}
+      </div>
+    }
+    <div class="flex flex-row items-center justify-center gap-6">
+      @for (item of coin.coins; track $index) {
+        <div class="board-coin" [style.transform]="item.transform" [style.transition]="item.transition">
+          <div class="board-coin__faces" [class.board-coin__faces--bounce]="coin.phase === 'reveal'">
+            <div class="board-coin__face board-coin__face--heads">
+              <svg viewBox="0 0 64 64" class="h-full w-full" aria-hidden="true">
+                <circle cx="32" cy="32" r="30" fill="#f8fafc" stroke="#1f2937" stroke-width="3" />
+                <path d="M2,32 A30,30 0 0,0 62,32 Z" fill="#ef4444" />
+                <rect x="2" y="28" width="60" height="8" fill="#1f2937" />
+                <circle cx="32" cy="32" r="9" fill="#f8fafc" stroke="#1f2937" stroke-width="3" />
+                <circle cx="32" cy="32" r="3.5" fill="#f8fafc" stroke="#1f2937" stroke-width="2" />
+              </svg>
+            </div>
+            <div class="board-coin__face board-coin__face--tails">
+              <svg viewBox="0 0 64 64" class="h-full w-full" aria-hidden="true">
+                <circle cx="32" cy="32" r="30" fill="#e2e8f0" stroke="#475569" stroke-width="3" />
+                <path d="M2,32 A30,30 0 0,0 62,32 Z" fill="#94a3b8" />
+                <rect x="2" y="28" width="60" height="8" fill="#475569" />
+                <circle cx="32" cy="32" r="9" fill="#e2e8f0" stroke="#475569" stroke-width="3" />
+                <circle cx="32" cy="32" r="3.5" fill="#e2e8f0" stroke="#475569" stroke-width="2" />
+              </svg>
+            </div>
+          </div>
+          @if (coin.phase === 'reveal') {
+            <span class="board-coin__label" [class.board-coin__label--tails]="item.result === 'TAILS'">
+              {{ t(item.result === 'HEADS' ? 'GAME.COIN.RESULT_HEADS' : 'GAME.COIN.RESULT_TAILS') }}
+            </span>
+          }
+        </div>
+      }
+    </div>
+    @if (coin.coins.length > 1 && coin.phase === 'reveal') {
+      <div class="rounded-full bg-black/70 px-4 py-1 text-xs font-semibold text-amber-100 shadow-lg">
+        {{ t('GAME.ANIMATION.COIN_FLIP_SUMMARY') }}: {{ coinFlipHeadsCount(coin.coins) }} / {{ coin.coins.length }}
+      </div>
+    }
+  </div>
+}

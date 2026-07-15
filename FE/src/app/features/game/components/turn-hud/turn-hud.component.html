@@ -1,0 +1,69 @@
+<header class="turn-hud" [class.turn-hud--setup]="setupMode()" data-testid="game-turn-hud">
+  @if (setupMode()) {
+    <img
+      class="turn-hud__setup-image"
+      [class.turn-hud__setup-image--es]="isSpanishSetupImage()"
+      [src]="setupImageUrl()"
+      [alt]="t('GAME.INITIAL_SETUP')"
+      data-testid="desktop-setup-guide"
+    />
+  } @else {
+    <p class="turn-hud__mobile-title">
+      {{ t('GAME.TURN') }} {{ turnNumber() }} &middot; {{ currentTurnLabel() }}
+    </p>
+
+    <div class="turn-hud__hero">
+      <div class="turn-hud__turn-badge" aria-hidden="true">{{ turnNumber() }}</div>
+      <div class="turn-hud__copy">
+        <p class="turn-hud__kicker" data-testid="game-turn-status">{{ currentTurnLabel() }}</p>
+        <h1 class="turn-hud__title" data-testid="game-turn-title">
+          {{ t('GAME.TURN') }} {{ turnNumber() }}
+        </h1>
+        <p class="turn-hud__summary" data-testid="game-status-summary">{{ statusSummary() }}</p>
+      </div>
+    </div>
+
+    <div class="turn-hud__panel-row" data-testid="game-stadium-summary">
+      <span class="turn-hud__panel-label">{{ t('GAME.STADIUM') }}</span>
+      <strong>{{ stadiumStatusLabel() }}</strong>
+    </div>
+
+    <div class="turn-hud__details">
+      <section class="turn-hud__section" data-testid="game-history-summary">
+        <button
+          type="button"
+          class="turn-hud__section-toggle"
+          [attr.aria-expanded]="historyOpen()"
+          (click)="toggleHistory()"
+        >
+          <span>{{ t('GAME.HISTORY') }}</span>
+          <span>{{ historyOpen() ? '-' : '+' }}</span>
+        </button>
+
+        @if (historyOpen()) {
+          <div class="turn-hud__section-body">
+            <app-game-log-feed
+              [eventFeed]="eventFeed()"
+              [historySummary]="historySummary()"
+              [latestActionLabel]="latestActionLabel()"
+              [emptyLabel]="t('GAME.NO_EVENTS')"
+            />
+          </div>
+        }
+      </section>
+    </div>
+
+    <div class="turn-hud__actions">
+      <button
+        type="button"
+        class="turn-hud__end-turn"
+        [disabled]="!endTurnEnabled()"
+        [title]="endTurnEnabled() ? t('GAME.END_TURN') : (endTurnDisabledReason() ?? t('GAME.NO_AVAILABLE'))"
+        data-testid="turn-hud-end-turn"
+        (click)="endTurn.emit()"
+      >
+        {{ t('GAME.END_TURN') }}
+      </button>
+    </div>
+  }
+</header>

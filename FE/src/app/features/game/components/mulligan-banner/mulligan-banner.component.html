@@ -1,0 +1,7 @@
+@if (banner(); as activeBanner) {
+  <div class="mulligan-banner" aria-live="polite" role="status">
+    <span class="mulligan-banner__text" [attr.data-banner-id]="activeBanner.id">
+      {{ bannerText() }}
+    </span>
+  </div>
+}

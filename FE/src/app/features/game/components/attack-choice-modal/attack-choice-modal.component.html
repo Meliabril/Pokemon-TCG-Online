@@ -1,0 +1,430 @@
+@if (isOpen() && !autoDeckAttachChoice()) {
+  <div
+    class="attack-choice-modal"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="title()"
+    data-testid="attack-choice-modal"
+  >
+    <div class="attack-choice-modal__backdrop" aria-hidden="true"></div>
+
+    <article class="attack-choice-modal__panel">
+      <header class="attack-choice-modal__header">
+        <span class="attack-choice-modal__eyebrow">{{ t('GAME.ATTACK_CHOICE.EYEBROW') }}</span>
+        <h2>{{ title() }}</h2>
+        <p>{{ instruction() }}</p>
+      </header>
+
+      <section class="attack-choice-modal__body">
+        @switch (pendingChoiceType()) {
+          @case ('LOOK_OPPONENT_DECK_TOP_CARD_OPTIONAL_SHUFFLE') {
+            <section class="attack-choice-modal__showcase">
+              @if (isLoading()) {
+                <div class="attack-choice-modal__placeholder">
+                  <span>{{ t('COMMON.LOADING') }}</span>
+                </div>
+              } @else if (error()) {
+                <div class="attack-choice-modal__placeholder attack-choice-modal__placeholder--error">
+                  <span>{{ error() }}</span>
+                </div>
+              } @else if (imageUrl(); as selectedImageUrl) {
+                <img class="attack-choice-modal__image" [src]="selectedImageUrl" [alt]="displayName()" />
+              } @else {
+                <div class="attack-choice-modal__placeholder">
+                  <span>{{ displayName() }}</span>
+                </div>
+              }
+            </section>
+          }
+
+          @case ('YES_NO') {
+            <div class="attack-choice-modal__choice-note">
+              {{ t('GAME.ATTACK_CHOICE.YES_NO_HINT') }}
+            </div>
+          }
+
+          @case ('SELECT_OPPONENT_BENCH_TARGET') {
+            <div class="attack-choice-modal__grid">
+              @for (target of targetOptions(); track target.pokemonInPlayId) {
+                <button
+                  type="button"
+                  class="attack-choice-modal__option"
+                  [class.attack-choice-modal__option--selected]="selectedTargetPokemonId() === target.pokemonInPlayId"
+                  [disabled]="actionPending()"
+                  (click)="selectTarget(target.pokemonInPlayId)"
+                  data-testid="attack-choice-target"
+                >
+                  @if (optionImage(target); as image) {
+                    <img [src]="image" [alt]="target.label" />
+                  }
+                  <span>{{ target.label }}</span>
+                </button>
+              }
+            </div>
+          }
+
+          @case ('SELECT_OPPONENT_ATTACK') {
+            <div class="attack-choice-modal__list">
+              @for (attack of attackOptions(); track attack.attackOrder) {
+                <button
+                  type="button"
+                  class="attack-choice-modal__list-button"
+                  [class.attack-choice-modal__option--selected]="selectedAttackOrder() === attack.attackOrder"
+                  [disabled]="actionPending()"
+                  (click)="selectAttack(attack.attackOrder)"
+                  data-testid="attack-choice-attack"
+                >
+                  <span>{{ attack.attackName }}</span>
+                </button>
+              }
+            </div>
+          }
+
+          @case ('CHOOSE_SPECIAL_CONDITION') {
+            <div class="attack-choice-modal__list">
+              @for (condition of conditionOptions(); track condition.conditionType) {
+                <button
+                  type="button"
+                  class="attack-choice-modal__list-button"
+                  [class.attack-choice-modal__option--selected]="selectedConditionType() === condition.conditionType"
+                  [disabled]="actionPending()"
+                  (click)="selectCondition(condition.conditionType)"
+                  data-testid="attack-choice-condition"
+                >
+                  <span>{{ condition.label }}</span>
+                </button>
+              }
+            </div>
+          }
+
+          @case ('REORDER_TOP_DECK') {
+            <div class="attack-choice-modal__reorder-grid">
+              @for (cardOption of orderedCards(); track cardOption.cardInstanceId; let index = $index; let first = $first; let last = $last) {
+                <div
+                  class="attack-choice-modal__reorder-card attack-choice-modal__reorder-card--visual"
+                  [class.attack-choice-modal__reorder-card--dragging]="draggedReorderCardId() === cardOption.cardInstanceId"
+                  draggable="true"
+                  (dragstart)="startReorderDrag($event, cardOption.cardInstanceId)"
+                  (dragend)="clearReorderDrag()"
+                  (dragover)="allowDrop($event)"
+                  (drop)="dropReorderedCard(cardOption.cardInstanceId)"
+                  data-testid="attack-choice-reorder-card"
+                >
+                  <span class="attack-choice-modal__order-badge">{{ index + 1 }}</span>
+                  <div class="attack-choice-modal__reorder-image">
+                    @if (optionImage(cardOption); as image) {
+                      <img [src]="image" [alt]="cardOption.label" />
+                    }
+                  </div>
+                  <span>{{ cardOption.label }}</span>
+                  <div class="attack-choice-modal__reorder-actions">
+                    <button
+                      type="button"
+                      [disabled]="first || actionPending()"
+                      (click)="moveReorderedCard(cardOption.cardInstanceId, -1)"
+                    >
+                      {{ t('GAME.ATTACK_CHOICE.MOVE_UP') }}
+                    </button>
+                    <button
+                      type="button"
+                      [disabled]="last || actionPending()"
+                      (click)="moveReorderedCard(cardOption.cardInstanceId, 1)"
+                    >
+                      {{ t('GAME.ATTACK_CHOICE.MOVE_DOWN') }}
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+
+          @case ('SELECT_CARD_FROM_DISCARD') {
+            <div class="attack-choice-modal__grid">
+              @for (cardOption of cardOptions(); track cardOption.cardInstanceId) {
+                <button
+                  type="button"
+                  class="attack-choice-modal__option"
+                  [class.attack-choice-modal__option--selected]="selectedCardId() === cardOption.cardInstanceId"
+                  [disabled]="actionPending()"
+                  (click)="selectCard(cardOption.cardInstanceId)"
+                  data-testid="attack-choice-card"
+                >
+                  @if (optionImage(cardOption); as image) {
+                    <img [src]="image" [alt]="cardOption.label" />
+                  }
+                  <span>{{ cardOption.label }}</span>
+                </button>
+              }
+            </div>
+          }
+
+          @case ('SELECT_DISCARD_ITEMS_TO_HAND') {
+            <p class="attack-choice-modal__choice-note">{{ pickupSelectionText() }}</p>
+            <div class="attack-choice-modal__grid">
+              @for (cardOption of cardOptions(); track cardOption.cardInstanceId) {
+                <button
+                  type="button"
+                  class="attack-choice-modal__option"
+                  [class.attack-choice-modal__option--selected]="isPickupCardSelected(cardOption.cardInstanceId)"
+                  [disabled]="actionPending() || isPickupCardDisabled(cardOption.cardInstanceId)"
+                  (click)="togglePickupCard(cardOption.cardInstanceId)"
+                  data-testid="attack-choice-card"
+                >
+                  @if (optionImage(cardOption); as image) {
+                    <img [src]="image" [alt]="cardOption.label" />
+                  }
+                  <span>{{ cardOption.label }}</span>
+                </button>
+              }
+            </div>
+          }
+
+          @case ('SELECT_HAND_CARDS_TO_DISCARD') {
+            <p class="attack-choice-modal__choice-note">{{ handDiscardSelectionText() }}</p>
+            <div class="attack-choice-modal__grid">
+              @for (cardOption of cardOptions(); track cardOption.cardInstanceId) {
+                <button
+                  type="button"
+                  class="attack-choice-modal__option"
+                  [class.attack-choice-modal__option--selected]="isHandDiscardCardSelected(cardOption.cardInstanceId)"
+                  [disabled]="actionPending() || isHandDiscardCardDisabled(cardOption.cardInstanceId)"
+                  (click)="toggleHandDiscardCard(cardOption.cardInstanceId)"
+                  data-testid="attack-choice-card"
+                >
+                  @if (optionImage(cardOption); as image) {
+                    <img [src]="image" [alt]="cardOption.label" />
+                  }
+                  <span>{{ cardOption.label }}</span>
+                </button>
+              }
+            </div>
+          }
+
+          @case ('SELECT_DECK_CARD_AND_ATTACH_TO_SELF') {
+            <div class="attack-choice-modal__grid">
+              @for (cardOption of cardOptions(); track cardOption.cardInstanceId) {
+                <button
+                  type="button"
+                  class="attack-choice-modal__option"
+                  [class.attack-choice-modal__option--selected]="selectedCardId() === cardOption.cardInstanceId"
+                  [disabled]="actionPending()"
+                  (click)="selectCard(cardOption.cardInstanceId)"
+                  data-testid="attack-choice-card"
+                >
+                  @if (optionImage(cardOption); as image) {
+                    <img [src]="image" [alt]="cardOption.label" />
+                  }
+                  <span>{{ cardOption.label }}</span>
+                  @if (cardOption.energyType) {
+                    <small>{{ cardOption.energyType }}</small>
+                  }
+                </button>
+              }
+            </div>
+          }
+
+          @case ('MOVE_OPPONENT_ACTIVE_ENERGY_TO_BENCH') {
+            <div class="attack-choice-modal__columns">
+              <section>
+                <h3>{{ t('GAME.ATTACK_CHOICE.SELECT_ENERGY') }}</h3>
+                <div class="attack-choice-modal__grid attack-choice-modal__grid--energy">
+                  @for (energy of energyOptions(); track energy.attachedCardId) {
+                    <button
+                      type="button"
+                      class="attack-choice-modal__option attack-choice-modal__option--energy"
+                      [class.attack-choice-modal__option--selected]="selectedAttachedCardId() === energy.attachedCardId"
+                      [disabled]="actionPending()"
+                      (click)="selectAttachedEnergy(energy.attachedCardId)"
+                      draggable="true"
+                      (dragstart)="startEnergyDrag($event, energy.attachedCardId)"
+                      (dragend)="clearEnergyDrag()"
+                      data-testid="attack-choice-energy"
+                    >
+                      @if (energyOptionImage(energy); as image) {
+                        <img [src]="image" [alt]="energy.label" />
+                      }
+                      <span>{{ energy.label }}</span>
+                    </button>
+                  }
+                </div>
+              </section>
+
+              <section>
+                <h3>{{ t('GAME.ATTACK_CHOICE.SELECT_DESTINATION') }}</h3>
+                <div class="attack-choice-modal__grid attack-choice-modal__grid--target">
+                  @for (target of targetOptions(); track target.pokemonInPlayId) {
+                    <button
+                      type="button"
+                      class="attack-choice-modal__option attack-choice-modal__option--target"
+                      [class.attack-choice-modal__option--selected]="isTargetSelected(target.pokemonInPlayId)"
+                      [class.attack-choice-modal__option--target-filled]="targetHasSelectedEnergy(target.pokemonInPlayId)"
+                      [disabled]="actionPending()"
+                      (click)="selectDestination(target.pokemonInPlayId)"
+                      (dragover)="allowDrop($event)"
+                      (drop)="dropEnergyOnTarget(target.pokemonInPlayId)"
+                      data-testid="attack-choice-destination"
+                    >
+                      @if (optionImage(target); as image) {
+                        <img [src]="image" [alt]="target.label" />
+                      }
+                      <span>{{ target.label }}</span>
+                      @if (targetHasSelectedEnergy(target.pokemonInPlayId)) {
+                        <small>{{ t('GAME.ATTACK_CHOICE.SELECT_ENERGY') }}</small>
+                      }
+                    </button>
+                  }
+                </div>
+              </section>
+            </div>
+          }
+
+          @case ('SELECT_DECK_ENERGY_AND_ATTACH_TO_OWN_POKEMON') {
+            <div class="attack-choice-modal__columns">
+              <section>
+                <h3>{{ t('GAME.ATTACK_CHOICE.SELECT_ENERGY') }}</h3>
+                <div class="attack-choice-modal__grid attack-choice-modal__grid--energy">
+                  @for (cardOption of displayedDeckEnergyOptions(); track cardOption.cardInstanceId) {
+                    <button
+                      type="button"
+                      class="attack-choice-modal__option attack-choice-modal__option--energy"
+                      [class.attack-choice-modal__option--selected]="selectedCardId() === cardOption.cardInstanceId"
+                      [disabled]="actionPending()"
+                      (click)="selectCard(cardOption.cardInstanceId)"
+                      draggable="true"
+                      (dragstart)="startEnergyDrag($event, cardOption.cardInstanceId)"
+                      (dragend)="clearEnergyDrag()"
+                      data-testid="attack-choice-card"
+                    >
+                      @if (optionImage(cardOption); as image) {
+                        <img [src]="image" [alt]="cardOption.label" />
+                      }
+                      <span>{{ cardOption.label }}</span>
+                    </button>
+                  }
+                </div>
+              </section>
+
+              <section>
+                <h3>{{ t('GAME.ATTACK_CHOICE.SELECT_DESTINATION') }}</h3>
+                <div class="attack-choice-modal__grid attack-choice-modal__grid--target">
+                  @for (target of targetOptions(); track target.pokemonInPlayId) {
+                    <button
+                      type="button"
+                      class="attack-choice-modal__option attack-choice-modal__option--target"
+                      [class.attack-choice-modal__option--selected]="isTargetSelected(target.pokemonInPlayId)"
+                      [class.attack-choice-modal__option--target-filled]="targetHasSelectedEnergy(target.pokemonInPlayId)"
+                      [disabled]="actionPending()"
+                      (click)="selectDestination(target.pokemonInPlayId)"
+                      (dragover)="allowDrop($event)"
+                      (drop)="dropEnergyOnTarget(target.pokemonInPlayId)"
+                      data-testid="attack-choice-destination"
+                    >
+                      @if (optionImage(target); as image) {
+                        <img [src]="image" [alt]="target.label" />
+                      }
+                      <span>{{ target.label }}</span>
+                      @if (targetHasSelectedEnergy(target.pokemonInPlayId)) {
+                        <small>{{ t('GAME.ATTACK_CHOICE.SELECT_ENERGY') }}</small>
+                      }
+                    </button>
+                  }
+                </div>
+              </section>
+            </div>
+          }
+
+          @case ('SELECT_DISTINCT_BASIC_ENERGIES_TO_HAND') {
+            <p class="attack-choice-modal__choice-note">{{ selectedEnergySalonText() }}</p>
+            <div class="attack-choice-modal__grid">
+              @for (cardOption of displayedEnergySalonOptions(); track cardOption.cardInstanceId) {
+                <button
+                  type="button"
+                  class="attack-choice-modal__option"
+                  [class.attack-choice-modal__option--selected]="isEnergySalonCardSelected(cardOption.cardInstanceId)"
+                  [disabled]="actionPending() || isEnergySalonCardDisabled(cardOption)"
+                  (click)="toggleEnergySalonCard(cardOption)"
+                  data-testid="attack-choice-card"
+                >
+                  @if (optionImage(cardOption); as image) {
+                    <img [src]="image" [alt]="cardOption.label" />
+                  }
+                  <span>{{ cardOption.label }}</span>
+                  @if (cardOption.energyType) {
+                    <small>{{ cardOption.energyType }}</small>
+                  }
+                </button>
+              }
+            </div>
+          }
+
+          @default {
+            <div class="attack-choice-modal__placeholder attack-choice-modal__placeholder--error">
+              <span>{{ t('GAME.ATTACK_CHOICE.UNSUPPORTED') }}</span>
+            </div>
+          }
+        }
+      </section>
+
+      <footer class="attack-choice-modal__actions">
+        @if (pendingChoiceType() === 'YES_NO') {
+          <button
+            type="button"
+            class="attack-choice-modal__button attack-choice-modal__button--secondary"
+            [disabled]="actionPending()"
+            (click)="resolveYesNo(false)"
+            data-testid="attack-choice-no"
+          >
+            {{ t('GAME.ATTACK_CHOICE.NO') }}
+          </button>
+          <button
+            type="button"
+            class="attack-choice-modal__button attack-choice-modal__button--primary"
+            [disabled]="actionPending()"
+            (click)="resolveYesNo(true)"
+            data-testid="attack-choice-yes"
+          >
+            {{ t('GAME.ATTACK_CHOICE.YES') }}
+          </button>
+        } @else if (isLegacyTopDeckChoice()) {
+          <button
+            type="button"
+            class="attack-choice-modal__button attack-choice-modal__button--secondary"
+            [disabled]="actionPending()"
+            (click)="resolveYesNo(false)"
+          >
+            {{ t('GAME.ATTACK_CHOICE.KEEP_TOP_CARD') }}
+          </button>
+          <button
+            type="button"
+            class="attack-choice-modal__button attack-choice-modal__button--primary"
+            [disabled]="actionPending()"
+            (click)="resolveYesNo(true)"
+          >
+            {{ t('GAME.ATTACK_CHOICE.SHUFFLE_DECK') }}
+          </button>
+        } @else {
+          @if (optionalChoice()) {
+            <button
+              type="button"
+              class="attack-choice-modal__button attack-choice-modal__button--secondary"
+              [disabled]="actionPending()"
+              (click)="skipOptionalEffect()"
+              data-testid="attack-choice-skip"
+            >
+              {{ t('GAME.ATTACK_CHOICE.SKIP_EFFECT') }}
+            </button>
+          }
+          <button
+            type="button"
+            class="attack-choice-modal__button attack-choice-modal__button--primary"
+            [disabled]="!canConfirm()"
+            (click)="confirmSelection()"
+            data-testid="attack-choice-confirm"
+          >
+            {{ t('GAME.ATTACK_CHOICE.CONFIRM') }}
+          </button>
+        }
+      </footer>
+    </article>
+  </div>
+}

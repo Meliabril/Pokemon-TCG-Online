@@ -1,0 +1,81 @@
+.app-shell {
+  background-color: #170506;
+  background-image:
+    linear-gradient(180deg, rgba(12, 2, 2, 0.08), rgba(12, 2, 2, 0.34)),
+    url('/assets/images/menu-background.gif');
+  background-position: center 82%;
+  background-size: cover;
+  min-height: var(--app-height, 100dvh);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+  width: 100%;
+}
+
+:host {
+  background: #170506;
+  display: block;
+  min-height: var(--app-height, 100dvh);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.app-shell--home-dark {
+  background-image: linear-gradient(180deg, #080203 0%, #170506 100%);
+}
+
+.app-shell__background-video {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.app-shell__overlay {
+  background:
+    radial-gradient(circle at top, rgba(250, 204, 21, 0.1), transparent 28%),
+    linear-gradient(180deg, rgba(23, 5, 6, 0.06), rgba(23, 5, 6, 0.32) 18%, rgba(23, 5, 6, 0.58));
+  min-height: var(--app-height, 100dvh);
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.app-shell__header {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.app-shell--home-light .app-shell__overlay {
+  background: linear-gradient(180deg, rgba(23, 5, 6, 0.04), rgba(23, 5, 6, 0.12) 24%, rgba(23, 5, 6, 0.22));
+}
+
+.app-shell--home-dark .app-shell__overlay {
+  background:
+    radial-gradient(circle at top, rgba(250, 204, 21, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(8, 2, 3, 0.04), rgba(8, 2, 3, 0.24) 24%, rgba(8, 2, 3, 0.62));
+}
+
+.app-shell--video-dark .app-shell__overlay {
+  background:
+    radial-gradient(circle at top, rgba(250, 204, 21, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(8, 2, 3, 0.04), rgba(8, 2, 3, 0.24) 24%, rgba(8, 2, 3, 0.62));
+}
+
+.app-shell--default-light .app-shell__overlay {
+  background: linear-gradient(180deg, rgba(23, 5, 6, 0.02), rgba(23, 5, 6, 0.06) 24%, rgba(23, 5, 6, 0.12));
+}
+
+@media (min-width: 640px) {
+  .app-shell {
+    background-position: center 76%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-shell {
+    background-position: center 68%;
+  }
+}

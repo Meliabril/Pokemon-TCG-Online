@@ -1,0 +1,62 @@
+{
+  "custom-professors-pr-001": {
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayText": "AngularQu\u00edn unleashes a swift explanation powered by notes, slides, and NotebookLM."
+      },
+      {
+        "order": 1,
+        "displayText": "Launches a precise strike of typed code that leaves the rival without autocomplete."
+      }
+    ]
+  },
+  "custom-professors-pr-002": {
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayText": "RaMaven arrives at full speed with his Scirocco 1.4, running over the opponent standing in front of him."
+      },
+      {
+        "order": 1,
+        "displayText": "He lifts a Spring Boot structure so heavy that it crushes any poorly built project."
+      }
+    ]
+  },
+  "custom-professors-pr-003": {
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayText": "BelgraNode appears from the shadows and steals the opposing agent's tokens without saying a word."
+      },
+      {
+        "order": 1,
+        "displayText": "He executes a pirate deployment straight to production, with a light blue flag and zero rollback."
+      }
+    ]
+  },
+  "custom-professors-pr-004": {
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayText": "SantorMento throws a questionnaire with sharp questions that set the unsuspecting student on fire."
+      },
+      {
+        "order": 1,
+        "displayText": "With his pair of horns, he summons a grade of 2 (Two) in the opponent's notebook without much justification."
+      }
+    ]
+  },
+  "custom-professors-pr-005": {
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayText": "HernullPointer chooses a random question and psychically exposes the opponent."
+      },
+      {
+        "order": 1,
+        "displayText": "It concentrates all its power into a single instance that is impossible to counter."
+      }
+    ]
+  }
+}

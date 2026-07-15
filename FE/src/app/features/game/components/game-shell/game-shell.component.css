@@ -1,0 +1,158 @@
+:host {
+  display: block;
+}
+
+.result-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+}
+
+.result-screen__backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.06), transparent 55%), #120705e0;
+  backdrop-filter: blur(3px);
+  animation: result-screen-fade 320ms ease-out;
+}
+
+.result-screen__panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.65rem;
+  justify-items: center;
+  width: min(92vw, 26rem);
+  padding: 2.25rem 2rem 2rem;
+  border-radius: 1.75rem;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(20, 7, 5, 0.96), rgba(8, 4, 3, 0.96));
+  border: 1px solid var(--result-tone-border);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 1.5rem 3rem rgba(0, 0, 0, 0.55),
+    0 0 3.5rem var(--result-tone-glow);
+  animation: result-screen-pop 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.result-screen__panel[data-tone='green'] {
+  --result-tone-border: rgba(74, 222, 128, 0.45);
+  --result-tone-glow: rgba(74, 222, 128, 0.32);
+}
+
+.result-screen__panel[data-tone='red'] {
+  --result-tone-border: rgba(248, 113, 113, 0.4);
+  --result-tone-glow: rgba(248, 113, 113, 0.28);
+}
+
+.result-screen__panel[data-tone='amber'] {
+  --result-tone-border: rgba(250, 204, 21, 0.4);
+  --result-tone-glow: rgba(250, 204, 21, 0.28);
+}
+
+.result-screen__pokeball {
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 0.25rem;
+  filter: drop-shadow(0 0 0.85rem var(--result-tone-glow));
+  animation: result-screen-pokeball-spin 5.5s linear infinite;
+}
+
+.result-screen__eyebrow {
+  margin: 0;
+  font-family: var(--app-pixel-font);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d8b982;
+}
+
+.result-screen__title {
+  margin: 0;
+  font-family: var(--app-pixel-font);
+  font-size: clamp(1.5rem, 5vw, 2.1rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff7d6;
+  text-shadow:
+    0 0 0.65rem var(--result-tone-glow),
+    0 0.2rem 0 rgba(0, 0, 0, 0.55);
+}
+
+.result-screen__message {
+  margin: 0;
+  max-width: 22rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #f3e3c4;
+}
+
+.result-screen__button {
+  margin-top: 0.75rem;
+  min-height: 2.75rem;
+  padding: 0.6rem 1.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  background: linear-gradient(180deg, #b3170f, #7c0d09);
+  font-family: var(--app-pixel-font);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff7d6;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.4);
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+.result-screen__button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 0.75rem 1.6rem rgba(0, 0, 0, 0.48);
+}
+
+.result-screen__button:active {
+  transform: translateY(0);
+}
+
+@keyframes result-screen-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes result-screen-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.82) translateY(12px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes result-screen-pokeball-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .result-screen__backdrop,
+  .result-screen__panel,
+  .result-screen__pokeball {
+    animation: none;
+  }
+}

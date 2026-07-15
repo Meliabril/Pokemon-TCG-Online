@@ -1,0 +1,1130 @@
+:host {
+  display: block;
+  height: var(--app-height, 100dvh);
+  inset: 0;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.game-board-shell {
+  --board-active-card-height: min(22.4vh, 13.5rem);
+  --board-active-card-width: min(11.4vw, 9.2rem);
+  --board-bench-gap: clamp(0.18rem, 0.36vw, 0.34rem);
+  --board-bench-padding: clamp(0.26rem, 0.48vw, 0.44rem);
+  --board-current-bench-top: calc(85% - min(10.6vh, 6rem) - min(14vh, 7.5rem) - 2px + 0.4rem);
+  --board-current-bench-height: clamp(7.4rem, 16vh, 8.8rem);
+  --board-current-player-gap: 10px;
+  --board-hand-large-card-height: min(22.9vh, 14.3rem);
+  --board-hand-large-card-width: min(10.3vw, 8.2rem);
+  --board-hand-large-height: min(25.3vh, 15.8rem);
+  --board-zone-card-height: min(10.2vh, 5.7rem);
+  --board-zone-card-width: min(4.2vw, 3.85rem);
+  --board-zone-prize-card-height: min(7.7vh, 4.45rem);
+  --board-zone-prize-card-width: min(3.35vw, 3.1rem);
+  --board-zone-stack-min-height: min(14vh, 7.5rem);
+  --board-zone-prize-min-height: min(10.6vh, 6rem);
+  --board-zone-cards-min-height: min(10.6vh, 5.9rem);
+  --board-zone-prize-cards-min-height: min(8vh, 4.7rem);
+
+  display: grid;
+  height: var(--app-height, 100dvh);
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+  place-items: stretch;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+@supports (height: 100dvh) {
+  :host,
+  .game-board-shell {
+    height: var(--app-height, 100dvh);
+    max-height: var(--app-height, 100dvh);
+    min-height: var(--app-height, 100dvh);
+  }
+}
+
+.game-board-surface {
+  background:
+    linear-gradient(180deg, rgba(17, 2, 3, 0.04), rgba(17, 2, 3, 0.08)),
+    url('/assets/images/game-board-bg.jpg') center / cover no-repeat;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.board-zone,
+.player-card,
+.field-label,
+.board-overlay {
+  position: absolute;
+}
+
+.board-overlay {
+  z-index: 6;
+}
+
+.board-overlay--status {
+  left: 37%;
+  max-width: min(19.5rem, 21vw);
+  top: 18%;
+  transform: none;
+  width: min(19.5rem, 21vw);
+  z-index: 20;
+}
+
+.board-overlay--setup {
+  left: 3.7%;
+  max-width: clamp(300px, 23vw, 380px);
+  top: 39%;
+  width: clamp(300px, 23vw, 380px);
+}
+
+/* Lightweight Mulligan counter/notice in the RIGHT gutter. Anchored just ABOVE the player's bench and
+   grown UPWARD (translateY(-100%)), so it sits close to the own bench and never reaches up into the rival
+   resources/hand (top). Tied to --board-current-bench-top so it follows the bench across desktop sizes.
+   Wide enough that the text never wraps awkwardly and short enough that it needs no scrollbar, so it never
+   covers the hand (bottom-center), the setup button (bottom-right), the central board/active or the bench. */
+.board-overlay--mulligan {
+  right: 3.7%;
+  top: calc(var(--board-current-bench-top) - 0.6rem);
+  transform: translateY(-100%);
+  width: min(18rem, 23vw);
+  z-index: 7;
+}
+
+.desktop-setup-actions {
+  align-items: center;
+  bottom: 1.25rem;
+  display: flex;
+  gap: 0.55rem;
+  justify-content: flex-start;
+  position: fixed;
+  right: 8.5%;
+  width: 18rem;
+  z-index: 20;
+}
+
+.desktop-setup-actions button {
+  border: 1px solid rgba(250, 204, 21, 0.52);
+  border-radius: 999px;
+  color: #fff7d6;
+  cursor: pointer;
+  font-family: var(--app-pixel-font);
+  font-size: 0.58rem;
+  min-height: 2.4rem;
+  padding: 0.45rem 0.85rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.desktop-setup-actions__submit {
+  background: #8b070c;
+}
+
+.desktop-setup-actions__clear {
+  background: rgba(42, 8, 5, 0.94);
+}
+
+.desktop-setup-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.game-board__leave-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 10;
+  background: rgba(18, 7, 5, 0.72);
+  border: 1px solid rgba(250, 204, 21, 0.28);
+  border-radius: 999px;
+  color: #f8e7b0;
+  cursor: pointer;
+  font-family: var(--app-pixel-font);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  padding: 0.45rem 1rem;
+  text-transform: uppercase;
+  transition: background 160ms ease;
+}
+.game-board__leave-btn:hover {
+  background: rgba(69, 26, 3, 0.86);
+}
+
+.opponent-hand-indicator {
+  align-items: center;
+  background: rgba(42, 8, 5, 0.92);
+  border: 1px solid rgba(250, 204, 21, 0.5);
+  border-radius: 999px;
+  color: #fff7d6;
+  display: flex;
+  font-family: var(--app-pixel-font);
+  gap: 0.55rem;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.3rem 0.7rem;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(12rem, 26vw, 16rem);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.opponent-hand-indicator span {
+  font-size: 0.44rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.opponent-hand-indicator--setup {
+  display: none;
+}
+
+/* Mobile-only Mulligan counters near each hand; hidden on desktop (which has its own side panel). */
+.mobile-mulligan-counter {
+  display: none;
+}
+
+.mobile-opponent-hand-button {
+  display: none;
+}
+
+.mobile-log-toggle,
+.mobile-log-panel {
+  display: none;
+}
+
+.mobile-setup-help {
+  display: none;
+}
+
+.board-zone {
+  color: #fff7d6;
+}
+
+.board-zone--opponent-hand,
+.board-zone--opponent-bench,
+.board-zone--opponent-active,
+.board-zone--current-active,
+.board-zone--current-bench,
+.board-zone--current-hand {
+  pointer-events: none;
+}
+
+.board-zone--opponent-hand {
+  left: 50%;
+  top: -4.9%;
+  transform: translateX(-50%);
+  width: 52%;
+  z-index: 3;
+}
+
+.board-zone--opponent-bench {
+  isolation: isolate;
+  left: 3.7%;
+  top: 15%;
+  width: 31.5%;
+  z-index: 2;
+}
+
+.board-zone--opponent-active {
+  left: 50%;
+  top: 23.5%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.board-zone--current-active {
+  left: 50%;
+  top: 55.5%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.board-zone--stadium {
+  left: calc(50% + clamp(8rem, 13vw, 15rem));
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(8.6rem, 12vw, 11.5rem);
+  z-index: 2;
+}
+
+.board-zone--current-bench {
+  isolation: isolate;
+  right: 3.7%;
+  top: var(--board-current-bench-top);
+  width: 31.5%;
+  z-index: 5;
+}
+
+.board-zone--promotion-banner {
+  left: 50%;
+  pointer-events: none;
+  top: 50%;
+  width: min(28rem, 70%);
+  transform: translate(-50%, -50%);
+  z-index: 80;
+}
+
+.board-zone--opponent-promotion-banner {
+  left: 50%;
+  pointer-events: none;
+  top: 50%;
+  width: min(28rem, 70%);
+  transform: translate(-50%, -50%);
+  z-index: 80;
+}
+
+.promotion-banner--waiting {
+  border-color: rgba(216, 185, 130, 0.5);
+  background: rgba(42, 16, 6, 0.92);
+  animation: none;
+  box-shadow: 0 0.5rem 1.1rem rgba(0, 0, 0, 0.4);
+}
+
+.promotion-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(250, 204, 21, 0.55);
+  background: rgba(69, 26, 3, 0.95);
+  box-shadow: 0 0.5rem 1.1rem rgba(0, 0, 0, 0.4), 0 0 1.1rem rgba(250, 204, 21, 0.28);
+  animation: promotion-banner-pulse 1.8s ease-in-out infinite;
+}
+
+.promotion-banner__icon {
+  font-size: 1.05rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 0.35rem rgba(250, 204, 21, 0.6));
+}
+
+.promotion-banner__copy {
+  display: grid;
+  gap: 0.1rem;
+  text-align: left;
+  min-width: 0;
+}
+
+.promotion-banner__title {
+  margin: 0;
+  font-family: var(--app-pixel-font);
+  font-size: clamp(0.48rem, 0.9vw, 0.6rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fde68a;
+}
+
+.promotion-banner__hint {
+  margin: 0;
+  font-size: clamp(0.56rem, 0.95vw, 0.68rem);
+  line-height: 1.3;
+  color: #f3e3c4;
+}
+
+@keyframes promotion-banner-pulse {
+  0%, 100% {
+    box-shadow: 0 0.5rem 1.1rem rgba(0, 0, 0, 0.4), 0 0 1.1rem rgba(250, 204, 21, 0.28);
+  }
+
+  50% {
+    box-shadow: 0 0.5rem 1.1rem rgba(0, 0, 0, 0.4), 0 0 1.7rem rgba(250, 204, 21, 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promotion-banner {
+    animation: none;
+  }
+}
+
+.board-zone--current-hand {
+  bottom: -2.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52%;
+  z-index: 6;
+}
+
+.board-resources {
+  background: rgba(42, 8, 5, 0.54);
+  border: 1px solid rgba(250, 204, 21, 0.24);
+  display: grid;
+  gap: 0;
+  width: 22.4%;
+  z-index: 2;
+}
+
+.board-resources__stacks {
+  align-items: stretch;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-height: min(14vh, 7.5rem);
+}
+
+.board-resources__stacks > app-card-zone-stack {
+  min-height: 100%;
+  min-width: 0;
+}
+
+.board-zone--opponent-resources {
+  right: 3.7%;
+  top: 15%;
+}
+
+.board-zone--current-resources {
+  top: calc(85% - min(10.6vh, 6rem) - min(14vh, 7.5rem) - 2px);
+  left: 3.7%;
+}
+
+.player-card {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+  width: max-content;
+  z-index: 5;
+}
+
+.player-card--opponent {
+  left: 8.3%;
+  top: 7%;
+  z-index: 65;
+}
+
+.player-card--current {
+  flex-direction: row-reverse;
+  right: 8.5%;
+  top: 88.6%;
+}
+
+.player-card__chat-panel {
+  left: 0;
+  pointer-events: auto;
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  width: 150%;
+  z-index: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .player-card__chat-panel {
+    width: 202.5%;
+  }
+}
+
+@media (min-width: 1800px) and (min-height: 1000px) and (hover: hover) and (pointer: fine) {
+  .game-board-shell {
+    --board-large-active-slot-offset-y: 23.5%;
+  }
+
+  .board-zone--opponent-active {
+    top: calc(var(--board-large-active-slot-offset-y));
+  }
+
+  .board-zone--current-active {
+    bottom: var(--board-large-active-slot-offset-y);
+    top: auto;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) and (min-height: 761px) and (hover: hover) and (pointer: fine) {
+  .player-card--current {
+    top: calc(var(--board-current-bench-top) + var(--board-current-bench-height) + var(--board-current-player-gap));
+  }
+}
+
+.mobile-turn-timer {
+  align-items: center;
+  background: rgba(42, 8, 5, 0.92);
+  border: 1px solid rgba(250, 204, 21, 0.52);
+  border-radius: 999px;
+  color: #fde68a;
+  display: inline-flex;
+  font-family: var(--app-pixel-font);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  min-height: 2.2rem;
+  padding: 0.38rem 0.7rem;
+  white-space: nowrap;
+}
+
+.mobile-turn-timer--urgent {
+  background: rgba(127, 29, 29, 0.92);
+  border-color: rgba(248, 113, 113, 0.58);
+  color: #fecaca;
+}
+
+.field-label span {
+  color: #fde68a;
+  font-family: var(--app-pixel-font);
+  font-size: 0.46rem;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.field-label strong {
+  color: #fff7d6;
+  font-family: var(--app-pixel-font);
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.field-label {
+  background: rgba(59, 9, 5, 0.62);
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.4rem 0.55rem;
+}
+
+.field-label--opponent {
+  display: none;
+}
+
+.field-label--current {
+  display: none;
+}
+
+.stadium-card {
+  --stadium-card-aspect: 1.4;
+  align-items: center;
+  aspect-ratio: var(--stadium-card-aspect);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+}
+
+.stadium-card:focus-visible {
+  border-radius: 0.35rem;
+  outline: 2px solid #fde68a;
+  outline-offset: 3px;
+}
+
+.stadium-card__image {
+  display: block;
+  height: auto;
+  object-fit: contain;
+  transform: rotate(90deg);
+  width: calc(100% / var(--stadium-card-aspect));
+}
+
+.stadium-card--empty {
+  min-height: 3.1rem;
+  place-items: center;
+}
+
+.stadium-card--drop-available {
+  border-color: rgba(253, 230, 138, 0.72);
+  box-shadow: 0 0.55rem 1.25rem rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(250, 204, 21, 0.22);
+}
+
+.stadium-card--drop-active {
+  background: rgba(69, 26, 3, 0.92);
+  border-color: rgba(253, 230, 138, 0.9);
+  box-shadow: 0 0.65rem 1.45rem rgba(0, 0, 0, 0.38), 0 0 0.85rem rgba(250, 204, 21, 0.28);
+}
+
+.portrait-lock {
+  display: none;
+}
+
+@media (orientation: landscape) and (max-width: 1792px) and (max-height: 828px) {
+  .board-overlay--status {
+    left: 34%;
+    max-width: min(17rem, 20vw);
+    top: 17%;
+    width: min(17rem, 20vw);
+  }
+
+  .board-overlay--setup {
+    left: 2.5%;
+    max-width: clamp(280px, 23vw, 360px);
+    top: 39%;
+    width: clamp(280px, 23vw, 360px);
+  }
+
+  .game-board__leave-btn {
+    font-size: 0.54rem;
+    padding: 0.38rem 0.75rem;
+  }
+
+  .board-zone--opponent-hand {
+    top: -5.5%;
+    width: 47%;
+  }
+
+  .board-zone--opponent-bench {
+    left: 2.5%;
+    top: 14%;
+    width: 30%;
+  }
+
+  .board-zone--opponent-active {
+    top: 20.5%;
+  }
+
+  .board-zone--current-active {
+    top: 46.5%;
+  }
+
+  .board-zone--stadium {
+    left: calc(50% + clamp(7rem, 12vw, 11rem));
+    top: 50%;
+    width: clamp(7.6rem, 10.5vw, 9.5rem);
+  }
+
+  .board-zone--current-bench {
+    right: 2.5%;
+    top: calc(87% - min(10.6vh, 6rem) - min(12vh, 6.25rem) - 2px + 0.4rem);
+    width: 30%;
+  }
+
+  .board-zone--current-hand {
+    bottom: 0.75%;
+    width: 45%;
+  }
+
+  .board-resources {
+    width: 20.5%;
+  }
+
+  .board-resources__stacks {
+    min-height: min(12vh, 6.25rem);
+  }
+
+  .board-zone--opponent-resources {
+    right: 2.5%;
+    top: 14%;
+  }
+
+  .board-zone--current-resources {
+    top: calc(87% - min(10.6vh, 6rem) - min(12vh, 6.25rem) - 2px);
+    left: 2.5%;
+  }
+
+  .player-card--opponent {
+    left: 4.5%;
+    top: 5.5%;
+  }
+
+  .player-card--current {
+    right: 4.5%;
+    top: 91%;
+    transform: translateY(-50%);
+  }
+
+}
+
+@media (min-width: 1024px) and (max-height: 760px) and (hover: hover) and (pointer: fine) {
+  .game-board-shell {
+    --board-active-slot-offset-y: 184px;
+    --board-compact-side-inset: calc(1.5% + 10px);
+    --board-compact-player-inset: calc(3.2% + 10px);
+    --board-compact-setup-left: calc(1.4% + 10px);
+    --board-current-bench-top: 65%;
+    --board-current-bench-height: clamp(6.4rem, 16vh, 7.2rem);
+    --board-active-card-height: clamp(7.4rem, 18vh, 8.1rem);
+    --board-active-card-width: clamp(5.25rem, 7.1vw, 5.85rem);
+    --board-bench-gap: 0.12rem;
+    --board-bench-padding: 0.16rem;
+    --board-hand-large-card-height: clamp(7.1rem, 16.4vh, 7.75rem);
+    --board-hand-large-card-width: clamp(5rem, 6.9vw, 5.55rem);
+    --board-hand-large-height: clamp(7.7rem, 17.8vh, 8.4rem);
+    --board-zone-card-height: clamp(3.7rem, 8.6vh, 4.1rem);
+    --board-zone-card-width: clamp(2.65rem, 3.5vw, 2.95rem);
+    --board-zone-prize-card-height: clamp(4.1rem, 9.4vh, 4.45rem);
+    --board-zone-prize-card-width: clamp(2.9rem, 3.8vw, 3.2rem);
+    --board-zone-stack-min-height: clamp(4.55rem, 10.5vh, 5rem);
+    --board-zone-prize-min-height: clamp(4.8rem, 10.8vh, 5.15rem);
+    --board-zone-cards-min-height: clamp(4.2rem, 9.3vh, 4.55rem);
+    --board-zone-prize-cards-min-height: clamp(3.9rem, 8.8vh, 4.2rem);
+  }
+
+  .board-overlay--status {
+    left: 32%;
+    max-width: min(14.5rem, 19vw);
+    top: 16%;
+    width: min(14.5rem, 19vw);
+  }
+
+  .board-overlay--setup {
+    left: var(--board-compact-setup-left);
+    max-width: clamp(240px, 22vw, 310px);
+    top: 39%;
+    width: clamp(240px, 22vw, 310px);
+  }
+
+  .desktop-setup-actions {
+    bottom: 0.45rem;
+    right: 6%;
+    width: 15rem;
+  }
+
+  .desktop-setup-actions button {
+    font-size: 0.48rem;
+    min-height: 2rem;
+    padding: 0.34rem 0.58rem;
+  }
+
+  .board-zone--opponent-hand {
+    top: -6.5%;
+    width: 43%;
+  }
+
+  .board-zone--opponent-bench {
+    left: var(--board-compact-side-inset);
+    top: 13.5%;
+    width: 28.5%;
+  }
+
+  .board-zone--opponent-active {
+    inset-inline-start: 50%;
+    top: var(--board-active-slot-offset-y);
+  }
+
+  .board-zone--current-active {
+    bottom: var(--board-active-slot-offset-y);
+    inset-inline-start: 50%;
+    top: auto;
+  }
+
+  .board-zone--stadium {
+    left: calc(50% + clamp(6.4rem, 10vw, 8.5rem));
+    top: 50%;
+    width: clamp(6.8rem, 8.8vw, 8rem);
+  }
+
+  .board-zone--current-bench {
+    right: var(--board-compact-side-inset);
+    top: var(--board-current-bench-top);
+    width: 28.5%;
+  }
+
+  .board-zone--current-hand {
+    bottom: 0.3%;
+    width: 41%;
+  }
+
+  .board-resources {
+    width: 18.5%;
+  }
+
+  .board-resources__stacks {
+    min-height: var(--board-zone-stack-min-height);
+  }
+
+  .board-zone--opponent-resources {
+    right: var(--board-compact-side-inset);
+    top: 13.5%;
+  }
+
+  .board-zone--current-resources {
+    left: var(--board-compact-side-inset);
+    top: 67%;
+  }
+
+  .player-card--opponent {
+    left: var(--board-compact-player-inset);
+    top: 4.5%;
+  }
+
+  .player-card--current {
+    right: var(--board-compact-player-inset);
+  }
+
+  .mobile-turn-timer {
+    font-size: 0.58rem;
+    min-height: 1.75rem;
+    padding: 0.28rem 0.48rem;
+  }
+}
+
+@media (orientation: portrait) {
+  .game-board-shell {
+    visibility: hidden;
+  }
+
+  .portrait-lock {
+    align-items: center;
+    background:
+      linear-gradient(rgba(18, 7, 5, 0.88), rgba(69, 10, 10, 0.9)),
+      url('/assets/images/game-board-bg.jpg') center / cover no-repeat;
+    color: #fff7d6;
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    padding: 1.5rem;
+    position: fixed;
+    text-align: center;
+    z-index: 99999;
+  }
+
+  .portrait-lock__panel {
+    background: rgba(42, 8, 5, 0.86);
+    border: 1px solid rgba(250, 204, 21, 0.42);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.48);
+    display: grid;
+    gap: 0.75rem;
+    max-width: 24rem;
+    padding: 2rem 1.5rem;
+    width: 100%;
+  }
+
+  .portrait-lock__icon {
+    color: #fde68a;
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .portrait-lock__title {
+    font-family: var(--app-pixel-font);
+    font-size: clamp(0.85rem, 3vw, 1.15rem);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .portrait-lock__message {
+    color: #f8e7b0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 1100px) {
+  .game-board-shell {
+    height: var(--app-height, 100dvh);
+  }
+
+  .board-overlay--status {
+    left: 34%;
+    max-width: min(17rem, 26vw);
+    top: 18%;
+    width: min(17rem, 26vw);
+  }
+
+  .desktop-setup-actions {
+    right: 4.5%;
+    width: 15rem;
+  }
+
+  .board-overlay--setup {
+    left: 3.7%;
+    max-width: clamp(260px, 27vw, 330px);
+    top: 39%;
+    width: clamp(260px, 27vw, 330px);
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1100px) and (max-height: 828px) {
+  .board-overlay--setup {
+    left: 2.5%;
+    max-width: clamp(250px, 28vw, 320px);
+    top: 38%;
+    width: clamp(250px, 28vw, 320px);
+  }
+}
+
+@media (max-width: 768px) {
+  .board-overlay--status {
+    left: 32%;
+    max-width: min(15rem, 28vw);
+    top: 18%;
+    width: min(15rem, 28vw);
+  }
+}
+
+@media (max-width: 932px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+  :host,
+  .game-board-shell,
+  .game-board-surface {
+    background-color: #120202;
+  }
+
+  .game-board-surface {
+    box-sizing: border-box;
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+  }
+
+  .game-board-shell {
+    --mobile-side-padding-left: max(6%, calc(env(safe-area-inset-left) + 14px));
+    --mobile-side-padding-right: max(6%, calc(env(safe-area-inset-right) + 14px));
+    --mobile-top-padding: max(6%, calc(env(safe-area-inset-top) + 4px));
+    --mobile-opponent-bench-top: 22%;
+    --mobile-current-bench-top: calc(85% - 8rem - 2px + 0.15rem);
+    --mobile-player-bench-gap: 9%;
+    --mobile-current-player-gap: 20px;
+  }
+
+  .board-overlay--status {
+    left: 36%;
+    max-width: min(12rem, 30vw);
+    top: 15%;
+    transform: none;
+    width: min(12rem, 30vw);
+    z-index: 9;
+  }
+
+  .board-overlay--setup {
+    display: none;
+  }
+
+  .board-overlay--mulligan {
+    display: none;
+  }
+
+  .desktop-setup-actions {
+    display: none;
+  }
+
+  .game-board__leave-btn {
+    font-size: 0.38rem;
+    min-height: 1.45rem;
+    padding: 0.25rem 0.45rem;
+    position: fixed;
+    right: var(--mobile-side-padding-right);
+    top: var(--mobile-top-padding);
+  }
+
+  .opponent-hand-indicator--setup {
+    display: none;
+  }
+
+  .mobile-mulligan-counter {
+    position: absolute;
+    z-index: 9;
+    display: block;
+    padding: 0.16rem 0.45rem;
+    border: 1px solid rgba(250, 204, 21, 0.5);
+    border-radius: 999px;
+    background: rgba(42, 8, 5, 0.92);
+    color: #fde68a;
+    font-family: var(--app-pixel-font);
+    font-size: 0.42rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  /* Sit each counter beside its centered hand control (not inside it, not in a corner): the rival
+     "Mano del rival" button is top-center, the own "Tu mano | Ver mano" controls are bottom-center. */
+  .mobile-mulligan-counter--rival {
+    top: var(--mobile-top-padding);
+    left: calc(50% + 8.75rem);
+  }
+
+  .mobile-mulligan-counter--own {
+    bottom: 5px;
+    right: calc(50% + 8.75rem);
+  }
+
+  .mobile-opponent-hand-button {
+    display: flex;
+  }
+
+  .mobile-log-toggle {
+    align-items: center;
+    background: rgba(42, 8, 5, 0.9);
+    border: 1px solid rgba(250, 204, 21, 0.5);
+    border-radius: 999px;
+    color: #fff7d6;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--app-pixel-font);
+    font-size: 0.4rem;
+    justify-content: center;
+    left: var(--mobile-side-padding-left);
+    letter-spacing: 0.1em;
+    min-height: 1.75rem;
+    padding: 0.3rem 0.65rem;
+    position: fixed;
+    text-transform: uppercase;
+    top: calc(var(--mobile-top-padding) - 4px);
+    z-index: 110;
+  }
+
+  .mobile-log-panel {
+    background: rgba(30, 7, 5, 0.96);
+    border: 1px solid rgba(250, 204, 21, 0.5);
+    border-radius: 0.65rem;
+    box-shadow: 0 0.7rem 1.6rem rgba(0, 0, 0, 0.45);
+    color: #fff7d6;
+    display: block;
+    left: var(--mobile-side-padding-left);
+    max-height: 65vh;
+    overflow: hidden;
+    position: fixed;
+    top: calc(var(--mobile-top-padding) + 1.95rem);
+    width: min(320px, 38vw);
+    z-index: 111;
+  }
+
+  .mobile-log-panel__header {
+    align-items: center;
+    border-bottom: 1px solid rgba(250, 204, 21, 0.2);
+    display: flex;
+    font-family: var(--app-pixel-font);
+    font-size: 0.48rem;
+    justify-content: space-between;
+    letter-spacing: 0.12em;
+    padding: 0.45rem 0.55rem;
+    text-transform: uppercase;
+  }
+
+  .mobile-log-panel__header button {
+    align-items: center;
+    background: rgba(139, 7, 12, 0.72);
+    border: 1px solid rgba(250, 204, 21, 0.28);
+    border-radius: 50%;
+    color: #fff7d6;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 0.8rem;
+    height: 1.35rem;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    width: 1.35rem;
+  }
+
+  .mobile-log-panel__content {
+    max-height: calc(65vh - 2.4rem);
+    overscroll-behavior: contain;
+    overflow: hidden;
+    padding: 0.5rem 0.55rem;
+  }
+
+  .mobile-setup-help {
+    background: rgba(42, 8, 5, 0.88);
+    border: 1px solid rgba(250, 204, 21, 0.35);
+    border-radius: 0.55rem;
+    color: #f8e7b0;
+    display: block;
+    font-size: clamp(0.42rem, 1.25vw, 0.58rem);
+    left: 50%;
+    line-height: 1.35;
+    margin: 0;
+    max-width: min(38rem, 82vw);
+    padding: 0.3rem 0.5rem;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    top: calc(50% + 6px);
+    transform: translate(-50%, -50%);
+    width: max-content;
+    z-index: 21;
+  }
+
+  .board-zone--opponent-hand {
+    opacity: 0;
+    pointer-events: none;
+    top: -5%;
+    visibility: hidden;
+    width: 42%;
+  }
+
+  .board-zone--opponent-bench {
+    left: var(--mobile-side-padding-left);
+    top: var(--mobile-opponent-bench-top);
+    width: 30%;
+  }
+
+  .board-zone--opponent-active {
+    left: 50%;
+    top: 13.5%;
+    transform: translateX(-50%);
+  }
+
+  .board-zone--current-active {
+    left: 50%;
+    top: 52.5%;
+    transform: translateX(-50%);
+  }
+
+  .board-zone--stadium {
+    left: 39%;
+    top: calc(48% + 20px);
+    transform: translate(-50%, -50%);
+    width: clamp(3.8rem, 9vw, 4.6rem);
+    z-index: 2;
+  }
+
+  .board-zone--current-bench {
+    right: var(--mobile-side-padding-right);
+    top: var(--mobile-current-bench-top);
+    width: 30%;
+  }
+
+  .board-zone--current-hand {
+    bottom: max(0.25rem, env(safe-area-inset-bottom));
+    left: 0;
+    transform: none;
+    width: 100%;
+  }
+
+  .board-resources {
+    background: rgba(42, 8, 5, 0.72);
+    border-color: rgba(250, 204, 21, 0.42);
+    border-radius: 0.55rem;
+    box-shadow: 0 0.55rem 1.1rem rgba(0, 0, 0, 0.28);
+    overflow: hidden;
+    width: 27%;
+  }
+
+  .board-resources__stacks {
+    min-height: 4.2rem;
+  }
+
+  .board-zone--opponent-resources {
+    right: var(--mobile-side-padding-right);
+    top: 16%;
+  }
+
+  .board-zone--current-resources {
+    top: calc(85% - 8rem - 2px);
+    left: var(--mobile-side-padding-left);
+  }
+
+  .player-card--opponent {
+    left: var(--mobile-side-padding-left);
+    top: calc(var(--mobile-opponent-bench-top) - var(--mobile-player-bench-gap));
+    z-index: 65;
+  }
+
+  .player-card__chat-panel {
+    width: 150%;
+  }
+
+  .player-card--current {
+    display: flex;
+    left: auto;
+    right: var(--mobile-side-padding-right);
+    top: calc(var(--mobile-current-bench-top) + 8rem + var(--mobile-current-player-gap) - 30px);
+    transform: none;
+  }
+
+  .mobile-turn-timer {
+    font-size: 0.48rem;
+    min-height: 1.6rem;
+    padding: 0.28rem 0.52rem;
+  }
+
+}
+

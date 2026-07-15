@@ -1,0 +1,97 @@
+<aside
+  class="pointer-events-auto fixed bottom-4 right-4 z-[70] grid max-h-[min(30rem,calc(var(--app-height,100dvh)-7rem))] w-[min(21rem,calc(100vw-2rem))] gap-2 overflow-auto border border-[#facc15]/25 bg-[#2a0805]/86 p-3 text-[#fff7d6] shadow-[0_18px_38px_rgba(0,0,0,0.42)] backdrop-blur-md"
+  data-testid="game-command-panel"
+>
+  @let currentLanguage = language();
+  <div class="grid gap-2">
+    <p class="font-pixel text-[0.58rem] uppercase tracking-[0.18em] text-[#fde68a]">{{ t('GAME.ACTION') }}</p>
+    <p class="text-sm leading-6 text-[#f8e7b0]">{{ interaction().prompt }}</p>
+  </div>
+
+  @if (interaction().helperBadges.length > 0) {
+    <div class="flex flex-wrap gap-2">
+      @for (badge of interaction().helperBadges; track $index) {
+        <span class="rounded-full border border-[#facc15]/25 bg-[#451a03]/80 px-3 py-1 text-[0.7rem] text-[#fde68a]">
+          {{ badge }}
+        </span>
+      }
+    </div>
+  }
+
+  @if (visibleActionButtons().length > 0) {
+    <div class="grid grid-cols-2 gap-2">
+      @for (action of visibleActionButtons(); track action.actionType) {
+        <button
+          type="button"
+          class="min-h-10 border px-3 py-2 text-left text-[0.7rem] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#facc15]/75"
+          [class.border-[#facc15]/50]="interaction().pendingAction === action.actionType"
+          [class.bg-[#8b070c]]="interaction().pendingAction === action.actionType"
+          [class.text-[#fff7d6]]="interaction().pendingAction === action.actionType"
+          [class.border-[#facc15]/20]="interaction().pendingAction !== action.actionType"
+          [class.bg-[#120705]/75]="interaction().pendingAction !== action.actionType"
+          [class.text-[#f8e7b0]]="interaction().pendingAction !== action.actionType"
+          [disabled]="!action.enabled || actionPending() || interaction().awaitingSnapshot"
+          [attr.data-testid]="'game-action-' + action.actionType"
+          [title]="action.enabled ? action.label : disabledReason(action.disabledReason ?? action.label)"
+          (click)="actionSelected.emit(action.actionType)"
+        >
+          <span class="block">{{ action.label }}</span>
+          @if (!action.enabled && action.disabledReason) {
+            <span class="mt-1 block text-[0.64rem] leading-5 text-[#d8b982]">{{ disabledReason(action.disabledReason) }}</span>
+          }
+        </button>
+      }
+    </div>
+  }
+
+  @if (interaction().attackOptions.length > 0) {
+    <div class="grid gap-2 rounded-2xl border border-[#facc15]/20 bg-[#120705]/70 p-3">
+      <p class="font-pixel text-[0.58rem] uppercase tracking-[0.18em] text-[#fde68a]">{{ t('GAME.ATTACKS') }}</p>
+      <div class="grid gap-2">
+        @for (attack of interaction().attackOptions; track $index) {
+          <button
+            type="button"
+            class="rounded-2xl border px-3 py-2 text-left text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#facc15]/75"
+            [class.border-[#facc15]/50]="attack.selected"
+            [class.bg-[#8b070c]/85]="attack.selected"
+            [class.border-[#facc15]/20]="!attack.selected"
+            [class.bg-[#2a0805]/78]="!attack.selected"
+            [disabled]="!attack.enabled || actionPending() || interaction().awaitingSnapshot"
+            [attr.data-testid]="'attack-option-' + attack.id"
+            [title]="attack.enabled ? attack.label : (attack.disabledReason ?? attack.label)"
+            (click)="selectAttack(attack.id)"
+          >
+            <span class="block">{{ attackDisplayName(attack, currentLanguage) }}</span>
+            @if (!attack.enabled && attack.disabledReason) {
+              <span class="mt-1 block text-[0.7rem] text-[#d8b982]">{{ disabledReason(attack.disabledReason) }}</span>
+            }
+          </button>
+        }
+      </div>
+    </div>
+  }
+
+  @if (interaction().pendingAction) {
+    <div class="grid grid-cols-2 gap-2">
+      <button
+        type="button"
+        class="min-h-11 rounded-2xl border border-[#facc15]/25 bg-[#8b070c] px-3 py-2 text-sm font-semibold text-[#fff7d6] transition hover:bg-[#650408] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#facc15]/75 disabled:cursor-not-allowed disabled:opacity-50"
+        [disabled]="!interaction().canConfirm"
+        data-testid="confirm-action"
+        (click)="confirmRequested.emit()"
+      >
+        {{ interaction().confirmLabel }}
+      </button>
+
+      <button
+        type="button"
+        class="min-h-11 rounded-2xl border border-[#facc15]/20 bg-[#120705]/75 px-3 py-2 text-sm font-semibold text-[#f8e7b0] transition hover:bg-[#2a0805] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#facc15]/75"
+        [disabled]="actionPending() || interaction().awaitingSnapshot"
+        data-testid="cancel-action"
+        (click)="cancelRequested.emit()"
+      >
+        {{ t('COMMON.CANCEL') }}
+      </button>
+    </div>
+  }
+</aside>

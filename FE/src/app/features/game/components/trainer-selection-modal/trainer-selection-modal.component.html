@@ -1,0 +1,238 @@
+@if (isOpen() && card(); as selectedCard) {
+  <div
+    class="trainer-selection-modal"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="t('GAME.TRAINER.SECTION_TITLE')"
+    data-testid="trainer-selection-modal"
+  >
+    <button
+      type="button"
+      class="trainer-selection-modal__backdrop"
+      [attr.aria-label]="t('COMMON.CLOSE')"
+      (click)="cancel()"
+    ></button>
+
+    <article
+      class="trainer-selection-modal__panel"
+      [class.trainer-selection-modal__panel--wide]="isProfessorLetter()"
+    >
+      <header class="trainer-selection-modal__header">
+        <h2 class="font-pixel text-xs tracking-wider text-[#fde68a]">{{ displayName() }}</h2>
+        <button
+          type="button"
+          class="trainer-selection-modal__close font-pixel text-[0.65rem] text-[#d8b982] hover:text-[#fde68a]"
+          [attr.aria-label]="t('COMMON.CLOSE')"
+          (click)="cancel()"
+        >X</button>
+      </header>
+
+      <div class="trainer-selection-modal__body">
+        @if (imageUrl(); as url) {
+          <img
+            class="trainer-selection-modal__image"
+            [src]="url"
+            [alt]="displayName()"
+          />
+        }
+
+        <div class="trainer-selection-modal__actions">
+          @if (isToolTrainer()) {
+            <div class="trainer-selection-modal__picker">
+              <p class="trainer-selection-modal__picker-label">{{ t('GAME.TRAINER.CHOOSE_TOOL_TARGET') }}</p>
+              <div class="trainer-selection-modal__options">
+                @for (option of trainerToolTargetOptions(); track option.pokemonInPlayId) {
+                  <button
+                    type="button"
+                    class="trainer-selection-modal__option"
+                    [class.trainer-selection-modal__option--selected]="selectedTargetPokemonInPlayId() === option.pokemonInPlayId"
+                    (click)="selectTarget(option.pokemonInPlayId)"
+                  >{{ option.label }}</button>
+                }
+                @if (!trainerToolTargetOptions().length) {
+                  <span class="trainer-selection-modal__empty">{{ t('GAME.TRAINER.NO_TOOL_TARGETS') }}</span>
+                }
+              </div>
+            </div>
+          }
+
+          @if (isEvosoda()) {
+            <div class="trainer-selection-modal__picker">
+              <p class="trainer-selection-modal__picker-label">{{ t('GAME.TRAINER.CHOOSE_EVOLUTION') }}</p>
+
+              @if (evosodaPreviewLoading()) {
+                <span class="trainer-selection-modal__empty" role="status">{{ t('GAME.TRAINER.LOADING_EVOLUTIONS') }}</span>
+              } @else if (evosodaPreviewError(); as previewError) {
+                <span class="trainer-selection-modal__empty trainer-selection-modal__empty--error" role="alert">{{ previewError }}</span>
+              } @else {
+                <div class="trainer-selection-modal__card-options">
+                  @for (option of evosodaEvolutionOptions(); track option.cardId) {
+                    <button
+                      type="button"
+                      class="trainer-selection-modal__card-option"
+                      [class.trainer-selection-modal__card-option--selected]="selectedEvolutionExternalId() === option.externalId"
+                      [attr.aria-pressed]="selectedEvolutionExternalId() === option.externalId"
+                      (click)="selectEvolution(option.externalId)"
+                    >
+                      @if (option.imageSmallUrl; as imageUrl) {
+                        <img [src]="imageUrl" [alt]="option.name" />
+                      }
+                      <span>{{ option.name }}</span>
+                      <small>{{ t('GAME.TRAINER.AVAILABLE_COUNT', { count: option.count }) }}</small>
+                    </button>
+                  }
+                  @if (!evosodaEvolutionOptions().length) {
+                    <span class="trainer-selection-modal__empty">{{ t('GAME.TRAINER.NO_EVOLUTIONS') }}</span>
+                  }
+                </div>
+              }
+            </div>
+          }
+
+          @if (requiresBenchTarget() && (!isEvosoda() || selectedEvolutionExternalId())) {
+            <div class="trainer-selection-modal__picker">
+              <p class="trainer-selection-modal__picker-label">{{ benchTargetLabel() }}</p>
+              <div class="trainer-selection-modal__options">
+                @for (option of isEvosoda() ? compatibleEvosodaTargets() : trainerBenchTargetOptions(); track option.pokemonInPlayId) {
+                  <button
+                    type="button"
+                    class="trainer-selection-modal__option"
+                    [class.trainer-selection-modal__option--selected]="selectedTargetPokemonInPlayId() === option.pokemonInPlayId"
+                    (click)="selectTarget(option.pokemonInPlayId)"
+                  >{{ option.label }}</button>
+                }
+                @if (!trainerBenchTargetOptions().length) {
+                  <span class="trainer-selection-modal__empty">{{ benchTargetEmptyLabel() }}</span>
+                }
+              </div>
+            </div>
+          }
+
+          @if (requiresReviveTarget()) {
+            <div class="trainer-selection-modal__picker">
+              <p class="trainer-selection-modal__picker-label">{{ t('GAME.TRAINER.CHOOSE_REVIVE_POKEMON') }}</p>
+              <div class="trainer-selection-modal__card-options">
+                @for (option of trainerDiscardPokemonOptions(); track option.cardInstanceId) {
+                  <button
+                    type="button"
+                    class="trainer-selection-modal__card-option"
+                    [class.trainer-selection-modal__card-option--selected]="selectedRevivePokemonInstanceId() === option.cardInstanceId"
+                    [attr.aria-pressed]="selectedRevivePokemonInstanceId() === option.cardInstanceId"
+                    (click)="selectRevivePokemon(option.cardInstanceId)"
+                  >
+                    @if (option.imageSmallUrl ?? option.imageLargeUrl; as imageUrl) {
+                      <img [src]="imageUrl" [alt]="option.label" />
+                    }
+                    <span>{{ option.label }}</span>
+                  </button>
+                }
+                @if (!trainerDiscardPokemonOptions().length) {
+                  <span class="trainer-selection-modal__empty">{{ t('GAME.TRAINER.NO_REVIVE_POKEMON') }}</span>
+                }
+              </div>
+            </div>
+          }
+
+          @if (requiresDeckTarget()) {
+            <div class="trainer-selection-modal__picker">
+              <p class="trainer-selection-modal__picker-label">{{ t('GAME.TRAINER.CHOOSE_DECK_POKEMON') }}</p>
+              @if (greatBallPreviewLoading()) {
+                <span class="trainer-selection-modal__empty" role="status">{{ t('GAME.TRAINER.LOADING_DECK_POKEMON') }}</span>
+              } @else if (greatBallPreviewError(); as previewError) {
+                <span class="trainer-selection-modal__empty trainer-selection-modal__empty--error" role="alert">{{ previewError }}</span>
+              } @else if (greatBallPreviewReady()) {
+                <p class="trainer-selection-modal__summary">
+                  {{ t('GAME.TRAINER.CARDS_LOOKED_AT', { count: greatBallCardsLookedAt() }) }}
+                </p>
+                <div class="trainer-selection-modal__card-options">
+                  @for (option of trainerDeckPokemonOptions(); track option.cardInstanceId) {
+                    <button
+                      type="button"
+                      class="trainer-selection-modal__card-option"
+                      [class.trainer-selection-modal__card-option--selected]="selectedDeckPokemonInstanceId() === option.cardInstanceId"
+                      [attr.aria-pressed]="selectedDeckPokemonInstanceId() === option.cardInstanceId"
+                      (click)="selectDeckPokemon(option.cardInstanceId)"
+                    >
+                      @if (option.imageSmallUrl; as imageUrl) {
+                        <img [src]="imageUrl" [alt]="option.name" />
+                      }
+                      <span>{{ option.name }}</span>
+                    </button>
+                  }
+                  @if (!trainerDeckPokemonOptions().length) {
+                    <span class="trainer-selection-modal__empty">{{ t('GAME.TRAINER.NO_DECK_POKEMON') }}</span>
+                  }
+                </div>
+              }
+            </div>
+          }
+
+          @if (isProfessorLetter()) {
+            <div class="trainer-selection-modal__picker">
+              <p class="trainer-selection-modal__picker-label">
+                {{ t('GAME.TRAINER.CHOOSE_BASIC_ENERGIES', { max: professorLetterMaxSelectable() }) }}
+              </p>
+              @if (professorLetterPreviewLoading()) {
+                <span class="trainer-selection-modal__empty" role="status">{{ t('GAME.TRAINER.LOADING_BASIC_ENERGIES') }}</span>
+              } @else if (professorLetterPreviewError(); as previewError) {
+                <span class="trainer-selection-modal__empty trainer-selection-modal__empty--error" role="alert">{{ previewError }}</span>
+              } @else {
+                <p class="trainer-selection-modal__summary">
+                  {{ t('GAME.TRAINER.BASIC_ENERGY_SELECTION_COUNT', {
+                    count: professorLetterSelectedTotal(),
+                    max: professorLetterMaxSelectable()
+                  }) }}
+                </p>
+                <div class="trainer-selection-modal__card-options">
+                  @for (option of professorLetterEnergyOptions(); track option.cardId) {
+                    <article class="trainer-selection-modal__energy-option">
+                      @if (option.imageSmallUrl ?? option.imageLargeUrl; as imageUrl) {
+                        <img [src]="imageUrl" [alt]="option.name" />
+                      }
+                      <span>{{ option.name }}</span>
+                      <small>{{ t('GAME.TRAINER.AVAILABLE_COUNT', { count: option.availableInDeck }) }}</small>
+                      <div class="trainer-selection-modal__stepper" [attr.aria-label]="option.name">
+                        <button
+                          type="button"
+                          class="trainer-selection-modal__stepper-btn"
+                          [attr.aria-label]="t('GAME.TRAINER.DECREASE_ENERGY')"
+                          [disabled]="professorLetterQuantity(option.cardId) === 0"
+                          (click)="decrementProfessorLetterEnergy(option.cardId)"
+                        >-</button>
+                        <span class="trainer-selection-modal__stepper-value">{{ professorLetterQuantity(option.cardId) }}</span>
+                        <button
+                          type="button"
+                          class="trainer-selection-modal__stepper-btn"
+                          [attr.aria-label]="t('GAME.TRAINER.INCREASE_ENERGY')"
+                          [disabled]="professorLetterQuantity(option.cardId) >= option.availableInDeck || professorLetterSelectedTotal() >= professorLetterMaxSelectable()"
+                          (click)="incrementProfessorLetterEnergy(option)"
+                        >+</button>
+                      </div>
+                    </article>
+                  }
+                  @if (!professorLetterEnergyOptions().length) {
+                    <span class="trainer-selection-modal__empty">{{ t('GAME.TRAINER.NO_BASIC_ENERGIES') }}</span>
+                  }
+                </div>
+              }
+            </div>
+          }
+
+          <div class="trainer-selection-modal__footer">
+            <button
+              type="button"
+              class="trainer-selection-modal__btn trainer-selection-modal__btn--confirm"
+              [disabled]="!canConfirm()"
+              (click)="confirm()"
+            >{{ confirmLabel() }}</button>
+            <button
+              type="button"
+              class="trainer-selection-modal__btn trainer-selection-modal__btn--cancel"
+              (click)="cancel()"
+            >{{ t('GAME.TRAINER.CANCEL') }}</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+}

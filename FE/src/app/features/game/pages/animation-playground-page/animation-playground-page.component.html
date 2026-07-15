@@ -1,0 +1,44 @@
+<div class="playground">
+  <header class="playground__header">
+    <h1>Animation Playground</h1>
+    <p>Vista de testing aislada. No depende del backend ni de una partida real.</p>
+  </header>
+
+  <section class="playground__board">
+    <div class="playground__row">
+      <div class="playground__zone" data-board-anchor="opponent-deck"><span class="playground__zone-card"></span><span class="playground__zone-label">Rival: Mazo</span></div>
+      <div class="playground__zone" data-board-anchor="opponent-hand"><span class="playground__zone-card"></span><span class="playground__zone-label">Rival: Mano</span></div>
+      <div class="playground__zone" data-board-anchor="opponent-bench-0"><span class="playground__zone-card"></span><span class="playground__zone-label">Rival: Banca</span></div>
+      <div class="playground__zone" data-board-anchor="opponent-active"><span class="playground__zone-card"></span><span class="playground__zone-label">Rival: Activo</span></div>
+      <div class="playground__zone" data-board-anchor="opponent-discard"><span class="playground__zone-card"></span><span class="playground__zone-label">Rival: Descarte</span></div>
+    </div>
+
+    <div class="playground__row">
+      <div class="playground__zone" data-board-anchor="local-deck"><span class="playground__zone-card"></span><span class="playground__zone-label">Local: Mazo</span></div>
+      <div class="playground__zone" data-board-anchor="local-hand"><span class="playground__zone-card"></span><span class="playground__zone-label">Local: Mano</span></div>
+      <div class="playground__zone" data-board-anchor="local-bench-0"><span class="playground__zone-card"></span><span class="playground__zone-label">Local: Banca</span></div>
+      <div class="playground__zone" data-board-anchor="local-active"><span class="playground__zone-card"></span><span class="playground__zone-label">Local: Activo</span></div>
+      <div class="playground__zone" data-board-anchor="local-discard"><span class="playground__zone-card"></span><span class="playground__zone-label">Local: Descarte</span></div>
+    </div>
+  </section>
+
+  <section class="playground__controls">
+    @for (item of cases; track item.id) {
+      <button type="button" class="playground__button" (click)="run(item.commands)">
+        {{ item.label }}
+      </button>
+    }
+
+    <button type="button" class="playground__button playground__button--accent" (click)="toggleStandaloneShuffle()">
+      {{ showStandaloneShuffle() ? 'Ocultar shuffle standalone' : 'Mostrar shuffle standalone (match found)' }}
+    </button>
+  </section>
+
+  @if (showStandaloneShuffle()) {
+    <section class="playground__standalone">
+      <app-deck-shuffle-animation label="Buscando mazo..." />
+    </section>
+  }
+</div>
+
+<app-board-animation-layer />

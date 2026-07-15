@@ -1,0 +1,85 @@
+<div class="grid justify-items-center gap-1.5" [class.mt-3]="variant() === 'form'">
+  @if (variant() === 'form') {
+    <span [class]="labelClasses()">
+      {{ t('PROFILE.SUMMARY.AVATAR') }} <span [class]="requiredMarkClasses()" aria-hidden="true">*</span>
+    </span>
+  }
+
+  <button
+    type="button"
+    [attr.data-tour]="variant() === 'profile' ? 'profile-avatar' : null"
+    [class]="triggerClasses()"
+    aria-haspopup="dialog"
+    [attr.aria-expanded]="isModalOpen()"
+    [attr.aria-label]="buttonLabel() || t('PROFILE.SUMMARY.CHANGE_AVATAR')"
+    (click)="openModal()"
+  >
+    <img
+      class="h-full w-full rounded-full object-cover"
+      [src]="selectedAvatar().imageUrl"
+      [alt]="t('PROFILE.SUMMARY.SELECTED_AVATAR_ALT', { name: selectedAvatar().name })"
+    />
+    @if (variant() === 'profile') {
+      <span
+        class="font-pixel absolute inset-x-2 bottom-2 rounded-full border border-[#facc15]/40 bg-[#3b0905]/85 px-2 py-1 text-[0.58rem] tracking-[0.12em] text-[#fde68a] opacity-0 transition group-hover:opacity-100"
+      >
+        {{ t('PROFILE.SUMMARY.CHANGE') }}
+      </span>
+    }
+  </button>
+</div>
+
+@if (isModalOpen()) {
+  <div
+    class="fixed inset-0 z-40 grid place-items-center bg-slate-950/50 px-4 py-6 backdrop-blur-sm"
+    role="presentation"
+    (click)="closeModal()"
+  >
+    <section
+      class="w-full max-w-md rounded-xl border border-white/40 bg-white/90 p-5 shadow-2xl backdrop-blur-md"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="avatar-modal-title"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <h2 id="avatar-modal-title" class="font-pixel text-lg font-bold text-slate-950">
+            {{ t('PROFILE.SUMMARY.CHOOSE_AVATAR') }}
+          </h2>
+          <p class="mt-1 text-sm text-slate-500">{{ t('PROFILE.SUMMARY.SELECT_AVATAR') }}</p>
+        </div>
+        <button
+          type="button"
+          [attr.data-tour]="variant() === 'profile' ? 'profile-close-avatar' : null"
+          class="grid h-9 w-9 place-items-center rounded-md text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b070c]"
+          [attr.aria-label]="t('PROFILE.SUMMARY.CLOSE_AVATAR_SELECTOR')"
+          (click)="closeModal()"
+        >
+          <span class="text-2xl leading-none" aria-hidden="true">x</span>
+        </button>
+      </div>
+
+      <div class="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        @for (avatar of avatarOptions; track avatar.id) {
+          <button
+            type="button"
+            class="grid place-items-center gap-2 rounded-lg border p-3 text-sm font-semibold transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b070c]"
+            [class.border-[#8b070c]]="avatar.id === selectedAvatarId()"
+            [class.border-slate-200]="avatar.id !== selectedAvatarId()"
+            [class.bg-red-50]="avatar.id === selectedAvatarId()"
+            [attr.aria-pressed]="avatar.id === selectedAvatarId()"
+            (click)="selectAvatar(avatar.id)"
+          >
+            <img
+              class="h-16 w-16 rounded-full border border-slate-200 bg-white object-cover"
+              [src]="avatar.imageUrl"
+              [alt]="avatar.name"
+            />
+            <span class="text-slate-950">{{ avatar.name }}</span>
+          </button>
+        }
+      </div>
+    </section>
+  </div>
+}

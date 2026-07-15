@@ -1,0 +1,351 @@
+<div data-tour="pokedex-page" class="page font-pixel" [class.page--light]="isLightTheme()">
+  @let currentLanguage = language();
+  @if (isPokedexMobile()) {
+    <section class="pokedex-mobile-layout">
+      @if (errorMessage()) {
+        <section class="status-panel status-panel--error">
+          <p>{{ t(errorMessage()) }}</p>
+          <button type="button" (click)="loadCards()">{{ t('COMMON.RETRY') }}</button>
+        </section>
+      } @else if (isLoading()) {
+        <section class="status-panel">
+          {{ t('POKEDEX.LOADING_CARDS') }}
+        </section>
+      } @else {
+        <div class="pokedex-mobile-panels flex min-h-0 flex-1 flex-col gap-2">
+          <div class="pokedex-mobile-controls flex flex-col gap-2">
+            <header data-tour="pokedex-title" class="pokedex-mobile-header flex items-center justify-between rounded-[14px] border border-[var(--app-border-strong)] bg-[var(--app-surface)] px-3 py-[6px] min-h-11">
+              <div>
+                <p class="eyebrow">{{ t('POKEDEX.EYEBROW') }}</p>
+                <strong class="mt-0.5 block text-[0.82rem] leading-none uppercase text-[var(--app-text)]">{{ t('POKEDEX.TITLE') }}</strong>
+              </div>
+              <span class="whitespace-nowrap text-[0.62rem] text-[var(--app-accent)]">{{ filteredCards().length }}/{{ totalCards() }}</span>
+            </header>
+
+            <input
+              data-tour="pokedex-search"
+              class="search h-9 w-full rounded-[0.9rem] border border-[var(--app-border-strong)] bg-[var(--app-surface-2)] px-[0.85rem] font-pixel text-[0.62rem] text-[var(--app-text)] outline-none placeholder:text-[rgba(111,77,53,0.65)] focus:border-[rgba(184,121,46,0.45)] focus:shadow-[0_0_0_4px_rgba(184,121,46,0.08)]"
+              type="search"
+              [value]="search()"
+              [placeholder]="t('POKEDEX.SEARCH_PLACEHOLDER')"
+              (input)="updateSearch($event)"
+            />
+
+            <div data-tour="pokedex-filters" class="chips pokedex-mobile-filters grid grid-cols-4 gap-[0.4rem]" [attr.aria-label]="t('POKEDEX.FILTER_ARIA')">
+              @for (filter of typeFilters; track filter.value) {
+                <button
+                  type="button"
+                  class="chip min-h-[1.8rem] rounded-[0.7rem] border-0 bg-[rgba(26,13,2,0.72)] px-[0.35rem] font-pixel text-[0.52rem] text-[rgba(249,240,208,0.78)] hover:bg-[#6f0509] hover:text-white"
+                  [class.chip--on]="typeFilter() === filter.value"
+                  (click)="setTypeFilter(filter.value)"
+                >
+                  {{ typeFilterLabel(filter, currentLanguage) }}
+                </button>
+              }
+            </div>
+          </div>
+
+          <div data-tour="pokedex-card-list" class="pokedex-mobile-list pokedex-cards-grid grid min-h-0 flex-1 grid-cols-1 gap-2 overflow-y-auto pr-1 pb-5">
+            @if (!filteredCards().length) {
+              <p class="rail-empty">{{ t('POKEDEX.NO_CARDS_FOUND') }}</p>
+            }
+            @for (card of filteredCards(); track card.id) {
+              <button
+                [attr.data-tour]="$first ? 'pokedex-card-list-item' : null"
+                type="button"
+                class="pokedex-mobile-card-item mobile-card-item flex min-h-16 w-full items-center gap-[10px] rounded-[14px] border border-[var(--app-border)] bg-[var(--app-surface-2)] px-3 py-2 text-left text-[var(--app-text)]"
+                (click)="openMobileCardModal(card)"
+              >
+                <div class="pokedex-mobile-card-thumb flex h-14 w-[42px] shrink-0 items-center justify-center overflow-hidden rounded-[0.55rem] border border-[var(--app-border)] bg-[rgba(42,8,5,0.62)]">
+                  @if (card.imageSmallUrl && !isImageFailed(card.id)) {
+                    <img
+                      class="size-full object-cover"
+                      [src]="card.imageSmallUrl"
+                      [alt]="cardDisplayName(card, currentLanguage)"
+                      loading="lazy"
+                      (error)="onImgError(card.id)"
+                    />
+                  } @else {
+                    <div class="cardimg-fallback">
+                      <span>{{ cardDisplayName(card, currentLanguage) }}</span>
+                    </div>
+                  }
+                </div>
+
+                <div class="pokedex-mobile-card-copy grid min-w-0 gap-[0.2rem]">
+                  <strong class="pokedex-mobile-card-name truncate text-[0.75rem] leading-[1.1]">{{ cardDisplayName(card, currentLanguage) }}</strong>
+                  <span class="pokedex-mobile-card-hp text-[0.6rem] leading-[1.1] text-[var(--app-text-muted)]">{{ card.hp ?? '-' }} HP</span>
+                </div>
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </section>
+  } @else {
+  <div data-tour="pokedex-title" class="page-header">
+    <div>
+      <p class="eyebrow">{{ t('POKEDEX.EYEBROW') }}</p>
+      <h1>{{ t('POKEDEX.TITLE') }}</h1>
+    </div>
+
+    <p class="page-count">{{ filteredCards().length }}/{{ totalCards() }}</p>
+  </div>
+
+  @if (errorMessage()) {
+    <section class="status-panel status-panel--error">
+      <p>{{ t(errorMessage()) }}</p>
+      <button type="button" (click)="loadCards()">{{ t('COMMON.RETRY') }}</button>
+    </section>
+  } @else if (isLoading()) {
+    <section class="status-panel">
+      {{ t('POKEDEX.LOADING_CARDS') }}
+    </section>
+  } @else {
+    <div class="layout">
+      @if (selectedCard(); as card) {
+        <section
+          class="grid h-full min-h-0 gap-3 overflow-hidden xl:grid-cols-[minmax(240px,20rem)_minmax(20rem,36rem)]"
+        >
+        <div data-tour="pokedex-card-image" [class]="cardShowcaseClass(card.pokemonType)"
+             (mousemove)="onCardMouseMove($event)"
+             (mouseleave)="onCardMouseLeave()"
+             [style]="cardStyle()">
+          <div class="pointer-events-none absolute inset-3 rounded-[1.55rem] border border-[#fff7d6]/10 bg-[linear-gradient(180deg,rgba(255,247,214,0.07),rgba(42,8,5,0.12))]"></div>
+          <div class="pointer-events-none absolute inset-6 rounded-[1.25rem] border border-[#D9A441]/10 bg-[repeating-linear-gradient(0deg,rgba(255,247,214,0.045)_0_1px,transparent_1px_12px),repeating-linear-gradient(90deg,rgba(255,247,214,0.035)_0_1px,transparent_1px_12px)]"></div>
+          @if ((card.imageLargeUrl || card.imageSmallUrl) && !isImageFailed(card.id + '-lg')) {
+            <img
+              class="relative z-10 block h-auto max-h-[22rem] w-auto max-w-full object-contain drop-shadow-[0_1rem_2rem_rgba(0,0,0,0.5)] xl:max-h-[24rem]"
+              [src]="card.imageLargeUrl || card.imageSmallUrl"
+              [alt]="cardDisplayName(card, currentLanguage)"
+              (error)="onImgError(card.id + '-lg')"
+            />
+          } @else {
+            <div class="cardimg-fallback hero-fallback">
+              <span>{{ cardDisplayName(card, currentLanguage) }}</span>
+              <small>{{ t('POKEDEX.CARD_IMAGE') }}</small>
+            </div>
+          }
+        </div>
+
+        <div
+          data-tour="pokedex-card-info"
+          class="detail-card flex min-h-0 w-full max-w-[36rem] max-h-full self-start overflow-x-hidden overflow-y-auto rounded-[1.25rem] border p-3 shadow-[0_1.25rem_3rem_rgba(0,0,0,0.26)] backdrop-blur-sm xl:self-center"
+          [class.border-[#8a4b20]/65]="!isLightTheme()"
+          [class.bg-[#3b0905]/78]="!isLightTheme()"
+          [class.border-[#8a4b20]/55]="isLightTheme()"
+          [class.bg-[#fff4d6]/80]="isLightTheme()"
+        >
+            <div class="grid w-full gap-2">
+              <header class="shrink-0 rounded-xl border px-3 py-2.5" [class.border-[#8a4b20]/45]="!isLightTheme()" [class.bg-[#2a0805]/50]="!isLightTheme()" [class.border-[#8a4b20]/35]="isLightTheme()" [class.bg-[#fff8e3]/76]="isLightTheme()">
+                <p class="eyebrow">{{ t('POKEDEX.DETAILS') }}</p>
+                <div class="mt-1 flex flex-wrap items-end justify-between gap-2">
+                  <div class="min-w-0">
+                    <h2 class="m-0 text-[1rem] leading-tight" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ cardDisplayName(card, currentLanguage) }}</h2>
+                    <p class="mt-0.5 text-[0.6rem]" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ card.setName }} - #{{ card.number }}</p>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    <span class="type-tag type-tag--lg" [style.--tc]="getEnergyColor(card.pokemonType)">
+                      {{ cardDisplayPokemonType(card, currentLanguage) || '-' }}
+                    </span>
+                    <span class="rounded-full border px-2.5 py-0.5 text-[0.62rem]" [class.border-[#B8792E]/35]="!isLightTheme()" [class.bg-[#2a0805]/80]="!isLightTheme()" [class.text-[#D9A441]]="!isLightTheme()" [class.border-[#8a4b20]/35]="isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()" [class.text-[#7A1414]]="isLightTheme()">
+                      HP {{ card.hp ?? '-' }}
+                    </span>
+                  </div>
+                </div>
+              </header>
+
+              <dl data-tour="pokedex-basic-data" class="grid grid-cols-1 gap-1.5 sm:grid-cols-2 2xl:grid-cols-3">
+                <div class="rounded-xl border px-3 py-2" [class.border-[#B8792E]/25]="!isLightTheme()" [class.bg-[linear-gradient(180deg,rgba(139,7,12,0.34),rgba(42,8,5,0.56))]]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[rgba(255,248,227,0.74)]]="isLightTheme()">
+                  <dt class="text-[0.5rem] uppercase tracking-[0.12em]" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ t('POKEDEX.CATEGORY') }}</dt>
+                  <dd class="m-0 mt-1 text-[0.68rem] leading-tight" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ formatCategory(card.category, currentLanguage) }}</dd>
+                </div>
+                <div class="rounded-xl border px-3 py-2" [class.border-[#B8792E]/25]="!isLightTheme()" [class.bg-[linear-gradient(180deg,rgba(139,7,12,0.34),rgba(42,8,5,0.56))]]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[rgba(255,248,227,0.74)]]="isLightTheme()">
+                  <dt class="text-[0.5rem] uppercase tracking-[0.12em]" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ t('POKEDEX.SUBTYPE') }}</dt>
+                  <dd class="m-0 mt-1 text-[0.68rem] leading-tight" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ cardDisplaySubtype(card, currentLanguage) ?? t('COMMON.NO_SUBTYPE') }}</dd>
+                </div>
+                <div data-tour="pokedex-empty-data" class="rounded-xl border px-3 py-2 sm:col-span-2 2xl:col-span-1" [class.border-[#8a4b20]/40]="!isLightTheme()" [class.bg-[#2a0805]/62]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+                  <dt class="text-[0.5rem] uppercase tracking-[0.12em]" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ t('POKEDEX.EVOLVES_FROM') }}</dt>
+                  <dd class="m-0 mt-1 text-[0.62rem] leading-tight" [class.text-[#f8e7b0]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ card.evolvesFrom ?? t('COMMON.NOT_APPLICABLE') }}</dd>
+                </div>
+                <div class="rounded-xl border px-3 py-2" [class.border-[#8a4b20]/40]="!isLightTheme()" [class.bg-[#2a0805]/62]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+                  <dt class="text-[0.5rem] uppercase tracking-[0.12em]" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ t('POKEDEX.POKEMON_TYPE') }}</dt>
+                  <dd class="m-0 mt-1 text-[0.62rem] leading-tight" [class.text-[#f8e7b0]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ cardDisplayPokemonType(card, currentLanguage) ?? t('COMMON.NO_DATA') }}</dd>
+                </div>
+                <div class="rounded-xl border px-3 py-2" [class.border-[#8a4b20]/40]="!isLightTheme()" [class.bg-[#2a0805]/62]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+                  <dt class="text-[0.5rem] uppercase tracking-[0.12em]" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ t('POKEDEX.RETREAT_COST') }}</dt>
+                  <dd class="m-0 mt-1 text-[0.62rem] leading-tight" [class.text-[#f8e7b0]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ card.retreatCost ?? t('COMMON.NO_DATA') }}</dd>
+                </div>
+                <div class="rounded-xl border px-3 py-2" [class.border-[#8a4b20]/40]="!isLightTheme()" [class.bg-[#2a0805]/62]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+                  <dt class="text-[0.5rem] uppercase tracking-[0.12em]" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ t('POKEDEX.WEAKNESSES') }}</dt>
+                  <dd class="m-0 mt-1 text-[0.62rem] leading-tight" [class.text-[#f8e7b0]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ relationSummary(card.weaknesses, currentLanguage) }}</dd>
+                </div>
+                <div class="rounded-xl border px-3 py-2 sm:col-span-2 2xl:col-span-3" [class.border-[#8a4b20]/40]="!isLightTheme()" [class.bg-[#2a0805]/62]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+                  <dt class="text-[0.5rem] uppercase tracking-[0.12em]" [class.text-[#d8b982]]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ t('POKEDEX.RESISTANCES') }}</dt>
+                  <dd class="m-0 mt-1 text-[0.62rem] leading-tight" [class.text-[#f8e7b0]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ relationSummary(card.resistances, currentLanguage) }}</dd>
+                </div>
+              </dl>
+
+              @if (isPokemonCard(card) && card.abilities?.length) {
+                <section data-tour="pokedex-abilities" class="grid shrink-0 gap-1.5 rounded-xl border px-3 py-2" [class.border-[#8a4b20]/50]="!isLightTheme()" [class.bg-[#2a0805]/50]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/76]="isLightTheme()">
+                  <h3 class="m-0 text-[0.72rem]" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ t('POKEDEX.ABILITIES') }}</h3>
+                  @for (ability of card.abilities ?? []; track ability.id ?? ability.code ?? $index) {
+                    <article class="grid gap-1 rounded-xl border px-3 py-2" [class.border-[#B8792E]/20]="!isLightTheme()" [class.bg-[#2a0805]/62]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+                      <div class="flex flex-wrap items-center justify-between gap-2">
+                        <strong class="text-[0.62rem] leading-none" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ abilityDisplayName(ability, currentLanguage) }}</strong>
+                        @if (abilityDisplayType(ability, currentLanguage); as abilityType) {
+                          <span class="shrink-0 text-[0.54rem] uppercase" [class.text-[#D9A441]]="!isLightTheme()" [class.text-[#7A1414]]="isLightTheme()">{{ abilityType }}</span>
+                        }
+                      </div>
+                      @if (abilityDisplayText(ability, currentLanguage); as abilityText) {
+                        <p class="m-0 text-[0.54rem] leading-snug" [class.text-[#f8e7b0]/85]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ abilityText }}</p>
+                      }
+                    </article>
+                  }
+                </section>
+              }
+
+              @if (isPokemonCard(card)) {
+                <section data-tour="pokedex-attacks" class="grid shrink-0 gap-1.5 rounded-xl border px-3 py-2" [class.border-[#8a4b20]/50]="!isLightTheme()" [class.bg-[#2a0805]/50]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/76]="isLightTheme()">
+                  <h3 class="m-0 text-[0.72rem]" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ t('POKEDEX.ATTACKS') }}</h3>
+                  @if (!card.attacks?.length) {
+                    <p class="m-0 text-[0.64rem]" [class.text-[#f8e7b0]/80]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ t('POKEDEX.NO_ATTACKS') }}</p>
+                  }
+                  @for (attack of card.attacks ?? []; track $index) {
+                    <article class="grid gap-1 rounded-xl border px-3 py-2" [class.border-[#B8792E]/20]="!isLightTheme()" [class.bg-[#2a0805]/62]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+                      <div class="flex items-center justify-between gap-2">
+                        <div class="flex min-w-0 items-center gap-2">
+                          <span class="pips">
+                            @if (!attack.costs.length) {
+                              <span class="cost-none">{{ t('POKEDEX.NO_COST') }}</span>
+                            }
+                            @for (cost of attack.costs; track $index; let costIndex = $index) {
+                              @for (i of range(cost.quantity); track $index) {
+                                <span
+                                  class="pip"
+                                  [style.background]="getEnergyColor(cost.energyType)"
+                                  [title]="attackCostDisplayLabel(attack, costIndex, i, currentLanguage)"
+                                >
+                                  {{ attackCostDisplayLabel(attack, costIndex, i, currentLanguage).charAt(0) }}
+                                </span>
+                              }
+                            }
+                          </span>
+                          <strong class="text-[0.62rem] leading-none" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ attackDisplayName(attack, currentLanguage) }}</strong>
+                        </div>
+                        <span class="shrink-0 text-[0.64rem]" [class.text-[#D9A441]]="!isLightTheme()" [class.text-[#7A1414]]="isLightTheme()">{{ attack.damageText ?? attack.baseDamage ?? '-' }}</span>
+                      </div>
+                      @if (attackDisplayText(attack, currentLanguage); as displayText) {
+                        <p class="m-0 text-[0.54rem] leading-snug" [class.text-[#f8e7b0]/85]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ displayText }}</p>
+                      }
+                    </article>
+                  }
+                </section>
+              } @else if (isTrainerCard(card)) {
+                <section data-tour="pokedex-attacks" class="grid shrink-0 gap-1.5 rounded-xl border px-3 py-2" [class.border-[#8a4b20]/50]="!isLightTheme()" [class.bg-[#2a0805]/50]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/76]="isLightTheme()">
+                  <h3 class="m-0 text-[0.72rem]" [class.text-[#fff7d6]]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">{{ t('POKEDEX.RULES') }}</h3>
+                  @if (!cardDisplayRules(card, currentLanguage).length) {
+                    <p class="m-0 text-[0.64rem]" [class.text-[#f8e7b0]/80]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ t('POKEDEX.NO_RULES') }}</p>
+                  }
+                  @for (rule of cardDisplayRules(card, currentLanguage); track $index) {
+                    <article class="grid gap-1 rounded-xl border px-3 py-2" [class.border-[#B8792E]/20]="!isLightTheme()" [class.bg-[#2a0805]/62]="!isLightTheme()" [class.border-[#d2ae76]/55]="isLightTheme()" [class.bg-[#fff8e3]/82]="isLightTheme()">
+                      <p class="m-0 text-[0.54rem] leading-snug" [class.text-[#f8e7b0]/85]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ rule }}</p>
+                    </article>
+                  }
+                </section>
+              }
+              </div>
+        </div>
+        </section>
+      } @else {
+        <section class="detail detail--empty">
+          <p>{{ t('POKEDEX.SELECT_CARD') }}</p>
+        </section>
+      }
+
+    <aside class="rail">
+      <div class="rail-head">
+        <div class="rail-title">
+          <p class="eyebrow">{{ t('POKEDEX.LIST') }}</p>
+          <h2>{{ t('POKEDEX.CARDS') }}</h2>
+        </div>
+      </div>
+
+      <input
+        data-tour="pokedex-search"
+        class="search h-9 w-full rounded-[0.9rem] border border-[var(--app-border-strong)] bg-[var(--app-surface-2)] px-[0.85rem] font-pixel text-[0.62rem] text-[var(--app-text)] outline-none placeholder:text-[rgba(111,77,53,0.65)] focus:border-[rgba(184,121,46,0.45)] focus:shadow-[0_0_0_4px_rgba(184,121,46,0.08)]"
+        type="search"
+        [value]="search()"
+        [placeholder]="t('POKEDEX.SEARCH_PLACEHOLDER')"
+        (input)="updateSearch($event)"
+      />
+
+      <div data-tour="pokedex-filters" class="chips grid grid-cols-2 gap-[0.5rem]" [attr.aria-label]="t('POKEDEX.FILTER_ARIA')">
+        @for (filter of typeFilters; track filter.value) {
+          <button
+            type="button"
+            class="chip min-h-[2.15rem] rounded-[0.7rem] border-0 bg-[rgba(26,13,2,0.72)] px-[0.6rem] font-pixel text-[0.68rem] text-[rgba(249,240,208,0.78)] hover:bg-[#6f0509] hover:text-white"
+            [class.chip--on]="typeFilter() === filter.value"
+            (click)="setTypeFilter(filter.value)"
+          >
+            {{ typeFilterLabel(filter, currentLanguage) }}
+          </button>
+        }
+      </div>
+
+      <div data-tour="pokedex-card-list" class="rail-list">
+        @if (!filteredCards().length) {
+          <p class="rail-empty">{{ t('POKEDEX.NO_CARDS_FOUND') }}</p>
+        }
+        @for (card of filteredCards(); track card.id) {
+          <button
+            [attr.data-tour]="$first ? 'pokedex-card-list-item' : null"
+            type="button"
+            class="rail-row"
+            [class.rail-row--on]="selectedCard()?.id === card.id"
+            (click)="selectCard(card.id)"
+          >
+            <div class="rail-thumb">
+              @if (card.imageSmallUrl && !isImageFailed(card.id)) {
+                <img
+                  class="rail-thumb-img"
+                  [src]="card.imageSmallUrl"
+                  [alt]="cardDisplayName(card, currentLanguage)"
+                  loading="lazy"
+                  (error)="onImgError(card.id)"
+                />
+              } @else {
+                <div class="cardimg-fallback">
+                  <span>{{ cardDisplayName(card, currentLanguage) }}</span>
+                </div>
+              }
+            </div>
+
+            <div class="rail-meta">
+              <div class="rail-row-top">
+                <span class="rail-name">{{ cardDisplayName(card, currentLanguage) }}</span>
+                <span class="rail-num">#{{ card.number }}</span>
+              </div>
+              <span class="rail-sub">{{ cardDisplaySubtype(card, currentLanguage) }}</span>
+              <div class="rail-tags">
+                <span class="type-tag" [style.--tc]="getEnergyColor(card.pokemonType)">
+                  {{ cardDisplayPokemonType(card, currentLanguage) || '-' }}
+                </span>
+                <span class="hp-tag">HP {{ card.hp ?? '-' }}</span>
+              </div>
+            </div>
+          </button>
+        }
+      </div>
+    </aside>
+    </div>
+  }
+  }
+
+  <app-card-detail-modal
+    [card]="selectedMobileCard()"
+    [isOpen]="isMobileCardModalOpen()"
+    [context]="{ readonly: true }"
+    (closed)="closeMobileCardModal()"
+  />
+</div>

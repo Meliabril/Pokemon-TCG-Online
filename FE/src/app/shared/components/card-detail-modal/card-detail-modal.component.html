@@ -1,0 +1,196 @@
+@if (isOpen() && card(); as selectedCard) {
+  <div
+    class="card-detail-modal"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="'Detalle de ' + selectedCard.name"
+    data-testid="card-detail-modal"
+  >
+    <button
+      type="button"
+      class="card-detail-modal__backdrop"
+      aria-label="Cerrar"
+      (click)="close()"
+    ></button>
+
+    <article
+      class="card-detail-modal__panel"
+      data-tour="pokedex-mobile-card-modal"
+      [style]="typeColorStyle()"
+    >
+      <div class="card-detail-modal__body">
+        <section class="card-detail-modal__showcase">
+          <div
+            class="card-detail-modal__image-frame"
+            (mousemove)="onCardMouseMove($event)"
+            (mouseleave)="onCardMouseLeave()"
+            [style]="cardTiltStyle()"
+          >
+            @if (selectedCard.imageUrl) {
+              <img [src]="selectedCard.imageUrl" [alt]="selectedCard.name" />
+            } @else {
+              <div class="card-detail-modal__fallback">
+                <span>{{ selectedCard.name }}</span>
+                <small>Imagen</small>
+              </div>
+            }
+          </div>
+        </section>
+
+        <section class="card-detail-modal__detail-panel">
+          <header class="card-detail-modal__header">
+            <div>
+              <p class="card-detail-modal__eyebrow">Detalle</p>
+              <div class="card-detail-modal__title-row">
+                <div class="card-detail-modal__title-copy">
+                  <h2>{{ selectedCard.name }}</h2>
+                  @if (selectedCard.number || selectedCard.rarity) {
+                    <p>{{ selectedCard.rarity ?? 'Carta' }} @if (selectedCard.number) { - #{{ selectedCard.number }} }</p>
+                  }
+                </div>
+                <div class="card-detail-modal__tags">
+                  <span class="card-detail-modal__type-tag" [style.--tc]="getEnergyColor(primaryType())">
+                    {{ primaryType() || selectedCard.supertype || '-' }}
+                  </span>
+                  <span class="card-detail-modal__hp-tag">HP {{ selectedCard.hp ?? '-' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="card-detail-modal__close"
+              data-tour="pokedex-mobile-card-modal-close"
+              aria-label="Cerrar"
+              (click)="close()"
+            >
+              X
+            </button>
+          </header>
+
+          <dl class="card-detail-modal__facts">
+            <div class="card-detail-modal__fact card-detail-modal__fact--accent">
+              <dt>Categoría</dt>
+              <dd>{{ selectedCard.supertype ?? 'Sin datos' }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact card-detail-modal__fact--accent">
+              <dt>Subtipo</dt>
+              <dd>{{ selectedCard.subtypes?.join(', ') || 'Sin subtipo' }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact">
+              <dt>Evoluciona de</dt>
+              <dd>{{ selectedCard.evolvesFrom ?? 'No aplica' }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact">
+              <dt>Tipo</dt>
+              <dd>{{ selectedCard.types?.join(', ') || 'Sin datos' }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact">
+              <dt>Retirada</dt>
+              <dd>{{ selectedCard.retreatCost?.join(', ') || 'Sin datos' }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact">
+              <dt>Debilidades</dt>
+              <dd>{{ relationSummary(selectedCard.weaknesses) }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact card-detail-modal__fact--wide">
+              <dt>Resistencias</dt>
+              <dd>{{ relationSummary(selectedCard.resistances) }}</dd>
+            </div>
+          </dl>
+
+          @if (isPokemonCard()) {
+            <section class="card-detail-modal__section">
+              <h3>{{ t('POKEDEX.ATTACKS') }}</h3>
+              @if (!selectedCard.attacks?.length) {
+                <p class="card-detail-modal__empty">{{ t('POKEDEX.NO_ATTACKS') }}</p>
+              }
+              @for (attack of selectedCard.attacks ?? []; track $index) {
+                <article
+                  class="card-detail-modal__move-card"
+                  [class.card-detail-modal__move-card--interactive]="canSelectAttack()"
+                  [attr.role]="canSelectAttack() ? 'button' : null"
+                  [attr.tabindex]="canSelectAttack() ? '0' : null"
+                  (click)="selectAttack(attack)"
+                  (keydown.enter)="selectAttack(attack)"
+                  (keydown.space)="selectAttack(attack); $event.preventDefault()"
+                >
+                  <div class="card-detail-modal__move-head">
+                    <div class="card-detail-modal__move-title">
+                      <span class="card-detail-modal__pips">
+                        @if (!attack.cost?.length) {
+                          <span class="card-detail-modal__no-cost">{{ t('POKEDEX.NO_COST') }}</span>
+                        }
+                        @for (cost of attack.cost ?? []; track $index) {
+                          <span
+                            class="card-detail-modal__pip"
+                            [style.background]="getEnergyColor(cost)"
+                            [title]="cost"
+                          >
+                            {{ cost.charAt(0) }}
+                          </span>
+                        }
+                      </span>
+                      <strong>{{ attack.name }}</strong>
+                    </div>
+                    <span>{{ attackDamage(attack) }}</span>
+                  </div>
+                  @if (attack.text) {
+                    <p>{{ attack.text }}</p>
+                  }
+                </article>
+              }
+            </section>
+          } @else if (isTrainerCard()) {
+            <section class="card-detail-modal__section">
+              <h3>{{ t('POKEDEX.RULES') }}</h3>
+              @if (!displayRules().length) {
+                <p class="card-detail-modal__empty">{{ t('POKEDEX.NO_RULES') }}</p>
+              }
+              @for (rule of displayRules(); track $index) {
+                <article class="card-detail-modal__move-card">
+                  <p>{{ rule }}</p>
+                </article>
+              }
+            </section>
+          }
+
+          @if (selectedCard.abilities?.length) {
+            <section class="card-detail-modal__section">
+              <h3>Habilidades</h3>
+              @for (ability of selectedCard.abilities ?? []; track $index) {
+                <article
+                  class="card-detail-modal__move-card"
+                  [class.card-detail-modal__move-card--interactive]="canSelectAbility()"
+                  [attr.role]="canSelectAbility() ? 'button' : null"
+                  [attr.tabindex]="canSelectAbility() ? '0' : null"
+                  (click)="selectAbility(ability)"
+                  (keydown.enter)="selectAbility(ability)"
+                  (keydown.space)="selectAbility(ability); $event.preventDefault()"
+                >
+                  <div class="card-detail-modal__move-head">
+                    <div class="card-detail-modal__move-title">
+                      <strong>{{ ability.name }}</strong>
+                    </div>
+                    @if (ability.type) {
+                      <span>{{ ability.type }}</span>
+                    }
+                  </div>
+                  @if (ability.text) {
+                    <p>{{ ability.text }}</p>
+                  }
+                </article>
+              }
+            </section>
+          }
+        </section>
+      </div>
+    </article>
+  </div>
+}

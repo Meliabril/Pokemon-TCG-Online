@@ -1,0 +1,385 @@
+@if (isOpen() && card(); as selectedCard) {
+  @let currentLanguage = language();
+  <div
+    class="card-detail-modal"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="t('GAME.CARD_DETAIL_ARIA', { name: displayName() })"
+    data-testid="card-detail-modal"
+  >
+    <button
+      type="button"
+      class="card-detail-modal__backdrop"
+      [attr.aria-label]="t('COMMON.CLOSE')"
+      (click)="close()"
+    ></button>
+
+    <article class="card-detail-modal__panel" [style]="typeColorStyle()">
+      <div class="card-detail-modal__body">
+        <section class="card-detail-modal__showcase">
+          <div
+            class="card-detail-modal__image-frame"
+            (mousemove)="onCardMouseMove($event)"
+            (mouseleave)="onCardMouseLeave()"
+            [style]="cardTiltStyle()"
+          >
+            @if (imageUrl(); as selectedImageUrl) {
+              <img [src]="selectedImageUrl" [alt]="selectedCard.altText ?? displayName()" />
+            } @else {
+              <div class="card-detail-modal__fallback">
+                <span>{{ displayName() }}</span>
+                <small>{{ t('POKEDEX.CARD_IMAGE') }}</small>
+              </div>
+            }
+          </div>
+        </section>
+
+        <section class="card-detail-modal__detail-panel">
+          <header class="card-detail-modal__header">
+            <div>
+              <p class="card-detail-modal__eyebrow">
+                @if (context(); as selectedContext) {
+                  {{ selectedContext.label }}
+                } @else {
+                  DETALLE
+                }
+              </p>
+              <div class="card-detail-modal__title-row">
+                <div class="card-detail-modal__title-copy">
+                  <h2>{{ displayName() }}</h2>
+                  @if (setSummary(); as selectedSetSummary) {
+                    <p>{{ selectedSetSummary }}</p>
+                  }
+                </div>
+                <div class="card-detail-modal__tags">
+                  <span class="card-detail-modal__type-tag" [style.--tc]="getEnergyColor(pokemonType())">
+                    {{ displayPokemonType() || '-' }}
+                  </span>
+                  <span class="card-detail-modal__hp-tag">HP {{ hp() ?? '-' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="card-detail-modal__close"
+              [attr.aria-label]="t('COMMON.CLOSE')"
+              (click)="close()"
+            >
+              X
+            </button>
+          </header>
+
+          @if (isLoadingDetail()) {
+            <p class="card-detail-modal__empty">{{ t('GAME.LOADING_DETAIL') }}</p>
+          } @else if (detailError()) {
+            <p class="card-detail-modal__empty">{{ detailError() }}</p>
+          }
+
+          <dl class="card-detail-modal__facts">
+            <div class="card-detail-modal__fact card-detail-modal__fact--accent">
+              <dt>{{ t('GAME.CATEGORY') }}</dt>
+              <dd>{{ formatCategory(category()) }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact card-detail-modal__fact--accent">
+              <dt>{{ t('GAME.SUBTYPE') }}</dt>
+              <dd>{{ subtype() ?? t('COMMON.NO_SUBTYPE') }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact">
+              <dt>{{ t('GAME.EVOLVES_FROM') }}</dt>
+              <dd>{{ evolvesFrom() ?? t('COMMON.NOT_APPLICABLE') }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact">
+              <dt>{{ t('GAME.POKEMON_TYPE') }}</dt>
+              <dd>{{ displayPokemonType() ?? t('COMMON.NO_DATA') }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact">
+              <dt>{{ t('GAME.RETREAT_COST') }}</dt>
+              <dd>{{ retreatCost() ?? t('COMMON.NO_DATA') }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact">
+              <dt>{{ t('GAME.WEAKNESSES') }}</dt>
+              <dd>{{ relationSummary(weaknesses(), currentLanguage) }}</dd>
+            </div>
+
+            <div class="card-detail-modal__fact card-detail-modal__fact--wide">
+              <dt>{{ t('GAME.RESISTANCES') }}</dt>
+              <dd>{{ relationSummary(resistances(), currentLanguage) }}</dd>
+            </div>
+          </dl>
+
+          @if (isPokemonCard() && rules().length) {
+            <section class="card-detail-modal__section card-detail-modal__section--rules">
+              @for (rule of rules(); track $index) {
+                <p class="card-detail-modal__rule-text">{{ rule }}</p>
+              }
+            </section>
+          }
+
+          @if (isPokemonCard()) {
+            <section class="card-detail-modal__section">
+              <h3>{{ t('GAME.ATTACKS') }}</h3>
+              @if (isLoadingDetail()) {
+                <p class="card-detail-modal__empty">{{ t('GAME.LOADING_DETAIL') }}</p>
+              } @else if (!attacks().length) {
+                <p class="card-detail-modal__empty">{{ t('GAME.NO_ATTACKS') }}</p>
+              }
+              @for (attack of attacks(); track $index) {
+              <article
+                class="card-detail-modal__move-card"
+                [class.card-detail-modal__move-card--selected]="canSelectAttacks() && selectedAttackIndex() === $index"
+                [class.card-detail-modal__move-card--disabled]="canSelectAttacks() && attackAvailabilityByIndex()[$index]?.available === false"
+                [attr.role]="canSelectAttacks() ? 'button' : null"
+                [attr.tabindex]="canSelectAttacks() ? '0' : null"
+                (click)="selectAttack($index)"
+                (keydown.enter)="selectAttack($index)"
+                (keydown.space)="selectAttack($index); $event.preventDefault()"
+              >
+                <div class="card-detail-modal__move-head">
+                  <div class="card-detail-modal__move-title">
+                    <span class="card-detail-modal__pips">
+                      @if (!attackCosts(attack).length) {
+                        <span class="text-[0.58rem] text-[#d8b982]">{{ t('GAME.NO_COST') }}</span>
+                      }
+                      @for (cost of attackCosts(attack); track $index; let costIndex = $index) {
+                        @for (i of range(cost.quantity); track $index) {
+                          <span
+                            class="inline-grid h-3.5 w-3.5 place-items-center rounded-full text-[0.42rem] font-bold text-[#1a0c02]"
+                            [style.background]="getEnergyColor(cost.energyType)"
+                            [title]="attackCostDisplayLabel(attack, costIndex, i, currentLanguage)"
+                          >
+                            {{ attackCostDisplayLabel(attack, costIndex, i, currentLanguage).charAt(0) }}
+                          </span>
+                        }
+                      }
+                    </span>
+                    <strong>{{ attackDisplayName(attack, currentLanguage) }}</strong>
+                  </div>
+                  <span>{{ attackDamage(attack) }}</span>
+                </div>
+                @if (attackDisplayText(attack, currentLanguage); as displayText) {
+                  <p>{{ displayText }}</p>
+                }
+                @if (canSelectAttacks() && attackAvailabilityByIndex()[$index]?.available === false && attackAvailabilityByIndex()[$index]?.reason) {
+                  <p>{{ translatedDisabledReason(attackAvailabilityByIndex()[$index]?.reason) }}</p>
+                }
+              </article>
+              }
+
+              @if (canDeclareAttack() && selectedAttack() && selectedAttack()?.requiresTarget) {
+              <div class="card-detail-modal__heal-target-picker flex flex-col gap-2 border border-[#facc15]/40 bg-[#1f0f04] p-2">
+                <p class="font-pixel text-[0.58rem] text-[#fde68a]">
+                  {{ t(selectedAttack()?.targetsOwnPokemon ? 'GAME.INTERACTION.CHOOSE_HEAL_TARGET' : 'GAME.INTERACTION.CHOOSE_OPPONENT_TARGET') }}
+                </p>
+                <div class="flex flex-wrap items-center gap-2">
+                @for (option of healTargetOptions(); track option.pokemonInPlayId) {
+                  <button
+                    type="button"
+                    class="border border-[#facc15]/30 px-3 py-2 font-pixel text-[0.58rem] text-[#fff7d6]"
+                    [class]="selectedHealTargetPokemonInPlayId() === option.pokemonInPlayId ? 'bg-[#8b070c]' : 'bg-[#3a1d0c]'"
+                    (click)="selectHealTarget(option.pokemonInPlayId)"
+                  >
+                    {{ option.label }}
+                  </button>
+                }
+                @if (!healTargetOptions().length) {
+                  <span class="text-[0.54rem] leading-snug text-[#d8b982]">
+                    {{ t(selectedAttack()?.targetsOwnPokemon ? 'GAME.INTERACTION.NO_HEAL_TARGETS' : 'GAME.INTERACTION.NO_OPPONENT_TARGETS') }}
+                  </span>
+                }
+                </div>
+              </div>
+              }
+
+              @if (canDeclareAttack() && selectedAttack()) {
+              <div class="flex items-center gap-2">
+                @if (selectedAttackHasOptionalBonusDamage()) {
+                  <button
+                    type="button"
+                    class="border border-[#facc15]/30 bg-[#8b070c] px-3 py-2 font-pixel text-[0.58rem] text-[#fff7d6] disabled:cursor-not-allowed disabled:opacity-55"
+                    [disabled]="!canConfirmAttack()"
+                    (click)="declareSelectedAttack(false)"
+                  >
+                    {{ t('GAME.ACTIONS.DECLARE_ATTACK') }}
+                  </button>
+                  <button
+                    type="button"
+                    class="border border-[#f97316]/50 bg-[#7a2c0a] px-3 py-2 font-pixel text-[0.58rem] text-[#fff7d6] disabled:cursor-not-allowed disabled:opacity-55"
+                    [disabled]="!canConfirmAttack()"
+                    (click)="declareSelectedAttack(true)"
+                  >
+                    {{ t('GAME.ACTIONS.DECLARE_ATTACK_WITH_BONUS_DAMAGE') }}
+                  </button>
+                } @else {
+                  <button
+                    type="button"
+                    class="border border-[#facc15]/30 bg-[#8b070c] px-3 py-2 font-pixel text-[0.58rem] text-[#fff7d6] disabled:cursor-not-allowed disabled:opacity-55"
+                    [disabled]="!canConfirmAttack()"
+                    (click)="declareSelectedAttack(false)"
+                  >
+                    {{ t('GAME.ACTIONS.DECLARE_ATTACK') }}
+                  </button>
+                }
+                @if (selectedAttackError()) {
+                  <span class="text-[0.54rem] leading-snug text-[#d8b982]">{{ selectedAttackError() }}</span>
+                } @else if (!canConfirmAttack()) {
+                  <span class="text-[0.54rem] leading-snug text-[#d8b982]">{{ attackDisabledReason() }}</span>
+                }
+              </div>
+              }
+            </section>
+          } @else if (isTrainer()) {
+            <section class="card-detail-modal__section card-detail-modal__section--rules">
+              <h3>{{ t('GAME.RULES') }}</h3>
+              @if (!rules().length) {
+                <p class="card-detail-modal__empty">{{ t('GAME.NO_RULES') }}</p>
+              }
+              @for (rule of rules(); track $index) {
+                <article class="card-detail-modal__move-card">
+                  <p>{{ rule }}</p>
+                </article>
+              }
+            </section>
+          }
+
+          @if (abilities().length) {
+            <section class="card-detail-modal__section">
+              <h3>{{ t('GAME.ABILITIES') }}</h3>
+              @for (ability of abilities(); track $index) {
+                <article
+                  class="card-detail-modal__move-card"
+                  [class.card-detail-modal__move-card--selected]="canSelectAbilities() && selectedAbilityIndex() === $index"
+                  [class.card-detail-modal__move-card--disabled]="isAbilityBlocked($index)"
+                  [attr.role]="isAbilitySelectable($index) ? 'button' : null"
+                  [attr.tabindex]="isAbilitySelectable($index) ? '0' : null"
+                  (click)="selectAbility($index)"
+                  (keydown.enter)="selectAbility($index)"
+                  (keydown.space)="selectAbility($index); $event.preventDefault()"
+                >
+                  <div class="card-detail-modal__move-head">
+                    <div class="card-detail-modal__move-title">
+                      <strong>{{ ability.label }}</strong>
+                    </div>
+                  </div>
+                  @if (ability.description) {
+                    <p>{{ ability.description }}</p>
+                  } @else if (ability.disabledReason) {
+                    <p>{{ translatedDisabledReason(ability.disabledReason) }}</p>
+                  }
+                </article>
+              }
+
+              @if (canShowAbilityAction()) {
+                @if (selectedAbilitySelection()?.requiresHandCard) {
+                  <div class="card-detail-modal__ability-section flex flex-col gap-2 border border-[#facc15]/40 bg-[#1f0f04] p-2">
+                    <p class="font-pixel text-[0.58rem] text-[#fde68a]">
+                      {{ selectedAbilitySelection()?.handCardPrompt ?? 'Elegi una carta.' }}
+                    </p>
+                    <div class="flex flex-wrap items-center gap-2">
+                      @for (option of selectedAbilityHandCardOptions(); track option.cardInstanceId) {
+                        <button
+                          type="button"
+                          class="card-detail-modal__ability-choice border border-[#facc15]/30 px-3 py-2 font-pixel text-[0.58rem] text-[#fff7d6]"
+                          [class]="selectedAbilityHandCardId() === option.cardInstanceId ? 'bg-[#8b070c]' : 'bg-[#3a1d0c]'"
+                          (click)="selectAbilityHandCard(option.cardInstanceId)"
+                        >
+                          {{ option.label }}
+                        </button>
+                      }
+                      @if (!selectedAbilityHandCardOptions().length) {
+                        <span class="text-[0.54rem] leading-snug text-[#d8b982]">
+                          No hay cartas validas disponibles para esta habilidad.
+                        </span>
+                      }
+                    </div>
+                  </div>
+                }
+
+                @if (selectedAbilitySelection()?.requiresTargetPokemon) {
+                  <div class="card-detail-modal__ability-section flex flex-col gap-2 border border-[#facc15]/40 bg-[#1f0f04] p-2">
+                    <p class="font-pixel text-[0.58rem] text-[#fde68a]">
+                      {{ selectedAbilitySelection()?.targetPokemonPrompt ?? 'Elegi un Pokemon objetivo.' }}
+                    </p>
+                    <div class="flex flex-wrap items-center gap-2">
+                      @for (option of selectedAbilityTargetPokemonOptions(); track option.pokemonInPlayId) {
+                        <button
+                          type="button"
+                          class="card-detail-modal__ability-choice border border-[#facc15]/30 px-3 py-2 font-pixel text-[0.58rem] text-[#fff7d6]"
+                          [class]="selectedAbilityTargetPokemonInPlayId() === option.pokemonInPlayId ? 'bg-[#8b070c]' : 'bg-[#3a1d0c]'"
+                          (click)="selectAbilityTargetPokemon(option.pokemonInPlayId)"
+                        >
+                          {{ option.label }}
+                        </button>
+                      }
+                      @if (!selectedAbilityTargetPokemonOptions().length) {
+                        <span class="text-[0.54rem] leading-snug text-[#d8b982]">
+                          No hay Pokemon objetivo validos para esta habilidad.
+                        </span>
+                      }
+                    </div>
+                  </div>
+                }
+
+                @if (selectedAbilitySelection()?.requiresDeckCard) {
+                  <div class="card-detail-modal__ability-section flex flex-col gap-2 border border-[#facc15]/40 bg-[#1f0f04] p-2">
+                    <p class="font-pixel text-[0.58rem] text-[#fde68a]">
+                      {{ selectedAbilitySelection()?.deckCardPrompt ?? 'Elegi una carta del mazo.' }}
+                    </p>
+                    <div class="card-detail-modal__ability-card-grid grid gap-2">
+                      @for (option of selectedAbilityDeckCardOptions(); track option.cardInstanceId) {
+                        <button
+                          type="button"
+                          class="card-detail-modal__ability-card grid gap-2 border bg-[#3a1d0c] p-2 text-left text-[#fff7d6]"
+                          [class.border-[#ef4444]]="selectedAbilityDeckCardId() === option.cardInstanceId"
+                          [class.border-[#facc15]/30]="selectedAbilityDeckCardId() !== option.cardInstanceId"
+                          [class.bg-[#8b070c]]="selectedAbilityDeckCardId() === option.cardInstanceId"
+                          (click)="selectAbilityDeckCard(option.cardInstanceId)"
+                        >
+                          @if (option.imageSmallUrl || option.imageLargeUrl) {
+                            <img
+                              class="card-detail-modal__ability-card-image aspect-[63/88] w-full bg-[#160905] object-contain"
+                              [src]="option.imageSmallUrl ?? option.imageLargeUrl ?? ''"
+                              [alt]="option.label"
+                            />
+                          }
+                          <span class="font-pixel text-[0.55rem] leading-snug">{{ option.label }}</span>
+                          @if (option.number) {
+                            <span class="text-[0.54rem] text-[#d8b982]">#{{ option.number }}</span>
+                          }
+                        </button>
+                      }
+                      @if (!selectedAbilityDeckCardOptions().length) {
+                        <span class="text-[0.54rem] leading-snug text-[#d8b982]">
+                          No hay evoluciones validas en el mazo.
+                        </span>
+                      }
+                    </div>
+                  </div>
+                }
+
+                <div class="card-detail-modal__ability-actions mt-2 flex items-center gap-2">
+                  <button
+                    type="button"
+                    class="border border-[#facc15]/30 bg-[#8b070c] px-3 py-2 font-pixel text-[0.58rem] text-[#fff7d6] disabled:cursor-not-allowed disabled:opacity-55"
+                    [disabled]="!canConfirmAbility()"
+                    (click)="declareSelectedAbility()"
+                  >
+                    {{ t('GAME.ACTIONS.USE_ABILITY') }}
+                  </button>
+                  @if (!canConfirmAbility()) {
+                    <span class="text-[0.54rem] leading-snug text-[#d8b982]">{{ abilityDisabledReason() }}</span>
+                  }
+                </div>
+              }
+            </section>
+          }
+        </section>
+      </div>
+    </article>
+  </div>
+}

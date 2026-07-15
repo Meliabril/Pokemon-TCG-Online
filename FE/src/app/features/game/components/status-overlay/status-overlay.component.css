@@ -1,0 +1,195 @@
+:host {
+  display: contents;
+}
+
+.status-overlay {
+  pointer-events: none;
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  z-index: 4;
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.18rem;
+
+  max-width: 70%;
+  flex-wrap: nowrap;
+}
+
+.status-overlay__badge {
+  --sprite-w: 1.4rem;
+  --sprite-h: calc(var(--sprite-w) * 160 / 128);
+  --badge-pad: 0.03rem;
+  display: block;
+  flex: 0 0 auto;
+  position: relative;
+  /* `overflow: visible` is required so the hover tooltip can render above the
+     badge. The sprite is sized to fit inside the badge's inner box, so relaxing
+     overflow here does not affect the sprite painting. */
+  overflow: visible;
+
+  width: calc(var(--sprite-w) + (var(--badge-pad) * 2));
+  height: calc(var(--sprite-h) + (var(--badge-pad) * 2));
+
+  border-radius: 0.2rem;
+  box-shadow: 0 0 0 1px rgba(20, 12, 6, 0.85), 0 2px 4px rgba(0, 0, 0, 0.45);
+  background-color: rgba(20, 12, 6, 0.6);
+
+  /* Re-enable hover detection on the badge so the localized tooltip can show.
+     The parent `.status-overlay` keeps `pointer-events: none`, so cards and
+     drag targets beneath are not affected. The inner sprite explicitly
+     disables pointer events. */
+  pointer-events: auto;
+}
+
+.status-overlay__sprite {
+  position: absolute;
+  top: var(--badge-pad);
+  left: var(--badge-pad);
+
+  width: var(--sprite-w);
+  height: var(--sprite-h);
+
+  background-image: url('/assets/effects/status-effects-atlas.png');
+  background-repeat: no-repeat;
+  background-size: calc(var(--sprite-w) * 8) calc(var(--sprite-h) * 5);
+  background-position-x: 0;
+  background-position-y: calc(var(--status-row, 0) * var(--sprite-h) * -1);
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
+  animation: status-overlay-frame-cycle 0.9s steps(8, end) infinite;
+  pointer-events: none;
+}
+
+/* Localized hover tooltip. The badge above uses `pointer-events: auto` so the
+   `:hover` selector on the badge can fire; the tooltip itself stays
+   pointer-transparent so it never interferes with the card beneath. */
+.status-overlay__tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.3rem);
+  left: 50%;
+  z-index: 50;
+
+  display: inline-block;
+  max-width: 12rem;
+  padding: 0.22rem 0.5rem;
+
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-align: center;
+  white-space: nowrap;
+
+  color: rgba(255, 250, 240, 0.96);
+  background-color: rgba(20, 14, 8, 0.9);
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 0.28rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition: opacity 140ms ease-out, transform 140ms ease-out;
+}
+
+.status-overlay__badge:hover .status-overlay__tooltip,
+.status-overlay__badge:focus-visible .status-overlay__tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.status-overlay__badge--active {
+  --sprite-w: 1.65rem;
+}
+
+.status-overlay__badge--bench {
+  --sprite-w: 1.1rem;
+  --badge-pad: 0.06rem;
+}
+
+/* First-apply emphasis: subtle pulse that runs once when a condition is added to a
+   Pokemon whose previous condition set did not include it. Keeps `pointer-events: none`
+   so the pulse never interferes with click or drag interactions on the card beneath. */
+.status-overlay__badge--emphasized {
+  animation:
+    status-overlay-frame-cycle 0.9s steps(8, end) infinite,
+    status-overlay-emphasis-pulse 0.4s ease-out 1;
+  filter: drop-shadow(0 0 0.45rem rgba(253, 230, 138, 0.85));
+}
+
+.status-overlay--active {
+  top: 0.3rem;
+  left: 0.3rem;
+}
+
+/* Bench variant: compact horizontal strip tuned for small slot cards.
+   Multiple statuses share a single top-left cluster without overflowing. */
+.status-overlay--bench {
+  top: 0.16rem;
+  left: 0.16rem;
+  gap: 0.08rem;
+  max-width: calc(100% - 1.2rem);
+  flex-wrap: nowrap;
+}
+
+/* When two or more badges share the bench strip, shrink the individual badge
+   just enough to keep the cluster inside the slot width. */
+.status-overlay--bench .status-overlay__badge--bench {
+  --sprite-w: 0.95rem;
+  --badge-pad: 0.05rem;
+}
+
+/* Compaction rule for three or more simultaneous statuses: drop the gap to
+   zero and let badges visually touch so the cluster stays compact. */
+.status-overlay--bench.status-overlay--compact {
+  gap: 0.04rem;
+  max-width: calc(100% - 0.8rem);
+}
+
+.status-overlay--bench.status-overlay--compact .status-overlay__badge--bench {
+  --sprite-w: 0.85rem;
+}
+
+@keyframes status-overlay-frame-cycle {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: calc(var(--sprite-w) * -8);
+  }
+}
+
+@keyframes status-overlay-emphasis-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  60% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-overlay__sprite {
+    animation: status-overlay-frame-cycle 1.6s steps(8, end) infinite;
+  }
+
+  .status-overlay__badge--emphasized {
+    filter: drop-shadow(0 0 0.3rem rgba(253, 230, 138, 0.7));
+  }
+
+  .status-overlay__tooltip {
+    transition: none;
+    transform: translate(-50%, 0);
+  }
+}

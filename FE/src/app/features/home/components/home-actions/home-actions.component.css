@@ -1,0 +1,57 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.home-actions,
+.home-action-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-actions {
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.home-action-buttons {
+  gap: 0.75rem;
+}
+
+.home-active-deck {
+  text-align: left;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.home-active-deck--ready {
+  border-color: rgba(214, 144, 63, 0.5);
+  box-shadow: 0 0 15px rgba(214, 144, 63, 0.25);
+}
+
+.home-active-deck--ready:hover {
+  border-color: rgba(214, 144, 63, 1);
+  box-shadow: 0 0 30px rgba(214, 144, 63, 0.6);
+}
+
+.home-active-deck--empty {
+  animation: pulse 2s ease-in-out infinite;
+  border-color: #facc15;
+  box-shadow: 0 0 35px rgba(250, 204, 21, 0.65);
+}
+
+@media (min-width: 1024px) and (max-height: 820px) and (hover: hover) and (pointer: fine) {
+  .home-actions,
+  .home-action-buttons {
+    gap: 0.65rem;
+  }
+}
+
+@media (max-width: 932px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+  .home-actions,
+  .home-action-buttons {
+    gap: 0.5rem;
+  }
+}

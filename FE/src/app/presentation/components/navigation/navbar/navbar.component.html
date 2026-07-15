@@ -1,0 +1,155 @@
+<header data-tour="navbar" class="app-navbar">
+  <div class="app-navbar__inner">
+    <a class="app-navbar__brand" [routerLink]="toLink(routes.home)">
+      <span class="app-navbar__brand-logo">
+        <img src="/assets/icons/tcg_logo_pixel.png" [alt]="t('NAV.LOGO_ALT')" class="app-navbar__brand-image" />
+      </span>
+
+      <span class="app-navbar__brand-text">
+        <strong class="app-navbar__brand-title">{{ t('COMMON.TCG_ONLINE') }}</strong>
+        <small class="app-navbar__brand-subtitle">{{ t('COMMON.POKEMON_LEAGUE') }}</small>
+      </span>
+    </a>
+
+    <nav [attr.aria-label]="t('A11Y.PRIMARY_NAVIGATION')" class="app-navbar__links">
+      @for (item of navItems(); track item.route) {
+        <a
+          class="app-navbar__link"
+          [routerLink]="toLink(item.route)"
+          routerLinkActive="app-navbar__link--active"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
+          [attr.data-tour]="tourTargetFor(item.route)"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <div class="app-navbar__actions">
+      <button
+        type="button"
+        data-tour="language-switch"
+        class="app-navbar__icon-button app-navbar__language-button"
+        [attr.aria-label]="t('NAV.LANGUAGE_CURRENT', { language: languageLabel() })"
+        (click)="toggleLanguage($event)"
+      >
+        <svg class="app-navbar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+          <path
+            d="M3 12h18M12 3c2.2 2.5 3.3 5.5 3.3 9S14.2 18.5 12 21M12 3c-2.2 2.5-3.3 5.5-3.3 9s1.1 6.5 3.3 9"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span class="app-navbar__language-code">{{ language() === 'es' ? 'ES' : 'EN' }}</span>
+      </button>
+
+      <button
+        type="button"
+        class="app-navbar__icon-button"
+        [attr.aria-label]="isDarkTheme() ? t('AUTH.LIGHT_THEME') : t('AUTH.DARK_THEME')"
+        (click)="toggleTheme($event)"
+      >
+        @if (isDarkTheme()) {
+          <svg class="app-navbar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6M18.4 18.4l-1.6-1.6M7.2 7.2 5.6 5.6"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+            <circle cx="12" cy="12" r="3.8" stroke="currentColor" stroke-width="1.8" />
+          </svg>
+        } @else {
+          <svg class="app-navbar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M20.5 15.2A8.5 8.5 0 0 1 8.8 3.5 8.5 8.5 0 1 0 20.5 15.2Z"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linejoin="round"
+            />
+          </svg>
+        }
+      </button>
+
+      @if (currentUser(); as user) {
+        <div class="app-navbar__user">
+          <button
+            type="button"
+            data-tour="user-status"
+            class="app-navbar__user-button"
+            [ngClass]="isUserMenuOpen() ? userMenuTriggerOpenClasses : userMenuTriggerClosedClasses"
+            [attr.aria-label]="t('NAV.USER_MENU_OPEN')"
+            [attr.aria-expanded]="isUserMenuOpen()"
+            aria-haspopup="menu"
+            (click)="toggleUserMenu()"
+          >
+            <img
+              [src]="getAvatarUrl(user.avatar)"
+              [alt]="t('NAV.AVATAR_ALT', { username: user.username })"
+              class="app-navbar__user-avatar"
+            />
+
+            <span class="app-navbar__user-text">
+              <strong class="app-navbar__user-name">{{ user.username }}</strong>
+              <span class="app-navbar__user-status">
+                {{ user.emailVerified ? t('NAV.READY_TO_PLAY') : t('NAV.ACCOUNT_PENDING') }}
+              </span>
+            </span>
+
+            <span
+              class="app-navbar__user-caret"
+              [class.rotate-180]="isUserMenuOpen()"
+              aria-hidden="true"
+            >
+              &#9662;
+            </span>
+          </button>
+
+          @if (isUserMenuOpen()) {
+            <div class="app-navbar__user-menu" role="menu" [attr.aria-label]="t('NAV.USER_MENU')">
+              <a
+                class="app-navbar__user-menu-item"
+                [routerLink]="toLink(routes.profile)"
+                role="menuitem"
+                (click)="closeUserMenu()"
+              >
+                {{ t('NAV.GO_TO_PROFILE') }}
+              </a>
+
+              <button
+                type="button"
+                class="app-navbar__user-menu-item app-navbar__user-menu-item--danger"
+                role="menuitem"
+                [disabled]="isLoggingOut()"
+                (click)="logout()"
+              >
+                @if (isLoggingOut()) {
+                  {{ t('NAV.LOGGING_OUT') }}
+                } @else {
+                  {{ t('NAV.LOGOUT') }}
+                }
+              </button>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="app-navbar__login-hint">
+          {{ t('NAV.LOGIN_TO_PLAY') }}
+        </div>
+      }
+
+      <button
+        type="button"
+        class="app-navbar__icon-button oak-navbar-help-button"
+        data-tour="start-oak-tutorial"
+        [attr.aria-label]="t('OAK_TUTORIAL.HELP_BUTTON.LABEL')"
+        [attr.title]="t('OAK_TUTORIAL.HELP_BUTTON.TITLE')"
+        (click)="startOakTutorial()"
+      >
+        ?
+      </button>
+    </div>
+  </div>
+</header>

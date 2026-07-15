@@ -1,0 +1,65 @@
+@if (hasContent()) {
+  <section
+    class="grid gap-2 border border-amber-300/25 bg-stone-950/90 p-2 text-amber-50"
+    data-testid="mulligan-setup-panel"
+    [attr.aria-label]="t('GAME.MULLIGAN.TITLE')"
+  >
+    <header class="grid gap-1">
+      <p class="font-pixel text-[0.55rem] uppercase tracking-[0.16em] text-amber-200">
+        {{ t('GAME.MULLIGAN.TITLE') }}
+      </p>
+    </header>
+
+    @if (showCounters()) {
+      <div class="grid gap-1" data-testid="mulligan-counters">
+        <p class="m-0 text-xs leading-5 text-amber-100/90" data-testid="mulligan-counter-rival">
+          {{ t('GAME.MULLIGAN.COUNTER_RIVAL', { count: opponentMulliganCount() }) }}
+        </p>
+        <p class="m-0 text-xs leading-5 text-amber-100/90" data-testid="mulligan-counter-own">
+          {{ t('GAME.MULLIGAN.COUNTER_OWN', { count: ownMulliganCount() }) }}
+        </p>
+      </div>
+    }
+
+    @if (showOwnerNotice()) {
+      <article
+        class="grid gap-1 border border-amber-300/30 bg-red-950/45 p-2"
+        data-testid="mulligan-owner-notice"
+      >
+        <strong class="text-xs leading-5 text-amber-50">{{ t('GAME.MULLIGAN.OWNER_NO_BASIC') }}</strong>
+        <span class="text-[0.7rem] leading-5 text-amber-100/85">{{ t('GAME.MULLIGAN.OWNER_MUST_MULLIGAN') }}</span>
+        <span class="text-[0.7rem] leading-5 text-amber-100/85">{{ t('GAME.MULLIGAN.OWNER_WILL_REVEAL') }}</span>
+      </article>
+    } @else if (showWatcherNotice()) {
+      <article
+        class="grid gap-1 border border-sky-300/25 bg-sky-950/40 p-2"
+        data-testid="mulligan-watcher-notice"
+      >
+        <strong class="text-xs leading-5 text-sky-50">{{ t('GAME.MULLIGAN.RIVAL_MUST_MULLIGAN') }}</strong>
+        <span class="text-[0.7rem] leading-5 text-sky-100/85">{{ t('GAME.MULLIGAN.WATCHER_CONFIRM_HINT') }}</span>
+      </article>
+    } @else if (showWaiting()) {
+      <p class="m-0 text-xs leading-5 text-sky-100" data-testid="mulligan-waiting-notice">
+        {{ t('GAME.MULLIGAN.WAITING_FOR_RIVAL') }}
+      </p>
+    }
+
+    @if (noticePending()) {
+      <button
+        type="button"
+        class="justify-self-start border border-amber-200/35 bg-amber-300 px-3 py-2 font-pixel text-[0.58rem] uppercase tracking-[0.12em] text-red-950 shadow-[0_4px_0_rgba(69,26,3,0.7)] transition hover:bg-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-100 disabled:cursor-wait disabled:opacity-60"
+        [disabled]="ackPending()"
+        data-testid="mulligan-ack-button"
+        (click)="acknowledge()"
+      >
+        @if (ackPending()) {
+          {{ t('GAME.MULLIGAN.ACK_LOADING') }}
+        } @else if (localMustMulligan()) {
+          {{ t('GAME.MULLIGAN.OWNER_START_BUTTON') }}
+        } @else {
+          {{ t('GAME.MULLIGAN.WATCHER_CONTINUE_BUTTON') }}
+        }
+      </button>
+    }
+  </section>
+}

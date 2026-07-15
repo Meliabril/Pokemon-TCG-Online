@@ -1,0 +1,133 @@
+<div class="home-custom-match-overlay fixed inset-0 z-40 flex items-center justify-center px-4 py-6" role="presentation">
+  <button
+    type="button"
+    class="absolute inset-0 bg-[#120304]/82 backdrop-blur-sm"
+    [attr.aria-label]="t('HOME.CUSTOM.CLOSE')"
+    (click)="close.emit()"
+  ></button>
+
+  <section
+    [class]="'home-custom-match-panel ' + panelClasses()"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="home-custom-match-modal-title"
+    (click)="$event.stopPropagation()"
+  >
+    <div [class]="'home-custom-match-header ' + headerClasses()">
+      <div class="space-y-1">
+        <p [class]="eyebrowClasses()">
+          {{ t('HOME.CUSTOM.TITLE') }}
+        </p>
+        <h2 id="home-custom-match-modal-title" [class]="titleClasses()">
+          {{ t('HOME.CUSTOM.CHOOSE_MODE') }}
+        </h2>
+      </div>
+
+      <button
+        type="button"
+        [class]="closeButtonClasses()"
+        [attr.aria-label]="t('HOME.CUSTOM.CLOSE')"
+        (click)="close.emit()"
+      >
+        <span aria-hidden="true" class="text-xl leading-none">x</span>
+      </button>
+    </div>
+
+
+    <div class="home-custom-match-content max-h-[78vh] overflow-y-auto p-5 sm:p-6">
+        <div class="flex flex-col gap-4">
+          <div [class]="descriptionBoxClasses()">
+            {{ t('HOME.CUSTOM.PRIVATE_DESCRIPTION') }}
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <!-- Crear sala -->
+            <div [class]="optionCardClasses()">
+              <div>
+                <div class="mb-4 flex items-center gap-2">
+                  <span class="grid h-6 w-6 place-items-center rounded-full bg-[#8b070c]/80 text-[#facc15]">
+                    <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                  </span>
+                  <p [class]="labelClasses()">{{ t('HOME.CUSTOM.CREATE_ROOM') }}</p>
+                </div>
+                
+                <div class="grid gap-2">
+                  <label [class]="fieldLabelClasses()">{{ t('HOME.CUSTOM.ACCESS_CODE') }}</label>
+                  <div class="flex gap-2">
+                    <div [class]="codeBoxClasses()">
+                      {{ roomCode() }}
+                    </div>
+                    <button
+                      type="button"
+                      [class]="copyButtonClasses()"
+                      (click)="copyCode()"
+                      [attr.title]="t('HOME.CUSTOM.COPY_CODE')"
+                    >
+                      <svg class="h-4 w-4 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    </button>
+                  </div>
+                  @if (copied()) {
+                    <p class="font-pixel text-[0.65rem] text-[#4ade80]">{{ t('HOME.CUSTOM.CODE_COPIED') }}</p>
+                  }
+                </div>
+              </div>
+
+              <button
+                type="button"
+                [class]="primaryButtonClasses()"
+                (click)="createRoom.emit()"
+              >
+                {{ t('HOME.CUSTOM.CREATE_AND_JOIN') }}
+              </button>
+            </div>
+
+            <!-- Unirse a sala -->
+            <div [class]="optionCardClasses()">
+              <div>
+                <div class="mb-4 flex items-center gap-2">
+                  <span class="grid h-6 w-6 place-items-center rounded-full bg-[#3b0905] text-[#d8b982]">
+                    <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                  </span>
+                  <p [class]="labelClasses()">{{ t('HOME.CUSTOM.JOIN_ROOM') }}</p>
+                </div>
+
+                <div class="grid gap-2">
+                  <label [class]="fieldLabelClasses()">{{ t('HOME.CUSTOM.ENTER_CODE') }}</label>
+                  <input
+                    type="text"
+                    [value]="joinCode()"
+                    maxlength="9"
+                    [placeholder]="t('HOME.CUSTOM.CODE_PLACEHOLDER')"
+                    [class]="inputClasses()"
+                    (input)="updateJoinCode($event)"
+                  />
+                  @if (joinAttempted()) {
+                    <p class="font-pixel text-[0.65rem] text-[#facc15]">{{ t('HOME.CUSTOM.CONNECTING') }}</p>
+                  }
+                </div>
+              </div>
+
+              <button
+                type="button"
+                [class]="secondaryButtonClasses()"
+                [disabled]="!joinCode().trim()"
+                (click)="attemptJoin()"
+              >
+                {{ t('HOME.CUSTOM.JOIN') }}
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div [class]="'home-custom-match-actions ' + footerClasses()">
+      <button
+        type="button"
+        [class]="footerButtonClasses()"
+        (click)="close.emit()"
+      >
+        {{ t('COMMON.CLOSE') }}
+      </button>
+    </div>
+  </section>
+</div>

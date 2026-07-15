@@ -1,0 +1,359 @@
+<div data-tour="deck-editor-root" class="grid h-auto min-h-0 gap-4 overflow-visible lg:h-full lg:grid-rows-[auto_minmax(0,1fr)] lg:overflow-hidden" [attr.aria-label]="t('DECK.EDITOR_ARIA')">
+  @let currentLanguage = language();
+  <div class="grid gap-3 lg:grid-cols-[minmax(14rem,24rem)_1fr] lg:items-end">
+    <div class="grid max-w-[24rem] gap-2">
+      <button
+        type="button"
+        data-tour="deck-back-button"
+        [class]="quietButtonClass() + ' w-fit px-4'"
+        [attr.aria-label]="t('DECK.BACK_TO_LIST')"
+        (click)="closeEditor.emit()"
+        [disabled]="isSaving() || isRandomizing()"
+      >
+        {{ t('COMMON.BACK') }}
+      </button>
+
+      <label class="grid gap-1 text-xs font-bold" [class.text-[#f9f0d0]/70]="!isLightTheme()" [class.text-white]="isLightTheme()" [style.text-shadow]="isLightTheme() ? '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, -2px 0 0 #000, 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000' : ''">
+        <span>{{ t('DECK.DECK_NAME') }}</span>
+        <input
+          data-tour="deck-name-input"
+          [class]="inputClass()"
+          type="text"
+          [value]="draftName()"
+          (input)="onDraftNameInput($event)"
+          maxlength="100"
+          [placeholder]="t('DECK.DECK_NAME_PLACEHOLDER')"
+        />
+      </label>
+    </div>
+
+    <div class="flex flex-wrap justify-stretch gap-2 lg:justify-end">
+      <button
+        type="button"
+        data-tour="deck-random-button"
+        class="inline-flex min-h-10 min-w-32 flex-1 items-center justify-center gap-2 rounded-xl bg-[#8b070c] px-4 font-bold uppercase tracking-wide text-white hover:bg-[#6f0509] disabled:cursor-not-allowed disabled:opacity-55 lg:flex-none"
+        [attr.aria-label]="t('DECK.RANDOM_BACKEND')"
+        (click)="randomizeEditingDeck.emit()"
+        [disabled]="!canRandomize()"
+      >
+        <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span>{{ isRandomizing() ? t('HOME.RANDOMIZING') : t('HOME.RANDOM') }}</span>
+      </button>
+      <button
+        type="button"
+        data-tour="deck-clear-button"
+        class="inline-flex min-h-10 min-w-32 flex-1 items-center justify-center gap-2 rounded-xl bg-[#8b070c] px-4 font-bold uppercase tracking-wide text-white hover:bg-[#6f0509] disabled:cursor-not-allowed disabled:opacity-55 lg:flex-none"
+        [attr.aria-label]="t('DECK.CLEAR_DECK')"
+        (click)="clearDraft.emit()"
+        [disabled]="isSaving() || isRandomizing()"
+      >
+        <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M3 6h18M8 6V4h8v2M6 6l1 15h10l1-15M10 11v6M14 11v6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span>{{ t('DECK.CLEAR') }}</span>
+      </button>
+      <button
+        type="button"
+        data-tour="deck-save-button"
+        class="inline-flex min-h-10 min-w-32 flex-1 items-center justify-center gap-2 rounded-xl bg-[#8b070c] px-4 font-bold uppercase tracking-wide text-white hover:bg-[#6f0509] disabled:cursor-not-allowed disabled:opacity-55 lg:flex-none"
+        [attr.aria-label]="t('DECK.SAVE_DECK')"
+        (click)="saveDraft.emit()"
+        [disabled]="!canSaveDraft()"
+      >
+        @if (isSaving()) {
+          {{ t('COMMON.SAVING') }}
+        } @else {
+          <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M5 3h13l1 1v17H5V3ZM8 3v6h8V3M8 21v-7h8v7M10 6h4"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>{{ t('COMMON.SAVE') }}</span>
+        }
+      </button>
+      <button
+        type="button"
+        data-tour="deck-mobile-panel-toggle"
+        class="deck-builder-panel-toggle min-h-10 min-w-32 flex-1 items-center justify-center gap-2 rounded-xl bg-[#8b070c] px-4 font-bold uppercase tracking-wide text-white hover:bg-[#6f0509] lg:flex-none"
+        (click)="toggleDeckPanel()"
+        [attr.aria-expanded]="isDeckPanelOpen()"
+        aria-controls="deck-builder-sidebar"
+      >
+        {{ t('COMMON.DECK') }} {{ draftTotal() }}/{{ requiredDeckSize() }}
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="deck-builder-layout grid min-h-0 flex-1 gap-4 lg:h-full lg:grid-cols-[minmax(0,1fr)_minmax(22rem,30rem)] lg:overflow-hidden"
+    [attr.data-panel-open]="isDeckPanelOpen() ? 'true' : 'false'"
+  >
+    <section
+      data-tour="deck-card-catalog"
+      [class]="panelClass() + ' lg:grid-rows-[auto_auto_auto_minmax(0,1fr)]'"
+      aria-labelledby="cards-title"
+    >
+      <header class="flex justify-between gap-3">
+        <h2 id="cards-title" class="text-xl leading-tight">{{ t('DECK.CARDS_TITLE') }}</h2>
+        <span
+          class="self-start whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold uppercase"
+          [class.bg-blue-700]="!isLightTheme()"
+          [class.text-white]="!isLightTheme()"
+          [class.bg-[#7a3f12]]="isLightTheme()"
+          [class.text-[#ffe8ae]]="isLightTheme()"
+        >
+          {{ filteredCards().length }} / {{ availableCards().length }}
+        </span>
+      </header>
+
+      <label class="grid gap-1 text-xs font-bold" [class.text-[#f9f0d0]/70]="!isLightTheme()" [class.text-[#8b070c]]="isLightTheme()">
+        <span>{{ t('DECK.SEARCH_CARDS') }}</span>
+        <input
+          data-tour="deck-search-input"
+          [class]="inputClass()"
+          type="search"
+          [value]="searchTerm()"
+          (input)="onSearchTermInput($event)"
+          [placeholder]="t('DECK.SEARCH_PLACEHOLDER')"
+        />
+      </label>
+
+      <div data-tour="deck-type-filters" class="grid grid-cols-4 gap-2" [attr.aria-label]="t('POKEDEX.FILTER_ARIA')">
+        @for (filter of typeFilters(); track filter.value) {
+          <button
+            type="button"
+            [attr.data-tour]="tutorialFilterTarget(filter.value)"
+            [class]="quietButtonClass(typeFilter() === filter.value)"
+            (click)="changeTypeFilter.emit(filter.value)"
+          >
+            {{ filter.label }}
+          </button>
+        }
+      </div>
+
+      @if (isLoadingCards()) {
+        <p class="grid min-h-32 place-items-center text-center" [class.text-[#f9f0d0]/70]="!isLightTheme()" [class.text-[#6b3a22]]="isLightTheme()" role="status">
+          {{ t('DECK.LOADING_AVAILABLE') }}
+        </p>
+      } @else if (cardsErrorMessage()) {
+        <div class="grid min-h-32 place-items-center gap-3 text-center" [class.text-[#f9f0d0]/70]="!isLightTheme()" [class.text-[#6b3a22]]="isLightTheme()" role="alert">
+          <p>{{ cardsErrorMessage() }}</p>
+          <button
+            type="button"
+            class="min-h-10 rounded-xl bg-[#8b070c] px-4 font-bold text-white hover:bg-[#6f0509] disabled:cursor-not-allowed disabled:opacity-55"
+            (click)="loadAvailableCards.emit()"
+          >
+            {{ t('COMMON.RETRY') }}
+          </button>
+        </div>
+      } @else if (filteredCards().length === 0) {
+        <p class="grid min-h-32 place-items-center text-center" [class.text-[#f9f0d0]/70]="!isLightTheme()" [class.text-[#6b3a22]]="isLightTheme()">
+          {{ t('DECK.NO_FILTER_CARDS') }}
+        </p>
+      } @else {
+        <div class="deck-scrollbar grid min-h-0 grid-cols-[repeat(auto-fill,minmax(9rem,1fr))] gap-3 overflow-auto pr-1">
+          @for (card of filteredCards(); track card.id) {
+            @let quantity = cardQuantity()(card.id);
+            @let copyLimitReached = isCopyLimitReached()(card);
+            @let addDisabled = isSaving() || isRandomizing() || !canAddCardToDraft()(card);
+
+            <button
+              type="button"
+              [attr.data-tour]="$first ? 'deck-first-card' : null"
+              [class]="isLightTheme() ? 'relative grid min-h-64 grid-rows-[minmax(0,1fr)_auto] rounded-xl border-2 border-[rgba(117,72,32,0.45)] bg-[#fff4d8] p-2 text-left text-[#3b1d12] hover:border-[#b8792e] hover:bg-[#fff0d1] disabled:cursor-not-allowed disabled:opacity-55' : 'relative grid min-h-64 grid-rows-[minmax(0,1fr)_auto] rounded-xl border-2 border-[rgba(139,74,24,0.72)] bg-[rgba(54,22,6,0.9)] p-2 text-left text-[#fff4c7] hover:border-[#B8792E] hover:bg-[rgba(93,47,14,0.95)] disabled:cursor-not-allowed disabled:opacity-55'"
+              [class.border-[#B8792E]]="quantity > 0"
+              [class.bg-[rgba(93,47,14,0.95)]]="quantity > 0 && !isLightTheme()"
+              [class.bg-[#fff0d1]]="quantity > 0 && isLightTheme()"
+              [class.border-red-400]="copyLimitReached"
+              [class.bg-red-950]="copyLimitReached && !isLightTheme()"
+              [class.bg-[#fff1e8]]="copyLimitReached && isLightTheme()"
+              (click)="addCardToDraft.emit(card)"
+              [disabled]="addDisabled"
+              [attr.aria-label]="
+                copyLimitReached
+                  ? t('DECK.MAX_4_COPIES_ARIA', { name: cardDisplayName(card, currentLanguage) })
+                  : t('DECK.ADD_CARD', { name: cardDisplayName(card, currentLanguage) })
+              "
+            >
+              <span
+                class="grid min-h-44 place-items-center overflow-hidden rounded-lg text-3xl font-extrabold"
+                [class.bg-[rgba(26,13,2,0.76)]]="!isLightTheme()"
+                [class.text-[#f9f0d0]/60]="!isLightTheme()"
+                [class.bg-[rgba(244,226,195,0.82)]]="isLightTheme()"
+                [class.text-[#9a7b58]]="isLightTheme()"
+              >
+                @if (card.imageSmallUrl) {
+                  <img
+                    class="size-full object-contain"
+                    [src]="card.imageSmallUrl"
+                    [alt]="cardDisplayName(card, currentLanguage)"
+                    loading="lazy"
+                  />
+                } @else {
+                  <span>{{ card.supertype.charAt(0) }}</span>
+                }
+              </span>
+              <span class="grid gap-2 pt-3">
+                <strong class="overflow-hidden text-ellipsis whitespace-nowrap">{{ cardDisplayName(card, currentLanguage) }}</strong>
+                <small
+                  class="overflow-hidden text-ellipsis whitespace-nowrap text-[0.68rem] font-bold"
+                  [class.text-[#f9f0d0]/70]="!isLightTheme()"
+                  [class.text-[#6b3a22]]="isLightTheme()"
+                >
+                  {{ cardDisplaySupertype(card, currentLanguage) }} &middot; {{ cardDisplayCategory(card, currentLanguage) }}
+                </small>
+              </span>
+              @if (quantity > 0) {
+                <span
+                  class="absolute right-3 top-3 rounded-full px-2 py-1 text-xs font-extrabold"
+                  [class.bg-blue-700]="!isLightTheme()"
+                  [class.text-white]="!isLightTheme()"
+                  [class.bg-[#7a3f12]]="isLightTheme()"
+                  [class.text-[#ffe8ae]]="isLightTheme()"
+                >
+                  x{{ quantity }}
+                </span>
+              }
+              @if (copyLimitReached) {
+                <span
+                  class="absolute inset-x-2 bottom-2 rounded-lg border border-red-300/50 bg-red-950/95 px-2 py-1 text-center text-[0.62rem] font-extrabold uppercase leading-tight text-red-100"
+                >
+                  {{ t('DECK.MAX_4_COPIES') }}
+                </span>
+              }
+            </button>
+          }
+        </div>
+      }
+    </section>
+
+    <aside
+      id="deck-builder-sidebar"
+      data-tour="deck-selected-list"
+      [attr.data-panel-open]="isDeckPanelOpen() ? 'true' : 'false'"
+      [class]="'deck-builder-sidebar ' + panelClass() + ' lg:grid-rows-[auto_auto_minmax(0,1fr)]'"
+      aria-labelledby="draft-title"
+    >
+      <header class="flex justify-between gap-3">
+        <h2 id="draft-title" class="text-xl leading-tight">{{ t('COMMON.DECK') }}</h2>
+        <span
+          data-tour="deck-count"
+          class="self-start whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold uppercase"
+          [class.bg-blue-700]="!isLightTheme()"
+          [class.text-white]="!isLightTheme()"
+          [class.bg-[#7a3f12]]="isLightTheme()"
+          [class.text-[#ffe8ae]]="isLightTheme()"
+        >
+          {{ draftTotal() }} / {{ requiredDeckSize() }}
+        </span>
+      </header>
+
+      <div data-tour="deck-rules" class="grid gap-2" [attr.aria-label]="t('DECK.RULES_ARIA')">
+        @for (hint of visibleDraftValidationHints(); track $index) {
+          <span
+            class="rounded-lg border px-3 py-2 text-[0.68rem] leading-tight"
+            [class.border-amber-300/25]="!isLightTheme() && !hint.valid"
+            [class.bg-amber-950/45]="!isLightTheme() && !hint.valid"
+            [class.text-amber-200]="!isLightTheme() && !hint.valid"
+            [class.border-[rgba(117,72,32,0.45)]]="isLightTheme() && !hint.valid"
+            [class.bg-[#f8e8bd]]="isLightTheme() && !hint.valid"
+            [class.text-[#6b3a22]]="isLightTheme() && !hint.valid"
+            [class.border-green-500]="hint.valid"
+            [class.bg-green-950]="hint.valid && !isLightTheme()"
+            [class.text-green-200]="hint.valid && !isLightTheme()"
+            [class.bg-[#e7f7ea]]="hint.valid && isLightTheme()"
+            [class.text-[#166534]]="hint.valid && isLightTheme()"
+          >
+            {{ hint.valid ? 'OK' : '!' }} {{ hint.label }}
+          </span>
+        }
+      </div>
+
+      @if (draftDeckItems().length === 0) {
+        <p class="grid min-h-32 place-items-center text-center" [class.text-[#f9f0d0]/70]="!isLightTheme()" [class.text-[#6b3a22]]="isLightTheme()">
+          {{ t('DECK.NO_DRAFT_CARDS') }}
+        </p>
+      } @else {
+        <div class="deck-scrollbar deck-quantity-list grid min-h-0 content-start gap-2 overflow-y-auto overflow-x-hidden pr-1">
+          @for (item of draftDeckItems(); track item.card.id) {
+            @let copyLimitReached = isCopyLimitReached()(item.card);
+
+            <div
+              [attr.data-tour]="$first ? 'deck-card-type-highlight' : null"
+              [class]="deckRowClass(item.card.pokemonType)"
+            >
+              <span
+                class="deck-quantity-thumb grid h-11 w-9 shrink-0 self-center place-items-center overflow-hidden rounded-lg font-extrabold"
+                [class.bg-[rgba(26,13,2,0.76)]]="!isLightTheme()"
+                [class.text-[#f9f0d0]/60]="!isLightTheme()"
+                [class.bg-[rgba(244,226,195,0.82)]]="isLightTheme()"
+                [class.text-[#9a7b58]]="isLightTheme()"
+              >
+                @if (item.card.imageSmallUrl) {
+                  <img
+                    class="block size-full object-cover"
+                    [src]="item.card.imageSmallUrl"
+                    [alt]="cardDisplayName(item.card, currentLanguage)"
+                    loading="lazy"
+                  />
+                } @else {
+                  <span>{{ item.card.supertype.charAt(0) }}</span>
+                }
+              </span>
+              <span class="deck-quantity-name min-w-0 flex-1 self-center overflow-hidden text-ellipsis whitespace-nowrap font-bold" [class.text-orange-50]="!isLightTheme()" [class.text-[#4a2a17]]="isLightTheme()">
+                {{ cardDisplayName(item.card, currentLanguage) }}
+              </span>
+              <div [attr.data-tour]="$first ? 'deck-card-quantity-controls' : null" class="deck-quantity-controls flex shrink-0 self-center items-center justify-end gap-1 text-center">
+                <button
+                  type="button"
+                  [attr.data-tour]="$first ? 'deck-card-minus' : null"
+                  class="min-h-7 w-7 rounded-lg bg-[#8b070c] p-0 font-bold text-white hover:bg-[#6f0509] disabled:cursor-not-allowed disabled:opacity-55"
+                  [attr.aria-label]="t('DECK.REMOVE_COPY')"
+                  (click)="removeCardFromDraft.emit(item.card.id)"
+                  [disabled]="isSaving() || isRandomizing()"
+                >
+                  -
+                </button>
+                <strong [class]="deckQuantityBadgeClass(item.card.pokemonType)">
+                  x{{ item.quantity }}
+                </strong>
+                <button
+                  type="button"
+                  [attr.data-tour]="$first ? 'deck-card-plus' : null"
+                  class="min-h-7 w-7 rounded-lg bg-[#8b070c] p-0 font-bold text-white hover:bg-[#6f0509] disabled:cursor-not-allowed disabled:opacity-55"
+                  [attr.aria-label]="
+                    copyLimitReached
+                      ? t('DECK.MAX_4_COPIES_ARIA', { name: cardDisplayName(item.card, currentLanguage) })
+                      : t('DECK.ADD_COPY')
+                  "
+                  (click)="addCardToDraft.emit(item.card)"
+                  [disabled]="isSaving() || isRandomizing() || !canAddCardToDraft()(item.card)"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </aside>
+  </div>
+</div>

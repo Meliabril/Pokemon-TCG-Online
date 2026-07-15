@@ -1,0 +1,5032 @@
+{
+  "xy1-1": {
+    "displayName": "Venusaur-EX",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Polvo Veneno",
+        "displayCost": [
+          "Planta",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Envenenado."
+      },
+      {
+        "order": 1,
+        "displayName": "Martillo Selvático",
+        "displayCost": [
+          "Planta",
+          "Planta",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Cura 30 puntos de daño a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-2": {
+    "displayName": "M Venusaur-EX",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Mega",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Liana Crítica",
+        "displayCost": [
+          "Planta",
+          "Planta",
+          "Planta",
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Paralizado y Envenenado."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": [
+      "Regla de Megaevolución: cuando 1 de tus Pokémon se convierte en un Pokémon Megaevolución, tu turno termina.",
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-3": {
+    "displayName": "Weedle",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Mordisco Hoja",
+        "displayCost": [
+          "Planta"
+        ],
+        "displayText": "Si el Pokémon Activo de tu rival es un Pokémon de tipo Planta, este ataque hace 20 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-4": {
+    "displayName": "Kakuna",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Endurecer",
+        "displayCost": [
+          "Planta"
+        ],
+        "displayText": "Durante el próximo turno de tu rival, si este Pokémon fuera a recibir daño de un ataque, evita ese daño si es de 60 puntos o menos."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-5": {
+    "displayName": "Beedrill",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Golpe Veneno",
+        "displayCost": [
+          "Planta"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Envenenado."
+      },
+      {
+        "order": 1,
+        "displayName": "Aguja Relámpago",
+        "displayCost": [
+          "Planta",
+          "Planta"
+        ],
+        "displayText": "Lanza 3 monedas. Este ataque hace 40 puntos de daño por cada cara. Si todas salen cara, evita todos los efectos de ataques, incluido el daño, hechos a este Pokémon durante el próximo turno de tu rival."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-6": {
+    "displayName": "Ledyba",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Ataque Giratorio",
+        "displayCost": [
+          "Planta",
+          "Planta"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-7": {
+    "displayName": "Ledian",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Placaje",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Ultrapuño",
+        "displayCost": [
+          "Planta",
+          "Planta"
+        ],
+        "displayText": "Este ataque hace 10 puntos de daño a 1 Pokémon en Banca de tu rival. (No apliques Debilidad ni Resistencia para Pokémon en Banca)."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-8": {
+    "displayName": "Volbeat",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Brillo Atrayente",
+        "displayCost": [
+          "Planta"
+        ],
+        "displayText": "Cambia 1 Pokémon en Banca de tu rival por su Pokémon Activo."
+      },
+      {
+        "order": 1,
+        "displayName": "Rayo Señal",
+        "displayCost": [
+          "Planta",
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Confundido."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-9": {
+    "displayName": "Illumise",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Feromoción",
+        "displayCost": [
+          "Planta"
+        ],
+        "displayText": "Busca en tu baraja 1 Pokémon de tipo Planta, muéstralo y ponlo en tu mano. Luego, baraja tu baraja."
+      },
+      {
+        "order": 1,
+        "displayName": "Ataque Rápido",
+        "displayCost": [
+          "Planta",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, este ataque hace 20 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-10": {
+    "displayName": "Pansage",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Látigo Cepa",
+        "displayCost": [
+          "Planta"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Drenadoras",
+        "displayCost": [
+          "Planta",
+          "Incolora"
+        ],
+        "displayText": "Cura 10 puntos de daño a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-11": {
+    "displayName": "Simisage",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Tormento",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Elige 1 ataque del Pokémon Activo de tu rival. Ese Pokémon no puede usar ese ataque durante el próximo turno de tu rival."
+      },
+      {
+        "order": 1,
+        "displayName": "Rayo Solar",
+        "displayCost": [
+          "Planta",
+          "Planta",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-12": {
+    "displayName": "Chespin",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Misil Pin",
+        "displayCost": [
+          "Planta"
+        ],
+        "displayText": "Lanza 4 monedas. Este ataque hace 10 puntos de daño por cada cara."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-13": {
+    "displayName": "Quilladin",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Encogerse",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, evita todo el daño hecho a este Pokémon por ataques durante el próximo turno de tu rival."
+      },
+      {
+        "order": 1,
+        "displayName": "Martillo Madera",
+        "displayCost": [
+          "Planta",
+          "Planta",
+          "Incolora"
+        ],
+        "displayText": "Este Pokémon se hace 10 puntos de daño a sí mismo."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-14": {
+    "displayName": "Chesnaught",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Escudo Punzante",
+        "displayType": "Habilidad",
+        "displayText": "Si este Pokémon es tu Pokémon Activo y recibe daño de un ataque de tu rival, incluso si este Pokémon queda Fuera de Combate, pon 3 contadores de daño en el Pokémon Atacante."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Touchdown",
+        "displayCost": [
+          "Planta",
+          "Planta",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Cura 20 puntos de daño a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-15": {
+    "displayName": "Scatterbug",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Picadura",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-16": {
+    "displayName": "Spewpa",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Picadura",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Paralizador",
+        "displayCost": [
+          "Planta",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival queda Paralizado."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-17": {
+    "displayName": "Vivillon",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Polvo Conversión",
+        "displayCost": [
+          "Planta"
+        ],
+        "displayText": "Elige Dormido o Envenenado. El Pokémon Activo de tu rival queda afectado por esa Condición Especial."
+      },
+      {
+        "order": 1,
+        "displayName": "Viento Colorido",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 30 puntos de daño más por cada tipo diferente de Energía básica unida a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-18": {
+    "displayName": "Skiddo",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Guiar",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, busca en tu baraja 1 carta de Partidario, muéstrala y ponla en tu mano. Luego, baraja tu baraja."
+      },
+      {
+        "order": 1,
+        "displayName": "Placaje",
+        "displayCost": [
+          "Planta",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-19": {
+    "displayName": "Gogoat",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Guiar",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Busca en tu baraja hasta 2 cartas de Partidario, muéstralas y ponlas en tu mano. Luego, baraja tu baraja."
+      },
+      {
+        "order": 1,
+        "displayName": "Carrera de Carga",
+        "displayCost": [
+          "Planta",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Puedes hacer 20 puntos de daño más. Si lo haces, este Pokémon se hace 20 puntos de daño a sí mismo."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-20": {
+    "displayName": "Slugma",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Lanzallamas",
+        "displayCost": [
+          "Fuego",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Descarta 1 Energía unida a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Agua",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-21": {
+    "displayName": "Magcargo",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Manto de Magma",
+        "displayCost": [
+          "Fuego",
+          "Incolora"
+        ],
+        "displayText": "Puedes descartar la primera carta de tu baraja. Si esa carta es una Energía Fuego, este ataque hace 50 puntos de daño más."
+      },
+      {
+        "order": 1,
+        "displayName": "Explosión de Calor",
+        "displayCost": [
+          "Fuego",
+          "Fuego",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Agua",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-22": {
+    "displayName": "Pansear",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Brasa Viva",
+        "displayCost": [
+          "Fuego"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Fuegos Artificiales",
+        "displayCost": [
+          "Fuego",
+          "Incolora"
+        ],
+        "displayText": "Descarta 1 Energía unida a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Agua",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-23": {
+    "displayName": "Simisear",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Bostezo",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Dormido."
+      },
+      {
+        "order": 1,
+        "displayName": "Lanzallamas",
+        "displayCost": [
+          "Fuego",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Descarta 1 Energía Fuego unida a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Agua",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-24": {
+    "displayName": "Fennekin",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Fuego Fatuo",
+        "displayCost": [
+          "Fuego"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Agua",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-25": {
+    "displayName": "Braixen",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Ojo Clarividente",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Mira las 3 primeras cartas de tu baraja y vuelve a ponerlas arriba de tu baraja en el orden que quieras."
+      },
+      {
+        "order": 1,
+        "displayName": "Golpe Cola Ígnea",
+        "displayCost": [
+          "Fuego",
+          "Incolora"
+        ],
+        "displayText": "Descarta 1 Energía Fuego unida a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Agua",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-26": {
+    "displayName": "Delphox",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Fuego Místico",
+        "displayType": "Habilidad",
+        "displayText": "Una vez durante tu turno, antes de tu ataque, puedes robar cartas hasta tener 6 cartas en tu mano."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Bola Ígnea",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 20 puntos de daño más por cada Energía Fuego unida a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Agua",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-27": {
+    "displayName": "Fletchinder",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Carga Llama",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Busca en tu baraja 1 carta de Energía Fuego y únela a este Pokémon. Luego, baraja tu baraja."
+      },
+      {
+        "order": 1,
+        "displayName": "Ala de Fuego",
+        "displayCost": [
+          "Fuego",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-28": {
+    "displayName": "Talonflame",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Viento Devastador",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Tu rival baraja su mano en su baraja y roba 4 cartas."
+      },
+      {
+        "order": 1,
+        "displayName": "Envite Ígneo",
+        "displayCost": [
+          "Fuego",
+          "Fuego"
+        ],
+        "displayText": "Descarta todas las Energías Fuego unidas a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-29": {
+    "displayName": "Blastoise-EX",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Giro Rápido",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Cambia este Pokémon por 1 de tus Pokémon en Banca. Luego, tu rival cambia su Pokémon Activo por 1 de sus Pokémon en Banca."
+      },
+      {
+        "order": 1,
+        "displayName": "Bomba Salpicadura",
+        "displayCost": [
+          "Agua",
+          "Agua",
+          "Agua"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cruz, este Pokémon se hace 30 puntos de daño a sí mismo."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-30": {
+    "displayName": "M Blastoise-EX",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Mega",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Bombardeo Hidro",
+        "displayCost": [
+          "Agua",
+          "Agua",
+          "Agua"
+        ],
+        "displayText": "Este ataque hace 30 puntos de daño a 2 Pokémon en Banca de tu rival. (No apliques Debilidad ni Resistencia para Pokémon en Banca)."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": [
+      "Regla de Megaevolución: cuando 1 de tus Pokémon se convierte en un Pokémon Megaevolución, tu turno termina.",
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-31": {
+    "displayName": "Shellder",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Salpicadura de Lluvia",
+        "displayCost": [
+          "Agua",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-32": {
+    "displayName": "Cloyster",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Aplastamiento Pinza",
+        "displayCost": [
+          "Agua",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival queda Paralizado y descarta 1 Energía unida a ese Pokémon."
+      },
+      {
+        "order": 1,
+        "displayName": "Cañón de Púas",
+        "displayCost": [
+          "Agua",
+          "Agua",
+          "Incolora"
+        ],
+        "displayText": "Lanza 5 monedas. Este ataque hace 30 puntos de daño por cada cara."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-33": {
+    "displayName": "Staryu",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Carga Temeraria",
+        "displayCost": [
+          "Agua",
+          "Incolora"
+        ],
+        "displayText": "Este Pokémon se hace 10 puntos de daño a sí mismo."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-34": {
+    "displayName": "Starmie",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Recuperación",
+        "displayCost": [
+          "Agua"
+        ],
+        "displayText": "Descarta 1 Energía unida a este Pokémon y cura todo el daño de este Pokémon."
+      },
+      {
+        "order": 1,
+        "displayName": "Salpicadura Nuclear",
+        "displayCost": [
+          "Agua",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Si este Pokémon tiene alguna Energía Psíquica unida a él, este ataque hace 30 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-35": {
+    "displayName": "Lapras",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Navegación",
+        "displayCost": [
+          "Agua"
+        ],
+        "displayText": "Lanza 3 monedas. Por cada cara, une 1 carta de Energía Agua de tu pila de descartes a tus Pokémon en Banca de la forma que quieras."
+      },
+      {
+        "order": 1,
+        "displayName": "Hidrobomba",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 20 puntos de daño más por cada Energía Agua unida a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-36": {
+    "displayName": "Corsola",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Refrescar",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Cura 30 puntos de daño y elimina todas las Condiciones Especiales de este Pokémon."
+      },
+      {
+        "order": 1,
+        "displayName": "Embestida Espinosa",
+        "displayCost": [
+          "Agua",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda hasta que salga cruz. Este ataque hace 20 puntos de daño más por cada cara."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-37": {
+    "displayName": "Panpour",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Salpicadura Ola",
+        "displayCost": [
+          "Agua"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Salpicadura de Agua",
+        "displayCost": [
+          "Agua",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, este ataque hace 20 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-38": {
+    "displayName": "Simipour",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Reciclaje",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Pon 1 carta de tu pila de descartes arriba de tu baraja."
+      },
+      {
+        "order": 1,
+        "displayName": "Surf",
+        "displayCost": [
+          "Agua",
+          "Agua",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-39": {
+    "displayName": "Froakie",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Bote",
+        "displayCost": [
+          "Agua"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, cambia este Pokémon por 1 de tus Pokémon en Banca."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-40": {
+    "displayName": "Frogadier",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Lengüetazo",
+        "displayCost": [
+          "Agua",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival queda Paralizado."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-41": {
+    "displayName": "Greninja",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Shuriken de Agua",
+        "displayType": "Habilidad",
+        "displayText": "Una vez durante tu turno, antes de tu ataque, puedes descartar 1 carta de Energía Agua de tu mano. Si lo haces, pon 3 contadores de daño en 1 Pokémon de tu rival."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Corte Niebla",
+        "displayCost": [
+          "Agua"
+        ],
+        "displayText": "El daño de este ataque no se ve afectado por Debilidad, Resistencia ni por ningún otro efecto en el Pokémon Activo de tu rival."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-42": {
+    "displayName": "Pikachu",
+    "displayPokemonType": "Eléctrica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Moflete Estático",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival queda Paralizado."
+      },
+      {
+        "order": 1,
+        "displayName": "Ataque Rápido",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, este ataque hace 10 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Metálica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-43": {
+    "displayName": "Raichu",
+    "displayPokemonType": "Eléctrica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Circuito Circular",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 20 puntos de daño por cada uno de tus Pokémon en Banca."
+      },
+      {
+        "order": 1,
+        "displayName": "Rayo",
+        "displayCost": [
+          "Eléctrica",
+          "Eléctrica",
+          "Incolora"
+        ],
+        "displayText": "Descarta todas las Energías unidas a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Metálica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-44": {
+    "displayName": "Voltorb",
+    "displayPokemonType": "Eléctrica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Explosión del Destino",
+        "displayType": "Habilidad",
+        "displayText": "Si este Pokémon es tu Pokémon Activo y queda Fuera de Combate por el daño de un ataque de tu rival, lanza 1 moneda. Si sale cara, pon 5 contadores de daño en el Pokémon Atacante."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Rodar",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-45": {
+    "displayName": "Electrode",
+    "displayPokemonType": "Eléctrica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Impulso Extraño",
+        "displayCost": [
+          "Eléctrica"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, descarta 1 Energía unida a 1 de los Pokémon de tu rival."
+      },
+      {
+        "order": 1,
+        "displayName": "Rodar",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-46": {
+    "displayName": "Emolga-EX",
+    "displayPokemonType": "Eléctrica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Planeo Energético",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Busca en tu baraja 1 carta de Energía Eléctrica y únela a este Pokémon. Luego, baraja tu baraja. Si uniste Energía de esta manera, cambia este Pokémon por 1 de tus Pokémon en Banca."
+      },
+      {
+        "order": 1,
+        "displayName": "Aplastamiento Electrón",
+        "displayCost": [
+          "Eléctrica",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Puedes descartar 1 Energía unida a este Pokémon. Si lo haces, este ataque hace 30 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-47": {
+    "displayName": "Ekans",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Mordisco",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Psíquica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-48": {
+    "displayName": "Arbok",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Ácido Gástrico",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Defensor no tiene Habilidades hasta el final de tu próximo turno."
+      },
+      {
+        "order": 1,
+        "displayName": "Golpe Veneno",
+        "displayCost": [
+          "Psíquica",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Envenenado."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Psíquica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-49": {
+    "displayName": "Spoink",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Salpicadura",
+        "displayCost": [
+          "Psíquica"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Psíquica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-50": {
+    "displayName": "Grumpig",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Pasos Engañosos",
+        "displayCost": [
+          "Psíquica",
+          "Incolora"
+        ],
+        "displayText": "Puedes mover 1 Energía unida al Pokémon Activo de tu rival a 1 de sus Pokémon en Banca."
+      },
+      {
+        "order": 1,
+        "displayName": "Psicorrayo",
+        "displayCost": [
+          "Psíquica",
+          "Psíquica",
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Confundido."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Psíquica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-51": {
+    "displayName": "Venipede",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Picotazo Veneno",
+        "displayCost": [
+          "Psíquica",
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Envenenado."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Psíquica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-52": {
+    "displayName": "Whirlipede",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Tumbo Continuo",
+        "displayCost": [
+          "Psíquica",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda hasta que salga cruz. Este ataque hace 30 puntos de daño por cada cara."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Psíquica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-53": {
+    "displayName": "Scolipede",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Picotazo Aleatorio",
+        "displayCost": [
+          "Psíquica"
+        ],
+        "displayText": "Lanza 2 monedas. Este ataque hace 20 puntos de daño más por cada cara."
+      },
+      {
+        "order": 1,
+        "displayName": "Anillo Veneno",
+        "displayCost": [
+          "Psíquica",
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Envenenado. Ese Pokémon no puede retirarse durante el próximo turno de tu rival."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Psíquica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-54": {
+    "displayName": "Phantump",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Impresionar",
+        "displayCost": [
+          "Psíquica"
+        ],
+        "displayText": "Elige 1 carta al azar de la mano de tu rival. Tu rival muestra esa carta y la baraja en su baraja."
+      },
+      {
+        "order": 1,
+        "displayName": "Gancho",
+        "displayCost": [
+          "Psíquica",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Oscura",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-55": {
+    "displayName": "Trevenant",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Maldición del Bosque",
+        "displayType": "Habilidad",
+        "displayText": "Mientras este Pokémon sea tu Pokémon Activo, tu rival no puede jugar cartas de Objeto de su mano."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Golpe Árbol",
+        "displayCost": [
+          "Psíquica",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 20 puntos de daño a 2 Pokémon en Banca de tu rival. (No apliques Debilidad ni Resistencia para Pokémon en Banca)."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Oscura",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-56": {
+    "displayName": "Pumpkaboo",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Rayo Confuso",
+        "displayCost": [
+          "Psíquica"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Confundido."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Oscura",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-57": {
+    "displayName": "Gourgeist",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Voz Extraña",
+        "displayCost": [
+          "Psíquica"
+        ],
+        "displayText": "Pon 2 contadores de daño en cada Pokémon de tu rival."
+      },
+      {
+        "order": 1,
+        "displayName": "Grito Espiritual",
+        "displayCost": [
+          "Psíquica",
+          "Psíquica"
+        ],
+        "displayText": "Pon contadores de daño en ambos Pokémon Activos hasta que los PS restantes de cada Pokémon sean 10."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Oscura",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-58": {
+    "displayName": "Diglett",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Mina",
+        "displayCost": [
+          "Lucha"
+        ],
+        "displayText": "Mira la primera carta de la baraja de tu rival. Luego, puedes hacer que tu rival baraje su baraja."
+      },
+      {
+        "order": 1,
+        "displayName": "Bofetón Lodo",
+        "displayCost": [
+          "Lucha",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-59": {
+    "displayName": "Dugtrio",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Terremoto",
+        "displayCost": [
+          "Lucha"
+        ],
+        "displayText": "Este ataque hace 10 puntos de daño a cada uno de tus Pokémon en Banca. (No apliques Debilidad ni Resistencia para Pokémon en Banca)."
+      },
+      {
+        "order": 1,
+        "displayName": "Derrumbe Roca",
+        "displayCost": [
+          "Lucha",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "El daño de este ataque no se ve afectado por Resistencia."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-60": {
+    "displayName": "Rhyhorn",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Excavar",
+        "displayCost": [
+          "Lucha"
+        ],
+        "displayText": "Descarta la primera carta de tu baraja. Si esa carta es una Energía Lucha, únela a este Pokémon."
+      },
+      {
+        "order": 1,
+        "displayName": "Perforador",
+        "displayCost": [
+          "Lucha",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-61": {
+    "displayName": "Rhydon",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Perforador",
+        "displayCost": [
+          "Lucha",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Montaña Furiosa",
+        "displayCost": [
+          "Lucha",
+          "Lucha",
+          "Lucha",
+          "Incolora"
+        ],
+        "displayText": "Lanza 2 monedas. Si ambas salen cara, descarta la primera carta de la baraja de tu rival por cada contador de daño en este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-62": {
+    "displayName": "Rhyperior",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Roca Negra",
+        "displayCost": [
+          "Lucha"
+        ],
+        "displayText": "Lanza 1 moneda por cada Energía Lucha unida a este Pokémon. Este ataque hace 50 puntos de daño por cada cara."
+      },
+      {
+        "order": 1,
+        "displayName": "Romperrocas",
+        "displayCost": [
+          "Lucha",
+          "Lucha",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "El daño de este ataque no se ve afectado por Debilidad ni Resistencia. Este Pokémon no puede atacar durante tu próximo turno."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-63": {
+    "displayName": "Lunatone",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Robo Doble",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Roba 2 cartas."
+      },
+      {
+        "order": 1,
+        "displayName": "Fuerza Lunar",
+        "displayCost": [
+          "Lucha",
+          "Incolora"
+        ],
+        "displayText": "Durante el próximo turno de tu rival, cualquier daño hecho por ataques del Pokémon Defensor se reduce en 20 puntos, antes de aplicar Debilidad y Resistencia."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-64": {
+    "displayName": "Solrock",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Giro Cósmico",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Si Lunatone está en tu Banca, este ataque hace 30 puntos de daño más."
+      },
+      {
+        "order": 1,
+        "displayName": "Rayo Solar",
+        "displayCost": [
+          "Lucha",
+          "Lucha",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-65": {
+    "displayName": "Timburr",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Paliza",
+        "displayCost": [
+          "Lucha",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, este ataque hace 20 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Psíquica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-66": {
+    "displayName": "Gurdurr",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Paliza",
+        "displayCost": [
+          "Lucha",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, este ataque hace 20 puntos de daño más."
+      },
+      {
+        "order": 1,
+        "displayName": "Machada",
+        "displayCost": [
+          "Lucha",
+          "Lucha",
+          "Incolora"
+        ],
+        "displayText": "Descarta la primera carta de la baraja de tu rival."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Psíquica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-67": {
+    "displayName": "Conkeldurr",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Espabila",
+        "displayCost": [
+          "Lucha"
+        ],
+        "displayText": "Si el Pokémon Activo de tu rival está afectado por una Condición Especial, este ataque hace 60 puntos de daño más. Luego, elimina todas las Condiciones Especiales de ese Pokémon."
+      },
+      {
+        "order": 1,
+        "displayName": "Puño Dinámico",
+        "displayCost": [
+          "Lucha",
+          "Lucha",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, este ataque hace 40 puntos de daño más y el Pokémon Activo de tu rival queda Confundido."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Psíquica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-68": {
+    "displayName": "Sableye",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Birlar",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Roba 1 carta."
+      },
+      {
+        "order": 1,
+        "displayName": "Garra Desgarro",
+        "displayCost": [
+          "Oscura",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, descarta 1 Energía unida al Pokémon Activo de tu rival."
+      }
+    ],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-69": {
+    "displayName": "Sandile",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Embestida",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Colmillo Oscuro",
+        "displayCost": [
+          "Oscura",
+          "Oscura",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-70": {
+    "displayName": "Krokorok",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Triturar",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, descarta 1 Energía unida al Pokémon Activo de tu rival."
+      },
+      {
+        "order": 1,
+        "displayName": "Colmillo Oscuro",
+        "displayCost": [
+          "Oscura",
+          "Oscura",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-71": {
+    "displayName": "Krookodile",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Molestar",
+        "displayCost": [
+          "Oscura",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, tu rival no puede jugar cartas de Partidario de su mano durante su próximo turno."
+      },
+      {
+        "order": 1,
+        "displayName": "Empujón",
+        "displayCost": [
+          "Oscura",
+          "Oscura",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Tu rival cambia su Pokémon Activo por 1 de sus Pokémon en Banca."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-72": {
+    "displayName": "Zorua",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Arañazo",
+        "displayCost": [
+          "Oscura"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Maquinación",
+        "displayCost": [
+          "Oscura",
+          "Incolora"
+        ],
+        "displayText": "Busca en tu baraja 1 carta y ponla en tu mano. Luego, baraja tu baraja."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-73": {
+    "displayName": "Zoroark",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Acorralar",
+        "displayCost": [
+          "Oscura"
+        ],
+        "displayText": "El Pokémon Defensor no puede retirarse durante el próximo turno de tu rival."
+      },
+      {
+        "order": 1,
+        "displayName": "Garra Nocturna",
+        "displayCost": [
+          "Oscura",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cruz, descarta 2 Energías unidas a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-74": {
+    "displayName": "Inkay",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Evolución Invertida",
+        "displayType": "Habilidad",
+        "displayText": "Una vez durante tu turno, antes de tu ataque, si este Pokémon está Confundido, puedes buscar en tu baraja 1 carta que evolucione de este Pokémon y ponerla sobre este Pokémon. Esto cuenta como evolucionar a este Pokémon. Luego, baraja tu baraja."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Onda Confusa",
+        "displayCost": [
+          "Oscura"
+        ],
+        "displayText": "Ambos Pokémon Activos quedan Confundidos."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-75": {
+    "displayName": "Inkay",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Placaje",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Perforación",
+        "displayCost": [
+          "Oscura",
+          "Incolora"
+        ],
+        "displayText": "El daño de este ataque no se ve afectado por Resistencia."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-76": {
+    "displayName": "Malamar",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Basura Mental",
+        "displayCost": [
+          "Oscura"
+        ],
+        "displayText": "Tu rival lanza 4 monedas. Por cada cruz, descarta 1 carta de su mano."
+      },
+      {
+        "order": 1,
+        "displayName": "Rayo Distorsión",
+        "displayCost": [
+          "Oscura",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival queda Dormido. Si sale cruz, el Pokémon Activo de tu rival queda Confundido."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-77": {
+    "displayName": "Malamar",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Pánico Mental",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Si el Pokémon Defensor intenta atacar durante el próximo turno de tu rival, tu rival lanza 1 moneda. Si sale cruz, ese ataque no hace nada."
+      },
+      {
+        "order": 1,
+        "displayName": "Perforación",
+        "displayCost": [
+          "Oscura",
+          "Oscura",
+          "Incolora"
+        ],
+        "displayText": "El daño de este ataque no se ve afectado por Resistencia."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-78": {
+    "displayName": "Yveltal",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Ala Mortífera",
+        "displayCost": [
+          "Oscura"
+        ],
+        "displayText": "Une 1 carta de Energía Oscura de tu pila de descartes a 1 de tus Pokémon en Banca."
+      },
+      {
+        "order": 1,
+        "displayName": "Hoja Oscura",
+        "displayCost": [
+          "Oscura",
+          "Oscura",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cruz, este Pokémon no puede atacar durante tu próximo turno."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-79": {
+    "displayName": "Yveltal-EX",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Bola Malvada",
+        "displayCost": [
+          "Oscura",
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 20 puntos de daño más por cada Energía unida a ambos Pokémon Activos."
+      },
+      {
+        "order": 1,
+        "displayName": "Ciclón Y",
+        "displayCost": [
+          "Oscura",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Mueve 1 Energía de este Pokémon a 1 de tus Pokémon en Banca."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-80": {
+    "displayName": "Skarmory-EX",
+    "displayPokemonType": "Metálica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Justa",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Antes de hacer daño, descarta todas las cartas de Herramienta Pokémon unidas al Pokémon Activo de tu rival."
+      },
+      {
+        "order": 1,
+        "displayName": "Martinete de Barrena",
+        "displayCost": [
+          "Metálica",
+          "Metálica",
+          "Incolora"
+        ],
+        "displayText": "Si el Pokémon Activo de tu rival ya tiene algún contador de daño, este ataque hace 40 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-81": {
+    "displayName": "Pawniard",
+    "displayPokemonType": "Metálica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Tajo",
+        "displayCost": [
+          "Metálica"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, descarta 1 Energía unida al Pokémon Activo de tu rival."
+      },
+      {
+        "order": 1,
+        "displayName": "Garra Metal",
+        "displayCost": [
+          "Metálica",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-82": {
+    "displayName": "Bisharp",
+    "displayPokemonType": "Metálica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Sonido Metálico",
+        "displayCost": [
+          "Metálica"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Confundido."
+      },
+      {
+        "order": 1,
+        "displayName": "Golpe Metálico",
+        "displayCost": [
+          "Metálica",
+          "Incolora"
+        ],
+        "displayText": "Durante tu próximo turno, el ataque Golpe Metálico de este Pokémon hace 40 puntos de daño más, antes de aplicar Debilidad y Resistencia."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-83": {
+    "displayName": "Honedge",
+    "displayPokemonType": "Metálica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Perforar",
+        "displayCost": [
+          "Metálica"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-84": {
+    "displayName": "Doublade",
+    "displayPokemonType": "Metálica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Hojas Dobles",
+        "displayCost": [
+          "Metálica",
+          "Incolora"
+        ],
+        "displayText": "Lanza 2 monedas. Este ataque hace 30 puntos de daño por cada cara."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-85": {
+    "displayName": "Aegislash",
+    "displayPokemonType": "Metálica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Cambio de Forma",
+        "displayType": "Habilidad",
+        "displayText": "Una vez durante tu turno, antes de tu ataque, puedes cambiar este Pokémon por un Aegislash de tu mano. Cualquier carta unida a este Pokémon, contadores de daño, Condiciones Especiales, turnos en juego y otros efectos permanecen en el nuevo Pokémon."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Golpe Demoledor",
+        "displayCost": [
+          "Metálica",
+          "Metálica",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "El daño de este ataque no se ve afectado por Resistencia."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-86": {
+    "displayName": "Aegislash",
+    "displayPokemonType": "Metálica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Cambio de Forma",
+        "displayType": "Habilidad",
+        "displayText": "Una vez durante tu turno, antes de tu ataque, puedes cambiar este Pokémon por un Aegislash de tu mano. Cualquier carta unida a este Pokémon, contadores de daño, Condiciones Especiales, turnos en juego y otros efectos permanecen en el nuevo Pokémon."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Escudo Real",
+        "displayCost": [
+          "Metálica",
+          "Metálica",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Evita todo el daño hecho a este Pokémon por ataques durante el próximo turno de tu rival. Este Pokémon no puede usar Escudo Real durante tu próximo turno."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-87": {
+    "displayName": "Jigglypuff",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Rodar",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Canción Sentida",
+        "displayCost": [
+          "Hada"
+        ],
+        "displayText": "Descarta 1 Energía Oscura unida al Pokémon Activo de tu rival."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-88": {
+    "displayName": "Jigglypuff",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Golpe Cuerpo",
+        "displayCost": [
+          "Hada",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival queda Paralizado."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-89": {
+    "displayName": "Wigglytuff",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Reunir Energía",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Busca en tu baraja 1 carta de Energía básica y únela a 1 de tus Pokémon. Luego, baraja tu baraja."
+      },
+      {
+        "order": 1,
+        "displayName": "Hocus Pinkus",
+        "displayCost": [
+          "Hada",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Defensor no puede atacar durante el próximo turno de tu rival."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-90": {
+    "displayName": "Wigglytuff",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Bombardeo Globo",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 20 puntos de daño por cada Energía unida a este Pokémon."
+      },
+      {
+        "order": 1,
+        "displayName": "Doble Filo",
+        "displayCost": [
+          "Hada",
+          "Hada",
+          "Incolora"
+        ],
+        "displayText": "Este Pokémon se hace 10 puntos de daño a sí mismo."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-91": {
+    "displayName": "Mr. Mime",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Masaje",
+        "displayCost": [
+          "Hada",
+          "Incolora"
+        ],
+        "displayText": "Cura 60 puntos de daño a 1 de tus Pokémon en Banca."
+      },
+      {
+        "order": 1,
+        "displayName": "Bofetada",
+        "displayCost": [
+          "Hada",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 2 monedas. Este ataque hace 20 puntos de daño más por cada cara."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-92": {
+    "displayName": "Spritzee",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Dulce Aroma",
+        "displayCost": [
+          "Hada"
+        ],
+        "displayText": "Cura 20 puntos de daño a 1 de tus Pokémon."
+      },
+      {
+        "order": 1,
+        "displayName": "Chapoteo",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-93": {
+    "displayName": "Aromatisse",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Transferencia Hada",
+        "displayType": "Habilidad",
+        "displayText": "Tantas veces como quieras durante tu turno, antes de tu ataque, puedes mover 1 Energía Hada unida a 1 de tus Pokémon a otro de tus Pokémon."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Viento Hada",
+        "displayCost": [
+          "Hada",
+          "Hada",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-94": {
+    "displayName": "Swirlix",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Placaje",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Viento Hada",
+        "displayCost": [
+          "Hada",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-95": {
+    "displayName": "Slurpuff",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Velo Dulce",
+        "displayType": "Habilidad",
+        "displayText": "Cada uno de tus Pokémon que tenga alguna Energía Hada unida no puede verse afectado por Condiciones Especiales. Elimina cualquier Condición Especial que afecte a esos Pokémon."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Beso Drenaje",
+        "displayCost": [
+          "Hada",
+          "Incolora"
+        ],
+        "displayText": "Cura 30 puntos de daño a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-96": {
+    "displayName": "Xerneas",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Geocontrol",
+        "displayCost": [
+          "Hada"
+        ],
+        "displayText": "Elige 2 de tus Pokémon en Banca. Por cada uno de esos Pokémon, busca en tu baraja 1 carta de Energía Hada y únela a ese Pokémon. Luego, baraja tu baraja."
+      },
+      {
+        "order": 1,
+        "displayName": "Lanza Arcoíris",
+        "displayCost": [
+          "Hada",
+          "Hada",
+          "Incolora"
+        ],
+        "displayText": "Descarta 1 Energía unida a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-97": {
+    "displayName": "Xerneas-EX",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Abrirse Paso",
+        "displayCost": [
+          "Hada",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 30 puntos de daño a 1 Pokémon en Banca de tu rival. (No apliques Debilidad ni Resistencia para Pokémon en Banca)."
+      },
+      {
+        "order": 1,
+        "displayName": "Explosión X",
+        "displayCost": [
+          "Hada",
+          "Hada",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Este Pokémon no puede usar Explosión X durante tu próximo turno."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-98": {
+    "displayName": "Doduo",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Golpe Doble",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 2 monedas. Este ataque hace 30 puntos de daño por cada cara."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-99": {
+    "displayName": "Dodrio",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Furia",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 10 puntos de daño más por cada contador de daño en este Pokémon."
+      },
+      {
+        "order": 1,
+        "displayName": "Esfuerzo",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 2 monedas. Este ataque hace 20 puntos de daño más por cada cara."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-100": {
+    "displayName": "Tauros",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Derribo",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Este Pokémon se hace 10 puntos de daño a sí mismo."
+      },
+      {
+        "order": 1,
+        "displayName": "Ira Hirviente",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda por cada contador de daño en este Pokémon. Este ataque hace 30 puntos de daño por cada cara."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-101": {
+    "displayName": "Dunsparce",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Mal de Ojo",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival queda Paralizado."
+      },
+      {
+        "order": 1,
+        "displayName": "Segundo Mordisco",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Hace 10 puntos de daño más por cada contador de daño en el Pokémon Activo de tu rival."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-102": {
+    "displayName": "Taillow",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Golpe Aéreo",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, este ataque hace 30 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-103": {
+    "displayName": "Swellow",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Expulsar",
+        "displayType": "Habilidad",
+        "displayText": "Una vez durante tu turno, antes de tu ataque, puedes hacer que tu rival cambie su Pokémon Activo por 1 de sus Pokémon en Banca."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Ataque Ala",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-104": {
+    "displayName": "Skitty",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Campana Cura",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Cura 10 puntos de daño a cada uno de tus Pokémon."
+      },
+      {
+        "order": 1,
+        "displayName": "Golpe Cola",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-105": {
+    "displayName": "Delcatty",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Salón Energético",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Busca en tu baraja 3 tipos diferentes de cartas de Energía básica, muéstralas y ponlas en tu mano. Luego, baraja tu baraja."
+      },
+      {
+        "order": 1,
+        "displayName": "Sorpresa",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival queda Paralizado."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-106": {
+    "displayName": "Bidoof",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Hipercolmillo",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cruz, este ataque no hace nada."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-107": {
+    "displayName": "Bibarel",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Doble Cabezazo",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 2 monedas. Este ataque hace 30 puntos de daño por cada cara."
+      },
+      {
+        "order": 1,
+        "displayName": "Cabezazo Hipnótico",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Puedes hacer 30 puntos de daño más. Si lo haces, este Pokémon queda Dormido."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-108": {
+    "displayName": "Lillipup",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Placaje",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Mordisco",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-109": {
+    "displayName": "Herdier",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Mordisco",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      },
+      {
+        "order": 1,
+        "displayName": "Saltar Encima",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, este ataque hace 20 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-110": {
+    "displayName": "Stoutland",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 2"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Mordisco Arrancado",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Si el Pokémon Activo de tu rival es un Pokémon-EX, este ataque hace 60 puntos de daño más."
+      },
+      {
+        "order": 1,
+        "displayName": "Ladrido Salvaje",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Hace 20 puntos de daño a 1 Pokémon en Banca de tu rival. (No apliques Debilidad ni Resistencia para Pokémon en Banca)."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-111": {
+    "displayName": "Bunnelby",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Excavar",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, evita todos los efectos de ataques, incluido el daño, hechos a este Pokémon durante el próximo turno de tu rival."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-112": {
+    "displayName": "Diggersby",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Fase 1"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Recogida",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Pon 2 cartas de Objeto de tu pila de descartes en tu mano."
+      },
+      {
+        "order": 1,
+        "displayName": "Excavar",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, evita todos los efectos de ataques, incluido el daño, hechos a este Pokémon durante el próximo turno de tu rival."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-113": {
+    "displayName": "Fletchling",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Yo Primero",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Roba 1 carta."
+      },
+      {
+        "order": 1,
+        "displayName": "Picotazo",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": ""
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "xy1-114": {
+    "displayName": "Furfrou",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [
+      {
+        "order": 0,
+        "displayName": "Pelaje Espeso",
+        "displayType": "Habilidad",
+        "displayText": "Cualquier daño hecho a este Pokémon por ataques se reduce en 20 puntos, después de aplicar Debilidad y Resistencia."
+      }
+    ],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Corte de Energía",
+        "displayCost": [
+          "Incolora",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cara, descarta 1 Energía unida al Pokémon Activo de tu rival."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "xy1-115": {
+    "displayName": "Casio",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Partidario"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Baraja 1 de tus Pokémon y todas las cartas unidas a él en tu baraja.",
+      "Puedes jugar solo 1 carta de Partidario durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-116": {
+    "displayName": "Evosoda",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Objeto"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Busca en tu baraja 1 carta que evolucione de 1 de tus Pokémon y ponla sobre ese Pokémon. Esto cuenta como evolucionar a ese Pokémon. Luego, baraja tu baraja. No puedes usar esta carta durante tu primer turno ni sobre un Pokémon que haya entrado en juego este turno.",
+      "Puedes jugar tantas cartas de Objeto como quieras durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-117": {
+    "displayName": "Jardín Hada",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Estadio"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Cada Pokémon que tenga alguna Energía Hada unida, tanto tuyo como de tu rival, no tiene Coste de Retirada.",
+      "Esta carta permanece en juego cuando la juegas. Descarta esta carta si entra en juego otra carta de Estadio. Si ya hay otra carta con el mismo nombre en juego, no puedes jugar esta carta."
+    ]
+  },
+  "xy1-118": {
+    "displayName": "Super Ball",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Objeto"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Mira las 7 primeras cartas de tu baraja. Puedes mostrar 1 Pokémon que encuentres allí y ponerlo en tu mano. Baraja el resto de las cartas en tu baraja.",
+      "Puedes jugar tantas cartas de Objeto como quieras durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-119": {
+    "displayName": "Amuleto Duro",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Herramienta Pokémon"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Une 1 Herramienta Pokémon a 1 de tus Pokémon que no tenga ya una Herramienta Pokémon unida.",
+      "Cualquier daño hecho al Pokémon al que está unida esta carta por un ataque de tu rival se reduce en 20 puntos, después de aplicar Debilidad y Resistencia.",
+      "Puedes jugar tantas cartas de Objeto como quieras durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-120": {
+    "displayName": "Revivir Máximo",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Objeto"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Pon 1 Pokémon de tu pila de descartes arriba de tu baraja.",
+      "Puedes jugar tantas cartas de Objeto como quieras durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-121": {
+    "displayName": "Cinta Fuerte",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Herramienta Pokémon"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Une 1 Herramienta Pokémon a 1 de tus Pokémon que no tenga ya una Herramienta Pokémon unida.",
+      "Los ataques del Pokémon al que está unida esta carta hacen 20 puntos de daño más al Pokémon Activo de tu rival, antes de aplicar Debilidad y Resistencia.",
+      "Puedes jugar tantas cartas de Objeto como quieras durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-122": {
+    "displayName": "Profesor Ciprés",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Partidario"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Descarta tu mano y roba 7 cartas.",
+      "Puedes jugar solo 1 carta de Partidario durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-123": {
+    "displayName": "Carta del Profesor",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Objeto"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Busca en tu baraja hasta 2 cartas de Energía básica, muéstralas y ponlas en tu mano. Luego, baraja tu baraja.",
+      "Puedes jugar tantas cartas de Objeto como quieras durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-124": {
+    "displayName": "Tarjeta Roja",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Objeto"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Tu rival baraja su mano en su baraja y roba 4 cartas.",
+      "Puedes jugar tantas cartas de Objeto como quieras durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-125": {
+    "displayName": "Patines",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Objeto"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Lanza 1 moneda. Si sale cara, roba 3 cartas.",
+      "Puedes jugar tantas cartas de Objeto como quieras durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-126": {
+    "displayName": "Círculo Sombrío",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Estadio"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Cada Pokémon que tenga alguna Energía Oscura unida, tanto tuyo como de tu rival, no tiene Debilidad.",
+      "Esta carta permanece en juego cuando la juegas. Descarta esta carta si entra en juego otra carta de Estadio. Si ya hay otra carta con el mismo nombre en juego, no puedes jugar esta carta."
+    ]
+  },
+  "xy1-127": {
+    "displayName": "Xana",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Partidario"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Baraja tu mano en tu baraja. Luego, roba 5 cartas.",
+      "Puedes jugar solo 1 carta de Partidario durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-128": {
+    "displayName": "Superpoción",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Objeto"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Cura 60 puntos de daño a 1 de tus Pokémon. Si lo haces, descarta 1 Energía unida a ese Pokémon.",
+      "Puedes jugar tantas cartas de Objeto como quieras durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-129": {
+    "displayName": "Recluta del Team Flare",
+    "displayPokemonType": "Entrenador",
+    "displaySupertype": "Entrenador",
+    "displaySubtypes": [
+      "Partidario"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Descarta 1 Energía unida al Pokémon Activo de tu rival.",
+      "Puedes jugar solo 1 carta de Partidario durante tu turno, antes de tu ataque."
+    ]
+  },
+  "xy1-130": {
+    "displayName": "Energía Incolora Doble",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Energía",
+    "displaySubtypes": [
+      "Especial"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "La Energía Incolora Doble proporciona EnergíaIncoloraIncolora."
+    ]
+  },
+  "xy1-131": {
+    "displayName": "Energía Arcoíris",
+    "displayPokemonType": "Incolora",
+    "displaySupertype": "Energía",
+    "displaySubtypes": [
+      "Especial"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": [
+      "Esta carta proporciona Energía Incolora. Mientras esté en juego, esta carta proporciona Energía de todos los tipos, pero solo proporciona 1 Energía a la vez.",
+      "Cuando unas esta carta desde tu mano a 1 de tus Pokémon, pon 1 contador de daño en ese Pokémon."
+    ]
+  },
+  "xy1-141": {
+    "displayName": "Venusaur-EX",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Polvo Veneno",
+        "displayCost": [
+          "Planta",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "El Pokémon Activo de tu rival queda Envenenado."
+      },
+      {
+        "order": 1,
+        "displayName": "Martillo Selvático",
+        "displayCost": [
+          "Planta",
+          "Planta",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Cura 30 puntos de daño a este Pokémon."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-142": {
+    "displayName": "Blastoise-EX",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Giro Rápido",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Cambia este Pokémon por 1 de tus Pokémon en Banca. Luego, tu rival cambia su Pokémon Activo por 1 de sus Pokémon en Banca."
+      },
+      {
+        "order": 1,
+        "displayName": "Bomba Salpicadura",
+        "displayCost": [
+          "Agua",
+          "Agua",
+          "Agua"
+        ],
+        "displayText": "Lanza 1 moneda. Si sale cruz, este Pokémon se hace 30 puntos de daño a sí mismo."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Planta",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-143": {
+    "displayName": "Emolga-EX",
+    "displayPokemonType": "Eléctrica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Planeo Energético",
+        "displayCost": [
+          "Incolora"
+        ],
+        "displayText": "Busca en tu baraja 1 carta de Energía Eléctrica y únela a este Pokémon. Luego, baraja tu baraja. Si uniste Energía de esta manera, cambia este Pokémon por 1 de tus Pokémon en Banca."
+      },
+      {
+        "order": 1,
+        "displayName": "Aplastamiento Electrón",
+        "displayCost": [
+          "Eléctrica",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Puedes descartar 1 Energía unida a este Pokémon. Si lo haces, este ataque hace 30 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-144": {
+    "displayName": "Yveltal-EX",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Bola Malvada",
+        "displayCost": [
+          "Oscura",
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 20 puntos de daño más por cada Energía unida a ambos Pokémon Activos."
+      },
+      {
+        "order": 1,
+        "displayName": "Ciclón Y",
+        "displayCost": [
+          "Oscura",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Mueve 1 Energía de este Pokémon a 1 de tus Pokémon en Banca."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Eléctrica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-145": {
+    "displayName": "Skarmory-EX",
+    "displayPokemonType": "Metálica",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Justa",
+        "displayCost": [
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Antes de hacer daño, descarta todas las cartas de Herramienta Pokémon unidas al Pokémon Activo de tu rival."
+      },
+      {
+        "order": 1,
+        "displayName": "Martinete de Barrena",
+        "displayCost": [
+          "Metálica",
+          "Metálica",
+          "Incolora"
+        ],
+        "displayText": "Si el Pokémon Activo de tu rival ya tiene algún contador de daño, este ataque hace 40 puntos de daño más."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Psíquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "xy1-146": {
+    "displayName": "Xerneas-EX",
+    "displayPokemonType": "Hada",
+    "displaySupertype": "Pokémon",
+    "displaySubtypes": [
+      "Básico",
+      "EX"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Abrirse Paso",
+        "displayCost": [
+          "Hada",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Este ataque hace 30 puntos de daño a 1 Pokémon en Banca de tu rival. (No apliques Debilidad ni Resistencia para Pokémon en Banca)."
+      },
+      {
+        "order": 1,
+        "displayName": "Explosión X",
+        "displayCost": [
+          "Hada",
+          "Hada",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Este Pokémon no puede usar Explosión X durante tu próximo turno."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Metálica",
+        "value": "×2"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Oscura",
+        "value": "-20"
+      }
+    ],
+    "displayRules": [
+      "Regla de Pokémon-EX: cuando un Pokémon-EX queda Fuera de Combate, tu rival toma 2 cartas de Premio."
+    ]
+  },
+  "custom-professors-pr-001": {
+    "displayName": "AngularQuin",
+    "displayPokemonType": "El\u00e9ctrica",
+    "displaySupertype": "Pok\u00e9mon",
+    "displaySubtypes": [
+      "B\u00e1sico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Rel\u00e1mpagoLM",
+        "displayCost": [
+          "El\u00e9ctrica"
+        ],
+        "displayText": "AngularQuin descarga una explicaci\u00f3n veloz potenciada por apuntes, diapos y NotebookLM."
+      },
+      {
+        "order": 1,
+        "displayName": "TypeScriptazo",
+        "displayCost": [
+          "El\u00e9ctrica",
+          "Incolora"
+        ],
+        "displayText": "Lanza un golpe preciso de c\u00f3digo tipado que deja al rival sin autocompletar."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "\u00d72"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Met\u00e1lica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "custom-professors-pr-002": {
+    "displayName": "RaMaven",
+    "displayPokemonType": "Met\u00e1lica",
+    "displaySupertype": "Pok\u00e9mon",
+    "displaySubtypes": [
+      "B\u00e1sico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Scirocco",
+        "displayCost": [
+          "Met\u00e1lica"
+        ],
+        "displayText": "RaMaven llega a toda velocidad con su Scirocco 1.4 atropellando al rival que tenga en frente."
+      },
+      {
+        "order": 1,
+        "displayName": "Scaffolding Destructor",
+        "displayCost": [
+          "Met\u00e1lica",
+          "Met\u00e1lica",
+          "Incolora"
+        ],
+        "displayText": "Levanta una estructura de Spring Boot tan pesada que aplasta cualquier proyecto mal armado."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Fuego",
+        "value": "\u00d72"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Ps\u00edquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "custom-professors-pr-003": {
+    "displayName": "BelgraNode",
+    "displayPokemonType": "Oscura",
+    "displaySupertype": "Pok\u00e9mon",
+    "displaySubtypes": [
+      "B\u00e1sico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Roba Tokens",
+        "displayCost": [
+          "Oscura"
+        ],
+        "displayText": "BelgraNode aparece entre sombras y se lleva los tokens del agente del rival sin decir una palabra."
+      },
+      {
+        "order": 1,
+        "displayName": "Deploy Pirata",
+        "displayCost": [
+          "Oscura",
+          "Oscura",
+          "Incolora"
+        ],
+        "displayText": "Ejecuta un despliegue corsario directo a producci\u00f3n, con bandera celeste y cero rollback."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Lucha",
+        "value": "\u00d72"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Ps\u00edquica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "custom-professors-pr-004": {
+    "displayName": "SantorMento",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Pok\u00e9mon",
+    "displaySubtypes": [
+      "B\u00e1sico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Cuestionario Incendiario",
+        "displayCost": [
+          "Fuego",
+          "Incolora"
+        ],
+        "displayText": "SantorMento lanza con un cuestionario con preguntas filosas que prenden fuego al alumno desprevenido."
+      },
+      {
+        "order": 1,
+        "displayName": "Dos del Toro",
+        "displayCost": [
+          "Fuego",
+          "Fuego",
+          "Incolora",
+          "Incolora"
+        ],
+        "displayText": "Con su par de cuernos, invoca una calificaci\u00f3n de 2 (Dos) sin mayor justificaci\u00f3n."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Agua",
+        "value": "\u00d72"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Met\u00e1lica",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "custom-professors-pr-005": {
+    "displayName": "HernullPointer",
+    "displayPokemonType": "Ps\u00edquica",
+    "displaySupertype": "Pok\u00e9mon",
+    "displaySubtypes": [
+      "B\u00e1sico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [
+      {
+        "order": 0,
+        "displayName": "Ruleta Denigrante",
+        "displayCost": [
+          "Ps\u00edquica"
+        ],
+        "displayText": "HernullPointer elige una pregunta al azar y expone ps\u00edquicamente al rival."
+      },
+      {
+        "order": 1,
+        "displayName": "Idempotencia Inmutable",
+        "displayCost": [
+          "Ps\u00edquica",
+          "Ps\u00edquica",
+          "Incolora"
+        ],
+        "displayText": "Concentra todo su poder en una \u00fanica instancia imposible de contrarrestar."
+      }
+    ],
+    "displayWeaknesses": [
+      {
+        "type": "Oscura",
+        "value": "\u00d72"
+      }
+    ],
+    "displayResistances": [
+      {
+        "type": "Lucha",
+        "value": "-20"
+      }
+    ],
+    "displayRules": []
+  },
+  "energy-grass": {
+    "displayName": "Energía Planta",
+    "displayPokemonType": "Planta",
+    "displaySupertype": "Energía",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "energy-fire": {
+    "displayName": "Energía Fuego",
+    "displayPokemonType": "Fuego",
+    "displaySupertype": "Energía",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "energy-water": {
+    "displayName": "Energía Agua",
+    "displayPokemonType": "Agua",
+    "displaySupertype": "Energía",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "energy-lightning": {
+    "displayName": "Energía Eléctrica",
+    "displayPokemonType": "Eléctrica",
+    "displaySupertype": "Energía",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "energy-psychic": {
+    "displayName": "Energía Psíquica",
+    "displayPokemonType": "Psíquica",
+    "displaySupertype": "Energía",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": []
+  },
+  "energy-fighting": {
+    "displayName": "Energía Lucha",
+    "displayPokemonType": "Lucha",
+    "displaySupertype": "Energía",
+    "displaySubtypes": [
+      "Básico"
+    ],
+    "displayAbilities": [],
+    "displayAttacks": [],
+    "displayWeaknesses": [],
+    "displayResistances": [],
+    "displayRules": []
+  }
+}

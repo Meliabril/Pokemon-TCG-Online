@@ -1,0 +1,109 @@
+<section
+  class="bench"
+  [class.bench--inverted]="orientation() === 'inverted'"
+  [class.bench--compact]="size() === 'compact'"
+>
+  <p class="bench__label">{{ label() }}</p>
+
+  <div class="bench__slots">
+    @for (slot of slots(); track slot.id) {
+      <div
+        class="bench__slot"
+        [class.bench__slot--occupied]="slot.occupied"
+        [class.bench__slot--face-down]="slot.card?.faceDown"
+        [class.bench__slot--drop-available]="canDropOnSlot(slot)"
+        [class.bench__slot--drop-active]="dragOverSlotId() === slot.id"
+        [class.bench__slot--inspectable]="isCardInspectable(slot)"
+        [class.bench__slot--selectable]="isPokemonSelectable(slot)"
+        [class.bench__slot--selected]="isPokemonSelected(slot)"
+        [class.bench__slot--draggable]="isBenchPokemonDraggable(slot)"
+        [class.bench__slot--remote-hovered]="isRemoteHovered(slot, $index)"
+        [class.bench__slot--harden]="showShieldBadge(slot)"
+        [class.bench__slot--tool-attack]="toolBadgeForSlot(slot)?.type === 'attack'"
+        [class.bench__slot--pointer-dragging]="pointerDraggingPokemonId() !== null && pointerDraggingPokemonId() === slot.pokemon?.id"
+        [style.--pointer-drag-x.px]="pointerDragX()"
+        [style.--pointer-drag-y.px]="pointerDragY()"
+        [attr.data-testid]="slot.pokemon?.id ? 'pokemon-slot-' + slot.pokemon?.id : slot.id"
+        [attr.data-board-anchor]="animationAnchorForSlot($index)"
+        [attr.data-drop-zone]="dropZoneForSlot(slot)"
+        [attr.data-drop-slot-id]="canDropOnSlot(slot) ? slot.id : null"
+        [attr.data-pokemon-in-play-id]="pokemonInPlayIdForDrop(slot)"
+        (dragover)="handleDragOver($event, slot)"
+        (dragleave)="handleDragLeave(slot)"
+        (drop)="handleDrop($event, slot)"
+      >
+        <div
+          class="bench__slot-hitbox"
+          [attr.role]="isCardInspectable(slot) ? 'button' : null"
+          [attr.tabindex]="isCardInspectable(slot) ? '0' : null"
+          [attr.draggable]="isBenchPokemonDraggable(slot) ? 'true' : null"
+          (click)="selectPokemon(slot)"
+          (mouseenter)="emitCardHover(slot, $index, true)"
+          (mouseleave)="emitCardHover(slot, $index, false)"
+          (focus)="emitCardHover(slot, $index, true)"
+          (blur)="emitCardHover(slot, $index, false)"
+          (keydown.enter)="selectPokemon(slot)"
+          (keydown.space)="selectPokemon(slot); $event.preventDefault()"
+          (dragstart)="handleBenchPokemonDragStart($event, slot)"
+          (dragend)="handleBenchPokemonDragEnd()"
+          (pointerdown)="startPointerDrag($event, slot)"
+          (pointermove)="movePointerDrag($event)"
+          (pointerup)="finishPointerDrag($event)"
+          (pointercancel)="cancelPointerDrag($event)"
+        >
+          <div class="bench__slot-visual" aria-hidden="true">
+            @if (slot.card?.faceDown) {
+              <div class="bench__card-mark"></div>
+            } @else if (slot.card) {
+              @if (slot.card.imageSmallUrl ?? slot.card.imageLargeUrl; as imageUrl) {
+                <img [src]="imageUrl" [alt]="slot.card.altText ?? slot.card.label" />
+              } @else {
+                <span>{{ slot.card.label }}</span>
+              }
+            }
+          </div>
+        </div>
+
+        @if (specialConditionsForSlot(slot).length > 0) {
+          <app-status-overlay
+            [pokemonId]="slot.pokemon?.id ?? null"
+            [conditions]="specialConditionsForSlot(slot)"
+            variant="bench"
+          />
+        }
+
+        <app-harden-shield-badge [active]="showShieldBadge(slot)" [value]="shieldValueForSlot(slot)" variant="bench" />
+        @if (toolBadgeForSlot(slot); as tool) {
+          <app-pokemon-tool-badge [type]="tool.type" [value]="tool.value" variant="bench" />
+        }
+
+        @if (energyStacks(slot).length > 0) {
+          <div class="bench__energy-stacks" [attr.aria-label]="t('GAME.ATTACHED_ENERGIES')">
+            @for (energy of energyStacks(slot); track energy.key) {
+              <div class="energy-stack">
+                @if (energy.count > 1) {
+                  <span class="energy-count">x{{ energy.count }}</span>
+                }
+                <span class="energy-icon">{{ energy.icon }}</span>
+              </div>
+            }
+          </div>
+        }
+
+        @if (remainingHp(slot) !== null) {
+          <div class="bench__hp-panel" [attr.aria-label]="t('GAME.REMAINING_HP')">
+            <span class="bench__hp-panel-label">HP</span>
+            <span class="bench__hp-panel-value">{{ remainingHp(slot) }} / {{ slot.card?.hp }}</span>
+            @for (popup of popupsFor(slot); track popup.id) {
+              <span
+                class="bench__hp-popup"
+                [class.bench__hp-popup--heal]="popup.kind === 'heal'"
+                aria-hidden="true"
+              >{{ popup.kind === 'heal' ? '+' : '-' }}{{ popup.amount }}</span>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,46 @@
+@media (max-width: 950px), (hover: none) and (pointer: coarse) {
+  .home-custom-match-overlay {
+    align-items: flex-start;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-bottom: max(16px, env(safe-area-inset-bottom, 0px));
+    padding-top: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .home-custom-match-panel {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100dvh - 24px);
+    min-height: 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .home-custom-match-header,
+  .home-custom-match-tabs,
+  .home-custom-match-actions {
+    flex: 0 0 auto;
+  }
+
+  .home-custom-match-content {
+    flex: 1 1 auto;
+    max-height: none;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: 12px;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .home-custom-match-actions {
+    background: inherit;
+    flex: 0 0 auto;
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    padding-top: 10px;
+    z-index: 2;
+  }
+}

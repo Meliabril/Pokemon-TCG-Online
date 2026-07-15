@@ -1,0 +1,59 @@
+<section class="home-page">
+  <div class="home-cards-layout">
+    <app-card class="home-main-card" data-tour="main-panel" variant="home" [tone]="cardTone()">
+      @if (!isLightTheme()) {
+        <div class="home-panel-shine"></div>
+        <div class="home-panel-orb"></div>
+      }
+
+      <div class="home-main-panel">
+        <app-home-hero [headline]="headline()" [isLightTheme]="isLightTheme()" />
+
+        <app-home-error-message [message]="prematchState().errorMessage" [isLightTheme]="isLightTheme()" />
+
+        <app-home-actions
+          [primaryLabel]="primaryButtonLabel()"
+          [isPrimaryDisabled]="isPrimaryDisabled()"
+          [activeDeck]="activeDeck()"
+          [hasNoDecks]="hasNoDecks()"
+          [isDeckChangeLocked]="hasActiveGame()"
+          [isLightTheme]="isLightTheme()"
+          [tone]="cardTone()"
+          (primaryClick)="primaryAction()"
+          (openConfig)="openCustomMatchModal()"
+          (openDeckSelection)="openDeckSelectionModal()"
+        />
+      </div>
+    </app-card>
+
+    <app-how-to-play-card class="home-manual-card" [isLightTheme]="isLightTheme()" [tone]="cardTone()" (manualClick)="handleManualClick()" />
+  </div>
+</section>
+
+@if (isCustomMatchModalOpen()) {
+  <app-home-custom-match-modal 
+    [roomCode]="privateRoomCode()" 
+    [isLightTheme]="isLightTheme()" 
+    (close)="closeCustomMatchModal()" 
+    (createRoom)="createCustomMatch()"
+    (joinRoom)="joinCustomMatch($event)"
+  />
+}
+
+@if (isManualOpen()) {
+  <app-game-manual-modal [isLightTheme]="isLightTheme()" (close)="isManualOpen.set(false)" />
+}
+
+@if (isDeckSelectionModalOpen()) {
+  <app-home-deck-selection-modal
+    [state]="checklistState()"
+    [deckActionKind]="deckActionKind()"
+    [deckActionDeckId]="deckActionDeckId()"
+    [isDeckChangeLocked]="hasActiveGame()"
+    [isLightTheme]="isLightTheme()"
+    (close)="closeDeckSelectionModal()"
+    (activateDeck)="activateDeck($event)"
+    (randomizeDeck)="randomizeDeck($event)"
+    (createDeck)="openDeckCreation()"
+  />
+}

@@ -1,0 +1,94 @@
+    <div class="auth-page relative min-h-screen overflow-hidden bg-slate-950 text-slate-950">
+      <video
+        #backgroundVideo
+        class="absolute inset-0 h-full w-full object-cover"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="auto"
+        (loadedmetadata)="onBackgroundVideoLoaded()"
+      >
+        <source [src]="backgroundVideoSrc()" type="video/mp4" />
+      </video>
+      <div [class]="backgroundOverlayClasses()" aria-hidden="true"></div>
+
+      <a
+        [href]="skipLinkTarget"
+        class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-[#8b070c] focus:px-4 focus:py-2 focus:text-white"
+      >
+        {{ skipLinkLabel || t('AUTH.SKIP_FORM') }}
+      </a>
+
+      <img
+        [src]="logoUrl()"
+        [alt]="t('COMMON.POKEMON_TCG_ONLINE')"
+        class="auth-logo absolute left-1/2 top-16 z-20 w-56 -translate-x-1/2 drop-shadow-2xl sm:left-8 sm:top-20 sm:w-72 sm:translate-x-0 lg:left-10 lg:top-24 lg:w-96"
+      />
+
+      <div class="auth-frame relative z-30 flex min-h-screen flex-col">
+        <header class="auth-shell-header flex items-center justify-between px-4 py-3 text-white">
+          <span aria-hidden="true"></span>
+
+          <div class="auth-mobile-controls flex items-center gap-2">
+            <button
+              type="button"
+              class="inline-flex h-9 items-center gap-1 rounded-md px-2 text-sm font-medium text-white transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              [attr.aria-label]="t('AUTH.CHANGE_LANGUAGE')"
+              (click)="toggleLanguage()"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+                <path
+                  d="M3 12h18M12 3c2.2 2.5 3.3 5.5 3.3 9S14.2 18.5 12 21M12 3c-2.2 2.5-3.3 5.5-3.3 9s1.1 6.5 3.3 9"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+              {{ languageLabel() }}
+            </button>
+
+            <button
+              type="button"
+              class="inline-grid h-9 w-9 place-items-center rounded-md border border-white/30 bg-black/30 text-white shadow-sm backdrop-blur-sm transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              [attr.aria-label]="isDarkTheme() ? t('AUTH.LIGHT_THEME') : t('AUTH.DARK_THEME')"
+              (click)="toggleTheme()"
+            >
+              @if (isDarkTheme()) {
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6M18.4 18.4l-1.6-1.6M7.2 7.2 5.6 5.6"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="12" cy="12" r="3.8" stroke="currentColor" stroke-width="1.8" />
+                </svg>
+              } @else {
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M20.5 15.2A8.5 8.5 0 0 1 8.8 3.5 8.5 8.5 0 1 0 20.5 15.2Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              }
+            </button>
+          </div>
+        </header>
+
+        <main [class]="mainClasses()">
+          <ng-content select="[auth-mobile-menu]"></ng-content>
+
+          <section [class]="contentClasses()" [attr.aria-labelledby]="fullscreen ? null : panelLabelledBy">
+            <ng-content></ng-content>
+          </section>
+        </main>
+
+        <footer class="auth-footer px-4 py-2 text-center text-xs font-medium text-white drop-shadow">
+          {{ t('COMMON.COPYRIGHT') }}
+        </footer>
+      </div>
+    </div>

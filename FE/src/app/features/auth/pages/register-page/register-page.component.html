@@ -1,0 +1,249 @@
+    <app-auth-shell
+      [theme]="registerTheme()"
+      skipLinkTarget="#register-form"
+      panelLabelledBy="register-title"
+      animationName="register-enter"
+      (themeChange)="setRegisterTheme($event)"
+    >
+      <div
+        auth-mobile-menu
+        class="auth-mobile-menu"
+        [class.auth-mobile-menu--active]="mobileAuthMode() === 'menu'"
+        [class.auth-mobile-form-open]="mobileAuthMode() === 'register'"
+      >
+        <img class="auth-mobile-character" src="assets/icons/Pokeball.png" alt="" aria-hidden="true" />
+
+        <div class="auth-mobile-actions" aria-label="Acciones de autenticación">
+          <button type="button" class="auth-mobile-action auth-mobile-action--primary" (click)="showMobileLogin($event)">
+            {{ t('AUTH.LOGIN_LINK') }}
+          </button>
+
+          <button type="button" class="auth-mobile-action auth-mobile-action--secondary" (click)="showMobileRegister($event)">
+            {{ t('AUTH.CREATE_ACCOUNT') }}
+          </button>
+        </div>
+      </div>
+
+      <div class="auth-header bg-[#8b070c]/95 px-6 py-4 text-center text-white">
+        <button type="button" class="auth-mobile-back" (click)="backToMobileMenu($event)">
+          &larr; Volver
+        </button>
+        <svg class="mx-auto mb-2 h-12 w-12" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="white" stroke="#8b070c" stroke-width="5" />
+          <path d="M5 50h90" stroke="#8b070c" stroke-width="5" />
+          <circle cx="50" cy="50" r="14" fill="#8b070c" />
+          <circle cx="50" cy="50" r="8" fill="white" />
+          <circle cx="50" cy="50" r="4" fill="#8b070c" />
+        </svg>
+        <h1 id="register-title" class="text-2xl font-bold leading-tight">{{ t('AUTH.REGISTER_TITLE') }}</h1>
+        <p class="mt-1 text-sm text-white/90">{{ t('AUTH.CREATE_ACCOUNT') }}</p>
+      </div>
+
+      <div [class]="panelBodyClasses()">
+        <div aria-live="polite">
+          @if (successMessage()) {
+            <div
+              class="mb-4 rounded-lg border border-emerald-300/70 bg-emerald-50/90 px-4 py-3 text-sm font-medium text-emerald-900 shadow-sm"
+            >
+              {{ successMessage() }}
+            </div>
+          } @else if (generalError()) {
+            <div
+              class="mb-4 rounded-lg border border-red-300/70 bg-red-50/90 px-4 py-3 text-sm font-medium text-red-900 shadow-sm"
+            >
+              {{ generalError() }}
+            </div>
+          }
+        </div>
+
+        <form
+          id="register-form"
+          class="auth-form auth-form--register"
+          [formGroup]="registerForm"
+          (ngSubmit)="submit()"
+          novalidate
+        >
+          <div class="space-y-1.5">
+            <label [class]="labelClasses()" for="username">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+              {{ t('AUTH.USERNAME') }}
+              <span [class]="requiredMarkClasses()">*</span>
+            </label>
+            <input
+              id="username"
+              type="text"
+              formControlName="username"
+              autocomplete="username"
+              [attr.aria-invalid]="hasFieldError('username')"
+              [attr.aria-describedby]="fieldError('username') ? 'username-error' : null"
+              [class]="inputClasses('username')"
+            />
+            @if (fieldError('username'); as message) {
+              <p id="username-error" [class]="fieldErrorClasses()">{{ message }}</p>
+            }
+          </div>
+
+          <div class="mt-3 space-y-1.5">
+            <label [class]="labelClasses()" for="email">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M4 6h16v12H4V6Zm0 1 8 6 8-6"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              {{ t('AUTH.EMAIL') }}
+              <span [class]="requiredMarkClasses()">*</span>
+            </label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              [attr.aria-invalid]="hasFieldError('email')"
+              [attr.aria-describedby]="fieldError('email') ? 'email-error' : null"
+              [class]="inputClasses('email')"
+            />
+            @if (fieldError('email'); as message) {
+              <p id="email-error" [class]="fieldErrorClasses()">{{ message }}</p>
+            }
+          </div>
+
+          <div class="mt-3 space-y-1.5">
+            <label [class]="labelClasses()" for="password">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M7 10V8a5 5 0 0 1 10 0v2M6 10h12v10H6V10Z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              {{ t('AUTH.PASSWORD') }}
+              <span [class]="requiredMarkClasses()">*</span>
+            </label>
+            <div class="relative">
+              <input
+                id="password"
+                [type]="showPassword() ? 'text' : 'password'"
+                formControlName="password"
+                autocomplete="new-password"
+                [attr.aria-invalid]="hasFieldError('password')"
+                [attr.aria-describedby]="fieldError('password') ? 'password-error' : null"
+                [class]="inputClasses('password') + ' pr-11'"
+              />
+              <button
+                type="button"
+                class="absolute right-1 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-md text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b070c]"
+                [attr.aria-label]="showPassword() ? t('AUTH.HIDE_PASSWORD') : t('AUTH.SHOW_PASSWORD')"
+                (click)="showPassword.set(!showPassword())"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <circle cx="12" cy="12" r="2.8" stroke="currentColor" stroke-width="1.8" />
+                </svg>
+              </button>
+            </div>
+            @if (fieldError('password'); as message) {
+              <p id="password-error" [class]="fieldErrorClasses()">{{ message }}</p>
+            }
+          </div>
+
+          <div class="mt-3 space-y-1.5">
+            <label [class]="labelClasses()" for="confirmPassword">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M7 10V8a5 5 0 0 1 10 0v2M6 10h12v10H6V10Z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              {{ t('AUTH.CONFIRM_PASSWORD') }}
+              <span [class]="requiredMarkClasses()">*</span>
+            </label>
+            <div class="relative">
+              <input
+                id="confirmPassword"
+                [type]="showConfirmPassword() ? 'text' : 'password'"
+                formControlName="confirmPassword"
+                autocomplete="new-password"
+                [attr.aria-invalid]="hasFieldError('confirmPassword') || hasPasswordMismatch()"
+                [attr.aria-describedby]="
+                  fieldError('confirmPassword') || hasPasswordMismatch()
+                    ? 'confirmPassword-error'
+                    : null
+                "
+                [class]="inputClasses('confirmPassword') + ' pr-11'"
+              />
+              <button
+                type="button"
+                class="absolute right-1 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-md text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b070c]"
+                [attr.aria-label]="
+                  showConfirmPassword()
+                    ? t('AUTH.HIDE_CONFIRM_PASSWORD')
+                    : t('AUTH.SHOW_CONFIRM_PASSWORD')
+                "
+                (click)="showConfirmPassword.set(!showConfirmPassword())"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <circle cx="12" cy="12" r="2.8" stroke="currentColor" stroke-width="1.8" />
+                </svg>
+              </button>
+            </div>
+            @if (confirmPasswordError(); as message) {
+              <p id="confirmPassword-error" [class]="fieldErrorClasses()">{{ message }}</p>
+            }
+          </div>
+
+          <app-avatar-picker
+            [darkMode]="isDarkTheme()"
+            [selectedAvatarId]="selectedAvatarId()"
+            (selectedAvatarIdChange)="selectedAvatarId.set($event)"
+          />
+
+          <button
+            type="submit"
+            class="mt-5 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-md bg-[#8b070c] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#6f0509] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b070c] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
+            [disabled]="isSubmitting() || isSuccess()"
+          >
+            @if (isSubmitting()) {
+              <span
+                class="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
+                aria-hidden="true"
+              ></span>
+              {{ t('AUTH.REGISTER_SUBMITTING') }}
+            } @else if (isSuccess()) {
+              {{ t('AUTH.REGISTER_SUCCESS') }}
+            } @else {
+              {{ t('AUTH.CREATE_ACCOUNT') }}
+              <span aria-hidden="true"></span>
+            }
+          </button>
+        </form>
+
+        <p [class]="authPromptClasses()">
+          {{ t('AUTH.HAS_ACCOUNT') }}
+          <button type="button" [class]="authLinkClasses()" (click)="showMobileLogin($event)">
+            {{ t('AUTH.LOGIN_LINK') }}
+          </button>
+        </p>
+      </div>
+    </app-auth-shell>

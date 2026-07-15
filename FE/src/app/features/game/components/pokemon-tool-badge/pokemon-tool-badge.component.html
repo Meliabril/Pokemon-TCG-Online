@@ -1,0 +1,26 @@
+<span
+  class="pokemon-tool-badge"
+  [class.pokemon-tool-badge--bench]="variant() === 'bench'"
+  [class.pokemon-tool-badge--defense]="type() === 'defense'"
+  data-testid="pokemon-tool-badge"
+  role="img"
+  [attr.aria-label]="type() === 'attack' ? t('GAME.TOOLS.MUSCLE_BAND_TOOLTIP') : t('GAME.TOOLS.HARD_CHARM_TOOLTIP')"
+>
+  @if (type() === 'attack') {
+    <svg class="pokemon-tool-badge__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none">
+      <line x1="12" y1="3" x2="12" y2="17" class="pokemon-tool-badge__icon-blade" stroke-linecap="round" />
+      <line x1="8" y1="9" x2="16" y2="9" class="pokemon-tool-badge__icon-guard" stroke-linecap="round" />
+      <line x1="12" y1="17" x2="12" y2="21" class="pokemon-tool-badge__icon-handle" stroke-linecap="round" />
+      <circle cx="12" cy="21" r="1.2" class="pokemon-tool-badge__icon-pommel" />
+    </svg>
+  } @else {
+    <svg class="pokemon-tool-badge__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        class="pokemon-tool-badge__icon-body"
+        d="M12 2 L20 5.5 V11.5 C20 16.5 16.6 20.3 12 22 C7.4 20.3 4 16.5 4 11.5 V5.5 Z"
+        stroke-linejoin="round"
+      />
+    </svg>
+  }
+  <span class="pokemon-tool-badge__value" aria-hidden="true">{{ type() === 'attack' ? '+' : '−' }}{{ value() }}</span>
+</span>

@@ -1,0 +1,95 @@
+.playground {
+  min-height: 100vh;
+  padding: 1.5rem;
+  background: #0f0504;
+  color: #fff7d6;
+  font-family: system-ui, sans-serif;
+}
+
+.playground__header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.4rem;
+}
+
+.playground__header p {
+  margin: 0 0 1.5rem;
+  color: #d8b982;
+  font-size: 0.85rem;
+}
+
+.playground__board {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.playground__row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+}
+
+.playground__zone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  border: 1px dashed rgba(255, 247, 214, 0.35);
+  border-radius: 10px;
+  background: rgba(255, 247, 214, 0.04);
+  font-size: 0.78rem;
+  text-align: center;
+  padding: 0.85rem 0.75rem;
+}
+
+.playground__zone-card {
+  position: relative;
+  width: 86%;
+  aspect-ratio: 63 / 88;
+  border-radius: 8px;
+  background: var(--game-card-back-image) var(--game-card-back-position) / var(--game-card-back-size) no-repeat;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  opacity: 0.95;
+}
+
+.playground__zone-label {
+  display: block;
+}
+
+.playground__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.playground__button {
+  border: 1px solid rgba(255, 247, 214, 0.3);
+  border-radius: 8px;
+  background: #2a0805;
+  color: #fff7d6;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.playground__button:hover {
+  background: #3a0d09;
+}
+
+.playground__button--accent {
+  border-color: #facc15;
+  color: #fde68a;
+}
+
+.playground__standalone {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  border-radius: 12px;
+  background: rgba(20, 83, 45, 0.25);
+}

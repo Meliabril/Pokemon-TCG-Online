@@ -1,0 +1,135 @@
+.main-layout__content {
+  box-sizing: border-box;
+  display: block;
+}
+
+@media (max-width: 950px), (hover: none) and (pointer: coarse) {
+  .main-layout__content {
+    padding-left: max(10px, env(safe-area-inset-left, 0px));
+    padding-right: max(10px, env(safe-area-inset-right, 0px));
+  }
+}
+
+.volume-control {
+  align-items: center;
+  bottom: 50%;
+  display: flex;
+  height: 14.625rem;
+  justify-content: center;
+  pointer-events: none;
+  position: fixed;
+  right: 1.125rem;
+  transform: translateY(50%);
+  width: 4rem;
+  z-index: 1000;
+}
+
+.volume-slider-wrapper {
+  --thumb-icon: url("/assets/icons/icon-music2.png");
+  --thumb-position: 40%;
+  --thumb-size: 3rem;
+  --track-fill: #d71920;
+  --track-size: 0.75rem;
+  align-items: center;
+  display: flex;
+  height: 10.625rem;
+  justify-content: center;
+  position: relative;
+  width: 3.5rem;
+}
+
+.volume-track {
+  background: rgba(245, 247, 250, 0.94);
+  border: 2px solid #111827;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.34);
+  display: block;
+  height: 100%;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  width: var(--track-size);
+}
+
+.volume-track__fill {
+  background: var(--track-fill);
+  border-radius: inherit;
+  bottom: 0;
+  display: block;
+  height: var(--volume-percent);
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.volume-thumb {
+  background-image: var(--thumb-icon);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: var(--thumb-size);
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  top: var(--thumb-position);
+  transform: translate(-50%, -50%);
+  width: var(--thumb-size);
+}
+
+.volume-control__slider {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  direction: rtl;
+  height: 100%;
+  inset: 0;
+  opacity: 0;
+  pointer-events: auto;
+  position: absolute;
+  width: 100%;
+  writing-mode: vertical-lr;
+}
+
+.volume-control__slider:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.95);
+  outline-offset: 4px;
+}
+
+.volume-control__slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 2rem;
+  width: 3rem;
+}
+
+.volume-control__slider::-moz-range-thumb {
+  border: 0;
+  height: 2rem;
+  width: 3rem;
+}
+
+@media (max-width: 640px) {
+  .volume-control {
+    height: 13.125rem;
+    right: 0.5rem;
+    width: 3.5rem;
+  }
+
+  .volume-control__slider {
+    height: 100%;
+    width: 100%;
+  }
+
+  .volume-slider-wrapper {
+    height: 9.375rem;
+    width: 3.5rem;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 950px) and (max-height: 430px) {
+  .volume-control {
+    display: none;
+  }
+}

@@ -1,0 +1,68 @@
+<aside class="game-chat-drawer" [class.game-chat-drawer--open]="open()" data-testid="game-chat-drawer">
+  @if (open()) {
+    <section
+      id="game-chat-drawer-panel"
+      class="game-chat-drawer__panel"
+      [attr.aria-label]="t('GAME.CHAT.TITLE')"
+      data-testid="game-chat-drawer-panel"
+    >
+      <header class="game-chat-drawer__header">
+        <div class="game-chat-drawer__heading">
+          <p>{{ t('GAME.CHAT.TITLE') }}</p>
+          <span>{{ connected() ? t('GAME.CHAT.CONNECTED') : t('GAME.CHAT.RECONNECTING') }}</span>
+        </div>
+
+        <button
+          type="button"
+          class="game-chat-drawer__close"
+          [attr.aria-label]="t('COMMON.CLOSE')"
+          (click)="close()"
+        >
+          &times;
+        </button>
+      </header>
+
+      <div class="game-chat-drawer__messages" aria-live="polite" data-testid="game-chat-drawer-messages">
+        @if (!gameMessages().length) {
+          <p class="game-chat-drawer__empty">{{ t('GAME.CHAT.EMPTY') }}</p>
+        } @else {
+          @for (message of gameMessages(); track message.messageId) {
+            <article class="game-chat-drawer__message {{ messageCardClasses(message) }}">
+              <div class="game-chat-drawer__message-meta">
+                <span>{{ messageAuthorLabel(message) }}</span>
+                <time [attr.datetime]="message.sentAt">{{ formatTime(message.sentAt) }}</time>
+              </div>
+              <p>{{ message.content }}</p>
+            </article>
+          }
+        }
+      </div>
+
+      <form class="game-chat-drawer__composer" (submit)="$event.preventDefault(); submit()">
+        <label class="game-chat-drawer__label" for="game-chat-message">
+          {{ t('GAME.CHAT.LABEL') }}
+        </label>
+        <textarea
+          id="game-chat-message"
+          class="game-chat-drawer__textarea"
+          [value]="draft()"
+          [placeholder]="t('GAME.CHAT.PLACEHOLDER')"
+          [disabled]="!connected()"
+          maxlength="500"
+          rows="1"
+          (keydown.enter)="handleComposerEnter($event)"
+          (input)="updateDraft($event)"
+        ></textarea>
+        <button
+          type="submit"
+          class="game-chat-drawer__send"
+          [attr.aria-label]="t('GAME.CHAT.SEND')"
+          [title]="t('GAME.CHAT.SEND')"
+          [disabled]="!canSend()"
+        >
+          <span aria-hidden="true">&larr;</span>
+        </button>
+      </form>
+    </section>
+  }
+</aside>

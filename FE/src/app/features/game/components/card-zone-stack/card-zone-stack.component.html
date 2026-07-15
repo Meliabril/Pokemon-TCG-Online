@@ -1,0 +1,76 @@
+<article
+  class="zone-stack"
+  [class.zone-stack--prize]="variant() === 'prize'"
+  [class.zone-stack--deck]="variant() === 'deck'"
+  [class.zone-stack--discard]="variant() === 'discard'"
+  [class.zone-stack--empty]="isEmpty() && variant() !== 'discard'"
+  [class.zone-stack--deck-selected]="variant() === 'deck' && deckSelected()"
+  [class.zone-stack--deck-disabled]="variant() === 'deck' && showDrawAction() && !drawEnabled()"
+  [attr.data-board-anchor]="animationAnchorId()"
+>
+  <div class="zone-stack__header">
+    <p>{{ label() }}</p>
+    <span
+      aria-live="polite"
+      aria-atomic="true"
+      [attr.aria-label]="label() + ': ' + count()"
+      [attr.data-testid]="'zone-count-' + variant()"
+    >{{ count() }}</span>
+  </div>
+
+  <div class="zone-stack__cards" [class.zone-stack__cards--prize]="variant() === 'prize'">
+    @if (isEmpty() && variant() !== 'discard') {
+      <div
+        class="zone-stack__empty"
+        [class.zone-stack__empty--deck]="variant() === 'deck'"
+        [attr.role]="variant() === 'deck' ? 'button' : null"
+        [attr.tabindex]="variant() === 'deck' ? '0' : null"
+        [attr.aria-disabled]="variant() === 'deck' && showDrawAction() && !drawEnabled() ? 'true' : null"
+        [attr.title]="variant() === 'deck' && showDrawAction() ? (drawEnabled() ? t('GAME.ACTIONS.DRAW_CARD') : (drawDisabledReason() ?? t('GAME.NO_AVAILABLE'))) : emptyLabel()"
+        [attr.data-testid]="'zone-empty-' + variant()"
+        (click)="handleCardClick($event, null)"
+        (keydown)="handleCardKeydown($event, null)"
+      >
+        {{ emptyLabel() }}
+      </div>
+    } @else {
+      @for (visibleCard of visibleCards(); track visibleCard.card?.id ?? visibleCard.index) {
+        <div
+          class="zone-stack__card"
+          [class.zone-stack__card--prize]="variant() === 'prize'"
+          [class.zone-stack__card--deck]="variant() === 'deck'"
+          [class.zone-stack__card--discard]="variant() === 'discard'"
+          [class.zone-stack__card--face-down]="visibleCard.card?.faceDown || (variant() === 'discard' && !visibleCard.card)"
+          [class.zone-stack__card--deck-selected]="variant() === 'deck' && deckSelected() && visibleCard.index === 0"
+          [class.zone-stack__card--deck-disabled]="variant() === 'deck' && showDrawAction() && !drawEnabled()"
+          [class.zone-stack__card--remote-hovered]="isRemoteHovered(visibleCard)"
+          [class.zone-stack__card--inspectable]="visibleCard.card && !visibleCard.card.faceDown && visibleCard.card.visibility === 'visible'"
+          [attr.role]="variant() === 'deck' || (visibleCard.card && !visibleCard.card.faceDown && visibleCard.card.visibility === 'visible') ? 'button' : null"
+          [attr.tabindex]="variant() === 'deck' || (visibleCard.card && !visibleCard.card.faceDown && visibleCard.card.visibility === 'visible') ? '0' : null"
+          [attr.aria-disabled]="variant() === 'deck' && showDrawAction() && !drawEnabled() ? 'true' : null"
+          [attr.title]="variant() === 'deck' && showDrawAction() ? (drawEnabled() ? t('GAME.ACTIONS.DRAW_CARD') : (drawDisabledReason() ?? t('GAME.NO_AVAILABLE'))) : null"
+          [style.--prize-offset.px]="variant() === 'prize' ? prizeOffset(visibleCard.index) : null"
+          [style.--discard-offset.px]="variant() === 'discard' ? discardOffset(visibleCard.index) : null"
+          [style.z-index]="10 + visibleCard.index"
+          (click)="handleCardClick($event, visibleCard.card)"
+          (mouseenter)="emitCardHover(visibleCard, true)"
+          (mouseleave)="emitCardHover(visibleCard, false)"
+          (focus)="emitCardHover(visibleCard, true)"
+          (blur)="emitCardHover(visibleCard, false)"
+          (keydown)="handleCardKeydown($event, visibleCard.card)"
+        >
+          @if (visibleCard.card?.faceDown || (variant() === 'discard' && !visibleCard.card)) {
+            <div class="zone-stack__card-back" aria-hidden="true"></div>
+          } @else {
+            @if (visibleCard.card?.imageSmallUrl ?? visibleCard.card?.imageLargeUrl; as imageUrl) {
+              <img [src]="imageUrl" [alt]="visibleCard.card?.altText ?? visibleCard.card?.label ?? label()" />
+            } @else {
+              <div class="zone-stack__card-placeholder" aria-hidden="true"></div>
+            }
+          }
+        </div>
+      }
+    }
+  </div>
+
+</article>

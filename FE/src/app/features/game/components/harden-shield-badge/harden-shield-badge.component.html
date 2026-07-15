@@ -1,0 +1,27 @@
+@if (active()) {
+  <span
+    class="harden-shield-badge"
+    [class.harden-shield-badge--bench]="variant() === 'bench'"
+    [class.harden-shield-badge--with-value]="value() !== null"
+    data-testid="harden-shield-badge"
+    role="img"
+    [attr.aria-label]="t('GAME.EFFECTS.HARDEN_SHIELD_TOOLTIP')"
+  >
+    <svg class="harden-shield-badge__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        class="harden-shield-badge__icon-body"
+        d="M12 2 L20 5.5 V11.5 C20 16.5 16.6 20.3 12 22 C7.4 20.3 4 16.5 4 11.5 V5.5 Z"
+        stroke-linejoin="round"
+      />
+      <path
+        class="harden-shield-badge__icon-check"
+        d="M9 12 L11.2 14.3 L15.4 9.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    @if (value() !== null) {
+      <span class="harden-shield-badge__value" aria-hidden="true">−{{ value() }}</span>
+    }
+  </span>
+}

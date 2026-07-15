@@ -1,0 +1,146 @@
+{
+  "xy1-14": [
+    {
+      "code": "SPIKY_SHIELD",
+      "name": "Spiky Shield",
+      "displayName": "Escudo Punzante",
+      "text": "If this Pokemon is your Active Pokemon and is damaged by an opponent's attack, even if this Pokemon is Knocked Out, put 3 damage counters on the Attacking Pokemon.",
+      "displayText": "Si este Pokemon es tu Pokemon Activo y recibe dano de un ataque de tu rival, incluso si este Pokemon queda Fuera de Combate, pon 3 contadores de dano en el Pokemon Atacante.",
+      "activation": "PASSIVE",
+      "timing": "WHEN_DAMAGED",
+      "oncePerTurn": false
+    }
+  ],
+  "xy1-26": [
+    {
+      "code": "MYSTICAL_FIRE",
+      "name": "Mystical Fire",
+      "displayName": "Fuego Mistico",
+      "text": "Once during your turn, before your attack, you may draw cards until you have 6 cards in your hand.",
+      "displayText": "Una vez durante tu turno, antes de atacar, puedes robar cartas hasta tener 6 cartas en tu mano.",
+      "activation": "ACTIVATED",
+      "timing": "BEFORE_ATTACK",
+      "oncePerTurn": true
+    }
+  ],
+  "xy1-41": [
+    {
+      "code": "WATER_SHURIKEN",
+      "name": "Water Shuriken",
+      "displayName": "Shuriken de Agua",
+      "text": "Once during your turn, before your attack, you may discard a Water Energy card from your hand. If you do, put 3 damage counters on 1 of your opponent's Pokemon.",
+      "displayText": "Una vez durante tu turno, antes de atacar, puedes descartar 1 Energia Agua de tu mano. Si lo haces, pon 3 contadores de dano en 1 de los Pokemon de tu rival.",
+      "activation": "ACTIVATED",
+      "timing": "BEFORE_ATTACK",
+      "oncePerTurn": true
+    }
+  ],
+  "xy1-44": [
+    {
+      "code": "DESTINY_BURST",
+      "name": "Destiny Burst",
+      "displayName": "Rafaga del Destino",
+      "text": "If this Pokemon is your Active Pokemon and is Knocked Out by damage from an opponent's attack, flip a coin. If heads, put 5 damage counters on the Attacking Pokemon.",
+      "displayText": "Si este Pokemon es tu Pokemon Activo y queda Fuera de Combate por el dano de un ataque de tu rival, lanza 1 moneda. Si sale cara, pon 5 contadores de dano en el Pokemon Atacante.",
+      "activation": "PASSIVE",
+      "timing": "WHEN_KNOCKED_OUT",
+      "oncePerTurn": false
+    }
+  ],
+  "xy1-55": [
+    {
+      "code": "FORESTS_CURSE",
+      "name": "Forest's Curse",
+      "displayName": "Maldicion del Bosque",
+      "text": "As long as this Pokemon is your Active Pokemon, your opponent can't play any Item cards from his or her hand.",
+      "displayText": "Mientras este Pokemon sea tu Pokemon Activo, tu rival no puede jugar cartas de Objeto de su mano.",
+      "activation": "PASSIVE",
+      "timing": "WHILE_ACTIVE",
+      "oncePerTurn": false
+    }
+  ],
+  "xy1-74": [
+    {
+      "code": "UPSIDE_DOWN_EVOLUTION",
+      "name": "Upside-Down Evolution",
+      "displayName": "Evolucion Invertida",
+      "text": "If this Pokemon is Confused, put the top card of your deck onto it and evolve it. Shuffle your deck afterward.",
+      "displayText": "Si este Pokemon esta Confundido, busca una carta de tu mazo que evolucione de el, ponla sobre este Pokemon y luego baraja tu mazo.",
+      "activation": "ACTIVATED",
+      "timing": "BEFORE_ATTACK",
+      "oncePerTurn": true
+    }
+  ],
+  "xy1-85": [
+    {
+      "code": "STANCE_CHANGE",
+      "name": "Stance Change",
+      "displayName": "Cambio Tactico",
+      "text": "Once during your turn, before your attack, you may switch this Pokemon with an Aegislash in your hand.",
+      "displayText": "Una vez durante tu turno, antes de atacar, puedes cambiar este Pokemon por otro Aegislash de tu mano.",
+      "activation": "ACTIVATED",
+      "timing": "BEFORE_ATTACK",
+      "oncePerTurn": true
+    }
+  ],
+  "xy1-86": [
+    {
+      "code": "STANCE_CHANGE",
+      "name": "Stance Change",
+      "displayName": "Cambio Tactico",
+      "text": "Once during your turn, before your attack, you may switch this Pokemon with an Aegislash in your hand.",
+      "displayText": "Una vez durante tu turno, antes de atacar, puedes cambiar este Pokemon por otro Aegislash de tu mano.",
+      "activation": "ACTIVATED",
+      "timing": "BEFORE_ATTACK",
+      "oncePerTurn": true
+    }
+  ],
+  "xy1-93": [
+    {
+      "code": "FAIRY_TRANSFER",
+      "name": "Fairy Transfer",
+      "displayName": "Transferencia Hada",
+      "text": "As often as you like during your turn, before your attack, you may move a Fairy Energy from 1 of your Pokemon to another of your Pokemon.",
+      "displayText": "Todas las veces que quieras durante tu turno, antes de atacar, puedes mover 1 Energia Hada de 1 de tus Pokemon a otro de tus Pokemon.",
+      "activation": "ACTIVATED",
+      "timing": "BEFORE_ATTACK",
+      "oncePerTurn": false
+    }
+  ],
+  "xy1-95": [
+    {
+      "code": "SWEET_VEIL",
+      "name": "Sweet Veil",
+      "displayName": "Velo Dulce",
+      "text": "Each of your Pokemon that has any Fairy Energy attached to it can't be affected by any Special Conditions. Remove any Special Conditions already affecting those Pokemon.",
+      "displayText": "Cada uno de tus Pokemon que tenga alguna Energia Hada unida no puede verse afectado por Condiciones Especiales. Quita las Condiciones Especiales que ya los afecten.",
+      "activation": "PASSIVE",
+      "timing": "WHILE_IN_PLAY",
+      "oncePerTurn": false
+    }
+  ],
+  "xy1-103": [
+    {
+      "code": "DRIVE_OFF",
+      "name": "Drive Off",
+      "displayName": "Ahuyentar",
+      "text": "Once during your turn, before your attack, you may force your opponent to switch his or her Active Pokemon with 1 of his or her Benched Pokemon.",
+      "displayText": "Una vez durante tu turno, antes de atacar, puedes hacer que tu rival cambie su Pokemon Activo por 1 de sus Pokemon en Banca.",
+      "activation": "ACTIVATED",
+      "timing": "BEFORE_ATTACK",
+      "oncePerTurn": true
+    }
+  ],
+  "xy1-114": [
+    {
+      "code": "FUR_COAT",
+      "name": "Fur Coat",
+      "displayName": "Pelaje Espeso",
+      "text": "This Pokemon takes 20 less damage from attacks after applying Weakness and Resistance.",
+      "displayText": "Este Pokemon recibe 20 puntos menos de dano por ataques despues de aplicar Debilidad y Resistencia.",
+      "activation": "PASSIVE",
+      "timing": "WHILE_IN_PLAY",
+      "oncePerTurn": false
+    }
+  ]
+}

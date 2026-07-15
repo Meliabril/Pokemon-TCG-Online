@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+
+.pokeball-mark {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: linear-gradient(#fff 0 46%, #8b070c 46% 54%, #fff 54% 100%);
+}
+
+.pokeball-mark::after {
+  position: absolute;
+  inset: 0.55rem;
+  content: '';
+  border: 2px solid #8b070c;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(43, 18, 6, 0.4);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(139, 74, 24, 0.8);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 74, 24, 1);
+}

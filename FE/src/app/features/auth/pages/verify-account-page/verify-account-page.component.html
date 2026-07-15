@@ -1,0 +1,169 @@
+    <app-auth-shell
+      [theme]="verifyTheme()"
+      skipLinkTarget="#verify-account-form"
+      panelLabelledBy="verify-account-title"
+      animationName="verify-enter"
+      [fullscreen]="isSuccess()"
+      (themeChange)="setVerifyTheme($event)"
+    >
+      @if (isSuccess()) {
+        <div
+          class="motion-safe:animate-[auth-loading-enter_260ms_ease-out] relative flex h-full min-h-0 w-full items-start justify-center px-5 pb-24 pt-[22vh] text-center text-white sm:justify-end sm:px-6 sm:pt-[24vh] lg:px-8"
+          role="status"
+          aria-live="polite"
+        >
+          <h1
+            class="pokemon-success-text max-w-[61rem] text-balance text-3xl font-bold uppercase leading-tight sm:text-4xl lg:text-5xl"
+          >
+            {{ t('AUTH.VERIFY_SUCCESS_TEXT') }}
+          </h1>
+
+          <p
+            class="pokemon-loading-text absolute bottom-8 right-6 text-2xl font-bold sm:right-8 sm:text-4xl"
+            aria-live="polite"
+          >
+            {{ loadingText() }}
+          </p>
+        </div>
+      } @else {
+        <div class="bg-[#8b070c]/95 px-6 py-5 text-center text-white">
+          <svg class="mx-auto mb-2 h-12 w-12" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="46" fill="white" stroke="#8b070c" stroke-width="5" />
+            <path d="M5 50h90" stroke="#8b070c" stroke-width="5" />
+            <circle cx="50" cy="50" r="14" fill="#8b070c" />
+            <circle cx="50" cy="50" r="8" fill="white" />
+            <circle cx="50" cy="50" r="4" fill="#8b070c" />
+          </svg>
+          <h1 id="verify-account-title" class="text-2xl font-bold leading-tight">
+            {{ t('AUTH.VERIFY_ACCOUNT_TITLE') }}
+          </h1>
+          <p class="mt-1 text-sm text-white/90">{{ t('COMMON.POKEMON_TCG_ONLINE') }}</p>
+        </div>
+
+        <div [class]="panelBodyClasses()">
+          <div aria-live="polite">
+            @if (successMessage()) {
+              <div
+                class="mb-4 rounded-lg border border-emerald-300/70 bg-emerald-50/90 px-4 py-3 text-sm font-medium text-emerald-900 shadow-sm"
+              >
+                {{ successMessage() }}
+              </div>
+            } @else if (generalError()) {
+              <div
+                class="mb-4 rounded-lg border border-red-300/70 bg-red-50/90 px-4 py-3 text-sm font-medium text-red-900 shadow-sm"
+              >
+                <span>{{ generalError() }}</span>
+
+                @if (!email()) {
+                  <a
+                    class="mt-3 inline-flex min-h-9 items-center justify-center rounded-md bg-[#8b070c] px-3 py-2 text-sm font-bold text-white transition-colors hover:bg-[#6f0509] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b070c] focus-visible:ring-offset-2"
+                    routerLink="/auth/register"
+                  >
+                    {{ t('AUTH.BACK_TO_REGISTER') }}
+                  </a>
+                }
+              </div>
+            }
+          </div>
+
+          <p [class]="descriptionClasses()">
+            {{ t('AUTH.VERIFY_DESCRIPTION') }}
+            <span [class]="emailTextClasses()">{{ email() || t('AUTH.YOUR_EMAIL') }}</span
+            >.
+          </p>
+          <p [class]="hintClasses()">
+            {{ t('AUTH.FORGOT_HINT') }}
+          </p>
+
+          <div [class]="timerCardClasses()" aria-live="polite">
+            <p [class]="timerLabelClasses()">{{ t('AUTH.CODE_EXPIRES_IN') }}</p>
+            <p class="mt-1 text-3xl font-bold tabular-nums text-[#8b070c]">
+              {{ formattedExpiration() }}
+            </p>
+          </div>
+
+          <form
+            id="verify-account-form"
+            class="mt-4"
+            [formGroup]="verifyForm"
+            (ngSubmit)="submit()"
+            novalidate
+          >
+            <div class="space-y-1.5">
+              <label [class]="labelClasses()" for="code">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M7 10V8a5 5 0 0 1 10 0v2M6 10h12v10H6V10Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                {{ t('AUTH.VERIFICATION_CODE') }}
+                <span [class]="requiredMarkClasses()">*</span>
+              </label>
+              <input
+                id="code"
+                type="text"
+                inputmode="numeric"
+                autocomplete="one-time-code"
+                formControlName="code"
+                maxlength="6"
+                [readOnly]="isVerifying() || isSuccess()"
+                [attr.aria-invalid]="hasCodeError()"
+                [attr.aria-describedby]="codeError() ? 'code-error' : null"
+                [class]="inputClasses()"
+              />
+              @if (codeError(); as message) {
+                <p id="code-error" [class]="fieldErrorClasses()">{{ message }}</p>
+              }
+            </div>
+
+            <button
+              type="submit"
+              class="mt-5 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-md bg-[#8b070c] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#6f0509] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b070c] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
+              [disabled]="isVerifyDisabled()"
+            >
+              @if (isVerifying()) {
+                <span
+                  class="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
+                  aria-hidden="true"
+                ></span>
+                {{ t('AUTH.VERIFYING') }}
+              } @else if (isSuccess()) {
+                {{ t('AUTH.ACCOUNT_VERIFIED') }}
+              } @else {
+                {{ t('AUTH.VERIFY_ACCOUNT_SUBMIT') }}
+              }
+            </button>
+          </form>
+
+          <div [class]="resendSectionClasses()">
+            <p [class]="resendTextClasses()" aria-live="polite">
+              @if (resendCooldown() > 0) {
+                {{ t('AUTH.RESEND_IN', { seconds: resendCooldown() }) }}
+              } @else {
+                {{ t('AUTH.RESEND_READY') }}
+              }
+            </p>
+
+            <button
+              type="button"
+              class="inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-md border border-[#8b070c] bg-white/80 px-4 py-2 text-sm font-bold text-[#8b070c] shadow-sm transition-colors hover:bg-red-50/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b070c] focus-visible:ring-offset-2 focus-visible:ring-offset-white/70 disabled:cursor-not-allowed disabled:opacity-60"
+              [disabled]="isResendDisabled()"
+              (click)="resendCode()"
+            >
+              @if (isResending()) {
+                <span
+                  class="h-4 w-4 animate-spin rounded-full border-2 border-[#8b070c]/30 border-t-[#8b070c]"
+                  aria-hidden="true"
+                ></span>
+                {{ t('AUTH.RESENDING') }}
+              } @else {
+                {{ t('AUTH.RESEND_CODE') }}
+              }
+            </button>
+          </div>
+        </div>
+      }
+    </app-auth-shell>

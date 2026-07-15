@@ -1,0 +1,34 @@
+@if (isAuthRoute()) {
+  <router-outlet></router-outlet>
+} @else {
+  <app-shell [useHomeBackground]="isHomeRoute()" [useDarkThemeVideoBackground]="useDarkThemeVideoBackground()">
+    @if (!isGameRoute()) { <app-navbar shell-header></app-navbar> }
+
+    <section class="main-layout__content">
+      <router-outlet></router-outlet>
+    </section>
+  </app-shell>
+}
+
+<div class="volume-control" [attr.aria-label]="t('A11Y.BACKGROUND_MUSIC_CONTROL')">
+  <div
+    class="volume-slider-wrapper"
+    [style.--volume-percent]="volumePercent() + '%'"
+    [style.--thumb-position]="100 - volumePercent() + '%'"
+  >
+    <span class="volume-track" aria-hidden="true">
+      <span class="volume-track__fill"></span>
+    </span>
+    <span class="volume-thumb" aria-hidden="true"></span>
+    <input
+      class="volume-control__slider"
+      type="range"
+      min="0"
+      max="100"
+      step="1"
+      [value]="volumePercent()"
+      [attr.aria-label]="t('A11Y.BACKGROUND_MUSIC_VOLUME')"
+      (input)="onVolumeChange($event)"
+    />
+  </div>
+</div>

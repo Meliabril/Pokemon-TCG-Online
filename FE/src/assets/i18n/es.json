@@ -1,0 +1,1575 @@
+{
+  "COMMON": {
+    "APP_NAME": "Pokémon TCG",
+    "POKEMON_TCG_ONLINE": "Pokémon TCG Online",
+    "TCG_ONLINE": "TCG ONLINE",
+    "POKEMON_LEAGUE": "Liga Pokémon",
+    "LOADING": "Cargando...",
+    "LOADING_UPPER": "CARGANDO...",
+    "SAVE": "Guardar",
+    "SAVING": "Guardando...",
+    "CANCEL": "Cancelar",
+    "CLOSE": "Cerrar",
+    "BACK": "Volver",
+    "RETRY": "Reintentar",
+    "CONFIRM": "Confirmar",
+    "CONFIRMING": "Confirmando...",
+    "DELETE": "Borrar",
+    "EDIT": "Editar",
+    "ACTIVE": "Activo",
+    "VALID": "Válido",
+    "INVALID": "Inválido",
+    "EMPTY": "Vacío",
+    "NO_DATA": "Sin dato",
+    "NO_SUBTYPE": "Sin subtipo",
+    "NOT_APPLICABLE": "No aplica",
+    "CARDS": "Cartas",
+    "CARD": "Carta",
+    "DECK": "Mazo",
+    "DECKS": "Mazos",
+    "POKEMON": "Pokémon",
+    "ENERGY": "Energía",
+    "TRAINER": "Entrenador",
+    "SEARCH": "Buscar",
+    "OK": "OK",
+    "ERROR": "Error",
+    "DETAIL": "Detalle",
+    "HP": "HP",
+    "PAGE_ABBR": "Pág.",
+    "COPYRIGHT": "© 2026 Pokémon TCG Online Clone",
+    "LANGUAGE_SPANISH": "Español",
+    "LANGUAGE_ENGLISH": "Inglés"
+  },
+  "NAV": {
+    "HOME": "Inicio",
+    "DECK": "Mazo",
+    "POKEDEX": "Pokédex",
+    "LOGIN": "Login",
+    "REGISTER": "Registro",
+    "LANGUAGE": "Idioma",
+    "LANGUAGE_CURRENT": "Idioma actual: {{language}}. Cambiar idioma",
+    "USER_MENU_OPEN": "Abrir menú de usuario",
+    "USER_MENU": "Menú de usuario",
+    "GO_TO_PROFILE": "Ir a perfil",
+    "LOGOUT": "Cerrar sesión",
+    "LOGGING_OUT": "Cerrando sesión...",
+    "READY_TO_PLAY": "Listo para jugar",
+    "ACCOUNT_PENDING": "Cuenta pendiente de verificación",
+    "LOGIN_TO_PLAY": "Entra a tu cuenta para jugar",
+    "AVATAR_ALT": "Avatar de {{username}}",
+    "LOGO_ALT": "Logo de Pokémon TCG"
+  },
+  "AUTH": {
+    "LOGIN_TITLE": "Iniciar sesión",
+    "REGISTER_TITLE": "Registrarse",
+    "CREATE_ACCOUNT": "Crear cuenta",
+    "FORGOT_PASSWORD_TITLE": "Recuperar contraseña",
+    "VERIFY_CODE_TITLE": "Verificar código",
+    "CHANGE_PASSWORD_TITLE": "Cambiar contraseña",
+    "VERIFY_ACCOUNT_TITLE": "Verifica tu cuenta",
+    "VERIFY_ACCOUNT_SUBMIT": "Verificar cuenta",
+    "VERIFY_SUCCESS_TEXT": "¡Ficha creada en la Pokédex! Ya eres parte de la Liga Pokémon.",
+    "ACCOUNT_VERIFIED": "Cuenta verificada",
+    "BACK_TO_REGISTER": "Volver a registrarte",
+    "VERIFY_DESCRIPTION": "Ingresa el código de 6 dígitos que enviamos a",
+    "YOUR_EMAIL": "tu correo electrónico",
+    "IDENTIFIER": "Correo electrónico o usuario",
+    "EMAIL": "Correo electrónico",
+    "USERNAME": "Nombre de usuario",
+    "PASSWORD": "Contraseña",
+    "NEW_PASSWORD": "Nueva contraseña",
+    "CONFIRM_PASSWORD": "Confirmar contraseña",
+    "REMEMBER_ME": "Recordarme",
+    "FORGOT_PASSWORD": "¿Olvidaste tu contraseña?",
+    "LOGIN_SUBMIT": "Iniciar sesión",
+    "LOGIN_SUBMITTING": "Iniciando sesión...",
+    "LOGIN_SUCCESS": "Sesión iniciada",
+    "NO_ACCOUNT": "¿No tienes cuenta?",
+    "HAS_ACCOUNT": "¿Ya tienes cuenta?",
+    "LOGIN_LINK": "Inicia sesión",
+    "REGISTER_SUBMITTING": "Creando cuenta...",
+    "REGISTER_SUCCESS": "Cuenta creada",
+    "FORGOT_DESCRIPTION": "Ingresa tu correo electrónico para recuperar la contraseña.",
+    "FORGOT_HINT": "Consejo: es probable que el correo llegue a la carpeta de spam.",
+    "BACK_TO_LOGIN": "Volver al inicio de sesión",
+    "RECOVERY_CODE_DESCRIPTION": "Ingresa el código que enviamos a tu correo para continuar.",
+    "RESET_PASSWORD_DESCRIPTION": "Elige una nueva contraseña para tu cuenta.",
+    "SHOW_PASSWORD": "Mostrar contraseña",
+    "HIDE_PASSWORD": "Ocultar contraseña",
+    "SHOW_CONFIRM_PASSWORD": "Mostrar confirmación de contraseña",
+    "HIDE_CONFIRM_PASSWORD": "Ocultar confirmación de contraseña",
+    "SHOW_NEW_PASSWORD": "Mostrar nueva contraseña",
+    "HIDE_NEW_PASSWORD": "Ocultar nueva contraseña",
+    "SKIP_FORM": "Saltar al formulario",
+    "CHANGE_LANGUAGE": "Cambiar idioma",
+    "LIGHT_THEME": "Cambiar a modo claro",
+    "DARK_THEME": "Cambiar a modo oscuro",
+    "SUCCESS_TEXT": "¡Pokédex sincronizada! Tu aventura en la Liga Pokémon continúa.",
+    "CODE_EXPIRES_IN": "El código expira en",
+    "VERIFICATION_CODE": "Código de verificación",
+    "CODE_PLACEHOLDER": "Ejemplo: 839214",
+    "VERIFYING": "Verificando...",
+    "RESEND_IN": "Puedes reenviar el código en {{seconds}}s",
+    "RESEND_READY": "Ya puedes pedir un código nuevo.",
+    "RESENDING": "Reenviando...",
+    "RESEND_CODE": "Reenviar código",
+    "UPDATING": "Actualizando...",
+    "VALIDATION": {
+      "IDENTIFIER_REQUIRED": "Ingresa tu correo o nombre de usuario.",
+      "PASSWORD_REQUIRED": "Ingresa tu contraseña.",
+      "IDENTIFIER_MIN": "Debe tener al menos 3 caracteres.",
+      "PASSWORD_MIN": "La contraseña debe tener al menos 8 caracteres.",
+      "EMAIL_REQUIRED": "El correo electrónico es obligatorio.",
+      "EMAIL_FORMAT": "El correo electrónico no tiene un formato válido.",
+      "CODE_REQUIRED": "Ingresa el código de verificación.",
+      "RECOVERY_CODE_REQUIRED": "Ingresa el código de recuperación.",
+      "CODE_NUMERIC": "El código debe ser numérico.",
+      "CODE_PATTERN": "El código debe tener exactamente 6 dígitos.",
+      "CODE_VALID": "Ingresa un código válido de 6 dígitos.",
+      "NEW_PASSWORD_REQUIRED": "La nueva contraseña es obligatoria.",
+      "CONFIRM_PASSWORD_REQUIRED": "Confirmar la contraseña es obligatorio.",
+      "CONFIRM_PASSWORD_REQUIRED_ALT": "La confirmación de contraseña es obligatoria.",
+      "PASSWORD_STRONG": "La contraseña debe incluir una mayúscula, un número y un carácter especial.",
+      "PASSWORD_STRONG_FULL": "La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial.",
+      "PASSWORD_MISMATCH": "Las contraseñas no coinciden.",
+      "USERNAME_REQUIRED": "El nombre de usuario es obligatorio."
+    },
+    "MESSAGES": {
+      "RECOVERY_SENT": "Si el correo pertenece a una cuenta activa, te enviamos un código de recuperación.",
+      "CODE_EXPIRED": "El código expiró. Solicita uno nuevo para continuar.",
+      "EMAIL_REQUIRED_FOR_CODE": "Ingresa tu correo electrónico para solicitar un nuevo código.",
+      "RECOVERY_CODE_REQUIRED": "Ingresa el código de recuperación para continuar.",
+      "CODE_VERIFIED": "Código verificado. Ya puedes ingresar una nueva contraseña.",
+      "PASSWORD_UPDATED_LOGIN": "Contraseña actualizada correctamente. Inicia sesión con tu nueva contraseña.",
+      "VERIFY_EMAIL_SENT": "Te enviamos un código de verificación a tu correo electrónico.",
+      "VERIFICATION_CODE_RESENT": "Te enviamos un nuevo código de verificación."
+    },
+    "ERRORS": {
+      "LOGIN_DEFAULT": "No pudimos iniciar sesión. Intenta nuevamente.",
+      "CONNECTION": "No se pudo conectar con el servidor. Verifica que el backend esté funcionando.",
+      "CHECK_DATA": "Revisa los datos ingresados.",
+      "BAD_CREDENTIALS": "Correo, usuario o contraseña incorrectos.",
+      "BLOCKED": "Tu cuenta está bloqueada. Contacta a un administrador.",
+      "INACTIVE": "Tu cuenta no está activa. Contacta a soporte.",
+      "SERVER": "Ocurrió un error inesperado del servidor. Intenta nuevamente más tarde.",
+      "REQUEST_DEFAULT": "No pudimos procesar la solicitud. Intenta nuevamente.",
+      "EMAIL_FORMAT": "Revisa que el correo tenga un formato válido.",
+      "WAIT_CODE": "Espera unos segundos antes de solicitar otro código.",
+      "VERIFY_DEFAULT": "No pudimos verificar el código. Intenta nuevamente.",
+      "CODE_INVALID": "El código es inválido.",
+      "ACCOUNT_INACTIVE": "La cuenta no está activa. Contacta a soporte.",
+      "RESET_DEFAULT": "No pudimos actualizar la contraseña. Intenta nuevamente.",
+      "PASSWORD_REUSE": "La nueva contraseña debe ser distinta de tu contraseña actual.",
+      "CHECK_CODE_PASSWORD": "Revisa el código y la nueva contraseña.",
+      "REGISTER_DEFAULT": "No pudimos crear la cuenta. Intenta nuevamente.",
+      "REGISTER_CONNECTION": "No se pudo conectar con el servidor.",
+      "USERNAME_TAKEN": "Ese nombre de usuario ya está en uso.",
+      "EMAIL_TAKEN": "Ese correo ya está registrado.",
+      "CHECK_MARKED": "Revisa los datos marcados para continuar.",
+      "SERVER_SHORT": "Error inesperado del servidor.",
+      "VERIFY_EMAIL_MISSING": "No encontramos un correo electrónico pendiente de verificación. Vuelve a registrarte.",
+      "VERIFY_ACCOUNT_DEFAULT": "No pudimos verificar la cuenta. Intenta nuevamente.",
+      "CODE_INCORRECT": "El código es incorrecto.",
+      "VERIFY_ACCOUNT_FORBIDDEN": "No se pudo verificar esta cuenta.",
+      "ACCOUNT_NOT_FOUND": "No encontramos una cuenta asociada a este correo electrónico.",
+      "ACCOUNT_ALREADY_VERIFIED": "Esta cuenta ya fue verificada.",
+      "TOO_MANY_ATTEMPTS": "Demasiados intentos. Espera unos minutos antes de volver a intentar."
+    }
+  },
+  "PROFILE": {
+    "TRAINER_DATA": "Datos del Entrenador",
+    "MATCH_HISTORY": "Historial de partidas",
+    "SYNCING": "Sincronizando ficha...",
+    "UNAVAILABLE": "Perfil no disponible",
+    "LOGIN_TO_LOAD": "Inicia sesión para cargar tu ficha de entrenador.",
+    "SECURITY": "SEGURIDAD",
+    "CHANGE_PASSWORD": "Cambiar contraseña",
+    "CLOSE_PASSWORD_CHANGE": "Cerrar cambio de contraseña",
+    "PASSWORD_CODE_DESCRIPTION": "Ingresa el código enviado a tu correo electrónico.",
+    "NO_SESSION": "No encontramos una sesión activa para actualizar el perfil.",
+    "USERNAME_UPDATED": "Nombre de entrenador actualizado.",
+    "AVATAR_UPDATED": "Avatar actualizado en la Pokédex.",
+    "PASSWORD_CODE_SENT": "Código enviado al correo de la cuenta.",
+    "PASSWORD_UPDATED": "Contraseña actualizada correctamente.",
+    "ERRORS": {
+      "SAVE_PROFILE": "La Pokédex no pudo guardar el perfil. Intenta nuevamente.",
+      "POKECENTER_CONNECTION": "No pudimos conectar con el Centro Pokémon.",
+      "USERNAME_TAKEN": "Ese nombre de entrenador ya está en uso.",
+      "CHECK_USERNAME": "Revisa el nombre de entrenador antes de guardar.",
+      "PROFILE_FORBIDDEN": "Tu cuenta no puede editar el perfil en este momento.",
+      "PASSWORD_DEFAULT": "No pudimos actualizar la contraseña. Intenta nuevamente.",
+      "PASSWORD_FORBIDDEN": "Tu cuenta no puede cambiar la contraseña en este momento."
+    },
+    "SUMMARY": {
+      "TRAINER_CARD": "Ficha de entrenador",
+      "EMAIL": "Correo electrónico",
+      "STATUS": "Estado",
+      "VERIFIED": "Verificada",
+      "PENDING": "Pendiente",
+      "EDIT_USERNAME": "Editar nombre",
+      "SAVE_USERNAME": "Guardar nombre",
+      "CANCEL_EDIT": "Cancelar edición",
+      "CHANGE_AVATAR": "Cambiar avatar",
+      "AVATAR": "Avatar",
+      "CHANGE": "Cambiar",
+      "CHOOSE_AVATAR": "Elige tu avatar",
+      "SELECT_AVATAR": "Selecciona un ícono para tu perfil.",
+      "CLOSE_AVATAR_SELECTOR": "Cerrar selector de avatar",
+      "SELECTED_AVATAR_ALT": "Avatar seleccionado: {{name}}",
+      "PASSWORD": "Contraseña"
+    },
+    "HISTORY": {
+      "TITLE": "Historial de partidas",
+      "DESCRIPTION": "El historial aparecerá cuando el backend exponga partidas finalizadas.",
+      "EYEBROW": "HISTORIAL",
+      "SUBTITLE": "Consulta tus combates recientes, resultados y rendimiento como entrenador.",
+      "MATCHES_PLAYED": "Partidas jugadas",
+      "WINS": "Victorias",
+      "LOSSES": "Derrotas",
+      "WIN_RATE": "Porcentaje de victoria",
+      "CURRENT_STREAK": "Racha actual",
+      "FILTERS_ARIA": "Filtros de historial",
+      "EMPTY_TITLE": "Aún no hay partidas registradas",
+      "EMPTY_DESCRIPTION": "Cuando juegues tus primeras partidas, aparecerán aquí tus resultados y estadísticas.",
+      "LOADING_STATS": "Sincronizando estadísticas...",
+      "LOADING_HISTORY": "Cargando historial...",
+      "LOADING_MORE": "Cargando más partidas...",
+      "LOAD_MORE": "Cargar más",
+      "LOAD_ERROR": "No pudimos cargar el historial de partidas.",
+      "CONNECTION_ERROR": "No pudimos conectar con el servidor para cargar el historial.",
+      "ERROR_TITLE": "Historial no disponible",
+      "RETRY": "Reintentar",
+      "OPPONENT": "Rival: {{name}}",
+      "TURNS_PLAYED": "{{turns}} turnos jugados",
+      "RESULTS": {
+        "VICTORY": "Victoria",
+        "DEFEAT": "Derrota"
+      },
+      "FILTERS": {
+        "ALL": "Todas",
+        "WINS": "Victorias",
+        "LOSSES": "Derrotas",
+        "LAST_7": "Últimos 7 días",
+        "LAST_30": "Últimos 30 días"
+      }
+    }
+  },
+  "HOME": {
+    "HEADLINE": "ENTRA A LA MESA",
+    "HEADLINE_USER": "ENTRA A LA MESA {{username}}",
+    "PRIMARY_CHECKING": "Sincronizando",
+    "PRIMARY_JOINING": "Buscando rival",
+    "PRIMARY_RESUME": "Reanudar partida",
+    "PRIMARY_LOBBY": "Volver al lobby",
+    "PRIMARY_SEARCH": "Buscar partida",
+    "CONFIG": "Configurar partida",
+    "SELECT_DECK": "Elegir mazo",
+    "NO_DECKS": "Necesitas un mazo para jugar.",
+    "HOW_TO_PLAY": "Cómo jugar",
+    "MANUAL": "Manual",
+    "CUSTOM_MATCH": "Partida personalizada",
+    "ROOM_CODE": "Código de sala",
+    "DECK_SELECTION": "Selección de mazo",
+    "CREATE_DECK": "Crear mazo",
+    "ACTIVATE": "Activar",
+    "ACTIVATING": "Activando...",
+    "USE_THIS_DECK": "Usar este mazo",
+    "RANDOM": "Random",
+    "RANDOMIZING": "Random...",
+    "ACTIVE_DECK": "Mazo activo",
+    "ACTIVE_GAME_DECK_LOCK": "No podes cambiar el mazo mientras tenes una partida activa.",
+    "ACTIVE_GAME_DECK_LOCK_DETAIL": "Termina o abandona la partida actual para cambiar de mazo.",
+    "CHANGE_DECK": "Cambiar mazo",
+    "CHOOSE_ACTIVE_DECK": "Selecciona tu mazo activo",
+    "CLOSE_DECK_SELECTION": "Cerrar selección de mazo",
+    "CHOOSE_DECK": "ELIGE TU MAZO",
+    "CHOOSE_DECK_DESCRIPTION": "Puedes tener hasta 3 mazos. Cuando eliges uno aquí, lo activamos explícitamente para que la cola use ese id y el resto del sistema siga coherente.",
+    "DECK_COUNT": "{{count}} / {{max}} mazos",
+    "NO_DECKS_QUEUE": "Aún no tienes mazos cargados para entrar a cola. Ve a la sección Mazo para crear o completar uno.",
+    "REQUIRES_ADJUSTMENTS": "Requiere ajustes",
+    "EDIT_IN_DECK": "Editar en Mazo",
+    "CREATE_NEW_DECK": "Crear mazo nuevo",
+    "MAIN_MENU": "Menú principal",
+    "HOW_TO_PLAY_OBJECTIVE": "Objetivo",
+    "HOW_TO_PLAY_OBJECTIVE_DESCRIPTION": "Gana tomando todos tus premios o dejando al rival sin Pokémon en juego.",
+    "HOW_TO_PLAY_TURN": "Turno",
+    "HOW_TO_PLAY_TURN_DESCRIPTION": "Roba una carta, juega tu fase principal y ataca con tu Pokémon activo.",
+    "HOW_TO_PLAY_CONDITIONS": "Condiciones",
+    "HOW_TO_PLAY_CONDITIONS_DESCRIPTION": "Consulta Dormido, Paralizado, Confundido, Envenenado y Quemado.",
+    "MANUAL_CARD": {
+      "TITLE": "Cómo jugar",
+      "ACTION": "Manual",
+      "OBJECTIVE": {
+        "TITLE": "Objetivo",
+        "DESCRIPTION": "Gana tomando todos tus premios o dejando al rival sin Pokémon en juego."
+      },
+      "TURN": {
+        "TITLE": "Turno",
+        "DESCRIPTION": "Roba una carta, juega tu fase principal y ataca con tu Pokémon activo."
+      },
+      "CONDITIONS": {
+        "TITLE": "Condiciones",
+        "DESCRIPTION": "Consulta Dormido, Paralizado, Confundido, Envenenado y Quemado."
+      }
+    },
+    "MANUAL": {
+      "TITLE": "Manual del juego",
+      "CLOSE": "Cerrar manual",
+      "SECTIONS": {
+        "OBJECTIVE": {
+          "TITLE": "Objetivo",
+          "BODY": "Gana la partida tomando todas tus cartas de Premio o dejando a tu rival sin Pokémon en juego. Cada jugador empieza con 6 cartas de Premio boca abajo; cada vez que noqueas un Pokémon rival, tomas 1 (o 2 si es Pokémon-EX). El primero en tomar todas las suyas gana."
+        },
+        "SETUP": {
+          "TITLE": "Preparación",
+          "BODY": "Cada jugador baraja su mazo de 60 cartas y roba 7. Si no tenés ningún Pokémon Básico en mano, mostrá tu mano, barajá de vuelta y robá 7 nuevas (mulligan): tu rival roba 1 carta extra por cada mulligan tuyo. Luego colocá 1 Pokémon Básico como Activo y hasta 5 más en la Banca, todos boca abajo. Separás 6 cartas de Premio y se lanza una moneda para decidir quién va primero."
+        },
+        "TURN": {
+          "TITLE": "Estructura del turno",
+          "DRAW_LABEL": "Robar",
+          "DRAW_BODY": "Robá 1 carta de tu mazo. Si tu mazo está vacío al intentar robar, perdés.",
+          "MAIN_LABEL": "Fase principal",
+          "MAIN_BODY": "Podés hacer estas acciones en cualquier orden y tantas veces como sean válidas: colocar Pokémon Básicos en la Banca, evolucionar Pokémon (no el mismo turno en que los jugaste), unir 1 carta de Energía a cualquier Pokémon propio, jugar cartas de Entrenador, retirarte (1 vez por turno) y usar habilidades.",
+          "ATTACK_LABEL": "Atacar",
+          "ATTACK_BODY": "Podés atacar una sola vez con tu Pokémon Activo. El ataque es opcional, pero termina el turno automáticamente. El jugador que va primero no puede atacar en su primer turno."
+        },
+        "TRAINERS": {
+          "TITLE": "Cartas de Entrenador",
+          "INTRO": "Las cartas de Entrenador tienen cuatro tipos. Cada uno se juega de forma distinta:",
+          "ITEM_LABEL": "Objeto",
+          "ITEM_BODY": "Sin límite por turno. Efecto inmediato; la carta se descarta al usarla.",
+          "SUPPORTER_LABEL": "Partidario",
+          "SUPPORTER_BODY": "Solo 1 por turno. Efecto inmediato; la carta se descarta al usarla.",
+          "STADIUM_LABEL": "Estadio",
+          "STADIUM_BODY": "Queda en juego en la zona compartida. Solo puede haber 1 Estadio activo; si jugás otro, el anterior se descarta.",
+          "TOOL_LABEL": "Herramienta Pokémon",
+          "TOOL_BODY": "Se equipa a un Pokémon propio. Máximo 1 herramienta por Pokémon. Permanece equipada hasta que el Pokémon salga del juego, momento en que se descarta junto a él."
+        },
+        "CONDITIONS": {
+          "TITLE": "Condiciones especiales",
+          "INTRO": "Solo el Pokémon Activo puede tener condiciones. Se eliminan al retirarse, evolucionar o ser reemplazado.",
+          "ASLEEP_LABEL": "Dormido",
+          "ASLEEP_BODY": "No puede atacar ni retirarse. Entre turnos: lanzá moneda. Cara = se despierta; Cruz = sigue dormido.",
+          "BURNED_LABEL": "Quemado",
+          "BURNED_BODY": "Entre turnos: lanzá moneda. Cruz = recibe 20 de daño; Cara = no recibe daño.",
+          "CONFUSED_LABEL": "Confundido",
+          "CONFUSED_BODY": "Al intentar atacar: lanzá moneda. Cruz = el ataque falla y el Pokémon recibe 30 de daño a sí mismo.",
+          "PARALYZED_LABEL": "Paralizado",
+          "PARALYZED_BODY": "No puede atacar ni retirarse. Se cura automáticamente al final del siguiente turno completo.",
+          "POISONED_LABEL": "Envenenado",
+          "POISONED_BODY": "Recibe 10 de daño automáticamente entre turnos. No requiere moneda."
+        },
+        "VICTORY": {
+          "TITLE": "Ganar y perder",
+          "PRIZES_LABEL": "Victoria por Premios",
+          "PRIZES_BODY": "El primero en tomar su última carta de Premio gana.",
+          "KNOCKOUT_LABEL": "Victoria por KO total",
+          "KNOCKOUT_BODY": "Si noqueas el Pokémon Activo rival y no tiene Pokémon en Banca para reemplazarlo, ganás.",
+          "DECK_LABEL": "Derrota por mazo vacío",
+          "DECK_BODY": "Si intentás robar al inicio de tu turno y tu mazo está vacío, perdés."
+        }
+      }
+    },
+    "CUSTOM": {
+      "CLOSE": "Cerrar partida personalizada",
+      "TITLE": "Partida personalizada",
+      "CHOOSE_MODE": "Elige tu modo de juego",
+      "PRIVATE_ROOM": "Sala privada",
+      "BOT": "Bot",
+      "PRIVATE_DESCRIPTION": "Crea una sala privada y comparte el código con tus amigos, o ingresa un código para unirte a una existente.",
+      "CREATE_ROOM": "Crear sala",
+      "ACCESS_CODE": "Tu código de acceso",
+      "COPY_CODE": "Copiar código",
+      "CODE_COPIED": "¡Código copiado!",
+      "CREATE_AND_JOIN": "Crear e ingresar",
+      "JOIN_ROOM": "Unirse a sala",
+      "ENTER_CODE": "Ingresa el código",
+      "CODE_PLACEHOLDER": "XXXX-XXXX",
+      "CONNECTING": "Conectando...",
+      "JOIN": "Ingresar a sala",
+      "BOT_DESCRIPTION": "Juega partidas de práctica contra bots. Elige la dificultad y pon a prueba tus mazos.",
+      "EASY": "Fácil",
+      "EASY_DESCRIPTION": "Decisiones básicas y ritmo tranquilo.",
+      "MEDIUM": "Media",
+      "MEDIUM_DESCRIPTION": "Equilibrio entre defensa y ataque.",
+      "HARD": "Difícil",
+      "HARD_DESCRIPTION": "Respuestas más agresivas y optimizadas.",
+      "PLAY_BOT": "Jugar contra bot"
+    }
+  },
+  "OAK_TUTORIAL": {
+    "START": "Tutorial con Oak",
+    "HELP_BUTTON": {
+      "LABEL": "Iniciar tutorial de la página actual",
+      "TITLE": "Tutorial"
+    },
+    "ACCESSIBILITY": {
+      "PROFESSOR_ALT": "Profesor Oak explicando el tutorial"
+    },
+    "BUTTONS": {
+      "CONTINUE": "Continuar",
+      "PREVIOUS": "Anterior",
+      "FINISH": "Listo",
+      "CLOSE": "Cerrar"
+    },
+    "STEPS": {
+      "WELCOME": {
+        "TITLE": "Profesor Oak",
+        "DESCRIPTION": "¡Eeeh, Cacho! Bienvenido a TCG Online Liga Pokémon. Soy el Profesor Oak y te voy a mostrar esta pantalla tranqui, paso a paso."
+      },
+      "NAVBAR": {
+        "TITLE": "Barra principal",
+        "DESCRIPTION": "Arriba tenés la navegación principal, Cacho. Desde acá te movés por Inicio, Mazo y Pokédex sin perderte en el camino."
+      },
+      "HOME": {
+        "TITLE": "Inicio",
+        "DESCRIPTION": "Esta es la pantalla de Inicio. Acá revisás tu estado y preparás todo antes de buscar una partida."
+      },
+      "DECK_NAV": {
+        "TITLE": "Mazo",
+        "DESCRIPTION": "Desde Mazo podés crear, revisar o elegir un mazo válido. Sin uno listo no hay duelo, Cacho."
+      },
+      "POKEDEX": {
+        "TITLE": "Pokédex",
+        "DESCRIPTION": "En la Pokédex podés chusmear cartas, tipos y ataques para pensar tu estrategia antes de jugar."
+      },
+      "LANGUAGE": {
+        "TITLE": "Idioma",
+        "DESCRIPTION": "Este botón cambia toda la interfaz entre español e inglés. El tutorial también usa el idioma que tengas activo."
+      },
+      "USER_STATUS": {
+        "TITLE": "Usuario y estado",
+        "DESCRIPTION": "Acá ves tu usuario y si la cuenta está lista. Igual necesitás un mazo válido antes de mandarte a la cancha."
+      },
+      "MAIN_PANEL": {
+        "TITLE": "Mesa principal",
+        "DESCRIPTION": "Este panel es tu base de operaciones: elegís el mazo y arrancás el duelo cuando esté todo preparado."
+      },
+      "INVALID_DECK": {
+        "TITLE": "Mazo activo",
+        "DESCRIPTION": "Este estado te avisa si el mazo activo sirve para jugar. Si figura inválido, falta elegir o preparar uno válido."
+      },
+      "CHOOSE_DECK": {
+        "TITLE": "Elegir o crear mazo",
+        "DESCRIPTION": "Ahora elegí un camino, Cacho: tocá Elegir mazo para abrir la selección o tocá Mazo arriba para crear y editar uno."
+      },
+      "SEARCH_MATCH": {
+        "TITLE": "Buscar partida",
+        "DESCRIPTION": "Cuando tengas un mazo válido, este botón te permite buscar rival y entrar al duelo."
+      },
+      "CUSTOM_MATCH": {
+        "TITLE": "Partida personalizada",
+        "DESCRIPTION": "La partida personalizada te deja elegir una modalidad más específica para jugar con amigos o practicar."
+      },
+      "HOW_TO_PLAY": {
+        "TITLE": "Cómo jugar",
+        "DESCRIPTION": "Este panel resume las reglas principales para que llegues a la mesa con una idea clara."
+      },
+      "OBJECTIVE": {
+        "TITLE": "Objetivo",
+        "DESCRIPTION": "Ganás tomando todos tus premios o dejando al rival sin Pokémon en juego. Cortito y al pie, Cacho."
+      },
+      "TURN": {
+        "TITLE": "Turno",
+        "DESCRIPTION": "En cada turno robás una carta, hacés tus acciones principales y después atacás con tu Pokémon activo."
+      },
+      "CONDITIONS": {
+        "TITLE": "Condiciones especiales",
+        "DESCRIPTION": "Dormido, Paralizado, Confundido, Envenenado y Quemado pueden cambiarte la estrategia. Prestales atención."
+      },
+      "MANUAL": {
+        "TITLE": "Manual",
+        "DESCRIPTION": "Si te queda alguna duda, el Manual te permite repasar las reglas con más detalle antes de jugar."
+      },
+      "FINISH": {
+        "TITLE": "Listo, Cacho",
+        "DESCRIPTION": "Primero armá o elegí un mazo válido, después buscá partida y salí a jugar. Con calma y estrategia: ¡a romperla, culiau!"
+      }
+    },
+    "DECK": {
+      "EMPTY": {
+        "WELCOME": {
+          "TITLE": "Mazos",
+          "DESCRIPTION": "Bienvenido a la sección de mazos. Acá preparás el mazo que después vas a usar para jugar partidas."
+        },
+        "SLOTS": {
+          "TITLE": "Espacios de mazo",
+          "DESCRIPTION": "Podés tener hasta 3 mazos guardados. Cada espacio representa un lugar disponible para crear, revisar o administrar un mazo."
+        },
+        "CREATE_FROM_EMPTY": {
+          "TITLE": "Crear mazo",
+          "DESCRIPTION": "Este espacio está vacío. Tocá cualquier parte del cuadro o el botón con el signo + para empezar a crear un mazo nuevo."
+        }
+      },
+      "BUILDER": {
+        "NAME": {
+          "TITLE": "Nombre del mazo",
+          "DESCRIPTION": "Primero poné un nombre para reconocer tu mazo. Ese nombre después aparece en la lista de mazos guardados, así que conviene que sea claro."
+        },
+        "RANDOM": {
+          "TITLE": "Randomizar",
+          "DESCRIPTION": "Si es tu primera vez o querés armar algo rápido, usá Random. El sistema te genera un mazo automáticamente con cartas válidas, como para arrancar sin volverte loco."
+        },
+        "CLEAR": {
+          "TITLE": "Limpiar",
+          "DESCRIPTION": "Limpiar borra todas las cartas seleccionadas del mazo actual. Sirve para empezar de cero sin salir de la pantalla."
+        },
+        "SAVE": {
+          "TITLE": "Guardar",
+          "DESCRIPTION": "Cuando el mazo tenga 60 cartas y cumpla las reglas, podés guardarlo desde este botón. Si algo no está válido, el sistema te va a avisar."
+        },
+        "CARDS": {
+          "TITLE": "Cartas disponibles",
+          "DESCRIPTION": "Abajo tenés todas las cartas disponibles para armar el mazo. Desde acá podés elegir Pokémon, energías y entrenadores."
+        },
+        "SEARCH": {
+          "TITLE": "Buscar cartas",
+          "DESCRIPTION": "Usá el buscador para encontrar una carta por nombre. Viene joya cuando ya sabés qué carta querés agregar y no querés scrollear de más."
+        },
+        "FILTERS": {
+          "TITLE": "Filtros",
+          "DESCRIPTION": "Estos filtros te dejan ver todas las cartas o separar por Pokémon, Energía y Entrenador. Es una forma simple de ordenar el quilombo."
+        },
+        "ADD_CARD": {
+          "TITLE": "Agregar cartas",
+          "DESCRIPTION": "Tocá una carta para agregarla al mazo. También podés manejar la cantidad desde la lista de la derecha."
+        },
+        "DECK_PANEL": {
+          "TITLE": "Panel del mazo",
+          "DESCRIPTION": "A la derecha aparece el mazo que estás armando. Ahí ves las cartas seleccionadas, sus copias y la cantidad total."
+        },
+        "COUNTER": {
+          "TITLE": "Cantidad de cartas",
+          "DESCRIPTION": "Este contador muestra cuántas cartas llevás agregadas. Para guardar, el mazo tiene que llegar a 60 de 60."
+        },
+        "RULES": {
+          "TITLE": "Reglas del mazo",
+          "DESCRIPTION": "Estas reglas te avisan si el mazo es válido. Tenés que cumplirlas antes de guardar, como cuando el parcial te exige respetar bien la consigna."
+        },
+        "SELECTED_CARDS": {
+          "TITLE": "Cartas agregadas",
+          "DESCRIPTION": "Acá se listan las cartas que ya forman parte del mazo. Cada fila muestra la carta, el nombre y cuántas copias agregaste."
+        },
+        "QUANTITY_BUTTONS": {
+          "TITLE": "Agregar o quitar copias",
+          "DESCRIPTION": "Con el + agregás una copia más y con el - quitás una copia. El indicador del medio muestra cuántas copias tenés de esa carta."
+        },
+        "TYPE_HIGHLIGHT": {
+          "TITLE": "Tipos de carta",
+          "DESCRIPTION": "Las cartas tienen un resaltado visual para ayudarte a distinguir si son Pokémon, energías o entrenadores sin tener que leer todo de una."
+        },
+        "BACK": {
+          "TITLE": "Volver",
+          "DESCRIPTION": "Desde Volver podés regresar a tus espacios de mazo. Si ya guardaste, vas a ver el mazo creado en su espacio."
+        }
+      },
+      "WITH_DECKS": {
+        "ACTIVE_DECK": {
+          "TITLE": "Mazo activo",
+          "DESCRIPTION": "Este cartel te muestra cuál es tu mazo activo. Ese es el mazo que se usa cuando entrás a jugar una partida."
+        },
+        "DECK_CARD": {
+          "TITLE": "Mazo guardado",
+          "DESCRIPTION": "Este es uno de tus mazos guardados. Acá ves el nombre y un resumen con la cantidad de Pokémon, energías y entrenadores."
+        },
+        "EDIT": {
+          "TITLE": "Editar",
+          "DESCRIPTION": "Editar te lleva a una pantalla donde se cargan todas las cartas del mazo para que puedas modificarlo sin arrancar de cero."
+        },
+        "ACTIVATE": {
+          "TITLE": "Activar",
+          "DESCRIPTION": "Activar marca este mazo como el mazo principal. Si tenés varios, elegís con cuál vas a jugar. Cambiás el mazo activo y listo."
+        },
+        "ACTIVATE_ACTIVE": {
+          "DESCRIPTION": "Este mazo ya está activo. Cuando un mazo está activo, es el que vas a usar para jugar partidas."
+        },
+        "DELETE": {
+          "TITLE": "Borrar",
+          "DESCRIPTION": "Borrar elimina este mazo guardado. Usalo con cuidado, porque después perdés esa configuración."
+        },
+        "DECK_CARDS": {
+          "TITLE": "Cartas del mazo",
+          "DESCRIPTION": "Abajo aparecen las cartas del mazo activo con la cantidad exacta de copias que tiene cada una."
+        },
+        "POKEDEX": {
+          "TITLE": "Ver en Pokédex",
+          "DESCRIPTION": "Si tocás una carta del mazo, te lleva a la Pokédex para verla con más detalle."
+        },
+        "OPEN_EDIT": {
+          "TITLE": "Entrar a edición",
+          "DESCRIPTION": "Ahora sí, tocá Editar para abrir la pantalla de edición y seguir el tutorial desde ahí."
+        }
+      },
+      "EDIT": {
+        "WELCOME": {
+          "TITLE": "Editar mazo",
+          "DESCRIPTION": "Esta es la pantalla de edición, Cacho. Acá se cargan las cartas actuales de tu mazo para que puedas retocarlo sin arrancar de cero."
+        },
+        "LOADED_CARDS": {
+          "TITLE": "Cartas cargadas",
+          "DESCRIPTION": "A la derecha ya aparecen las cartas que forman parte del mazo. Podés sumar o quitar copias con los botones + y -, así lo vas ajustando tranqui."
+        },
+        "MODIFY_QUANTITY": {
+          "TITLE": "Modificar cantidades",
+          "DESCRIPTION": "Usá el + para agregar copias y el - para quitarlas. El contador del medio te muestra cuántas tenés de esa carta, así no te pasás de rosca."
+        },
+        "SAVE_CHANGES": {
+          "TITLE": "Guardar cambios",
+          "DESCRIPTION": "Cuando termines de editar y el mazo siga cumpliendo las reglas, guardá los cambios desde este botón. Acá no hay magia rara: si está válido, queda listo para jugar."
+        }
+      }
+    },
+    "DECK_GUIDE": {
+      "EMPTY": {
+        "WELCOME": {
+          "TITLE": "Zona de mazos",
+          "DESCRIPTION": "Bienvenido a la zona de mazos. Acá armás el equipo antes de salir a jugar, así que arrancamos tranqui y sin apuro."
+        },
+        "SLOTS": {
+          "TITLE": "Espacios vacíos",
+          "DESCRIPTION": "Estos cuadrados vacíos son tus espacios de mazo. Podés tener hasta 3. Si están vacíos, tocás cualquiera y te manda a crear uno. Fácil, Cacho."
+        }
+      },
+      "EXISTING": {
+        "ACTIVE_DECK": {
+          "TITLE": "Mazo activo",
+          "DESCRIPTION": "Este cartel te muestra cuál es tu mazo activo. Ese es el que se usa cuando entrás a jugar una partida. Si está activo, sale a la cancha."
+        },
+        "DECK_CARD": {
+          "TITLE": "Tarjeta del mazo",
+          "DESCRIPTION": "Acá ves el mazo que creaste, con su nombre y el resumen de cartas: Pokémon, energías y entrenadores. Es una vista rápida para saber qué tenés armado."
+        },
+        "STATS": {
+          "TITLE": "Resumen de cartas",
+          "DESCRIPTION": "Estos números separan cuántas cartas Pokémon, energías y entrenadores tiene el mazo. Así ves rápido cómo está repartido."
+        },
+        "EDIT": {
+          "TITLE": "Editar",
+          "DESCRIPTION": "Tenés dos caminos: tocá Editar para abrir el mazo y seguir el tutorial en el editor, o dale a Continuar para quedarte acá y revisar las cartas del mazo activo."
+        },
+        "ACTIVATE": {
+          "TITLE": "Activar",
+          "DESCRIPTION": "Activar pone este mazo como principal. Si tenés varios, elegís con cuál vas a jugar. Es como cambiar de estrategia, pero sin romper nada."
+        },
+        "ACTIVATE_ACTIVE": {
+          "DESCRIPTION": "Este mazo ya está activo. Ese es el que sale a la cancha cuando arrancás una partida, así que por acá venís joya."
+        },
+        "DELETE": {
+          "TITLE": "Borrar",
+          "DESCRIPTION": "Borrar elimina el mazo. Usalo con cuidado, porque después no quiero verte sufriendo por haberlo borrado sin querer."
+        },
+        "ACTIVE_CARDS": {
+          "TITLE": "Cartas del mazo activo",
+          "DESCRIPTION": "Abajo se ven las cartas exactas del mazo activo, con la cantidad real de copias que tiene cada una. Acá revisás si quedó bien armado o si todavía le falta un ajuste."
+        },
+        "POKEDEX": {
+          "TITLE": "Ir a Pokédex",
+          "DESCRIPTION": "Tocá una carta del panel inferior para abrir su detalle en la Pokédex. Ahí vas a ver la información completa de esa carta."
+        },
+        "FINISH": {
+          "TITLE": "Listo",
+          "DESCRIPTION": "Listo. Ya sabés crear, editar, activar, borrar y revisar mazos. Ahora sí, menos vueltas y a jugar."
+        }
+      },
+      "EDITOR": {
+        "WELCOME": {
+          "TITLE": "Editor de mazo",
+          "DESCRIPTION": "Entraste al editor, Cacho. Acá se cargan las cartas que ya tenía tu mazo y podés modificarlo sin hacer quilombo ni empezar todo de nuevo."
+        },
+        "LOADED_CARDS": {
+          "TITLE": "Cartas del mazo",
+          "DESCRIPTION": "Estas son las cartas que ya forman parte del mazo. Revisalas con calma, porque una copia de más o de menos te puede desacomodar toda la estrategia."
+        },
+        "QUANTITY": {
+          "TITLE": "Sumar o quitar copias",
+          "DESCRIPTION": "Con el + y el - ajustás la cantidad de cada carta. Es como ordenar responsabilidades en Programación III: cada cosa en su lugar y el mazo queda mucho más prolijo."
+        },
+        "SAVE": {
+          "TITLE": "Guardar edición",
+          "DESCRIPTION": "Cuando el mazo quede como querés y siga cumpliendo las reglas, guardás los cambios. Ahí sí, Cacho, queda listo para volver a la cancha."
+        }
+      },
+      "BUILDER": {
+        "NAME": {
+          "TITLE": "Nombre del mazo",
+          "DESCRIPTION": "Primero poné el nombre del mazo. Mandale algo con personalidad. Después, cuando lo actives, ese va a ser el que uses para jugar."
+        },
+        "RANDOM": {
+          "TITLE": "Botón Random",
+          "DESCRIPTION": "Si es tu primera vez o estás más perdido que estudiando patrones antes del parcial, tocá Random y el sistema te arma un mazo automáticamente."
+        },
+        "CLEAR": {
+          "TITLE": "Botón Limpiar",
+          "DESCRIPTION": "Limpiar borra todas las cartas seleccionadas del mazo actual. Ojo con este botón, porque te deja el mazo en cero."
+        },
+        "SAVE": {
+          "TITLE": "Botón Guardar",
+          "DESCRIPTION": "Guardar confirma el mazo, pero solo cuando cumple las reglas. Necesitás 60 cartas, al menos un Pokémon básico y respetar el máximo de copias permitido."
+        },
+        "ADD_CARD": {
+          "TITLE": "Añadir carta",
+          "DESCRIPTION": "Tocá la carta resaltada para agregarla al mazo, cacho. Sin eso no podemos seguir.",
+          "REQUIRED": "Cacho, primero seleccioná una carta para añadir al mazo. No es tan difícil, dale.",
+          "NO_CARDS": "No hay cartas disponibles para añadir. Probá limpiar los filtros para encontrar una carta."
+        },
+        "CARD_LIBRARY": {
+          "TITLE": "Biblioteca de cartas",
+          "DESCRIPTION": "Abajo tenés todas las cartas disponibles. Desde acá elegís qué sumar al mazo. Cada carta mantiene su estilo y se puede distinguir por tipo."
+        },
+        "SEARCH": {
+          "TITLE": "Buscador",
+          "DESCRIPTION": "Este buscador sirve para encontrar cartas por nombre. Ideal cuando no querés scrollear hasta jubilarte."
+        },
+        "FILTERS": {
+          "TITLE": "Filtros por tipo",
+          "DESCRIPTION": "Con estos filtros separás entre todas las cartas, Pokémon, energías y entrenadores. Más ordenado, como cuando separás lógica del componente y del servicio en Angular."
+        },
+        "SELECTED_LIST": {
+          "TITLE": "Lista de cartas añadidas",
+          "DESCRIPTION": "A la derecha aparece todo lo que ya agregaste al mazo. Acá controlás cantidades, cartas repetidas y si tu creación va tomando forma."
+        },
+        "RULES": {
+          "TITLE": "Reglas del mazo",
+          "DESCRIPTION": "Estos indicadores te dicen si el mazo cumple las reglas: 60 cartas, máximo permitido por carta y al menos un Pokémon básico. Si algo está mal, no se guarda."
+        },
+        "COUNT": {
+          "TITLE": "Cantidad de cartas",
+          "DESCRIPTION": "Acá controlás cuántas cartas llevás en total. Para que el mazo quede legal, tiene que cerrar en 60 justitas, ni una más ni una menos."
+        },
+        "QUANTITY": {
+          "TITLE": "Botones + y -",
+          "DESCRIPTION": "Con el más y el menos sumás o quitás copias de una carta. No te emociones de más, porque el sistema respeta los límites del mazo."
+        },
+        "TYPE_HIGHLIGHT": {
+          "TITLE": "Resaltado por tipo",
+          "DESCRIPTION": "Fijate que las cartas tienen resaltados visuales según el tipo. Eso te ayuda a diferenciar Pokémon, energías y entrenadores sin leer todo de una."
+        },
+        "MOBILE": {
+          "ADD_CARD": {
+            "TITLE": "Agregar una carta",
+            "DESCRIPTION": "Tocá una carta para sumarla al mazo, Cacho. En el celular no hay una lista fija al costado: la cantidad se maneja desde un panel que se abre aparte."
+          },
+          "OPEN_PANEL": {
+            "TITLE": "Abrir el panel del mazo",
+            "DESCRIPTION": "Tocá este botón para abrir el panel donde se maneja la cantidad de la carta que acabás de agregar."
+          },
+          "QUANTITY": {
+            "TITLE": "Sumar o quitar copias",
+            "DESCRIPTION": "Dentro del panel, usá el + para agregar copias (eso confirma que la sumaste) y el - para quitarlas. Fácil, sin vueltas."
+          },
+          "CURRENT_DECK": {
+            "TITLE": "Cartas agregadas",
+            "DESCRIPTION": "Este mismo panel te muestra todas las cartas que ya forman parte del mazo. Podés revisarlo cuando quieras tocando el botón de abajo."
+          }
+        }
+      }
+    },
+    "POKEDEX_GUIDE": {
+      "INTRO": {
+        "TITLE": "Pokédex",
+        "DESCRIPTION": "Bueno, Cacho: esta es la Pokédex, el machete legal del entrenador. Acá podés revisar todas las cartas antes de armar el mazo como si fuera un patrón Interpreter un viernes a la noche."
+      },
+      "CARD_IMAGE": {
+        "TITLE": "Imagen de la carta",
+        "DESCRIPTION": "Acá ves bien grande la carta seleccionada. Mirala tranqui: a veces la imagen ya te avisa si te salva la partida o si conviene buscar otra opción."
+      },
+      "CARD_INFO": {
+        "TITLE": "Datos de la carta",
+        "DESCRIPTION": "Este panel junta categoría, subtipo, evolución, tipo, retirada, debilidades, resistencias, ataques y habilidades cuando correspondan. No todas las cartas traen todo el combo."
+      },
+      "EMPTY_DATA": {
+        "TITLE": "No aplica o sin dato",
+        "DESCRIPTION": "Cuando un valor no corresponde o no está disponible, vas a ver No aplica o Sin dato. Una energía no necesita ataques de Pokémon: cada responsabilidad en su lugar, como en un buen Strategy."
+      },
+      "ATTACKS": {
+        "TITLE": "Ataques y habilidades",
+        "DESCRIPTION": "Acá aparecen costos, nombre, daño y efecto de los ataques, además de las habilidades disponibles en la información de la carta. Si no tiene, la Pokédex te lo avisa sin inventar datos."
+      },
+      "SEARCH": {
+        "TITLE": "Buscador",
+        "DESCRIPTION": "Escribí una parte del nombre y la lista se filtra al toque. Podés probarlo ahora o seguir con Continuar."
+      },
+      "FILTERS": {
+        "TITLE": "Filtros",
+        "DESCRIPTION": "Estos botones separan todas las cartas, Pokémon, energías y entrenadores. Podés tocarlos ahora para encontrar más rápido lo que necesitás."
+      },
+      "CARD_LIST": {
+        "TITLE": "Lista de cartas",
+        "DESCRIPTION": "A la derecha tenés todas las cartas que coinciden con la búsqueda y el filtro. Podés recorrer la lista sin salir del tutorial."
+      },
+      "SELECT_CARD": {
+        "TITLE": "Seleccionar una carta",
+        "DESCRIPTION": "Tocá cualquier carta de la lista y se actualizan la imagen y todos los datos del panel principal. Probá tranquilo, Cacho, y después seguí con Continuar."
+      },
+      "FINISH": {
+        "TITLE": "Listo, Cacho",
+        "DESCRIPTION": "Ya sabés buscar, filtrar, seleccionar cartas y revisar su información completa. Ahora sí, tenés la Pokédex lista para consultar antes de armar o ajustar un mazo."
+      },
+      "MOBILE": {
+        "CARD_GRID": {
+          "TITLE": "Grilla de cartas",
+          "DESCRIPTION": "Acá abajo tenés la grilla con todas las cartas que coinciden con la búsqueda y el filtro. En el celular no se ve el detalle fijo: tocás una carta para abrirlo."
+        },
+        "OPEN_CARD": {
+          "TITLE": "Abrí una carta",
+          "DESCRIPTION": "Tocá una carta de la grilla para ver su información completa, Cacho."
+        },
+        "CARD_MODAL": {
+          "TITLE": "Detalle de la carta",
+          "DESCRIPTION": "En el celular la información completa se muestra en este cartel. Categoría, tipo, ataques y demás quedan todos acá adentro."
+        },
+        "CLOSE_MODAL": {
+          "TITLE": "Cerrar el detalle",
+          "DESCRIPTION": "Tocá la X o el fondo oscuro para cerrar este cartel y volver a la grilla de cartas."
+        }
+      }
+  },
+    "PROFILE_GUIDE": {
+      "WELCOME": {
+        "TITLE": "Perfil del entrenador",
+        "DESCRIPTION": "Bueno, Cacho, acá está tu perfil: datos de cuenta, seguridad e historial. No es más difícil que el patrón Interpreter, tranqui."
+      },
+      "TRAINER_DATA": {
+        "TITLE": "Datos del entrenador",
+        "DESCRIPTION": "En este bloque ves nombre de usuario, correo verificado y cambio de contraseña. Como en Angular: cada responsabilidad en su lugar, bien piola."
+      },
+      "AVATAR": {
+        "TITLE": "Avatar de entrenador",
+        "DESCRIPTION": "Este avatar también lo podés cambiar tocándolo, Cacho. Es opcional: podés probarlo ahora o seguir con Continuar como campeón."
+      },
+      "USERNAME": {
+        "TITLE": "Nombre de usuario",
+        "DESCRIPTION": "Acá aparece tu nombre de entrenador, Cacho. Es el nombre con el que te reconocen cuando entrás a jugar."
+      },
+      "EDIT_USERNAME": {
+        "TITLE": "Editar nombre",
+        "DESCRIPTION": "Tocá el lapicito para activar el modo edición, Cacho. El tutorial avanza cuando aparezcan la tilde y la cruz."
+      },
+      "SAVE_CANCEL_USERNAME": {
+        "TITLE": "Guardar o cancelar",
+        "DESCRIPTION": "Al editar aparecen la tilde para guardar y la cruz para cancelar. Uno confirma y el otro hace rollback como si nada hubiera pasado."
+      },
+      "EMAIL_VERIFIED": {
+        "TITLE": "Correo verificado",
+        "DESCRIPTION": "Acá ves el correo asociado y la insignia que confirma que la cuenta está verificada y lista para jugar."
+      },
+      "CHANGE_PASSWORD": {
+        "TITLE": "Cambiar contraseña",
+        "DESCRIPTION": "Este botón sirve para iniciar el cambio de contraseña, pero durante el tutorial solo lo explicamos: no se abre el flujo ni se envía ningún código."
+      },
+      "PASSWORD_CODE": {
+        "TITLE": "Código de verificación",
+        "DESCRIPTION": "El código llega por correo, dura 5 minutos y se puede reenviar después de 60 segundos. Solo con un código válido se habilita la contraseña nueva."
+      },
+      "OPEN_HISTORY": {
+        "TITLE": "Abrir historial",
+        "DESCRIPTION": "Ahora tocá Historial de partidas para seguir, Cacho. El tutorial espera el clic real antes de cambiar de sección."
+      },
+      "HISTORY_OVERVIEW": {
+        "TITLE": "Historial de partidas",
+        "DESCRIPTION": "Acá ves cómo venís jugando: partidas, victorias, derrotas, porcentaje y racha. Un dashboard competitivo sin vender humo, Cacho."
+      },
+      "TOTAL_GAMES": {
+        "TITLE": "Partidas jugadas",
+        "DESCRIPTION": "Este número muestra el total de partidas. Cuanta más data tengas, mejor podés decidir si la estrategia viene joya o necesita refactor."
+      },
+      "WINS_LOSSES": {
+        "TITLE": "Victorias y derrotas",
+        "DESCRIPTION": "Acá aparecen ganadas y perdidas. La victoria suma; la derrota enseña, como un test que marca exactamente dónde metiste la pata."
+      },
+      "WINS": {
+        "TITLE": "Victorias",
+        "DESCRIPTION": "Acá ves cuántas partidas ganaste. Cada victoria suma, Cacho, más lindo que cuando te sale bien un patrón Strategy."
+      },
+      "LOSSES": {
+        "TITLE": "Derrotas",
+        "DESCRIPTION": "Acá ves las derrotas. No te persigas: perder también enseña, como un test que marca justo dónde metiste la pata."
+      },
+      "WIN_RATE": {
+        "TITLE": "Porcentaje de victorias",
+        "DESCRIPTION": "Compara victorias contra partidas jugadas. Si baja, capaz toca cambiar la Strategy, Cacho."
+      },
+      "CURRENT_STREAK": {
+        "TITLE": "Racha actual",
+        "DESCRIPTION": "Indica cuántas partidas seguidas venís ganando. Es como un State: mientras ganás, seguís en modo imparable."
+      },
+      "HISTORY_FILTERS": {
+        "TITLE": "Filtros del historial",
+        "DESCRIPTION": "Podés ver todas, victorias, derrotas, últimos 7 días o últimos 30 días. Tocá cualquier filtro para probarlo."
+      },
+      "MATCH_LIST": {
+        "TITLE": "Lista de partidas",
+        "DESCRIPTION": "Acá aparece cada partida y su resultado. Si todavía no jugaste, el estado vacío se completa cuando metas tu primera partida."
+      },
+      "FINISH": {
+        "TITLE": "Perfil listo",
+        "DESCRIPTION": "Listo, Cacho: datos, seguridad e historial bajo control. Más ordenado que un componente con inject, signals y responsabilidades separadas."
+      }
+    }
+  },
+  "PLAY": {
+    "MATCHMAKING": "MATCHMAKING",
+    "MATCH_FOUND": "PARTIDA ENCONTRADA",
+    "RIVAL_FOUND": "RIVAL LOCALIZADO",
+    "SEARCHING_MATCH": "BUSCANDO PARTIDA",
+    "MATCH_OK": "MATCH OK",
+    "MATCH_FOUND_TITLE": "Partida Encontrada",
+    "MATCH_FOUND_BODY": "Cargando tablero y preparando la mesa...",
+    "TRANSITION_DESCRIPTION": "Preparando el tablero y cerrando el handoff final con el backend.",
+    "FOUND_DESCRIPTION": "El backend ya asignó rival. Seguimos esperando el gameId definitivo para entrar a la mesa.",
+    "SEARCH_DESCRIPTION": "Estamos consultando matchmaking en tiempo real mientras la cola busca un rival compatible.",
+    "TIME": "Tiempo",
+    "ACTIVE_DECK": "Mazo activo",
+    "PLAYERS": "Jugadores",
+    "STATUS": "Estado",
+    "ENTERING_BOARD": "Entrando al tablero",
+    "RIVAL_ASSIGNED": "Rival asignado",
+    "CANCEL_SEARCH": "Cancelar búsqueda",
+    "CANCELLING": "Cancelando...",
+    "NO_ACTIVE_DECK": "Sin mazo activo",
+    "NO_TIMESTAMP": "Sin timestamp",
+    "POKEBALL_ALT": "Poké Ball buscando rival",
+    "CHECKLIST_VALIDATION_GAP": "No pudimos interpretar el detalle de validación del servidor. Revisa tu mazo o intenta nuevamente.",
+    "MATCHMAKING_GAP": "Ocurrió un error al consultar el estado de emparejamiento. Intenta nuevamente en unos segundos.",
+    "MATCH_FOUND_PENDING": "Se encontró un rival, pero la apertura automática de la partida aún está pendiente.",
+    "ROOM_HANDOFF_GRACE": "El emparejamiento sigue cerrando la transición. Conservaremos tu sala unos segundos más antes de darla por perdida.",
+    "AUTOMATIC_OPEN_PENDING": "La apertura automática de la partida aún está pendiente. Mientras tanto, puedes continuar o cancelar la búsqueda.",
+    "INVALID_DECK": "Debes seleccionar un mazo válido antes de buscar una partida."
+  },
+  "POKEDEX": {
+    "EYEBROW": "POKÉDEX / Catálogo",
+    "TITLE": "Explorador de cartas",
+    "DETAILS": "DETALLE",
+    "LIST": "LISTADO",
+    "CARDS": "Cartas",
+    "CATEGORY": "Categoría",
+    "SUBTYPE": "Subtipo",
+    "EVOLVES_FROM": "Evoluciona de",
+    "POKEMON_TYPE": "Tipo Pokémon",
+    "RETREAT_COST": "Costo de retirada",
+    "WEAKNESSES": "Debilidades",
+    "RESISTANCES": "Resistencias",
+    "ATTACKS": "Ataques",
+    "RULES": "Reglas",
+    "ABILITIES": "Habilidades",
+    "NO_ATTACKS": "Sin ataques cargados.",
+    "NO_RULES": "Sin reglas cargadas.",
+    "NO_CARDS_FOUND": "No encontramos cartas para esta búsqueda.",
+    "LOADING_CARDS": "Cargando catálogo de cartas...",
+    "LOAD_ERROR": "No pudimos cargar el catálogo de cartas.",
+    "SEARCH_PLACEHOLDER": "Buscar por nombre...",
+    "SELECT_CARD": "Selecciona una carta de la lista para ver su detalle.",
+    "CARD_IMAGE": "imagen de carta",
+    "NO_COST": "Sin costo",
+    "FILTER_ARIA": "Filtrar cartas por tipo",
+    "FILTERS": {
+      "ALL": "Todos",
+      "POKEMON": "Pokémon",
+      "ENERGY": "Energía",
+      "TRAINER": "Entrenador"
+    },
+    "CATEGORIES": {
+      "BASIC_POKEMON": "Pokémon básico",
+      "STAGE_1_POKEMON": "Pokémon fase 1",
+      "STAGE_2_POKEMON": "Pokémon fase 2",
+      "POKEMON_EX": "Pokémon-EX",
+      "MEGA_POKEMON": "Mega Pokémon",
+      "BASIC_ENERGY": "Energía básica",
+      "SPECIAL_ENERGY": "Energía especial",
+      "ITEM_TRAINER": "Objeto",
+      "ACE_SPEC_TRAINER": "AS TÁCTICO",
+      "SUPPORTER_TRAINER": "Partidario",
+      "STADIUM_TRAINER": "Estadio",
+      "POKEMON_TOOL_TRAINER": "Herramienta Pokémon"
+    }
+  },
+  "DECK": {
+    "TITLE": "Mazos",
+    "DECKS_COUNT": "{{count}}/{{max}} Mazos",
+    "DECKS_LIMIT": "{{count}}/{{max}} mazos - puedes tener hasta {{max}} mazos",
+    "ACTIVE_DECK": "Mazo activo",
+    "ACTIVE_PREFIX": "Activo: {{name}}",
+    "EDITOR_ARIA": "Editor de mazo",
+    "BACK_TO_LIST": "Volver a la lista de mazos",
+    "DECK_NAME": "Nombre del mazo",
+    "DECK_NAME_PLACEHOLDER": "Nombre del mazo",
+    "RANDOM_BACKEND": "Generar mazo aleatorio con backend",
+    "CLEAR_DECK": "Limpiar cartas del mazo en edición",
+    "CLEAR": "Limpiar",
+    "SAVE_DECK": "Guardar mazo",
+    "CARDS_TITLE": "Cartas",
+    "SEARCH_CARDS": "Buscar cartas",
+    "SEARCH_PLACEHOLDER": "Buscar cartas...",
+    "LOADING_DECKS": "Cargando mazos...",
+    "LOADING_AVAILABLE": "Cargando cartas disponibles...",
+    "NO_FILTER_CARDS": "No hay cartas para ese filtro.",
+    "NO_DRAFT_CARDS": "Todavía no agregaste cartas.",
+    "RULES_ARIA": "Reglas del mazo",
+    "SUMMARY_ARIA": "Resumen del mazo",
+    "PREVIEW_ARIA": "Vista previa de cartas",
+    "ADD_CARD": "Agregar {{name}} al mazo",
+    "ADD_COPY": "Agregar una copia",
+    "REMOVE_COPY": "Quitar una copia",
+    "MAX_4_POKEMON": "Máx. 4 copias",
+    "MAX_4_POKEMON_ARIA": "{{name}} ya tiene el máximo de 4 copias",
+    "MAX_4_COPIES": "Máx. 4 copias",
+    "MAX_4_COPIES_ARIA": "No podés agregar más de 4 copias de {{name}}",
+    "DECK_LABEL": "Mazo",
+    "EDIT_DECK": "Editar mazo {{name}}",
+    "ACTIVATE_DECK": "Activar mazo {{name}}",
+    "DELETE_DECK": "Borrar mazo {{name}}",
+    "EMPTY_SPACE": "Espacio vacío",
+    "CREATE_DECK_N": "Crear mazo {{number}}",
+    "CREATE_DECK_SPACE": "Crear mazo en espacio {{number}}",
+    "CARDS_OF": "Cartas de: {{name}}",
+    "PREV_PAGE": "Página anterior",
+    "NEXT_PAGE": "Página siguiente",
+    "PAGE_LABEL": "Pág. {{current}} / {{total}}",
+    "VIEW_IN_POKEDEX": "Ver {{name}} en la Pokédex",
+    "VALIDATION_TOTAL": "{{total}} / {{required}} cartas",
+    "VALIDATION_MAX_COPIES": "Máximo 4 copias por nombre de carta",
+    "VALIDATION_REDUCE": "Reducir copias de: {{names}}",
+    "VALIDATION_BASIC": "Al menos 1 Pokémon básico",
+    "ERROR_NO_EDITING_SAVE": "No hay un mazo en edición para guardar.",
+    "ERROR_NO_EDITING_RANDOM": "No hay un mazo en edición para randomizar.",
+    "ERROR_NAME_REQUIRED": "Ingresa un nombre para guardar el mazo.",
+    "ERROR_SAVE_INVALID": "No se puede guardar el mazo: {{reasons}}.",
+    "ERROR_MAX_COPIES_CARD": "No podés agregar más de 4 copias de {{name}}.",
+    "ERROR_MAX_DECKS": "Ya alcanzaste el máximo de {{max}} mazos. Edita o borra uno para crear otro.",
+    "FILTERS": {
+      "ALL": "Todos",
+      "POKEMON": "Pokémon",
+      "ENERGY": "Energía",
+      "TRAINER": "Entrenador"
+    },
+    "ERRORS": {
+      "DEFAULT": "No pudimos procesar la operación del mazo.",
+      "CONNECTION": "No se pudo conectar con el servidor.",
+      "UNAUTHORIZED": "Tu sesión expiró. Inicia sesión nuevamente.",
+      "BAD_REQUEST": "Revisa los datos del mazo.",
+      "NOT_FOUND": "No encontramos el mazo solicitado.",
+      "CONFLICT": "El mazo no cumple las reglas requeridas.",
+      "SERVER": "Ocurrió un error inesperado al procesar el mazo."
+    }
+  },
+  "GAME": {
+    "LOADING_TITLE": "CARGANDO PARTIDA",
+    "LOADING_SNAPSHOT": "Sincronizando snapshot inicial...",
+    "LOAD_FAILED": "NO SE PUDO CARGAR",
+    "RECONNECTING": "RECONECTANDO",
+    "RECONNECTING_MESSAGE": "Sincronizando la partida...",
+    "TOAST": {
+      "ATTACK_LOCKED": "Este Pokémon no puede atacar este turno.",
+      "PICKUP_NO_VALID_CARDS": "No hay cartas de Objeto en tu descarte para recuperar."
+    },
+    "CONNECTION_LOST": "Se perdió la conexión con la partida. Intentando reconectar...",
+    "WAITING_OPPONENT": "Esperando rival...",
+    "PREPARING_MATCH": "Preparando partida",
+    "WAITING_RIVAL_SETUP": "Esperando setup rival",
+    "OPPONENT_TURN": "Turno del rival",
+    "PENDING_RESOLUTION": "Resolución pendiente.",
+    "PAUSED": "Partida pausada.",
+    "FINISHED": "Partida finalizada.",
+    "CANCELLED": "Partida cancelada.",
+    "WAITING_STATE": "Esperando estado de partida...",
+    "ERROR_TITLE": "Error de partida",
+    "ENGINE_DETAIL": "Detalle del motor: {{detail}}",
+    "RIVAL_FIELD": "Rival",
+    "YOUR_FIELD": "Tu",
+    "TURN": "Turno",
+    "LEAVE": "Salir",
+    "ACTIVE_PLAYER_SYNCED": "{{player}} activo",
+    "ACTIVE_PLAYER_PENDING_SYNCED": "Jugador activo pendiente",
+    "CONNECTED": "Conectado",
+    "DISCONNECTED": "Desconectado",
+    "PLAYER_STATUS": "Estado de {{player}}",
+    "OPEN_OPPONENT_CHAT": "Abrir chat con el rival",
+    "HISTORY": "Historial",
+    "YOUR_TURN": "Tu turno",
+    "PLAYER_TURN": "Turno de {{player}}",
+    "INITIAL_SETUP": "Setup inicial",
+    "SETUP_STEP_ACTIVE": "Arrastra un Pokémon básico al slot activo.",
+    "SETUP_STEP_BENCH": "También puedes arrastrar Pokémon básicos a tu banca.",
+    "SETUP_STEP_CONFIRM": "Luego confirma el setup.",
+    "SETUP_SENT": "Setup enviado",
+    "WAITING_FOR_OPPONENT": "Esperando rival",
+    "SETUP_MOBILE_HELP": "Prepará tu campo: elegí 1 Pokémon básico como activo. También podés poner Pokémon básicos en tu banca antes de enviar el setup.",
+    "CHOOSE_ACTIVE_POKEMON": "Elegí tu Pokémon activo",
+    "OPTIONAL_BENCH": "Banca opcional",
+    "SETUP_ACTIVE_REQUIRED": "Primero elegí un Pokémon básico como activo.",
+    "CLEAR_BENCH": "Borrar banca",
+    "END_TURN": "Terminar turno",
+    "END_TURN_UNAVAILABLE": "Terminar turno no está disponible.",
+    "NO_AVAILABLE": "No disponible",
+    "NO_EVENTS": "Todavia no hay movimientos para mostrar.",
+    "LOGS": "Historial",
+    "CLOSE_LOGS": "Cerrar historial",
+    "PORTRAIT_LOCK_TITLE": "Rotá la pantalla",
+    "PORTRAIT_LOCK_MESSAGE": "Este tablero está optimizado para jugar en horizontal.",
+    "ACTION": "Acción",
+    "ATTACKS": "Ataques",
+    "CANCEL_ACTION": "Cancelar",
+    "ACTIVE_POKEMON": "Pokémon activo",
+    "NO_ACTIVE": "Sin activo",
+    "ATTACHED_ENERGIES": "Energías adjuntas",
+    "REMAINING_HP": "Vida restante",
+    "ACTIVE": "Activo",
+    "BENCH": "Banca",
+    "OPPONENT_BENCH": "Banca del rival",
+    "YOUR_BENCH": "Tu banca",
+    "DISCARD": "Descarte",
+    "DECK": "Mazo",
+    "PRIZES": "Cartas de premio",
+    "HAND": "Mano",
+    "YOUR_HAND": "Tu mano",
+    "HAND_OPEN": "Ver mano",
+    "HAND_CLOSE": "Cerrar mano",
+    "HAND_PAGE": "Página {{current}} / {{total}}",
+    "HAND_PREVIOUS": "Anterior",
+    "HAND_NEXT": "Siguiente",
+    "HAND_DETAIL": "Detalle",
+    "OPPONENT_HAND": "Mano del rival",
+    "OPPONENT_DECK": "Mazo del rival",
+    "STADIUM": "Estadio",
+    "STADIUM_NONE": "Ninguno",
+    "STADIUM_IN_PLAY": "En juego",
+    "STADIUM_IN_PLAY_WITH_CARD": "En juego: {{card}}",
+    "PLAYED_BY": "Jugado por {{player}}",
+    "MESSAGE": "MENSAJE",
+    "CARD_DETAIL_ARIA": "Detalle de {{name}}",
+    "CATEGORY": "Categoría",
+    "SUBTYPE": "Subtipo",
+    "EVOLVES_FROM": "Evoluciona de",
+    "POKEMON_TYPE": "Tipo Pokémon",
+    "RETREAT_COST": "Costo de retirada",
+    "WEAKNESSES": "Debilidades",
+    "RESISTANCES": "Resistencias",
+    "ABILITIES": "Habilidades",
+    "RULES": "Reglas",
+    "LOADING_DETAIL": "Cargando detalle...",
+    "NO_ATTACKS": "Sin ataques cargados.",
+    "NO_RULES": "Sin reglas cargadas.",
+    "NO_COST": "Sin costo",
+    "CARD_FALLBACK": "Carta",
+    "HIDDEN_CARD": "Carta oculta",
+    "HIDDEN_POKEMON": "Pokémon oculto",
+    "POKEMON_FALLBACK": "Pokémon",
+    "SLOT": "Slot {{number}}",
+    "ATTACK_FALLBACK": "Ataque {{number}}",
+    "ABILITY_FALLBACK": "Habilidad",
+    "USE_ABILITY": "Usar habilidad",
+    "TRAINER": {
+      "SECTION_TITLE": "Jugar carta de Entrenador",
+      "PLAY": "Jugar",
+      "EQUIP": "Equipar",
+      "CANCEL": "Cancelar",
+      "CHOOSE_TOOL_TARGET": "Elegí un Pokémon para equipar la herramienta",
+      "NO_TOOL_TARGETS": "No hay Pokémon disponibles para esta herramienta",
+      "CHOOSE_BENCH_TARGET": "Elegí un Pokémon del banco",
+      "NO_BENCH_TARGETS": "No hay Pokémon en el banco disponibles",
+      "CHOOSE_CASSIUS_TARGET": "Elegí un Pokémon del banco para mezclar en el mazo",
+      "CHOOSE_HEAL_TARGET": "Elegí el Pokémon a curar",
+      "NO_HEAL_TARGETS": "No hay Pokémon en juego para curar",
+      "CHOOSE_EVOLVE_TARGET": "Elegí el Pokémon a evolucionar",
+      "ACTIVE_EVOLUTION_TARGET": "Activo: {{name}}",
+      "BENCH_EVOLUTION_TARGET": "Banca {{position}}: {{name}}",
+      "NO_EVOLVE_TARGETS": "No hay Pokémon en juego para evolucionar",
+      "CHOOSE_EVOLUTION": "Elegí una evolución del mazo",
+      "LOADING_EVOLUTIONS": "Buscando evoluciones válidas...",
+      "NO_EVOLUTIONS": "No hay evoluciones válidas en el mazo",
+      "AVAILABLE_COUNT": "Disponibles: {{count}}",
+      "EVOLUTION_PREVIEW_ERROR": "No se pudieron cargar las evoluciones. Cerrá el modal e intentá nuevamente.",
+      "CHOOSE_REVIVE_POKEMON": "Elegí un Pokémon del descarte para poner arriba del mazo",
+      "NO_REVIVE_POKEMON": "No hay Pokémon en el descarte",
+      "CHOOSE_DECK_POKEMON": "Elegí un Pokémon de las 7 primeras cartas del mazo",
+      "NO_DECK_POKEMON": "No hay Pokémon en las primeras cartas del mazo",
+      "LOADING_DECK_POKEMON": "Mirando las primeras cartas del mazo...",
+      "CARDS_LOOKED_AT": "Se revisaron {{count}} cartas de la parte superior del mazo.",
+      "DECK_POKEMON_PREVIEW_ERROR": "No se pudieron cargar las primeras cartas del mazo. Cerrá el modal e intentá nuevamente.",
+      "CHOOSE_BASIC_ENERGIES": "Elegí hasta {{max}} Energías básicas del mazo",
+      "LOADING_BASIC_ENERGIES": "Buscando Energías básicas en el mazo...",
+      "NO_BASIC_ENERGIES": "No hay Energías básicas en el mazo",
+      "BASIC_ENERGY_SELECTION_COUNT": "Seleccionadas: {{count}} / {{max}}",
+      "BASIC_ENERGY_PREVIEW_ERROR": "No se pudieron cargar las Energías básicas. Cerrá el modal e intentá nuevamente.",
+      "INCREASE_ENERGY": "Aumentar cantidad",
+      "DECREASE_ENERGY": "Reducir cantidad",
+      "CHOOSE_REVIVE_ENERGY": "Elegí una Energía básica del descarte para adjuntar",
+      "NO_REVIVE_ENERGY": "No hay Energías básicas en el descarte",
+      "TYPE": {
+        "ITEM": "Objeto",
+        "ACE_SPEC": "As Especial",
+        "SUPPORTER": "Partidario",
+        "STADIUM": "Estadio",
+        "TOOL": "Herramienta"
+      }
+    },
+    "BACKEND_PENDING": "Pendiente de soporte Backend",
+    "ABILITY": {
+      "PASSIVE_AUTOMATIC": "Habilidad pasiva automatica"
+    },
+    "NO_DATA_LEGACY": "El snapshot no incluye boardPlayers; se usa el contrato legacy con placeholders seguros.",
+    "NO_POKEMON_DATA": "El snapshot no incluye Pokémon en juego para activo o banca.",
+    "NO_DISCARD_DATA": "El snapshot no incluye descarte visible con cartas reales.",
+    "NO_STADIUM_DATA": "El snapshot no incluye estadio activo.",
+    "NO_ABILITIES_DATA": "El Backend aún no expone abilities reales; USE_ABILITY queda deshabilitada visualmente.",
+    "STATUS": {
+      "WAITING": "Esperando rival",
+      "SETUP": "Preparación",
+      "ACTIVE": "En juego",
+      "PAUSED": "Pausada",
+      "FINISHED": "Finalizada",
+      "CANCELLED": "Cancelada",
+      "VICTORY": "¡Victoria!",
+      "DEFEAT": "Derrota",
+      "PROMOTION_REQUIRED": "¡Elegí tu próximo Pokémon activo!",
+      "PROMOTION_REQUIRED_HINT": "Tu Pokémon activo fue debilitado. Tocá un Pokémon de tu banca para enviarlo al frente."
+    },
+    "PHASE": {
+      "DRAW": "Robo obligatorio",
+      "MAIN": "Acciones disponibles",
+      "ATTACK": "Resolviendo acción",
+      "BETWEEN_TURNS": "Cambio de turno",
+      "WAITING_TABLE": "Esperando mesa"
+    },
+    "ACTIONS": {
+      "CREATE_GAME": "Crear partida",
+      "JOIN_GAME": "Unirse a partida",
+      "START_GAME": "Comenzar partida",
+      "ACK_MULLIGAN_NOTICE": "Continuar Mulligan",
+      "CHOOSE_INITIAL_POKEMON": "Elegir Pokémon inicial",
+      "PAUSE_GAME": "Pausar partida",
+      "RESUME_GAME": "Reanudar partida",
+      "DRAW_CARD": "Robar carta",
+      "PLAY_BASIC_POKEMON": "Bajar Pokémon básico",
+      "EVOLVE_POKEMON": "Evolucionar Pokémon",
+      "ATTACH_ENERGY": "Unir energía",
+      "PLAY_TRAINER": "Jugar entrenador",
+      "RETREAT": "Retirar activo",
+      "DECLARE_ATTACK": "Declarar acción",
+      "DECLARE_ATTACK_WITH_BONUS_DAMAGE": "Atacar con daño bonus (+20 / 20 propio)",
+      "SELECT_TARGET": "Seleccionar objetivo",
+      "END_TURN": "Terminar turno",
+      "PROMOTE_BENCH_POKEMON": "Promover desde banca",
+      "RESOLVE_ATTACK_CHOICE": "Resolver decisión de ataque",
+      "TAKE_PRIZE_CARD": "Tomar premio",
+      "CONCEDE": "Conceder partida",
+      "USE_ABILITY": "Declarar habilidad"
+    },
+    "DISABLED": {
+      "NO_BASIC": "No hay Pokémon básicos visibles listos para bajar.",
+      "NO_EVOLUTIONS": "No hay evoluciones visibles disponibles en este turno.",
+      "NO_ENERGY_TARGETS": "No hay objetivos válidos para unir energía.",
+      "ENERGY_NOT_YET": "Todavía no puedes unir energía en este turno.",
+      "NO_TRAINERS": "No hay entrenadores visibles listos para jugar.",
+      "NO_RETREAT_TARGETS": "No hay Pokémon válidos para retirar.",
+      "RETREAT_NOT_YET": "Todavía no puedes retirar al Pokémon activo.",
+      "PROMOTION_REQUIRED": "Debes elegir manualmente un reemplazo desde la banca.",
+      "NO_PROMOTE_TARGETS": "No hay Pokémon de banca listos para promover.",
+      "NO_PROMOTION_NOW": "No hay una promoción disponible ahora mismo.",
+      "NO_ATTACKS_ENABLED": "Ningún ataque visible está habilitado.",
+      "CONCEDE_PHASE_2": "Se mantiene deshabilitada en fase 2.",
+      "DRAW_REQUIRED": "Roba una carta para comenzar tu turno.",
+      "NOT_YOUR_TURN": "No es tu turno.",
+      "ACTION_PENDING": "Hay una acción en curso.",
+      "WAITING_SYNC": "Esperando sincronización del tablero.",
+      "DRAW_UNAVAILABLE": "Robo no disponible.",
+      "ATTACK_UNAVAILABLE": "Ataque no disponible.",
+      "INSUFFICIENT_ENERGY_OR_ACTION": "Energía insuficiente o acción no disponible.",
+      "ATTACK_CHOICE_REQUIRED": "Hay una decisión de ataque pendiente."
+    },
+    "EVENTS": {
+      "NONE": "Todavia no hay movimientos para mostrar.",
+      "SUMMARY_EMPTY": "Actividad de partida",
+      "SUMMARY": "Actividad de partida",
+      "TURN_STARTED": "{{subject}}comenzo su turno.",
+      "CARD_DRAWN": "{{subject}}robó una carta.",
+      "CARD_PLAYED": "{{subject}}jugo {{card}}.",
+      "TRAINER_PLAYED": "{{subject}}jugo {{card}}.",
+      "BASIC_ENERGIES_REVEALED": "{{subject}}buscó y reveló: {{cards}}.",
+      "ENERGY_ATTACHED": "{{subject}}unió una energía.",
+      "POKEMON_EVOLVED": "{{subject}}evolucionó un Pokémon.",
+      "RETREAT_DONE": "{{subject}}retiró su Pokémon activo.",
+      "ATTACK_DECLARED": "{{subject}}declaró un ataque.",
+      "ATTACK_CHOICE_RESOLVED": "{{subject}}resolvio una decision de ataque.",
+      "DAMAGE_APPLIED": "{{subject}}recibio {{damage}} de dano.",
+      "STATUS_APPLIED": "{{subject}}quedo {{condition}}.",
+      "STATUS_RESOLVED": "{{subject}}ya no esta {{condition}}.",
+      "POKEMON_PROMOTED": "{{subject}}promovió un Pokémon.",
+      "PRIZE_TAKEN": "{{subject}}tomó una carta de premio.",
+      "GAME_FINISHED": "{{subject}}termino la partida.",
+      "GAME_ACTION": "{{subject}}resolvio un efecto de juego.",
+      "INVALID_ACTION": "{{subject}}no pudo completar esa accion.",
+      "OPENING_HANDS_DEALT": "Se barajaron los mazos y se repartieron las manos iniciales.",
+      "MULLIGAN_REQUIRED": "{{subject}}debe hacer Mulligan #{{number}}.",
+      "MULLIGAN_HAND_REVEALED": "{{subject}}hizo Mulligan #{{number}}. Reveló una mano sin Pokémon Básico. Recibirás +{{extraCards}} carta extra.",
+      "MULLIGAN_HAND_RETURNED": "{{subject}}devolvió la mano del Mulligan #{{number}} al mazo.",
+      "MULLIGAN_DECK_SHUFFLED": "{{subject}}barajó el mazo para el Mulligan #{{number}}.",
+      "MULLIGAN_NEW_HAND_DRAWN": "{{subject}}robó una nueva mano de {{count}} cartas.",
+      "MULLIGAN_HAND_VALIDATED_READY": "{{subject}}ya tiene una mano inicial con Pokémon Básico.",
+      "MULLIGAN_HAND_VALIDATED_REPEAT": "{{subject}}volvió a revelar una mano sin Pokémon Básico. Sigue el Mulligan #{{number}}.",
+      "MULLIGAN_SEQUENCE_COMPLETED": "{{subject}}hiciste Mulligan x{{count}}. Tu rival recibirá +{{extraCards}} carta(s) extra.",
+      "MULLIGAN_EXTRA_CARDS_GRANTED": "{{subject}}recibió +{{count}} carta(s) extra por Mulligan.",
+      "MULLIGAN_FLOW_COMPLETED": "La secuencia de Mulligan finalizó en la ronda {{round}}.",
+      "MULLIGAN_NOTICE_ACKNOWLEDGED": "{{subject}}confirmo el aviso de Mulligan.",
+      "PASSIVE_ABILITY_TRIGGERED": "{{subject}}{{ability}}: {{damageCounters}} contadores.",
+      "PASSIVE_ABILITY_TRIGGERED_WITH_COIN": "{{subject}}{{ability}}: {{result}}, {{damageCounters}} contadores.",
+      "COIN_FLIP_RESULT_SINGLE": "{{subject}}lanzó una moneda: {{result}}.",
+      "COIN_FLIP_RESULT_MULTIPLE": "{{subject}}lanzó {{count}} monedas: {{results}} ({{headsCount}} cara(s))."
+    },
+    "CONDITION": {
+      "ASLEEP": "dormido",
+      "BURNED": "quemado",
+      "CONFUSED": "confundido",
+      "PARALYZED": "paralizado",
+      "POISONED": "envenenado",
+      "UNKNOWN": "afectado por una condicion especial"
+    },
+    "MULLIGAN": {
+      "TITLE": "Mulligan",
+      "SUBTITLE": "Manos reveladas durante el setup inicial.",
+      "EVENT_TITLE": "{{player}} hizo Mulligan #{{number}}",
+      "EXTRA_CARDS": "Recibirás +{{count}} carta(s) extra al finalizar los Mulligans.",
+      "REVEALED_CARDS": "Cartas reveladas por Mulligan",
+      "PLACEHOLDER_CARD": "Carta",
+      "OWN_EVENT_TITLE": "Hiciste Mulligan x{{count}}",
+      "OWN_EXTRA_CARDS": "{{opponent}} recibirá +{{count}} carta(s) extra al finalizar los Mulligans.",
+      "AUTOMATIC": "Mulligan automático",
+      "ACK_REQUIRED": "Confirma este aviso para poder enviar tu setup inicial.",
+      "ACK_CONFIRMED": "Aviso de Mulligan confirmado. Ya puedes continuar con el setup.",
+      "ACK_BUTTON": "Entendido",
+      "CONTINUE_BUTTON": "Continuar Mulligan",
+      "OWNER_NO_BASIC": "Tu mano inicial no tiene Pokémon Básicos.",
+      "OWNER_MUST_MULLIGAN": "Debés hacer Mulligan.",
+      "OWNER_WILL_REVEAL": "Tu mano será revelada al rival y volverás a robar 7 cartas.",
+      "OWNER_START_BUTTON": "Iniciar Mulligan",
+      "RIVAL_NO_BASIC": "El rival no tiene Pokémon Básicos.",
+      "RIVAL_MUST_MULLIGAN": "El rival debe hacer Mulligan.",
+      "RIVAL_ABOUT_TO_REVEAL": "Está por mostrar su mano para hacer Mulligan.",
+      "RIVAL_REVEALING_SOON": "El rival está por mostrar su mano…",
+      "WATCHER_CONTINUE_BUTTON": "Entendido. Continuar",
+      "WATCHER_CONFIRM_HINT": "Confirmá para iniciar el Mulligan del rival de forma sincronizada.",
+      "WAITING_FOR_RIVAL": "Esperando al rival…",
+      "ROUND": "Ronda {{round}}",
+      "ACK_LOADING": "Confirmando...",
+      "COUNTER_RIVAL": "Mulligan rival: {{count}}",
+      "COUNTER_OWN": "Mulligan propio: {{count}}",
+      "START_BUTTON_MOBILE": "Iniciar mulligan",
+      "DEAL_AGAIN": "Repartir de nuevo",
+      "BANNER": {
+        "MULLIGAN": "¡MULLIGAN #{{n}}!",
+        "RETURNING": "Cartas vuelven al mazo",
+        "SHUFFLING": "Barajando mazo",
+        "NEW_HAND": "Robando nueva mano",
+        "VALID_HAND": "¡Mano válida!",
+        "EXTRA_CARDS": "+{{count}} cartas por Mulligan rival"
+      }
+    },
+    "COIN": {
+      "HEADS": "cara",
+      "TAILS": "cruz",
+      "RESULT_HEADS": "¡Es cara!",
+      "RESULT_TAILS": "¡Es cruz!"
+    },
+    "RESOLUTION": {
+      "PROMOTE_PLAYER": "{{player}} debe promover un Pokémon.",
+      "PROMOTION_REQUIRED": "Promoción requerida",
+      "SUDDEN_DEATH": "Muerte súbita requerida",
+      "ATTACK_CHOICE_REQUIRED": "Decisión de ataque pendiente"
+    },
+    "ATTACK_CHOICE": {
+      "EYEBROW": "Mina",
+      "MINE_TITLE": "Mirá la carta superior del mazo rival",
+      "MINE_DESCRIPTION": "Podés dejarla donde está o hacer que tu rival baraje su mazo.",
+      "KEEP_TOP_CARD": "Dejarla donde está",
+      "SHUFFLE_DECK": "Barajar el mazo rival",
+      "TITLE": "Resolver decisión de ataque",
+      "CONFIRM": "Confirmar",
+      "CANCEL": "Cancelar",
+      "YES": "Sí",
+      "NO": "No",
+      "WAITING_OPPONENT": "Esperando decisión del rival",
+      "SELECT_TARGET": "Elegir objetivo",
+      "SELECT_TARGET_HINT": "Elegí un Pokémon de la banca rival.",
+      "SELECT_ATTACK": "Elegir ataque",
+      "SELECT_ATTACK_HINT": "Elegí el ataque rival que quedará bloqueado. Se envía el orden del ataque, no su nombre.",
+      "YES_NO_HINT": "Elegí si querés aplicar el efecto opcional.",
+      "REORDER_CARDS": "Ordenar cartas",
+      "REORDER_CARDS_HINT": "Reordená las cartas visibles. Se enviarán exactamente las mismas cartas en el nuevo orden.",
+      "SELECT_CARD": "Elegir carta",
+      "SELECT_DISCARD_HINT": "Elegí una carta de tu descarte.",
+      "SELECT_DISCARD_ITEMS_HINT": "Elegí las cartas de Objeto de tu descarte que querés recuperar a tu mano.",
+      "SELECT_HAND_DISCARD_HINT": "Elegí las cartas de tu mano que querés descartar.",
+      "MENTAL_TRASH_TITLE": "Mental Trash",
+      "MENTAL_TRASH_HINT": "Mental Trash: descartá {{count}} carta(s) de tu mano.",
+      "MENTAL_TRASH_WAIT_TITLE": "Esperando descarte del rival",
+      "MENTAL_TRASH_WAIT_MESSAGE": "Esperando que el rival descarte cartas por Mental Trash.",
+      "SELECT_DECK_CARD_HINT": "Elegí una carta válida de tu mazo.",
+      "SKIP_EFFECT": "No aplicar efecto",
+      "SELECT_ENERGY": "Elegir energía",
+      "SELECT_DESTINATION": "Elegir destino",
+      "MOVE_ENERGY_HINT": "Elegí una energía del activo rival y un Pokémon de su banca como destino.",
+      "SELECT_ENERGY_DESTINATION_HINT": "Elegí una energía del mazo y el Pokémon propio que la recibirá.",
+      "SELECT_UP_TO_THREE_ENERGIES": "Elegir hasta 3 energías",
+      "SELECT_UP_TO_THREE_ENERGIES_HINT": "Elegí hasta 3 energías básicas de tipos diferentes.",
+      "SELECT_SPECIAL_CONDITION": "Elegir condicion especial",
+      "SELECT_SPECIAL_CONDITION_HINT": "Elegi que condicion especial aplicar al Pokemon rival.",
+      "SELECTED_COUNT": "{{count}}/{{max}} seleccionadas",
+      "MOVE_UP": "Subir",
+      "MOVE_DOWN": "Bajar",
+      "CARD_FALLBACK": "Carta {{number}}",
+      "BENCH_SLOT": "Banca {{number}}",
+      "ATTACK_FALLBACK": "Ataque {{number}}",
+      "ENERGY_FALLBACK": "Energía {{number}}",
+      "UNSUPPORTED": "Esta decisión todavía no tiene una interfaz disponible.",
+      "WAIT_TITLE": "Esperando al rival",
+      "WAIT_MESSAGE": "El rival está decidiendo el efecto de su ataque."
+    },
+    "DISCARD_MODAL": {
+      "TITLE": "Descarte",
+      "EMPTY": "No hay cartas en el descarte."
+    },
+    "STATUS_SUMMARY": {
+      "DRAW": "Roba una carta desde tu mazo para comenzar tu turno.",
+      "ACTIVE": "Turno {{turn}} - {{phase}} - turno actual de {{player}}.",
+      "SETUP": "La mesa sigue en preparación antes del primer turno real."
+    },
+    "INTERACTION": {
+      "SETUP_PROMPT": "Arrastra una carta básica de tu mano al slot de Pokémon activo para elegir tu Pokémon inicial. También puedes alternar cartas hacia la banca antes de enviar el setup.",
+      "PLAY_BASIC_SELECTED": "Confirma para bajar la carta seleccionada a la banca.",
+      "PLAY_BASIC": "Selecciona un Pokémon básico visible de tu mano.",
+      "ATTACH_SELECTED": "Ahora elige el Pokémon que recibirá la energía.",
+      "ATTACH": "Selecciona una energía visible de tu mano.",
+      "EVOLVE_SELECTED": "Ahora elige el Pokémon que evolucionará.",
+      "EVOLVE": "Selecciona una evolución visible de tu mano.",
+      "TRAINER_SELECTED": "Si la carta necesita objetivo, elige el Pokémon correspondiente.",
+      "TRAINER": "Selecciona un entrenador visible de tu mano.",
+      "RETREAT": "Selecciona el Pokémon de banca que pasará a activo.",
+      "PROMOTE": "Selecciona el reemplazo desde tu banca para resolver la promoción.",
+      "ATTACK_SELECTED": "Si el ataque requiere objetivo, selecciona el Pokémon destino y confirma.",
+      "ATTACK": "Selecciona uno de los ataques visibles del Pokémon activo.",
+      "CHOOSE_HEAL_TARGET": "Elegí a qué Pokémon curar:",
+      "NO_HEAL_TARGETS": "No hay Pokémon elegibles para curar en este momento.",
+      "CHOOSE_OPPONENT_TARGET": "Elegí el Pokémon del rival como objetivo:",
+      "NO_OPPONENT_TARGETS": "No hay Pokémon del rival elegibles en este momento.",
+      "DRAW": "Confirma para solicitar el robo correspondiente.",
+      "END_TURN": "Confirma para terminar tu turno actual.",
+      "SEND_SETUP": "Enviar setup",
+      "DRAW_LABEL": "Robar",
+      "DECLARE_ATTACK": "Declarar acción",
+      "PROMOTE_LABEL": "Promover",
+      "INITIAL_ACTIVE": "Activo inicial: {{name}}",
+      "INITIAL_BENCH": "Banca inicial: {{count}}",
+      "CARD_SELECTED": "Carta: {{name}}"
+    },
+    "OVERLAY": {
+      "PAUSED_TITLE": "Partida pausada",
+      "PAUSED_MESSAGE": "El tablero queda en solo lectura hasta que la partida se reanude.",
+      "FINISHED_TITLE": "Partida finalizada",
+      "FINISHED_MESSAGE": "La partida ya terminó. Solo queda consultar el estado final.",
+      "VICTORY_MESSAGE": "¡Ganaste la partida! Le tomaste todos los premios al rival o lo dejaste sin Pokémon en juego.",
+      "DEFEAT_MESSAGE": "Perdiste la partida. El rival tomó todos sus premios o te dejó sin Pokémon en juego.",
+      "CANCELLED_TITLE": "Partida cancelada",
+      "CANCELLED_MESSAGE": "La partida se canceló. No se aceptan nuevas acciones.",
+      "RESOLUTION_TITLE": "Resolución pendiente",
+      "BACK_TO_MENU": "Volver al menú principal",
+      "RESULT_EYEBROW": "Partida finalizada",
+      "PROMOTION_WAIT_TITLE": "Esperando al rival",
+      "PROMOTION_WAIT_MESSAGE": "El rival se quedó sin Pokémon activo. Tiene que elegir un reemplazo de su banca antes de continuar."
+    },
+    "ERRORS": {
+      "INVALID_SNAPSHOT": "No se pudo cargar el estado de la partida.",
+      "MISSING_USER": "No se pudo identificar al usuario local para cargar la partida.",
+      "MISSING_PARTICIPANT": "No se pudo identificar tu jugador local en esta partida.",
+      "SNAPSHOT_NOT_READY": "No se pudo cargar un snapshot inicial completo.",
+      "BACKEND_UNSUPPORTED_TITLE": "Acción no soportada por el backend",
+      "BACKEND_UNSUPPORTED_MESSAGE": "El motor rechazó la acción porque ese efecto todavía no está implementado.",
+      "ACTION_REJECTED": "Acción rechazada",
+      "NO_ACTIVE_GAME": "No hay una partida activa para realizar acciones.",
+      "NO_CHAT_GAME": "No hay una partida activa para enviar mensajes.",
+      "UPDATE_PRESENCE": "No se pudo actualizar la presencia de la partida.",
+      "VERSION_SYNCED": "La partida se actualizó. El tablero fue sincronizado.",
+      "ACTION_FAILED": "No se pudo realizar la acción.",
+      "USE_ABILITY_UNSUPPORTED": "USE_ABILITY aún no está soportado.",
+      "BOARD_PERSPECTIVE": "No se pudo resolver la perspectiva visible del tablero.",
+      "BOARD_VIEW_MISSING": "El snapshot no incluye board.view con jugadores visibles.",
+      "LATEST_SNAPSHOT": "No pudimos recuperar el último snapshot visible de la partida.",
+      "GAME_FORBIDDEN": "Tu usuario no tiene acceso a esta partida.",
+      "GAME_NOT_FOUND": "La partida ya no existe o todavía no quedó accesible desde el backend.",
+      "BOOTSTRAP_FAILED": "No pudimos iniciar la partida desde el backend."
+    },
+    "SELF": "Tú",
+    "RIVAL_NUMBER": "Rival {{number}}",
+    "CARD_NUMBER": "Carta {{number}}",
+    "EVOLUTION_FALLBACK": "Evolución",
+    "ATTACHED_ENERGY_FALLBACK": "Energía adjunta",
+    "ATTACHED_TOOL_FALLBACK": "Herramienta adjunta",
+    "UNKNOWN_EVENT": "{{subject}}{{event}}.",
+    "CHAT": {
+      "TAB": "Chat",
+      "TITLE": "CHAT EN VIVO",
+      "SUBTITLE": "Conversación en vivo entre ambos jugadores.",
+      "CONNECTED": "Tiempo real activo",
+      "RECONNECTING": "Reconectando",
+      "EMPTY": "El chat estará disponible cuando llegue el primer mensaje entre ambos jugadores.",
+      "YOUR_MESSAGE": "TU MENSAJE",
+      "LABEL": "MENSAJE",
+      "PLACEHOLDER": "Mensaje...",
+      "SENDING": "Enviando...",
+      "SEND": "Enviar mensaje"
+    },
+    "ANIMATION": {
+      "DRAWN_CARD": "Carta robada",
+      "DRAWN_CARD_NUMBER": "Carta robada {{number}}",
+      "DISCARDED_OPPONENT_POKEMON": "Pokémon rival descartado",
+      "DISCARDED_POKEMON": "Pokémon descartado",
+      "OPPONENT_CARD": "Carta rival",
+      "DISCARDED_ENERGY": "Energía descartada",
+      "DISCARDED_ENERGY_NUMBER": "Energía descartada {{number}}",
+      "MULLIGAN_REVEAL": "Mano revelada",
+      "REVEALED_HAND_CARD": "Carta revelada",
+      "COIN_FLIP_SELF": "Lanzás una moneda",
+      "COIN_FLIP_OPPONENT": "El rival lanza una moneda",
+      "COIN_FLIP_SUMMARY": "Caras"
+    },
+    "STATUS_EFFECT": {
+      "ASLEEP": "Dormido",
+      "BURNED": "Quemado",
+      "CONFUSED": "Confundido",
+      "PARALYZED": "Paralizado",
+      "POISONED": "Envenenado",
+      "SUMMARY_SINGLE": "Estado: {{name}}",
+      "SUMMARY_MULTIPLE": "Estado: {{list}}"
+    },
+    "EFFECTS": {
+      "HARDEN_SHIELD_TOOLTIP": "Endurecer: el daño del próximo ataque rival se reduce en 60"
+    },
+    "TOOLS": {
+      "MUSCLE_BAND_TOOLTIP": "Cinta Fuerte: +20 de daño al atacar",
+      "HARD_CHARM_TOOLTIP": "Amuleto Duro: reduce el daño recibido en 20"
+    }
+  },
+  "ERRORS": {
+    "MATCHMAKING_INVALID_DECK": "Necesitas seleccionar un mazo válido antes de buscar partida.",
+    "WEBSOCKET_BROKER": "El broker STOMP devolvió un error."
+  },
+  "A11Y": {
+    "BACKGROUND_MUSIC_VOLUME": "Volumen de la música de fondo",
+    "BACKGROUND_MUSIC_CONTROL": "Control de volumen de la música de fondo",
+    "PRIMARY_NAVIGATION": "Navegación principal"
+  },
+  "WEBSOCKET": {
+    "NO_TOKEN": "No hay un token de acceso disponible para abrir el WebSocket.",
+    "SESSION_TOKEN_MISSING": "La sesión ya no tiene un token de acceso válido para WebSocket.",
+    "CLOSED_BEFORE_CONNECT": "El WebSocket se cerró antes de completar la conexión.",
+    "CHANNEL_FAILED": "No pudimos abrir el canal en tiempo real con el servidor.",
+    "BROKER_ERROR": "El broker STOMP devolvió un error.",
+    "INVALID_MESSAGE": "Recibimos un mensaje en tiempo real inválido."
+  },
+  "MATCHMAKING_PLACEHOLDER": {
+    "TITLE": "Emparejamiento",
+    "SUBTITLE": "Pantalla provisional para la cola de búsqueda y el estado de emparejamiento.",
+    "EMPTY_TITLE": "Cola pendiente",
+    "DESCRIPTION": "La ruta y el servicio base están listos para conectar la unión, salida y consulta de estado."
+  }
+}
+

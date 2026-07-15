@@ -1,0 +1,201 @@
+<div data-tour="deck-slots" class="grid gap-4 lg:grid-cols-3">
+  @let currentLanguage = language();
+  @for (deck of decks(); track deck.id) {
+    @let counts = deckCounts(deck.cards);
+    @let total = deckTotal(deck.cards);
+
+    <article
+      [attr.data-tour]="$first ? 'deck-card' : null"
+      [class]="panelClass(deck.active)"
+    >
+      <header class="flex justify-between gap-3">
+        <div>
+          <p class="mb-1 text-xs font-bold uppercase tracking-wider" [class.text-[#D9A441]]="!isLightTheme()" [class.text-[#8b070c]]="isLightTheme()">{{ t('DECK.DECK_LABEL') }}</p>
+          <h2 class="text-xl leading-tight">{{ deck.name }}</h2>
+        </div>
+
+        @if (deck.active) {
+          <span
+            class="self-start whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold uppercase text-white"
+            [class.bg-blue-700]="!isLightTheme()"
+            [class.bg-[#2f63d8]]="isLightTheme()"
+          >
+            {{ t('COMMON.ACTIVE') }}
+          </span>
+        } @else if (deck.valid) {
+          <span
+            class="self-start whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold uppercase text-green-100"
+            [class.bg-green-800]="!isLightTheme()"
+            [class.bg-[#1f8f55]]="isLightTheme()"
+          >
+            {{ t('COMMON.VALID') }}
+          </span>
+        } @else {
+          <span
+            class="self-start whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold uppercase"
+            [class.bg-[#3a1a00]]="!isLightTheme()"
+            [class.text-[#D9A441]]="!isLightTheme()"
+            [class.bg-[#7a3f12]]="isLightTheme()"
+            [class.text-[#ffe8ae]]="isLightTheme()"
+          >
+            {{ total }} / 60
+          </span>
+        }
+      </header>
+
+      <div [attr.data-tour]="$first ? 'deck-card-stats' : null" class="grid grid-cols-3 gap-2" [attr.aria-label]="t('DECK.SUMMARY_ARIA')">
+        <span [class]="statClass()">
+          <strong [class]="statValueClass()">{{ counts.POKEMON }}</strong>
+          {{ t('COMMON.POKEMON') }}
+        </span>
+        <span [class]="statClass()">
+          <strong [class]="statValueClass()">{{ counts.ENERGY }}</strong>
+          {{ t('COMMON.ENERGY') }}
+        </span>
+        <span [class]="statClass()">
+          <strong [class]="statValueClass()">{{ counts.TRAINER }}</strong>
+          {{ t('COMMON.TRAINER') }}
+        </span>
+      </div>
+
+      <div class="grid grid-cols-5 gap-2" [attr.aria-label]="t('DECK.PREVIEW_ARIA')">
+        @for (card of deck.cards.slice(0, 5); track $index) {
+          <div
+            [class]="previewSlotClass()"
+            [title]="cardDisplayName(card.card, currentLanguage)"
+          >
+            @if (card.card.imageSmallUrl) {
+              <img
+                class="size-full object-cover"
+                [src]="card.card.imageSmallUrl"
+                [alt]="cardDisplayName(card.card, currentLanguage)"
+                loading="lazy"
+              />
+            } @else {
+              <span>{{ card.card.supertype.charAt(0) }}</span>
+            }
+          </div>
+        }
+
+        @if (deck.cards.length === 0) {
+          @for (slot of miniPreviewSlots(); track slot) {
+            <div
+              [class]="previewSlotClass()"
+              aria-hidden="true"
+            ></div>
+          }
+        }
+      </div>
+
+      @if (deck.validationErrors.length > 0) {
+        <p [class.text-[#D9A441]]="!isLightTheme()" [class.text-[#8b070c]]="isLightTheme()">{{ deck.validationErrors[0] }}</p>
+      }
+
+      <div class="mt-auto grid grid-cols-3 gap-2">
+        <button
+          type="button"
+          [class]="primaryButtonClass()"
+          [attr.data-tour]="$first ? 'deck-edit-button' : null"
+          [attr.aria-label]="t('DECK.EDIT_DECK', { name: deck.name })"
+          (click)="startEditing.emit(deck)"
+          [disabled]="isSaving()"
+        >
+          {{ t('COMMON.EDIT') }}
+        </button>
+        <button
+          type="button"
+          [class]="primaryButtonClass()"
+          [attr.data-tour]="$first ? 'deck-activate-button' : null"
+          [attr.aria-label]="t('DECK.ACTIVATE_DECK', { name: deck.name })"
+          (click)="activateDeck.emit(deck.id)"
+          [disabled]="deck.active || isSaving()"
+        >
+          {{ t('HOME.ACTIVATE') }}
+        </button>
+        <button
+          type="button"
+          [class]="primaryButtonClass()"
+          [attr.data-tour]="$first ? 'deck-delete-button' : null"
+          [attr.aria-label]="t('DECK.DELETE_DECK', { name: deck.name })"
+          (click)="deleteDeck.emit(deck.id)"
+          [disabled]="isSaving()"
+        >
+          {{ t('COMMON.DELETE') }}
+        </button>
+      </div>
+    </article>
+  }
+
+  @for (slot of emptySlotIndexes(); track slot) {
+    <button
+      type="button"
+      [class]="emptySlotClass()"
+      [attr.data-tour]="$first ? 'deck-empty-slot' : null"
+      [attr.aria-label]="t('DECK.CREATE_DECK_SPACE', { number: decks().length + slot + 1 })"
+      (click)="startCreating.emit()"
+      [disabled]="isSaving()"
+    >
+      <span
+        class="grid size-16 place-items-center rounded-full text-3xl"
+        [class.bg-[#D9A441]/10]="!isLightTheme()"
+        [class.text-[#D9A441]]="!isLightTheme()"
+        [class.bg-[#d89428]/12]="isLightTheme()"
+        [class.text-[#d89428]]="isLightTheme()"
+        aria-hidden="true"
+      >
+        +
+      </span>
+      <strong [class.text-[#fff4c7]]="!isLightTheme()" [class.text-[#3b1d12]]="isLightTheme()">{{ t('DECK.EMPTY_SPACE') }}</strong>
+      <small [class.text-[#f9f0d0]/70]="!isLightTheme()" [class.text-[#6b3a22]]="isLightTheme()">{{ t('DECK.CREATE_DECK_N', { number: decks().length + slot + 1 }) }}</small>
+    </button>
+  }
+</div>
+
+@if (activeDeck(); as deck) {
+  <section data-tour="deck-active-cards" [class]="sectionClass()">
+    <header class="flex items-center justify-between">
+      <h3 class="text-xl font-bold" [class.text-[#D9A441]]="!isLightTheme()" [class.text-[#4a2415]]="isLightTheme()">{{ t('DECK.CARDS_OF', { name: deck.name }) }}</h3>
+      
+      <div class="flex items-center gap-4">
+        @if (totalPages() > 1) {
+          <div class="flex items-center gap-2">
+            <button 
+              class="grid size-8 place-items-center rounded-lg bg-[#8b070c] text-white hover:bg-[#6f0509] disabled:opacity-50"
+              [disabled]="currentPage() === 0"
+              (click)="prevPage()"
+              [attr.aria-label]="t('DECK.PREV_PAGE')"
+            >
+              &lt;
+            </button>
+            <span [class.text-sm]="true" [class.font-bold]="true" [class.text-[#f9f0d0]]="!isLightTheme()" [class.text-[#6f4d35]]="isLightTheme()">{{ t('DECK.PAGE_LABEL', { current: currentPage() + 1, total: totalPages() }) }}</span>
+            <button 
+              class="grid size-8 place-items-center rounded-lg bg-[#8b070c] text-white hover:bg-[#6f0509] disabled:opacity-50"
+              [disabled]="currentPage() === totalPages() - 1"
+              (click)="nextPage()"
+              [attr.aria-label]="t('DECK.NEXT_PAGE')"
+            >
+              &gt;
+            </button>
+          </div>
+        }
+        <span class="rounded-full px-3 py-1 text-xs font-extrabold uppercase" [class.bg-[#3a1a00]]="!isLightTheme()" [class.text-[#D9A441]]="!isLightTheme()" [class.bg-[#7a3f12]]="isLightTheme()" [class.text-[#ffe8ae]]="isLightTheme()">
+          {{ deckTotal(deck.cards) }} / 60 {{ t('COMMON.CARDS') }}
+        </span>
+      </div>
+    </header>
+    <div class="grid grid-cols-12 gap-2">
+      @for (card of paginatedCards(); track $index) {
+        <a [routerLink]="['/', appRoutes.pokedex]" [queryParams]="{ cardId: card.card.id }" [attr.data-tour]="$first ? 'deck-active-card' : null" class="animate-card-enter relative grid aspect-[3/4] place-items-center overflow-hidden rounded-lg transition-transform hover:scale-105 hover:ring-2 hover:ring-[#B8792E] focus:outline-none focus:ring-2 focus:ring-[#B8792E]" [class.bg-[rgba(26,13,2,0.76)]]="!isLightTheme()" [class.text-[#f9f0d0]/60]="!isLightTheme()" [class.bg-[rgba(244,226,195,0.82)]]="isLightTheme()" [class.text-[#9a7b58]]="isLightTheme()" [title]="t('DECK.VIEW_IN_POKEDEX', { name: cardDisplayName(card.card, currentLanguage) })">
+          @if (card.card.imageSmallUrl) {
+            <img class="size-full object-cover" [src]="card.card.imageSmallUrl" [alt]="cardDisplayName(card.card, currentLanguage)" loading="lazy" />
+          } @else {
+            <span>{{ card.card.supertype.charAt(0) }}</span>
+          }
+          <div class="absolute bottom-0 right-0 rounded-tl-lg bg-black/80 px-2 py-0.5 text-xs text-white">
+            x{{ card.quantity }}
+          </div>
+        </a>
+      }
+    </div>
+  </section>
+}

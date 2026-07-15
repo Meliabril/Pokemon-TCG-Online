@@ -1,0 +1,83 @@
+<article [class]="panelClasses()">
+  <div class="flex flex-wrap items-start justify-between gap-3">
+    <div>
+      <h2 [class]="titleClasses()">{{ t('HOME.CHOOSE_DECK') }}</h2>
+      <p [class]="descriptionClasses()">
+        {{ t('HOME.CHOOSE_DECK_DESCRIPTION') }}
+      </p>
+    </div>
+
+    <span [class]="countBadgeClasses()">
+      {{ t('HOME.DECK_COUNT', { count: decks().length, max: 3 }) }}
+    </span>
+  </div>
+
+  @if (!decks().length && status() !== 'checking') {
+    <div [class]="emptyStateClasses()">
+      {{ t('HOME.NO_DECKS_QUEUE') }}
+    </div>
+  } @else {
+    <div class="mt-4 grid gap-3">
+      @for (deck of decks(); track deck.id) {
+        <article [class]="deckCardClasses(deck)">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h3 [class]="deckNameClasses()">{{ deck.name }}</h3>
+            </div>
+
+            <span class="rounded-full border px-2.5 py-1 text-[0.68rem]" [class]="deckStatusBadgeClasses(deck)">
+              {{ deckStatusLabel(deck) }}
+            </span>
+          </div>
+
+          @if (deck.validationErrors.length) {
+            <p [class]="validationErrorClasses()">{{ deck.validationErrors[0] }}</p>
+          }
+
+          <div class="mt-4 flex flex-wrap gap-3">
+            @if (!deck.active) {
+              <button
+                type="button"
+                [class]="primaryButtonClasses()"
+                [disabled]="isDeckChangeDisabled()"
+                (click)="activateDeck.emit(deck.id)"
+              >
+                {{ deckActionLabel(deck.id, 'activating', 'HOME.USE_THIS_DECK') }}
+              </button>
+            }
+
+            <button
+              type="button"
+              [class]="secondaryButtonClasses()"
+              [disabled]="isDeckChangeDisabled()"
+              (click)="randomizeDeck.emit(deck.id)"
+            >
+              {{ deckActionLabel(deck.id, 'randomizing', 'HOME.RANDOM') }}
+            </button>
+
+            @if (showDeckEditorLink()) {
+              <a
+                [class]="editorLinkClasses()"
+                [routerLink]="['/', routes.deck]"
+              >
+                {{ t('HOME.EDIT_IN_DECK') }}
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  }
+
+  @if (showCreateDeckButton() && decks().length < 3) {
+    <div class="mt-4 flex justify-end">
+      <button
+        type="button"
+        [class]="createButtonClasses()"
+        (click)="createDeck.emit()"
+      >
+        {{ t('HOME.CREATE_NEW_DECK') }}
+      </button>
+    </div>
+  }
+</article>

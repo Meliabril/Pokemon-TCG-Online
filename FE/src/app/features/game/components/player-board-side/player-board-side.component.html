@@ -1,0 +1,60 @@
+<section
+  class="grid min-h-0 gap-3 rounded-[1.35rem] border border-[#facc15]/22 bg-[#170506]/18 p-3"
+  [class.content-end]="player().role === 'current'"
+>
+  <header class="flex flex-wrap items-center justify-between gap-2">
+    <div>
+      <p class="font-pixel text-[0.58rem] uppercase tracking-[0.2em] text-[#fde68a]">
+        {{ player().role === 'current' ? t('GAME.YOUR_FIELD') : t('GAME.RIVAL_FIELD') }}
+      </p>
+      <h2 class="mt-1 font-pixel text-base uppercase tracking-[0.14em] text-[#fff7d6]">
+        {{ player().label }}
+      </h2>
+    </div>
+
+    <div class="flex items-center gap-2">
+      @if (player().isActiveTurn) {
+        <span class="rounded-full border border-[#facc15]/45 bg-[#facc15]/18 px-3 py-1 font-pixel text-[0.55rem] uppercase tracking-[0.12em] text-[#fde68a]">
+          {{ t('GAME.TURN') }}
+        </span>
+      }
+      <span
+        class="rounded-full px-3 py-1 text-xs font-semibold"
+        [class.bg-[#22c55e]/18]="player().connected"
+        [class.text-[#bbf7d0]]="player().connected"
+        [class.bg-[#dc2626]/18]="!player().connected"
+        [class.text-[#fecaca]]="!player().connected"
+      >
+        {{ player().connected ? t('GAME.CONNECTED') : t('GAME.DISCONNECTED') }}
+      </span>
+    </div>
+  </header>
+
+  <div
+    class="grid items-center gap-3 lg:grid-cols-[minmax(8rem,0.32fr)_minmax(0,1fr)_minmax(8rem,0.32fr)]"
+  >
+    <div class="grid grid-cols-2 gap-2 lg:grid-cols-1">
+      <app-card-zone-stack [label]="t('GAME.DISCARD')" [count]="player().discardCount" variant="discard" />
+      <app-card-zone-stack [label]="t('GAME.DECK')" [count]="player().deckCount" variant="deck" />
+    </div>
+
+    <div class="grid justify-items-center gap-3">
+      @if (player().role === 'opponent') {
+        <app-hand-fan [label]="t('GAME.OPPONENT_DECK')" [cards]="player().handCards" />
+      }
+
+      <app-bench-row
+        [label]="player().role === 'current' ? t('GAME.YOUR_BENCH') : t('GAME.OPPONENT_BENCH')"
+        [slots]="player().benchSlots"
+      />
+
+      <app-active-pokemon-slot [slot]="player().activePokemon" />
+
+      @if (player().role === 'current') {
+        <app-hand-fan [label]="t('GAME.YOUR_HAND')" [cards]="player().handCards" />
+      }
+    </div>
+
+    <app-card-zone-stack [label]="t('GAME.PRIZES')" [count]="player().prizeCount" variant="prize" />
+  </div>
+</section>
