@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
-  apiBaseUrl: 'http://localhost:8080',
-  wsBaseUrl: 'http://localhost:8080/ws'
+  production: true,
+  apiBaseUrl: 'https://pokemon-tcg-online-7v3o.onrender.com',
+  wsBaseUrl: 'wss://pokemon-tcg-online-7v3o.onrender.com/ws'
 };
